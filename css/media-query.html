@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(4,1fr);
+            gap:15px;
+            width:80%;
+            margin :auto;
+            /* box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green; */
+            /* box-shadow: 5px 10px #888888; */
+            border:3px solid black;
+        }
+        #container >div{
+            box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green;
+             box-shadow: 5px 10px #888888;
+            padding:20px;
+            justify-content: space-between;
+        }
+        #container >div > div{
+            display:flex;
+            justify-content: space-between;
+        }
+        #container > div > div + P{
+           font-size: 20px;
+           line-height: 15px;
+        }
+        @media all and (min-width:451px )and (max-width:750px){
+            #container{
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+        @media all and (min-width:100px )and (max-width:450px){
+            #container{
+                grid-template-columns: repeat(1,1fr);
+            }
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div>
+            <div>
+                <p>
+                    Kunal
+                </p>
+                <p>Kumar</p>
+
+            </div>
+            <p>Yadav</p>
+        </div>
+        <div>
+            <div>
+                <p>
+                    Kunal
+                </p>
+                <p>Kumar</p>
+
+            </div>
+            <p>Yadav</p>
+        </div>
+        <div>
+            <div>
+                <p>
+                    Kunal
+                </p>
+                <p>Kumar</p>
+
+            </div>
+            <p>Yadav</p>
+        </div>
+        <div>
+            <div>
+                <p>
+                    Kunal
+                </p>
+                <p>Kumar</p>
+
+            </div>
+            <p>Yadav</p>
+        </div>
+        <div>
+            <div>
+                <p>
+                    Kunal
+                </p>
+                <p>Kumar</p>
+
+            </div>
+            <p>Yadav</p>
+        </div>
+        <div>
+            <div>
+                <p>
+                    Kunal
+                </p>
+                <p>Kumar</p>
+
+            </div>
+            <p>Yadav</p>
+        </div>
+        <div>
+            <div>
+                <p>
+                    Kunal
+                </p>
+                <p>Kumar</p>
+
+            </div>
+            <p>Yadav</p>
+        </div>
+        <div>
+            <div>
+                <p>
+                    Kunal
+                </p>
+                <p>Kumar</p>
+
+            </div>
+            <p>Yadav</p>
+        </div>
+        <div>
+            <div>
+                <p>
+                    Kunal
+                </p>
+                <p>Kumar</p>
+
+            </div>
+            <p>Yadav</p>
+        </div>
+        <div>
+            <div>
+                <p>
+                    Kunal
+                </p>
+                <p>Kumar</p>
+
+            </div>
+            <p>Yadav</p>
+        </div>
+        <div>
+            <div>
+                <p>
+                    Kunal
+                </p>
+                <p>Kumar</p>
+
+            </div>
+            <p>Yadav</p>
+        </div>
+        <div>
+            <div>
+                <p>
+                    Kunal
+                </p>
+                <p>Kumar</p>
+
+            </div>
+            <p>Yadav</p>
+        </div>
+    </div>
+</body>
+</html>

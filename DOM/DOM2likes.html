@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img
+      height="200"
+      width="200"
+      src="https://pbs.twimg.com/profile_images/1467821396252266500/w7T3eAB3_400x400.jpg"
+      alt=""
+    />
+    <br />
+    <h2 id="likes">Show likes count here</h2>
+    <h2 id="dislikes">Show dislikes count here</h2>
+    <button onClick="likeFun()">Like</button>
+    <button onClick="dislikeFun()">Dislike</button>
+
+
+
+    <hr/>
+
+
+    <h1 id="head-1">DOM-1 Assignment</h1>
+    <button id="btn" onClick="completeAssig()">Mark as Complete</button>
+  </body>
+</html>
+
+<script>
+  var likes = 0;
+  var dislikes = 0;
+
+  function likeFun() {
+    likes++;
+    //console.log(likes);
+    document.getElementById("likes").innerText = "likes -" + likes;
+  }
+
+  function dislikeFun() {
+    dislikes++;
+    //console.log(dislikes);
+    document.getElementById("dislikes").innerText = "dislikes -" + dislikes;
+  }
+</script>
+<hr/>
+<script>
+    function completeAssig() {
+      document.getElementById("head-1").innerText = "DOM-1 Assignment Completed";
+      document.getElementById("btn").innerText="Completed"
+      document.getElementById("btn").style.backgroundColor="green"
+      document.getElementById("btn").style.color="white"
+    }
+  </script>

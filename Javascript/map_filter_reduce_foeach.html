@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Higher Order Function</h1>
+    <p>
+        array -> forEach   -> not an array
+        array -> map       -> array
+       array -> filter    -> array
+       array -> reduce    -> single value
+       
+       
+       forEach().map() --> N 
+       map().forEach() --> Y
+       filter().reduce() --> Y
+       map().filter() --> Y
+       forEach().filter() -> N 
+    </p>
+</body>
+<script>
+    // let arr=[1238765]
+// let n=arr.toString()
+// let bag=""
+// for(let i=0;i<=n.length-1;i++){
+//     bag=" "+n[i]+bag
+// }
+
+
+// console.log(bag)
+// let a=5
+// let b=7
+// [a,b]=[b,a]
+// console.log(a,b)
+// function map(arr){
+// let obj={}
+// for(let i=0;i<=arr.length-1;i++){
+//     if(obj[arr[i]]==undefined){
+//         obj[arr[i]]=1
+//     }else{
+//         obj[arr[i]]++
+//     }
+// }
+// console.log(obj)
+// }
+// map([1,2,2,2,3,4,5,5,6])
+
+// let arr=[1,2,3,4,4,5,6,7]
+// arr1=arr.map(x=>x*2)
+// console.log(arr1)
+
+// let arr=[1,2,3,4,4,5,6,7]
+// arr1=arr.filter(el=>el%2==0)
+// console.log(arr1)
+
+
+
+// let arr=[1,2,3,4,4,5,6,7]
+// arr.forEach((el,i,y)=>{
+//     console.log(i,el*2,y)
+// })
+
+
+
+////
+// let array=[1,2,3,4]
+// let reducefn=array.reduce(function(acc,el,i,arr){
+//     return acc+el
+// })
+// console.log(reducefn)
+
+
+let array=[1,2,3,4]
+let reducefn=array.reduce((acc,el,i,arr)=>acc+el)
+console.log(reducefn)
+</script>
+<script>
+    var mobiles=[
+  {brand:"Samsung",model:"S7562"},
+  {brand:"Apple",model:"iphone 13 pro"},
+  {brand:"one plus",model:"7 pro"}
+]
+mobiles.forEach(function(elem){
+  console.log(elem.model)
+})
+var out = mobiles.map(function(elem){
+  return elem.model
+})
+console.log(out)
+
+</script>
+
+
+<script>
+// Given an array of numbers find the sum of cubes if the number is divisible 
+// by 3 Sample Input - [1, 2, 3, 4, 5, 6] Sample Output - 243 (27+216)
+let arr =[1,2,3,4,5,6]
+var out = arr.filter((el)=>{
+  return el%3==0
+}).reduce(function(acc,ele){
+  return acc+ele**3
+},1)
+
+</script>
+</html>
