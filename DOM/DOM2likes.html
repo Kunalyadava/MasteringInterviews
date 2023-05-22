@@ -17,8 +17,8 @@
     <br />
     <h2 id="likes">Show likes count here</h2>
     <h2 id="dislikes">Show dislikes count here</h2>
-    <button onClick="likeFun()">Like</button>
-    <button onClick="dislikeFun()">Dislike</button>
+    <button id="like">Like</button>
+    <button id="dislike">Dislike</button>
 
 
 
@@ -26,29 +26,38 @@
 
 
     <h1 id="head-1">DOM-1 Assignment</h1>
-    <button id="btn" onClick="completeAssig()">Mark as Complete</button>
+    <button id="btn">Mark as Complete</button>
   </body>
 </html>
 
 <script>
-  var likes = 0;
-  var dislikes = 0;
-
-  function likeFun() {
-    likes++;
-    //console.log(likes);
-    document.getElementById("likes").innerText = "likes -" + likes;
-  }
-
-  function dislikeFun() {
-    dislikes++;
-    //console.log(dislikes);
-    document.getElementById("dislikes").innerText = "dislikes -" + dislikes;
-  }
+document.querySelector("#like").addEventListener("click",likeFun)
+document.querySelector("#dislike").addEventListener("click",dislikeFun)
+var likes=0;
+var dislikes=0;
+function likeFun(){
+    likes++
+    document.getElementById("likes").innerText="likes-"+likes;
+}
+function dislikeFun(){
+    dislikes++
+    document.getElementById("dislikes").innerText="likes-"+dislikes;
+}
 </script>
-<hr/>
+
+
+
+
+
+
+
+
+
+
+
 <script>
-    function completeAssig() {
+    document.querySelector("#btn").addEventListener("click",completed)
+    function completed() {
       document.getElementById("head-1").innerText = "DOM-1 Assignment Completed";
       document.getElementById("btn").innerText="Completed"
       document.getElementById("btn").style.backgroundColor="green"
