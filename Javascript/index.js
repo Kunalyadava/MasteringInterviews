@@ -81,3 +81,13 @@
 // // Context API
 // // CSS Flex
 // // If they give three btns how will you flex it?. And where will you add the flex?.
+
+//how to remove arrow sign in input type =number
+
+{/* <input type="number" class="no-spinners" />
+
+.no-spinners::-webkit-inner-spin-button,
+.no-spinners::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} */}

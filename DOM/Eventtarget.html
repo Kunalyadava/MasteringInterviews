@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Example using event.target.value</title>
+</head>
+<body>
+  <input type="text" id="myInput" />
+
+  <script>
+    // Function to handle the input event
+    function handleInput(event) {
+      var inputValue = event.target.value;
+      console.log("Input value:", inputValue);
+    }
+
+    // Add event listener to the input element
+    var inputElement = document.getElementById("myInput");
+    inputElement.addEventListener("input", handleInput);
+  </script>
+</body>
+</html>
