@@ -15,4 +15,551 @@
 // The asynchronous nature of Node.js leads to increased performance over other frameworks.
 // Node.js may be run on Windows, MAC, or Linux systems.
 
+
+
+
+// MERN DEfNs
+
+// - MERN stands for MongoDB, ExpressJS, React, and Node. MERN is a Web development stack for building full stack 
+// Web applications. This means that you can build a complete Web application, including the frontend, backend,
+//  and the business logic with a database using the MERN stack.
+// - MERN comprises of four technologies, MongoDB, ExpressJS, React, and Node. The following diagram explains the role of each technology in the MERN stack.
+
+// ## **ExpressJS**
+
+// - ExpressJS is a NodeJS framework for creating server-side applications.
+// - ExpressJS provides many shorthand methods for writing the functionality provided by NodeJS.
+// - ExpressJS is the middleware and sits between React and Node as a part of the MERN stack.
+
+// ## **Node JS**
+
+// - Node or Node.js is an open-source, cross-platform JavaScript based server-side runtime framework.
+// - Unlike JavaScript, Node runs on a server.
+// - Problems with Javascript ?
+//     - Does not works with files.
+//     - does not work with request responses.
+//     - does not work with databases.
+//     - cannot perform system operations.
+// - Why do we need a server ?
+//     - To store information and only provide relative information.
+//     - perform analysis on data and derive results.
+//     - interact with other endpoints even when someone is not on our website.
+//     - data to exist even without need for user to stay on website.
+// - How does a Machine Excute the code
+
+
+
+// ## **Node Architecture**
+
+// - The open source project Node. js was invented by Ryan Dahl.
+// - It essentially allows JavaScript to be used outside of a browser.
+
+// # **[Module and Require](https://youtu.be/gCPNnR0LatY)**
+
+// ## **Today we are going to look into Modules and require which are core concepts of node**
+
+// ### **What is Modules :-**
+
+// - Modules is basically logical separation of code
+// - Modules enable us to have small code files which can be reused and thus help in scalability
+//  and maintainbility as smalled code modules help us in adding more features easily and smaller code files are easier to maintain
+// - Modules also help us in data protection which means only those pieces of code which we want
+//  other files to inherit can be exported ( data encapsulation in other programming languages )
+
+// ### **Different types of modules :-**
+
+// - Core modules :- Node provides us some modules out of the box for e.g :- 
+// http, file to work with network requests and managing files etc out of the box
+// // - Npm packages :- These are packages or node_modules provided by someone else and this functionality does not come with node 
+// installation and we can use these to get some work done instead of rewriting entire functionality again for e.g :- axios
+// // - User generated modules :- This is code that we write and we import code from one
+//  file to some other file as modules and allows us to keep our code DRY ( Don't repeat yourself ).
+
+// // User generated modules :- for exporting code from our modules we use module.exports 
+// and we assign it the item we are trying to export and this can then be imported by any other file
+
+// - require :- require allows us to grab code exported from some other module into our current module
+
+// ## **NodeJs wraps every file in**
+
+// ```
+// (function (exports, require, module, __filename, __dirname) {
+//   /**
+//    * Your File code
+//    */
+//   module.exports = {
+//     /* YOUR EXPORTS */
+//   };
+// });
+
+// ```
+
+// # **Client Server Architecture**
+
+// # **Client Server Architecture**
+
+// ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ebff6f3b-43f3-4fec-ad83-3445b17c2f8b/Untitled.png)
+
+
+
+
 //https://medium.com/@kunalkr/what-is-nodejs-process-model-55df68bccc9e
+
+
+
+
+
+
+
+
+
+
+
+
+//Node 
+
+// Interaction with system
+// There are two methods by which we can interact with the system/machine/computer:
+
+// GUI ⇒ Graphical User Interface
+
+// This is the pretty common way that we use to interact with the system,
+// that includes taking the help of graphics to demonstrate and visualise
+// all the actions that we are doing.
+
+// CLI ⇒ Command Line Interface
+
+// This kind of interaction mainly involves writing specific commands to
+// perform any kind of operation in the system.
+
+
+// Basic Windows CLI Commands
+// Command	Description
+// dir	                List the directory (folder) system.
+// cd                   pathname	Change directory (folder) in the file system.
+// cd \             	Move to the root folder of the file system.
+// cd ..       	        Move one level up (one folder) in the file system.
+// copy	                Copy a file to another folder.
+// move	                Move a file to another folder.
+// type filename	    Type a file.
+// mkdir or md      	Creates a new directory (folder).
+// rmdir or rd //rm -r filename   	Removes a directory (folder).
+// cls         	        Clears the CLI window.
+// exit	                Closes the CLI window.
+// help command      	Shows the manual for a given command.
+
+// Package.json is a file in the root directory of a Node.js 
+// project that holds various information relevant to the project. 
+// This file gives information to npm that allows it to identify the project
+//  as well as handle the project’s dependencies.
+// A package.json file:
+// lists the packages your project is dependent on
+// specifies versions of a package that your project can use/ using
+// makes your build reproducible, and therefore easier to share with other developers
+// contains other metadata such as a project description, the version of the project
+//  in a particular distribution, license information, even configuration data etc
+// is vital to both npm and the end-users of the package
+
+
+
+
+// Although javascript is a single 
+// threded  but it act like an async. language
+//  because of its concruent (parallel) in nature
+
+// Javascript is a single threaded language. This means it has one call 
+// stack and one memory heap. As expected, it executes code in order
+//  and must finish executing a piece code before moving onto the next.
+
+// or
+// Javascript is a single-threaded language, meaning that just 
+// one line of code may be run at once. Javascript is single-threaded because,
+//  originally, it was only a web browser scripting language 
+//  created to serve the needs of a single user
+//  on a single window of the browser, eliminating the need for multithreading.
+//   It's synchronous, but at times that can be harmful. 
+//   For example, if a function takes awhile to execute or has to wait on something,
+//    it freezes everything up in the meanwhile.
+// A good example of this happening is the window alert function. alert("Hello World")
+// You can't interact with the webpage at all until you hit OK and dismiss the alert. You're stuck.
+// So how do we get asynchronous code with Javascript then?
+// Well, we can thank the Javascript engine (V8, Spidermonkey, JavaScriptCore, etc...) 
+// for that, which has Web API that handle these tasks in the background. 
+// The call stack recognizes functions of the Web API and hands them off to 
+// be handled by the browser. Once those tasks are finished by the browser,
+//  they return and are pushed onto the stack as a callback.
+
+// If you need to make multiple API requests, you can send these API
+//  requests concurrently instead of sending them one by one.
+// Sometimes, we need to make multiple API calls at once.
+//  For example, let's say we have an array, and we want to make an
+//   API request for each element of that array. We will use a loop to
+//    iterate over the array and make the calls; however, there are two different approaches to do this.
+
+// Sequential vs. Parallel API Calls
+// There are two types of API calls, 
+// depending on how they are made.
+
+// 1. Sequential API Calls
+// Sequential API calls are executed one by one, 
+// i.e., the second call is made after the first call completes. 
+// This approach is not ideal for performance because if 
+// you have ten requests and each request takes one second to execute,
+//  the total execution time will add up to ten seconds.
+
+// 2. Parallel API Calls
+// To avoid slow execution, we can send all the API calls at
+//  once and execute them in parallel. As a result, there is no 
+//  particular order in which the calls finish their execution
+//   but their execution times do not add up since they run together.
+
+// Making Parallel Calls in JavaScript
+// It can be tricky to figure out how to make parallel 
+// but asynchronous API calls. In JavaScript,
+//  you can use the Promise.all() method to achieve this.
+
+// Promise.all()
+// The Promise.all() method takes an 
+// array of promises as an input and returns a
+//  single promise that resolves to the results of all the input promises.
+//   Every API call is essentially a promise, so we can feed all
+//    the API calls in Promise.all(), which will execute them together.
+
+
+// Concurreny Model in Javascript
+
+
+// So first of all what we all know about Javascrpit is that it is -
+
+// single-threaded which means 2 statements cannot be executed simultaneously,
+// non-blocking which means execution of some code should not stop the execution
+//  of program because its too slow making the browser unresponsive,
+// asynchronous which means that 2 or more tasks can be done simultaneously,
+// concurrent means multiple computations can happen at same time.
+// console.log("Hello");
+// setTimeout( () => {
+//     console.log("Hello inside setTimeout");
+// }, 1000);
+// console.log("Bye");
+
+// TO KNOW MORE https://www.notion.so/day2-d74e448612be4d92855d2bd0e538914c?pvs=4
+
+
+
+
+
+
+
+// Static typed languages
+// A language is statically-typed if the type of a variable is 
+// known at compile-time instead of at run-time. Common examples of
+//  statically-typed languages include Java, C, C++, FORTRAN, Pascal and Scala.
+
+// In Statically typed languages, once a variable has been declared 
+// with a type, it cannot ever be assigned to some other variable of 
+// different type and doing so will raise a type error at 
+// compile-time(some IDE’s generally shows a Red Cross mark denoting the error).
+
+
+// class Main {
+//     public static void main( String args[] ) {
+//       int number;
+//       number = 10; 
+//       System.out.println(number);
+//     }
+// }
+
+// In static-typed languages, we have to define the 
+// type of a variable before we assign a value to it.
+
+// In the code above:
+
+// Line 3: We declare a variable number. Note that we have also defined its type here.
+// Line 4: We assign a value to the variable number.
+// Line 3: We print the value of the variable number on the console.
+// Example 2
+
+
+// Note: the statement above (which binds an integer value, 
+//     and then binds a string value to the same variable name data) 
+//     is illegal. But in a dynamically-typed language this sequence 
+//     of statements is perfectly fine.
+
+// Advantages:
+// A large class of errors are caught in the early stage
+//  of development process.
+// Static typing usually results in compiled code 
+// that executes more quickly because when the compiler knows 
+// the exact data types that are in use, it can produce
+//  optimized machine code (i.e. faster and/or using less memory).
+
+
+// Now let’s see how dynamic-typed languages work:
+
+// number =10
+// console.log(number)
+
+// In dynamic-typed languages, we don’t need to define
+//  the type of a variable as an interpreter at run-time will handle it.
+// In the above code:
+//  Line 1: We declare a variable number and assign a value to it. 
+//  Note that we have not defined its type here.
+// Line 2: We print the value of variable number on the console.
+
+
+
+
+// Compile-time	
+// The compile-time errors are the errors which are produced at the compile-time, and they are detected by the compiler.
+// In this case, the compiler prevents the code from execution if it detects an error in the program.	
+// It contains the syntax and semantic errors such as missing semicolon at the end of the statement.
+
+// Runtime
+// It contains the errors such as division by zero, determining the square root of a negative number.
+// In this case, the compiler does not detect the error, so it cannot prevent the code from the execution.
+// The runtime errors are the errors which are not generated by the
+
+
+
+//day3
+//what is a module and its type
+
+//day4
+//The server. listen() method creates a listener on the specified port or path.
+//listen means
+//port number acts like a parking lot
+
+//res.end means once the response has ended show this
+//res.write means write this BEFORE ENDING THE RESPONSE response
+
+// What is Nodemon used for?
+// Nodemon is a command-line tool that helps
+//  with the speedy development of Node. js
+//   applications. It monitors our project
+//   directory and automatically restarts our
+//    node application when it detects any changes.
+//    This means that we do not have to stop
+//     and restart our applications in order for
+//      our changes to take effect.
+//bandwidth is  data transmission capacity
+//http is a set of rules to communicate between the client and the server
+
+// In http rest APIs we are stuck with a very limited set of verbs.
+// They are essentially:
+
+// get: to load data
+// post: to create new data
+// put: to replace data
+// patch: to update data
+// delete: to remove data
+// These are the verbs of a typical CRUD operation
+
+// Out of 39 http methods, developers typically use the "GET", "POST",
+//  "PUT", "PATCH" and "DELETE" methods.
+// ✔ GET
+// The GET method is used to retrieve resources from a
+//  server. It is said to be a safe method as
+//  it does not change the state of the resource in any way.
+// GET method is idempotent Thus calling this
+//  method multiple times will always give the same result.
+
+// Example URIs
+// HTTP GET 'http://www.apidomain.com/users'
+// HTTP GET 'http://www.apidomain.com/users?size=20&page=5'
+// HTTP GET 'http://www.apidomain.com/users/123'
+// HTTP GET 'http://www.apidomain.com/users/123/address'
+// ✔ POST
+// POST method is used to create a new resource
+// into the collection of resources on a server.
+// It is important to note that POST is Non-idempotent.
+//  Thus invoking two identical POST requests will result
+//  in duplicate information being created on the server.
+
+// Example URIs
+// HTTP POST 'http://www.apidomain.com/users'
+// HTTP POST 'http://www.apidomain.com/users/123/accounts'
+// ✔ PUT
+// PUT is used to update the existing resource on the
+// server and it updates the full resource.
+// If the resource does not exist, PUT may decide to create a new resource.
+// PUT method is idempotent Thus calling this method multiple
+//  times will always update the same resource multiple times.
+
+// Example URIs
+// HTTP PUT 'http://www.apidomain.com/users/123'
+// HTTP PUT 'http://www.apidomain.com/users/123/accounts/456'
+// ✔ PATCH
+// PATCH is used to update the existing resource
+// on the server and it updates a portion of the resource.
+// If the resource does not exist, PUT may decide to
+// create a new resource.
+// Just as the PUT method, PATCH is also idempotent
+
+// Example URIs
+// HTTP PATCH 'http://www.apidomain.com/users/123'
+// HTTP PATCH 'http://www.apidomain.com/users/123/accounts/456'
+// PATCH vs PUT
+// PUT method primarily fully replaces an entire
+//  existing resource but PATCH partially updates an existing resource.
+
+// The PATCH method is not a substitute to
+// the PUT method. It applies a delta (diff) rather than replacing
+// the entire resource.
+
+// ✔ DELETE
+// DELETE Method is used to delete the resources from a server.
+// It deletes resource identified by the Request-URI.
+// DELETE method are idempotent.
+// Conclusion
+// As a backend developer, It is very important to follow the
+//  standard approach in building your API.
+//The fs.readFile() method is an inbuilt method 
+//which is used to read the file. This method 
+//read the entire file into buffer. 
+
+
+
+
+//http://localhost:4500/data 
+////autocannon one of the fastest tools available for testing web-server performance
+
+
+
+
+ // MVC is abbreviated as Model View Controller is a design pattern created for 
+// developing applications specifically web applications. As the name suggests, 
+// it has three major parts. The traditional software design pattern works in an 
+// "Input - Process - Output" pattern whereas MVC works as "Controller -Model - View"
+//  approach. With the emergence of the MVC model, creation of application takes different 
+//  aspects individually into consideration. These aspects of the application are:
+// UI Logic
+// Input logic
+// Business Logic
+// It provides a clear separation of business logic, Ul logic, and input logic.
+// It offers full control over your HTML and URLs which makes it easy to
+                                     //  design web application architecture.
+// It is a powerful URL-mapping component using which we can build applications that 
+                                       // have comprehensible and searchable URLs.
+// It supports Test Driven Development (TDD).
+// Components of MVC :
+
+// The MVC framework includes the following 3 components:
+
+// Controller
+// Model
+// View
+
+
+
+
+//Mongodb Atlas(cloud based mong0db)
+// ATLAS
+// Database. Deploy amulti-cloud database.
+// The most advanced cloud database service on the market,
+//  with unmatched data distribution and mobility across AWS, Azure, and Google
+//  Cloud, built-in automation for resource and workload optimization, and so much more.
+
+
+
+
+////
+
+// Difference between Hashing and Encryption
+
+// Encryption is the process of converting a normal readable message
+//  known as plaintext into a garbage message or not
+//   readable message known as Ciphertext. The ciphertext 
+// obtained from the encryption can easily be transformed
+//  into plaintext using the encryption key. Some of the 
+//  examples of encryption algorithms are RSA, AES, and Blowfish.
+
+
+
+// Hashing is the process of converting the 
+// information into a key using a hash function. 
+// The original information cannot be retrieved from the
+//  hash key by any means. Generally, the hash keys are stored 
+//  in the database and they are compared to check whether the original 
+//  information matches or not. They are generally used to store the 
+//  passwords for login. Some of the examples
+//   of a hashing algorithm are MD5, SHA256.
+
+
+
+
+
+
+//  In the authentication process, the identity of users
+//   is checked for providing the access to the system. 
+//   While in the authorization process, a person’s or 
+//   user’s authorities are 
+//  checked for accessing the resources. Authentication 
+//  is done before the authorization process, whereas the 
+//  authorization process is done after the authentication 
+//  process.
+
+// Authentication -Identification 
+// Authorization - Providing accessible
+// Flow 
+// => /register (POST)=> So that we can post the user details into the database registration Process
+// =>/login (POST) =>So this was to send the email and pass to server so that it can be compared and user can login
+// =>(Authentication)
+
+// Authorization
+// =>/moviedata (secured)=>Restricted (Permission)
+// =>/userdetails(secured)=>Restricted (Permission)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// MongoDB is a 
+// schema-less NoSQL document database.
+//  It means you can store JSON documents in it,
+//   and the structure of these documents can vary as
+//    it is not enforced like SQL databases. This is one
+//     of the advantages of using NoSQL as it speeds up application
+//      development and reduces the complexity of deployments.
+
+// Mongoose is an Object Data Modeling (ODM) library for
+//  MongoDB and Node.js. It manages relationships between data, 
+//  provides schema validation, and is used to
+//   translate between objects in code and the 
+// representation of those objects in MongoDB.
+
+
+// Authentication Vs. Authorization | Difference between
+//  Authentication and Authorization
+
+
+// Authentication and authorization are the two words used 
+// in the security world. They might sound similar but are
+//  completely different from each other. Authentication is 
+//  used to authenticate someone's identity, whereas
+//   authorization is a way to provide permission to someone to
+//    access a  particular resource.
+
+/////jwt
+//JWT, or JSON Web Token, is an open standard
+ //used to share security information between
+ //two parties — a client and a server. 
+//Each JWT contains encoded JSON objects, 
+//including a set of claims. JWTs are signed using
+// a cryptographic algorithm to ensure that the 
+//claims cannot be altered after the token is issued.
+
