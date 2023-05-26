@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // How are we creating Objects in Js?
+// 1. Object Literal
+// var a = { name : 'Batman' }
+
+// But, to create multiple objects of the same type, the object literal 
+// method is inefficient but we have a solution.
+//  Constructor functions
+// We can create objects in Js using functions as well.
+// This is one example of creating an object using a function.
+
+// What is this?
+// In JavaScript, the this keyword refers to an object.
+
+// Which object depends on how this is being invoked (used or called).
+
+// The this keyword refers to different objects depending on how it is used:
+
+// In an object method, this refers to the object.
+var person={
+    name:"john",
+    myName:function(){
+        console.log(this.name) //this==person
+    }
+}
+
+person.myName()
+
+// Alone, this refers to the global object.
+// In a function, this refers to the global object.
+// In a function, in strict mode, this is undefined.
+// In an event, this refers to the element that received the event.
+// Methods like call(), apply(), and bind() can refer this to any object.
+</script>

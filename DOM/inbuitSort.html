@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    inbuilt sorts
+</body>
+</html>
+<script>
+    let N=[2,3,4,5,08,56,30]
+    N.sort((a,b) =>(a-b))
+    console.log(N)
+  
+  //////
+
+      let arr=[2,3,4,5,08,56,30]
+      arr.sort((a,b)=>(b-a))
+    console.log(arr)
+
+
+
+    ///
+    let num=[1,4,8,09,90,65,30]
+    num.sort()
+    console.log(num)
+////
+
+
+let names=["Aman","chandra","akash","raj","ram","binod"]
+    names.sort()
+    console.log(names)
+
+
+
+// //////
+// let mod=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,98,76,54,45,67,87]
+// mod.sort((a,b)=>(a%3-b%3))
+// console.log(1%3)
+// /////
+
+
+let numbers = [0, 1 , 2, 3, 10, 20, 30 ];
+numbers.sort( function( a , b){
+    if(a > b) return 1;
+    if(a < b) return -1;
+    return 0;
+});
+
+console.log(numbers);
+</script>
+<!--arr.sort()
+     it is a inplace sorting method here no extra space is required
+it doesn't change the order of elements -->
+<!-- <script>
+let employees = [
+		{name: 'john', salary: 90000, hireDate: "July 1, 2010"},
+    {name: 'david', salary: 75000, hireDate: "August 15, 2009"},
+    {name: 'ana', salary: 80000, hireDate: "December 12, 2011"}
+];
+// sort by salary
+employees.sort((x, y)=>( y.salary - x.salary))
+console.table(employees);
+
+</script> -->
+
+
+<script>
+    let employees = [
+            {name: 'jhohn', salary: 90000, hireDate: "July 1, 2010"},
+        {name: 'ravid', salary: 75000, hireDate: "August 15, 2009"},
+        {name: 'aana', salary: 80000, hireDate: "December 12, 2011"}
+    ];
+    // sort by salary
+    employees.sort( ( a , b)=>{
+    if(a.name>b.name) return 1
+    if(a.name<b.name) return -1;
+     return 0
+});
+
+console.log(employees);
+    </script>
