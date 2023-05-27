@@ -1,3 +1,12 @@
+// variables are store location with assigned names it
+//  holds data that we can use or change later
+// A declaration allocates a memory and the assignment assigns a value to this allocated memoery
+
+//Nested > when there a conditional statement present inside conditional statement 
+
+
+
+
 // Hoisting
 //it only applies to variables and functions
 
@@ -17,6 +26,26 @@
 
 
 
+// - During the creation phase of the execution context,
+//  JS allocates memory space for the functions and variables.
+// - In case of functions, the whole function body is stored but 
+// in case of the variables, it is declared and assigned a default
+//  value `undefined`. This phenomena is called `Hoisting`
+
+
+// - Execution phase:
+//     - Since memory allocation is done, now it will go into execution phase .
+//     - In this phase, JS executes our code line by line and assigns the
+//      value to the variables.
+
+// - Whatever we saw now is GEC (Global execution phase)
+// - There is one more thing called as functional execution phase
+// - Whenever a function gets invoked, a new execution context 
+// gets created known as functional execution context.
+// - It has two phases again
+//     - creation and execution phase
+// - Once function execution is done, functional execution context gets removed
+
 // Javascript scans the file and gets the delcarations of functions, 
 // variables and class and stores/ moves up to the top of their scope,
 //  prior to the Code execution phase.
@@ -29,11 +58,6 @@
 // Execution context (EC) is defined as the environment in which the JavaScript
 //  code is executed. By environment, I mean what variables JavaScript code has
 //   access to at a particular time.
-
-// Execution context changes when Js starts running a function,
-//  that context is called Functional Execution Context. Otherwise,
-//   its Global Execution Context by default.
-
 
 
 // Execution Stack
@@ -126,23 +150,6 @@ console.log(admin) //kunal,2,3 */}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // And Objects
 // Object
 // Sorting
@@ -199,7 +206,7 @@ console.log(admin) //kunal,2,3 */}
 
 
 // Primitive datatypes AND NON-Primitive datatypes
-// Hoisting
+// Hoisting 
 // Closures
 // What is Virtual DOM
 // What is BABEL
@@ -212,6 +219,10 @@ console.log(admin) //kunal,2,3 */}
 // CSS Flex
 // If they give three btns how will you flex it?. And where will you add the flex?.
 
+
+
+
+
 // //how to remove arrow sign in input type =number
 
 // {/* <input type="number" class="no-spinners" />
@@ -221,3 +232,13 @@ console.log(admin) //kunal,2,3 */}
 //   -webkit-appearance: none;
 //   margin: 0;
 // } */}
+
+
+
+
+//Asynchronous Programming
+//Javascript is synchronous, blocking, single-threaded language.
+
+// synchronous means to be in a sequence, i.e. every statement of
+//the code gets executed one by one. So, basically a statement 
+//has to wait for the earlier statement to get executed

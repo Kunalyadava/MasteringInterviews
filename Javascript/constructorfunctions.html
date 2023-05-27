@@ -11,6 +11,93 @@
 </body>
 </html>
 <script>
+
+// object is unique entity which have properties and methods
+
+
+
+//object methods are functions written inside an object 
+let obj={
+    addition:function(x,y){
+        console.log(x+y)
+    }
+}
+obj.addition(10,15) //25
+
+
+
+let object={
+    addition:function(x,y){
+      return x-y
+    }
+}
+console.log(object.addition(10,15)) //25
+
+//constructor is a tempelate by which we can create objects 
+function generalCar(givenName,givenSpeed){
+    this.name=givenName;
+    this.topSpeed=givenSpeed;
+    console.log(`${this.name} is running`)
+}
+car1=new generalCar("Maruti",500)
+console.log(car1)
+
+//output
+//Maruti is running
+// constructorfunctions.html:43 
+// generalCar {name: 'Maruti', topSpeed: 500}
+// name
+// : 
+// "Maruti"
+// topSpeed
+// : 
+// 500
+// [[Prototype]]
+// : 
+
+
+
+
+
+
+// Object
+
+// var student1={
+//     firstName="Kunal",
+//     lastName="Kumar",
+//     age:25,
+//     class:5
+
+// }
+//if we want another student with same property but diff value
+//then we have to write same code 10 times to avoid this we use object constructor
+//we used to create multiple object with same property through obj const function
+
+function Student(first,last,age,cls){
+    this.firstName=first;
+    this.lastName=last;
+    this.age=age;
+    this.class=cls;
+}
+var student1=new Student("vishwajeet","Kumar",30,6); //Student {firstName: 'vishwajeet', lastName: 'Kumar', age: 30, class: 6}
+//now by adding just one line of code we can create another student with same prop with diff value
+
+
+//if we want to add a new property in studwent 1
+student1.nationality="Indian"
+console.log(student1)
+
+
+
+
+
+
+
+
+
+
+
+
     // How are we creating Objects in Js?
 // 1. Object Literal
 // var a = { name : 'Batman' }
@@ -32,15 +119,78 @@
 var person={
     name:"john",
     myName:function(){
-        console.log(this.name) //this==person
+        //console.log(this.) //this==person  /this refers to parent object
+        console.log(this)
     }
 }
 
-person.myName()
+ person.myName()//{name: 'john', myName: ƒ}
 
 // Alone, this refers to the global object.
+function myName(){
+    console.log(this)
+}
+myName()  //Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+
 // In a function, this refers to the global object.
 // In a function, in strict mode, this is undefined.
 // In an event, this refers to the element that received the event.
 // Methods like call(), apply(), and bind() can refer this to any object.
+</script>
+
+
+
+
+<script>
+    //class : A specific category can be defined as class 
+    // Mobile                (class)
+    // samsung,Lg,Nokia      ( objects)
+    // Model,Ram,Color,price  (Properties,Methods)
+// there are two ways to define class in javascript using class keyword
+// class Declaration
+// class Expression
+
+// The constructor method is a special method for creating and initializing 
+// an object within a class . There can be one special method with the name "constructor"
+// in a class
+
+
+// class class_name{
+//       constructor(){
+//         properties
+//       }
+//       Methods
+// }
+
+// class Mobile{
+//     constructor(){
+//         this.model="Glaxy";
+
+//     }
+//     show() {return this.model +"Price Rs 3000"}
+// }
+// var Nokia=new Mobile
+
+
+
+
+class Mobile{
+    constructor(){
+        //Instance Member
+        this.a=12
+        this.show=function(){
+            return "Instance Member"
+        }
+
+    }
+    //prptotype member
+    show() {
+        return "prtotype member"
+    }
+}
+var Nokia=new Mobile()
+console.log(Nokia.a)
+console.log(Nokia)
+
+console.log(typeof(Mobile))
 </script>

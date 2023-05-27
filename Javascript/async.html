@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- when we try to execute any javascript code GEC is created and pushed inside the call stack -->
+
+
+
+    <!-- - To make async programming possible JS alone isn’t enough, we also need WEB broswer APIs
+These Web APIs makes asynchronous programming possible
+
+- setTimeout
+- setInterval
+- Local Storage
+- fetch -->
+</body>
+</html>
+<script>
+//     console.log("1")
+// setTimeout(function test(){
+// 	console.log("2")
+// },5000)
+
+// console.log("3")
+// 1,3,2 ?
+// - JS run time environment consists of following parts
+//     - Memory Heap: Stores all variables
+//     - Call stack: Whenever you execute code functions are pushed onto
+//      callstack and whenever functions returns it pops out of call stack
+//    js doesn't have any api like localstorage ,promise ,Dom ,fetch
+//     - WEB APIs: SetTimeout, setInterval, Promise, Remember these APIs 
+//     are provided by browser. and it wraps everything in window object and gives access to call stack
+//     - Call stack Queue: FIFO DS
+//     - Event loop: has only one job, check if callstack is empty, if yes push
+//      an item from queue into stack
+
+
+
+// console.log("Kunal")
+// setTimeout(()=>{
+//     console.log("Hello World")
+// },3000)
+
+// setTimeout(()=>{
+//     console.log("Bye World")
+// },6000)
+// console.log("Kumar")
+
+// kunal
+//kumar
+//Hello world
+//bye world
+
+// ## setInterval:
+
+// - which repeats after certain amount of time
+// Syntax:
+// `setInterval(function,interval_in_ms)`
+
+// console.log("He came")
+// setInterval(()=>{
+//     console.log("He Sat")
+// },5000)
+// console.log("He Went Away")
+//output he came
+/// he went away
+//he sat he sat he sat he sat...............
+
+
+
+console.log("TimeStart")
+let i=0
+let interval=setInterval(function(){
+  console.log("Timeout")
+  i++
+  if(i==10){
+    clearInterval(interval)
+  }
+
+},1000)
+console.log("Timein")
+
+</script>
+<!-- <body>
+    <h1></h1>
+</body>
+</html>
+
+<script>
+let count = 100;
+let count_id=setInterval(function () {
+count--;
+console.log(count);
+document.querySelector("h1").innerText=count
+},1000);
+// output 99,98,97,96............
+</script> -->
+
+
+
+
+
+
+<!-- ///Timer -->
+<!-- 
+<body>
+    <h1></h1>
+    <button onClick="start()">Start Timer</button>
+    <button onClick="stop()">Stop Timer</button>
+  </body>
+</html>
+
+<script>
+  let i = 0;
+  let id
+  function start() {
+     id = setInterval(function () {
+      i++;
+      console.log(i);
+      document.querySelector("h1").innerText = i;
+    }, 1000);
+  }
+
+  function stop() {
+    clearInterval(id);
+    document.querySelector("h1").innerText = "Timer stopped";
+  }
+</script> -->
+<!-- 
+<body>
+    <h1></h1>
+  </body>
+</html>
+
+<script>
+  let i = 0;
+  let id = setInterval(function () {
+    i++;
+    console.log(i);
+    document.querySelector("h1").innerText = i;
+    if (i === 5) {
+      clearInterval(id);
+      document.querySelector("h1").innerText = "Timer stopped";
+
+    }
+  }, 1000);
+</script> -->
+
+
+
+  
+  <!-- <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #clock {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #7fbad5;
+      /* direction,color1,color2...link--- */
+    }
+
+    #clock > div {
+      padding: 30px;
+      margin: 30px;
+      border-radius: 20px;
+      background-color: rgb(255, 153, 0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      box-shadow: 5px 5px 23px #7b5717, -5px -5px 23px #ffc535;
+    }
+
+    span {
+      font-size: 40px;
+    }
+  </style>
+  <div id="clock">
+    <div id="hours">hours</div>
+    <span>:</span>
+    <div id="minutes">min</div>
+    <span>:</span>
+    <div id="seconds">SECONDs</div>
+    <div id="half">AM/PM</div>
+  </div>
+  <script>
+     function clock() {
+      var date =new Date();
+    //   console.log(date)
+      var hours = date.getHours();
+    //   console.log(hours)
+      var minutes = date.getMinutes();
+      var seconds = date.getSeconds();
+      var half = "";
+      if (hours >= 12) {
+        half = "PM";
+      } else {
+        half = "AM";
+      }
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+      document.getElementById("half").innerHTML = half;
+      setTimeout(clock, 1000);
+    };
+
+    clock();
+    // here we used clock(); for calling the function again and again
+  </script>
+</body>
+</html> -->
