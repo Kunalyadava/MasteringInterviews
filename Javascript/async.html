@@ -73,19 +73,19 @@ These Web APIs makes asynchronous programming possible
 
 
 
-console.log("TimeStart")
-let i=0
-let interval=setInterval(function(){
-  console.log("Timeout")
-  i++
-  if(i==10){
-    clearInterval(interval)
-  }
+// console.log("TimeStart")
+// let i=0
+// let interval=setInterval(function(){
+//   console.log("Timeout")
+//   i++
+//   if(i==10){
+//     clearInterval(interval)
+//   }
 
-},1000)
-console.log("Timein")
+// },1000)
+// console.log("Timein")
 
-</script>
+// </script>
 <!-- <body>
     <h1></h1>
 </body>
@@ -219,3 +219,179 @@ document.querySelector("h1").innerText=count
   </script>
 </body>
 </html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promises</title>
+</head>
+<body>
+  A Promise is an object representing the eventual completion or failure of an asynchronous operation.
+  A common need of promise is to execute two or more asynchronous operations back to back, 
+  where each subsequent operation starts when the previous operation succeeds,
+   with the result from the previous step.
+  <p>
+  A promise is an object that may produce a single value some time in the future:
+   either a resolved value, or a reason that it’s not resolved.
+     A Promise can have one of three states
+    fulfilled  : meaning that the operation completed successfully
+    rejected   : meaning that the operation failed
+    pending :which is initial state, neither fulfilled nor rejected.
+
+</p>
+
+    
+    - How to fulfil or reject?
+    - We need to pass a function to the`Promise Constructor`. 
+    That function is called the`executor function`
+     The executor function takes two arguments,
+     `resolve`and`reject`. These two are callback functions for the 
+     executor to announce an outcome.
+
+
+     const promise = new Promise((resolve,reject)=>{})
+
+     The resolve method indicates successful completion of the task(got drinks),
+      and the rejectmethod indicates an error(no drink). You do not implement
+       the resolve/reject method. JavaScript provides it to you. You need to 
+       call them from the executor function.
+
+
+    - resolve and reject both are promises
+    - Resolve will be called when change of status from pending to full-filled.
+    - reject will be called when change of status from pending to rejected.
+
+ 
+
+
+</body>
+<!-- <script>
+
+let  promise= new Promise((res,rej)=>{
+ 	//change of status from pending to fullfilled.
+  res("Got drink")
+})
+console.log(promise) //Promise {<fulfilled>: 'Got drink'}
+
+
+
+
+
+  let  promise2= new Promise((res,rej)=>{
+    	//change of status from pending to rejected.
+  rej("Didn't Get drink")
+})
+
+console.log(promise2) //Promise {<rejected>: "Didn't Get drink"}
+                        // Uncaught (in promise) Didn't Get drink
+
+
+</script> -->
+<!-- - Promise status : pending to fullfilled ? .then() is executed
+- Promise status : pending to rejected ? .catch() is executed
+- We get a `.then()`method from every promise. The sole purpose 
+of this method is to let the consumer know about the outcome of a promise.
+ It accepts two functions as arguments, `result`and `error`. -->
+
+<!-- <script>
+  console.log("Apple")
+</script>
+<script>
+ 
+  let promise5=new Promise((res,rej)=>{
+  setTimeout(()=>{
+     //res("Promise Resolved")
+      rej("Promise rejected") 
+     
+    },2000)
+  })
+   console.log(promise5)  //pending
+  promise5
+  .then(function(response){
+    console.log("okay")
+    console.log(response)
+    console.log(promise5) //fullfilled
+  })
+
+  .catch((error)=>{
+    console.log("Not Okay")
+    console.log(error)
+    console.log(promise5)//rejected
+  })
+console.log(window)
+</script> -->
+</html>
+
+
+
+
+<!-- <script>
+
+
+const countValue = 0;
+let promiseCount = new Promise(function (resolve, reject) {
+    if (countValue>0) {
+        resolve("The count value is positive.");
+    } else {
+        reject("Negative count value!");
+    }
+});
+
+
+promiseCount
+.then(res => console.log(res))
+.catch(ress => console.log(ress))
+</script> -->
+
+  <!-- <body>
+    <input type="number" />
+    <button onClick="checkOTP()">Submit</button>
+  </body>
+</html>
+
+<script>
+  function checkOTP() {
+    let otp = document.querySelector("input").value;
+    let otpPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (otp == 1234) {
+          resolve("correct OTP pin");
+        } else {
+          reject("incorrect OTP pin");
+        }
+      }, 2000);
+    });
+
+    otpPromise.then((val) => console.log(val))
+    .catch((err) => console.log(err));
+  }
+</script> -->
+<body>
+  API is the acronym for application programming interface —
+   a software intermediary that allows two applications to talk to each other.
+    APIs are an accessible way to extract and share data within and across organizations.
+</body>
+<script>
+//  console.log( fetch('https://jsonplaceholder.typicode.com/todos')) //Promise {<pending>}
+//fetch('https://jsonplaceholder.typicode.com/todos').then((res)=>console.log(res)) //Response {type: 'cors', url: 'https://jsonplaceholder.typicode.com/todos', redirected: false, status: 200, ok: true, …}
+//fetch('https://jsonplaceholder.typicode.com/todos').then((res)=>console.log(res.json())) //Promise {<pending>}
+
+// let x=fetch('https://jsonplaceholder.typicode.com/todos').then((res)=>(res.json()))
+// .then((data)=>console.log(data))
+//  .catch((err)=>console.log(err))
+      
+let url="https://jsonplaceholder.typicode.com/todos"
+   fetch(url)
+   .then((res)=>(res.json()))
+   .then((data)=>console.log(data))
+   .catch((err)=>console.log(err))
+  
+      //  console.log(x)
+</script>

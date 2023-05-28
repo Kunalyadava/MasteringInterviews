@@ -208,6 +208,8 @@ console.log(admin) //kunal,2,3 */}
 // Primitive datatypes AND NON-Primitive datatypes
 // Hoisting 
 // Closures
+//currying
+//callback hell
 // What is Virtual DOM
 // What is BABEL
 // Reconcillation
