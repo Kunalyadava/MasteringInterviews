@@ -131,6 +131,9 @@ document.querySelector("h1").innerText=count
     document.querySelector("h1").innerText = "Timer stopped";
   }
 </script> -->
+
+
+
 <!-- 
 <body>
     <h1></h1>
@@ -377,6 +380,18 @@ promiseCount
   API is the acronym for application programming interface —
    a software intermediary that allows two applications to talk to each other.
     APIs are an accessible way to extract and share data within and across organizations.
+
+    //fetch is used to get the data over the network
+    let promise=fetch(url,[options])
+    //getting a response is 2-stage process
+   // The Fetch API uses Request and Response objects 
+
+
+
+    JSON stands for JavaScript Object Notation
+JSON is a lightweight format for storing and transporting data
+JSON is often used when data is sent from a server to a web page
+JSON is "self-describing" and easy to understand
 </body>
 <script>
 //  console.log( fetch('https://jsonplaceholder.typicode.com/todos')) //Promise {<pending>}
@@ -387,11 +402,88 @@ promiseCount
 // .then((data)=>console.log(data))
 //  .catch((err)=>console.log(err))
       
-let url="https://jsonplaceholder.typicode.com/todos"
-   fetch(url)
-   .then((res)=>(res.json()))
-   .then((data)=>console.log(data))
-   .catch((err)=>console.log(err))
+// let url="https://jsonplaceholder.typicode.com/todos"
+//    fetch(url)
+//    .then((value)=>(value.json()))
+//    .then((data)=>console.log(data))
+//    .catch((err)=>console.log(err))
   
       //  console.log(x)
+</script>
+<script>
+  // let p=fetch("https://jsonplaceholder.typicode.com/todos")
+  // p.then((response)=>{
+  //   console.log(response.status)
+  //   console.log(response.ok)
+  //   return response.text()
+  // }).then((value)=>{
+  //   console.log(value)
+  // })
+</script>
+<body>
+  Async Await
+  An async function always returns a zero
+  other values are wrapped in a promise automatically
+
+  you can control the flow of your programme as it pleases you 
+  if we want to code in javascript , then we used to do like the 1st code will run
+  the second code will run then the third code will run then call back will run
+  then 4th code will run then callback will run, here we are unable to stop the execution
+
+  different different async functions executed in parallel
+
+
+
+
+
+</body>
+
+
+<script>
+
+
+
+
+//   async function harry(){
+//     return 5
+//   }
+//   // harry().then((x)=>{
+//   //   alert(x)
+
+//   // })
+//   harry().then (function(x){
+// alert(x)
+//   })
+</script>
+<script>
+  
+  async function harry(){
+    let delhiWeather=new Promise((res,rej)=>{
+    setTimeout(()=>{
+      res("27 Degree")
+
+    },2000)
+  })
+
+    let bloreWeather=new Promise((res,rej)=>{
+    setTimeout(()=>{
+      res("28 Degree")
+
+    },7000)
+   })
+  //  delhiWeather.then(alert)
+  //  bloreWeather.then(alert)
+  console.log("fetching Delhi weather please wait...")
+  let delhiW= await delhiWeather
+  console.log("fetched Delhi weather"+ delhiW)
+  console.log("fetching banmgalore weather please wait...")
+  let bloreW=await bloreWeather
+  console.log("fetched bangalore weather" + bloreW)
+  return [delhiW,bloreW]
+  
+  }
+  console.log("welcom to weather control room")
+  // console.log(harry())
+  harry().then((response)=> console.log(response))
+   
 </script>

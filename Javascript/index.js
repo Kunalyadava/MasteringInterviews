@@ -145,6 +145,34 @@ console.log(admin) //kunal,2,3 */}
 
     
 ///////////////////////////////////////////////////////////////////
+  // const teacher={name:"Kunal"}
+  // teacher ={name:"Kumar"}  //Script snippet #1:2 Uncaught TypeError: Assignment to constant variable.
+
+//note= if we are declaring a variable using const keyword 
+//we cannot asign a new value to it
+//but we can mutate mutate the values
+
+
+//  let obj={name:"Kunal"}
+//  const teacher=obj;
+//  obj.name="John" //'John'
+ //here we are not assigning anything to teacher we are just mutating the values
+
+
+
+// const obj={name:"Kunal"}
+// obj.name="John"
+// console.log(obj) //john
+//  we  cannot re assign value to obj we can only mutate
+
+// const arr=[1,2,3,4]
+// arr.push(2)
+// console.log(arr)
+// we can mutate but we cannnotbre assign
+
+
+
+
 
 
 
@@ -244,3 +272,5 @@ console.log(admin) //kunal,2,3 */}
 // synchronous means to be in a sequence, i.e. every statement of
 //the code gets executed one by one. So, basically a statement 
 //has to wait for the earlier statement to get executed
+
+//const reversedNum = num => parseFloat(num.toString().split('').reverse().join('')) * Math.sign(num)
