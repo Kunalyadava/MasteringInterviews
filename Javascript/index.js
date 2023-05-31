@@ -24,7 +24,9 @@
 // 1. Memory Component (variable Component) Memory Creation Phase
 // 2. Code Component (Thread of execution) Code Execution phase
 
-
+//Hoisting simply gives higher specificity to JavaScript declarations.
+//  Thus, it makes the computer read and process declarations first before
+//   analyzing any other code in a program.
 
 // - During the creation phase of the execution context,
 //  JS allocates memory space for the functions and variables.
@@ -210,11 +212,16 @@ console.log(admin) //kunal,2,3 */}
 // Four es6 features
 // Prototype chain?
 
-// Each object has a private property which holds a link to another object called its prototype. That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype. By definition, null has no prototype, and acts as the final link in this prototype chain.
+// Each object has a private property which holds a link to another 
+// object called its prototype.That prototype object has a prototype of its own,
+//  and so on until an object is reached with null as its prototype. By definition,
+//   null has no prototype, and acts as the final link in this prototype chain.
 
 
 // Closures
-// Given InputArr = [1, ‘a’, ‘b’, 5, 6], Implement InputArr.square() So that it return OutputArr = [1, ‘a’, ‘b’, 25, 36]
+// Given InputArr = [1, ‘a’, ‘b’, 5, 6], 
+//Implement InputArr.square() So that it return OutputArr = [1, ‘a’, ‘b’, 25, 36]
+
 // const sum = (a, b) => a + b
 // sum(1, 2) // + operation
 // sum(2, 3) // + operation
@@ -226,6 +233,9 @@ console.log(admin) //kunal,2,3 */}
 // [1:03 PM] Prototype chain
 // Array flatten,
 // var merged = [].concat.apply([], arrays);
+
+
+
 
 // Closure, 
 // A function that is bundled with it's lexical scope
@@ -274,3 +284,335 @@ console.log(admin) //kunal,2,3 */}
 //has to wait for the earlier statement to get executed
 
 //const reversedNum = num => parseFloat(num.toString().split('').reverse().join('')) * Math.sign(num)
+
+
+
+//Essentials js 2
+
+// let  obj={name:"Kunal"}
+// let obj1= obj
+// let obj2=obj1
+// let obj3=obj2
+// console.log(obj2)//Kunal
+//  obj2.name="Kumar"
+// console.log(obj2)//kumar
+// console.log(obj)//kumar
+
+// There are only six falsey values in JavaScript: 
+// undefined , null , NaN , 0 , "" (empty string), and false. 
+// Anything that is not falsey it truthy.
+//" " it will be true because it is containing space and hence it is not empty
+
+
+//When we use logical OR (||) , javascript looks for the first truthy value
+// and returns it as soon as it finds it. If it does not find any truthy value,
+// it returns the last falsy value it finds.
+
+//*When we use logical AND (&&), Javascript either returns the first falsey
+// value it finds, else if all the operands are truthy, it returns the last truthy value.*
+
+
+
+//The nullish coalescing (??) operator is a logical operator that returns 
+// its right-hand side operand when its left-hand side operand is null or
+//  undefined, and otherwise returns its left-hand side operand.
+
+
+
+// let greet=function(name){
+//   return `Hello from ${name}!`
+// }
+// greet("vivek")
+
+
+//////
+
+// let greet=(name)=>(`Hello from ${name}!`)
+// greet("vivek")
+
+//////////////
+// let greet=name=>`Hello from ${name}!`
+// greet("vivek")
+/////
+
+// (name=>`Hello from ${name}!`)('vivek');
+
+
+
+
+//To implicitly return an object ,surround it with parenthesis
+// let greet=()=>({name:"Vivek"})
+// greet()
+
+
+// rest operator helps collect all the arguments in an array
+// function doSomething(first, second, ...rest) {
+//   console.log(first, second, rest); // rest is guarenteed to be an array
+// }
+// doSomething('one', 'two', 'three', 'four', 'five');
+
+
+
+// The spread operator explodes array or objects in place
+
+
+//Statements vs Expressions
+//function expressions can be anonymous and it supports 
+//hoisting while function declations must have a name
+//example
+// function  sum(a,b){
+//   return a+b
+// }
+
+//// function(a,b){
+//   return a+b
+// }
+
+
+//while function declations must have a name and we must define/declare it before using
+//let sum= function (a,b){
+//   return a+b
+// }
+
+
+////it is a piece of code that always produces something or
+// An expression is anything that evaluates to a value. 
+//Expressions are usually on the right-hand side of statements. 
+//it is a piece of code that always produces something 
+
+
+//statement : an instruction to perform a specific action or task
+//conditional statement: it tells weather a peace of code will run or not 
+//example if else or switch case
+
+
+//Lexical environment //lexical scope means the place or environmwnt where the variable is sitting
+
+function two(){
+  var a;
+  console.log(a);
+}
+function one(){
+  var a=2;
+  console.log(a);
+  two();
+}
+var a=1;
+console.log(a);
+one(); //Output for the above code is 1 2 undefined 
+//because we have not given
+//  any value to variable a in function two and in
+//  javascript default value assigned to a variable is undefined.
+
+// whenever a context ececution is created along with it a lexical 
+// enviroment is created and each lexical enviroment have referece to
+//  its parent lexical enviroments which points to its memory allocation.
+
+function two(){
+  console.log(a);
+}
+function one(){
+  var a=2;
+  console.log(a);
+  two();
+}
+var a=1;
+console.log(a);
+one(); //Output for the above code is 1 2 1
+// When javascript asked for the value of var a in function two’s
+//  execution context it couldn’t find it so it moved down and searched 
+//  in its outer lexical environment i.e. global execution context.
+//var a is not defined in function two so it searched in its lexical environment i.e. 
+//global execution context.
+
+//Every execution context has a reference to its outer environment, 
+//and that outer environment is called Lexical Environment
+
+function one(){
+  function two(){
+   console.log(a);
+  }
+  var a=2;
+  console.log(a);
+  two();
+}
+var a=1;
+console.log(a);
+one();
+// Output for the above code is 1 2 2
+// In the above example in the case of function two, its outer lexical
+//  environment is function one’s execution context and for function one,
+//   the outer lexical environment is the global execution context.
+
+// When javascript asked for the value of var a in function two’s 
+// execution context it couldn’t find it so it moved down and searched
+//  it in its outer lexical environment i.e. function one in this case.
+
+
+
+
+///Temporal Dead Zone
+
+//Hoisting simply gives higher specificity to JavaScript declarations.
+// Thus, it makes the computer read and process declarations first before
+// analyzing any other code in a program.
+
+// let a=100
+// console.log(a)
+// var b=200
+
+//in var it is in the global space but in case of a it in script y this happened
+//memory was asigned to b in var declaration and these variable b was attacted to global memory
+//in let and cost they are allocated memory(called hoisting) but they are
+//stored in some different memory space so they are not global now
+
+//TDZ is the time since when the let variable was hoisted and till it is initialed 
+//some value the between that
+console.log(a)
+let a=10
+let b=100
+//here a was assigned a seperate memory space and it was also assigned undefined
+//but it is not initialized so this phase is known as tzc untill it goes to the code
+//let a=10 here tdz ends and the value of a put inside the a
+//so it is the phase while hoisting to get a value
+
+//when you try to acces it .it will give reference error
+//if we try to get any random variable it will give reff error and  x is not def
+
+
+//we cannot re-declare with let or let a=10 ,var a =10 in same scope //syntax error
+
+//const : we cannot re-declare or declare now and assign value later const meant to be 
+//declare in same line or together it will give type eror
+
+
+//to avoid TDZ is to put all initialization and declaration on the TOP of the scope
+
+
+
+//block:{  // compound statement } //it is used to combine multiple js groups or statements
+// what all variables and functions we can access inside the block is block scope
+
+{
+  var a=10
+  let b=20
+  const c=30
+}
+//Block
+   b:undefined
+   c:undefined
+//global
+    a:undefined
+//here let and const are stored in a seperate memory space reserved for this block
+//so we camnnot access outside block
+
+
+
+//shadowing
+var a=100
+{
+  var a=10
+  let b=20;
+  const c=30
+console.log(a)
+console.log(b)
+console.log(c)
+}
+// 10 20 30
+var a=100
+{
+  var a=10
+  let b=20;
+  const c=30
+console.log(a)
+console.log(b)
+console.log(c)
+}
+console.log(a)
+//10 20 30
+   //Block
+   b:undefined
+   c:undefined
+//global
+   a:10
+//here both a are referring to same memory space (global space)
+
+// let b=100
+// {
+//   var a=10
+//   let b=20;
+//   const c=30
+// console.log(a)
+// console.log(b)
+// console.log(c)
+// }
+// console.log(b)
+// //10 20 30 100
+//    //Block
+//    b:undefined
+//    c:undefined
+//    //script
+//    b:100
+// //global
+//    a:10
+
+//here both a are referring to diff memory space (block space and reserved memory space space)
+//it behaves in the same way in functions also
+
+
+
+
+//Illegal shadowding
+var z=20
+{
+  var z=30
+}
+//30 legal
+
+let z=20
+{
+  var z=30
+}
+//illegal //syntax error //because let cannot be redeclared
+
+let z=20
+function x(){
+  var z=30
+}
+//it isfine because var is a functiopn scope and it is unside its limit
+
+
+
+let z=20
+{
+  let z=30
+}
+//legal
+
+
+//vice versa
+var z=20
+{
+  let z=30
+}
+//legal
+
+const z=20
+{
+  const z=30
+}
+
+
+///
+const f=20;{
+  const f=100;{
+     const f=200
+      }
+     }
+//block 
+  //a:200
+//block
+  //a:100
+//script
+   //a:20
+//here it is following lexical scope pattern
