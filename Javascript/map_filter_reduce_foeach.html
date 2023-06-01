@@ -93,6 +93,16 @@ let reducefn=array.reduce((acc,el,i,arr)=>acc+el)
 console.log(reducefn)
 </script>
 <script>
+
+let array1=[1,2,3,4]
+let reducefn1=array1.reduce((acc,el,i,arr)=>{
+    acc=acc*el
+     return acc},)
+console.log(reducefn1)
+</script>
+
+
+<script>
     var mobiles=[
   {brand:"Samsung",model:"S7562"},
   {brand:"Apple",model:"iphone 13 pro"},
@@ -120,6 +130,81 @@ var out = arr.filter((el)=>{
 },1)
 
 </script>
+
+<script>
+
+//   let developers_array=[
+//     {first:"John",last:"Doe",Dept:"FE"},
+//      {first:"ohn",last:"Foe",Dept:"ECE"},
+//      {first:"Rohn",last:"Xoe",Dept:"ME"}
+// ]
+// //expected op 
+// //let eng=["John Doe","ohn Foe","Rohn Xoe"]
+
+
+// let eng=developers_array.reduce((acc,item)=>{
+//     let fullName=item.first+' '+item.last;
+//     acc.push(fullName)
+//     return acc;
+// },[])
+// console.log(eng)
+
+
+// ///
+// let engineers=developers_array.map((el)=>{
+// return el.first+" "+el.last})
+// console.log(engineers)
+                                   
+// ///
+// let engineers=developers_array.map(el=>el.first+" "+el.last)
+// console.log(engineers)
+
+//output will be same ["John Doe","ohn Foe","Rohn Xoe"]
+
+// </script>
+<script>
+  // let fruits = ["Apple", "Orange", "Plum"];
+// // same as fruits[fruits.length-1]
+// alert( fruits.at(-1) ); // Plum
+
+
+
+// shift
+// Extracts the first element of the array and returns it
+
+// let fruits = ["Apple", "Orange", "Pear"];
+
+// alert( fruits.shift() ); // remove Apple and alert it
+
+// alert( fruits ); // Orange, Pear
+// unshift
+// Add the element to the beginning of the array:
+
+// let fruits = ["Orange", "Pear"];
+// fruits.unshift('Apple');
+// alert( fruits ); // Apple, Orange, Pear
+</script>
+
+<script>
+//only strings and symbol are allowed to be a key of an object
+
+// let a="john"
+// let obj={
+
+// }
+// obj[a]="axz"
+// console.log(obj)
+//{john: 'axz'}
+
+let a="john"
+let obj={
+
+}
+obj['z']="axz"
+console.log(obj)
+//{z: 'axz'}
+</script>
+
 </html>
 
 
