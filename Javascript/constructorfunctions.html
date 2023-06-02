@@ -40,6 +40,9 @@ let object={
 console.log(object.addition(10,15)) //25
 
 //constructor is a tempelate by which we can create objects 
+//constrctor function is a simple function that 
+//is intended to be invoked with a new keyword
+//or any this aware function that is intended to be calledvwith the new keyword
 function generalCar(givenName,givenSpeed){
     this.name=givenName;
     this.topSpeed=givenSpeed;
@@ -52,14 +55,9 @@ console.log(car1)
 //Maruti is running
 // constructorfunctions.html:43 
 // generalCar {name: 'Maruti', topSpeed: 500}
-// name
-// : 
-// "Maruti"
-// topSpeed
-// : 
-// 500
+// name :  "Maruti"
+// topSpeed :  500
 // [[Prototype]]
-// : 
 
 
 
@@ -116,9 +114,7 @@ console.log(student1)
 
 // What is this?
 // In JavaScript, the this keyword refers to an object.
-
 // Which object depends on how this is being invoked (used or called).
-
 // The this keyword refers to different objects depending on how it is used:
 
 // In an object method, this refers to the object.
@@ -159,7 +155,7 @@ myName()  //Window {window: Window, self: Window, document: document, name: '',
 // The constructor method is a special method for creating and initializing 
 // an object within a class . There can be one special method with the name "constructor"
 // in a class
-
+//to replce prototype class was invented as ES6Classess
 
 // class class_name{
 //       constructor(){
@@ -300,4 +296,32 @@ object1.__proto__ === object2
 //because they are stored at different memory locations and
 //equility operator in non premitives looks for same identity,
 //same location,same reference and not value
+
+//Object.setPrototypeOf() / Object.create()  sets up a prototype chain between 
+// the source object and the target object. But, Object.assign() method
+//  only copies enumerable and own properties from a source object to a target object.
+
+
+
+
 </script>
+<script>
+    //we can create chain between objects but to help us javascript gives us
+//a protytype Object inside every function and we can use that to create chains
+
+function f3(){}
+    f3.prototype.sayName=function(){
+        console.log("Hello Im KK")
+    }
+ 
+ let object5={
+ name:"Kunal"
+  }
+Object.setPrototypeOf(object5,f3.prototype)
+
+//object5.sayName() //Hello Im KK
+</script>
+
+
+
+
