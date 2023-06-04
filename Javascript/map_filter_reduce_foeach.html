@@ -218,3 +218,53 @@ This Keyword
 
 </script>
 
+
+
+
+
+
+
+
+
+
+
+<script>
+  // call, apply & bind 
+// .call & .apply are used to invoke a function & set the value of the this keyword 
+// inside of the function
+
+// .bind is used to create a function & set the value of the this keyword 
+// inside of the newly created function
+
+
+function greet(greeting, year, receiver) {
+  return `${greeting} ${year} to ${receiver} from ${this.name}.`
+}
+
+// while invoking greet() we need to set the value of this keyword inside 
+// of the greet function
+
+// .call()
+// takes in the value of this keyword as the first argument
+// rest of the arguments to the function can be sent as comma separated values
+// let g =  greet.call({name: 'Vivek'}, 'Happy new year', '2023', 'JS201 Batch')
+
+// .apply()
+// takes in the value of this keyword as the first argument
+// rest of the arguments to the function can be sent a an array of values
+
+// let args = [];
+// args.push('Happy new year');
+// args.push('2023');
+// args.push('JS201 Batch');
+
+// let g =  greet.apply({name: 'Vivek'}, args)
+
+// .bind()
+// bind gives you a new function 
+// in which the this keyword is pre-set for you
+// let greetFromVivek = greet.bind({name: 'Vivek'});
+// let g = greetFromVivek('Happy new year', '2023', 'JS201 Batch')
+
+console.log(g)
+</script>
