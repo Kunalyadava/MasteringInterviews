@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // There are four pillars of OOP
+    // (1) Encapsulation
+    // (2) Abstraction
+    // (3) Inheritance
+    // (4) Polymorphism
+
+// 1. Encapsulation in JavaScript is like making the properties of an 
+// object private. You expose only the methods used to get or modify 
+// the object properties.
+
+// A class is an example of encapsulation as it encapsulates all the data that
+//  is member functions, variables, etc Encapsulation is a process of wrapping of 
+//  data and methods in a single unit is called encapsulation The purpose of 
+//  encapsulation is to prevent alteration of data from outside
+
+// To achieve an encapsulation in JavaScript: we:
+// Use var keyword to make data members private.
+// Use setter methods to set the data and getter methods to get that data.
+
+
+
+// (2) Abstraction
+// the concept of abstraction is to hide the implementational details 
+// and showcase essential features of the object to its users. 
+// This abstraction feature of OOP enhances the understandability
+//  and maintainability of the code
+//Avoids code duplication and increases reusability.
+//Can change the internal implementation of a class independently
+                                      // without affecting the user.
+//Helps to increase the security of an application or program as
+// only important details are provided to the user.
+
+class ImplementAbstraction {
+  // method to set values of internal members
+  set(x, y) {
+    this.a = x;
+    this.b = y;
+  }
+
+  display() {
+    console.log(`a = ${this.a}`);
+    console.log(`b = ${this.b}`);
+  }
+}
+
+const obj = new ImplementAbstraction();
+obj.set(10, 20);
+obj.display();
+// a = 10
+// b = 20
+
+</script>
+
+//
+
+
+
+<script>
+    // In programming language we often say "An Object is an Instance of a class"
+    // This means that ,using a class I can create many Objects and they all share methods
+    // and properties
+    
+    
+    //Javascript classess were introduced in ES5 2015 
+    //A class is a type of function , but instead of using the keyword function
+    //to initiate it ,we use the keyword class ,and the properties are assigned inside a 
+    //constructor() method .
+    
+    //A class is a user defined blueprint or prototype from which object are created . 
+    //It represents the set of properties or methods that are common to all objects of one type
+    
+    
+    
+    
+    
+        </script>
+    
+    
+    
+    <script>
+        //class : A specific category can be defined as class 
+        // Mobile                (class)
+        // samsung,Lg,Nokia      ( objects)
+        // Model,Ram,Color,price  (Properties,Methods)
+    // there are two ways to define class in javascript using class keyword
+    // class Declaration
+    // class Expression
+    
+    // The constructor method is a special method for creating and initializing 
+    // an object within a class . There can be one special method with the name "constructor"
+    // in a class
+    //to replce prototype class was invented as ES6Classess
+    
+    // class class_name{
+    //       constructor(){
+    //         properties
+    //       }
+    //       Methods
+    // }
+    
+    // class Mobile{
+    //     constructor(){
+    //         this.model="Glaxy";
+    
+    //     }
+    //     show() {return this.model +"Price Rs 3000"}
+    // }
+    // var Nokia=new Mobile
+    
+    
+    
+    
+    // class Mobile{
+    //     constructor(){
+    //         //Instance Member
+    //         this.a=12
+    //         this.show=function(){
+    //             return "Instance Member"
+    //         }
+    
+    //     }
+    //     //prptotype member
+    //     show() {
+    //         return "prtotype member"
+    //     }
+    // }
+    // var Nokia=new Mobile()
+    // console.log(Nokia.a)
+    // console.log(Nokia)
+    
+    // console.log(typeof(Mobile))
+    
+    </script>
+    
+    
+        
+     ## Inheritance
+     Inheritance is one of the core concepts of 
+     object-oriented programming that enables an 
+     object to take on the properties and methods
+     of another object. This makes it easy to reuse
+     code in different parts of an application.
+     
+     What is prototype chain?
+      When it comes to inheritance, Javascript only has one
+     construct: objects.  Each object has a private
+     property (__proto__) that holds a link to another 
+     object (prototype) . That prototype object
+     has a __proto__ of its own, and so on, 
+     until an object is reached with null as its prototype.
+     
+       
+     What is Prototype Inheritance in JavaScript?
+     Prototype inheritance in javascript is the linking of prototypes 
+     of a parent object to a child object to share and utilize the properties
+     of a parent class using a child class. Prototypes are hidden 
+     objects that are used to share the properties and methods of a parent 
+     class to child classes
+     
+    </body>
+    </html>
+    
+    
+    
+    
+    
+    
+    <script>
+    // function objectCreater1(o){
+    //  let obj=o
+    //     obj.prop1=1
+    //     obj.prop2=2
+    //     obj.prop3=3
+    //     return obj
+    // }
+    // function objectCreater2(){
+    //     let obj={}
+    //     obj.prop1=1
+    //     obj.prop2=2
+    //     obj.prop3=3
+    //      obj.prop4=4
+    //     return obj
+    // }
+    // console.log(objectCreater2()) //{prop1: 1, prop2: 2, prop3: 3, prop4: 4}
+    //or
+    function objectCreater1(o){
+     let obj=o
+        obj.prop1=1
+        obj.prop2=2
+        obj.prop3=3
+        return obj
+    }
+    function objectCreater2(){
+        let obj={}
+        objectCreater1(obj)
+         obj.prop4=4
+        return obj
+    }
+    console.log(objectCreater2())//{prop1: 1, prop2: 2, prop3: 3, prop4: 4}
+    </script>
+    <script>
+        // function objectCreater1(o,a,b,c,d,e){
+    //  let obj=o
+    //     obj.prop1=a;
+    //     obj.prop2=b;
+    //     obj.prop3=c;
+    //     obj.prop4=d;
+    //     obj.prop5=e
+    //     return obj
+    // }
+    // function objectCreater2(a,b,c,d,e,f){
+    //     let obj={}
+    //     obj.prop1=a
+    //     obj.prop2=b
+    //     obj.prop3=c
+    //     obj.prop4=d
+    //     obj.prop5=e
+    //     obj.prop6=f
+    //     return obj
+    // }
+    // console.log(objectCreater2('a','b','c','d','e','f'))
+    
+    
+    function objectCreater1(o,a,b,c,d,e){
+     let obj=o
+        obj.prop1=a;
+        obj.prop2=b;
+        obj.prop3=c;
+        obj.prop4=d;
+        obj.prop5=e
+        return obj
+    }
+    function objectCreater2(a,b,c,d,e,f){
+        let obj={}
+        objectCreater1(obj,a,b,c,d,e)
+        // obj.prop1=a
+        // obj.prop2=b
+        // obj.prop3=c
+        // obj.prop4=d
+        // obj.prop5=e
+        obj.prop6=f
+        return obj
+    }
+    console.log(objectCreater2('a','b','c','d','e','f'))
+    </script>
+
+
+
+   <script>
+//Polymorphism means the same function with different signatures is called many times.
+//  In real life, for example, a boy at the same time may be a student, a class monitor,
+//   etc. So a boy can perform different operations at the same time. 
+//   This is called polymorphism. 
+
+///Example we all have talked with customer care
+//whenever we call there we haer some instruction on IVR
+//There they have defined a function press Buttons that have one blocks
+//when we press one they tells balance 
+//Means their name is same press button but work is different
+
+class Animal{
+    speak(){
+        console.log("Animals have different Sounds !<br>")
+    }
+}
+class Cat extends Animal{
+
+}
+class Dog extends Animal{
+
+}
+var cat= new Cat
+var dog=new Dog
+cat.speak() // Animals have different Sounds !<br>
+dog.speak() // Animals have different Sounds !<br>
+
+
+
+
+
+class Animal{
+    speak(){
+        console.log("Animals have different Sounds !<br>")
+    }
+}
+class Cat extends Animal{
+    speak(){
+        console.log("Cat says MEOW MEOW")
+    }
+}
+class Dog extends Animal{
+       speak(){
+        console.log("DOg says BHOW BHOW")
+    }
+}
+var cat= new Cat
+var dog=new Dog
+cat.speak() // Cat says MEOW MEOW
+dog.speak() // DOg says BHOW BHOW
+
+
+//Method over-ridding is a special type morphism that permit child class to implement
+//method defined on base class. jS intereprater detects automatically which method you wants 
+//to implement
+
+   </script>

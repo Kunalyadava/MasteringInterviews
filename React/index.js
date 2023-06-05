@@ -1,4 +1,7 @@
 
+
+
+
 // 1. Why and what is react?
 
 // The main purpose of React is to be fast, scalable, and simple. It works only
@@ -6,6 +9,20 @@
 //   library for creating user interfaces for websites and applications.
 //    Developed by Jordan Walke in 2011, it sets a new precedent for developing 
 //    fast and dynamic websites using JavaScript.
+
+
+///React users frequently choose functional
+// components over class components because
+// they are lighter, easier to read and understand,
+// and perform better.
+// Additionally, functional components can take
+// advantage of React hooks, which provide
+// powerful state and lifecycle management
+// capabilities without the need for class
+// components.
+
+
+
 
 
 // 2. Able to use CRA and run the application.

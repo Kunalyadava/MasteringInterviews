@@ -1,3 +1,32 @@
+   
+// Explain the concept of caching
+// Caching is the process of storing frequently accessed data in memory
+// so that it can be retrived quickly . It helps
+// to improve application performance by reducing the number of requests made to the server caching 
+// can be implemented at different levels such as browser ,server side ,and database
+
+//what is mvc
+//MVC stands for Model-View-Controller. It is a software architectural 
+// pattern that separates the application into three interconnected
+//  components: Model (data and business logic), View (user interface), and Controller 
+//  (handles user input and updates the model and view).
+
+//How do you ensure the security of your application?
+//As a backend developer, I take security very seriously.
+//  I ensure that all sensitive data is encrypted both at rest
+//   and in transit. I implement secure authentication and authorization
+//    mechanisms, such as OAuth or JWT. I also regularly perform vulnerability 
+//    assessments and patch any security vulnerabilities promptly.
+
+
+//Explain the difference between server-side rendering and client-side rendering.
+// Server-side rendering (SSR) is the process of rendering a web page 
+// on the server and sending the fully rendered HTML to the client.
+//  Client-side rendering (CSR) is the process of rendering a web 
+//  page on the client side using JavaScript. SSR is faster for the
+//   first load, while CSR is faster for subsequent loads.
+
+
 
    //Node JS 
 //    What is Node.js?

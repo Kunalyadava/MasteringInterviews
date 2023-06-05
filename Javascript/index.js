@@ -245,9 +245,21 @@ console.log(admin) //kunal,2,3 */}
 
 // Primitive datatypes AND NON-Primitive datatypes
 // Hoisting 
-// Closures
+// Closures // A function that is bundled with it's lexical scope
 //currying
-//callback hell
+
+
+//callback hell 
+//Callback: A callback is a function that is passed as an argument to another 
+// function that executes the callback based on the result. They are basically 
+// functions that are executed only after a result is produced. Callbacks 
+// are an important part of asynchronous JavaScript.
+
+//Callback Hell: Callback Hell is essentially nested callbacks stacked below
+//  one another forming a pyramid structure. Every callback depends/waits 
+//  for the previous callback, thereby making a pyramid structure that
+//   affects the readability and maintainability of the code. 
+
 // What is Virtual DOM
 // What is BABEL
 // Reconcillation
