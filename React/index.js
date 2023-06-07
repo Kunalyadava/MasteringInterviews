@@ -1,11 +1,12 @@
 
-
+//https://codesandbox.io/s/sad-worker-yz09z2
 
 
 // 1. Why and what is react?
 
-// The main purpose of React is to be fast, scalable, and simple. It works only
-//  on user interfaces in the application. ReactJS is a JavaScript component
+// The main purpose of React is to be fast, scalable, and simple.It is a single page
+// Application, declarative UI, fast performance ,Easy to maintain
+// It works only on user interfaces in the application. ReactJS is a JavaScript component
 //   library for creating user interfaces for websites and applications.
 //    Developed by Jordan Walke in 2011, it sets a new precedent for developing 
 //    fast and dynamic websites using JavaScript.
@@ -19,9 +20,11 @@
 // advantage of React hooks, which provide
 // powerful state and lifecycle management
 // capabilities without the need for class
-// components.
+// components
 
-
+// In the render() method, we can read props and state and return
+//  our JSX code to the root component of our app. In the render()
+//   method, we cannot change the state
 
 
 
@@ -29,23 +32,16 @@
 
 // create-react-app (CRA)
 
-// 3. Basic understanding of JSX.
-
-// JSX (JavaScript Syntax Extension or JavaScript XML) is an extension to JavaScript.
-//  It provides an easier way to create UI components in React.
-// Here’s an example of its syntax:
-
-// const element = <h1>Hello, World!</h1>;
-
-// JSX is still just JavaScript with some extra functionality. 
-// With JSX, we can write code that looks very similar to HTML or XML, 
-// but we have the power of seamlessly mixing JavaScript methods and variables into our code. 
-// JSX is interpreted by a transpiler, such as Babel, and rendered to JavaScript 
-// code that the UI Framework (React, in this case) can understand.
 
 
+//What are Props in react js?
+// Props mean properties, which is a way of passing data from parent to child. We can say
+// that props are just a communication channel between components. It is always moving
+// from parent to child component.
 
 // 4. Difference between State and props.
+
+
 // Props are used to pass data from one component to another.
 // The state is a local data storage that is local to the component only 
 // and cannot be passed to other components.
@@ -123,8 +119,8 @@
 //           2)Reducer must return same value.
 //           3)The reducer must have some initial values.
 // switch statement in reducer ?
-
-//   this is use for reduce the multi use of if-else in code it's look mess so we prefer the switch case there then the if-else
+//   this is use for reduce the multi use of if-else in code
+// it's look mess so we prefer the switch case there then the if-else
 // Get Data in component From Redux ?
 
 //   Make header and Main Component
@@ -142,3 +138,54 @@
 // Bounce Point
 // the flow of the redux :- first reducer take data from action and place in store file. // read about custom hooks
 // action and reducer they don't need to import/export the file to each other the connect throw the store
+
+
+//what is virtual dom in react?
+//The virtual dom is an abstrat representation of actual dom, and it is 
+//used to increase the performance of updates and rendering of UI
+//when a component state changes . React updates the virtual dom, which then calculates
+//the difference between the current and previous version of Virtual DOM,
+//React then updates only the parts of the actual DOM that have changed instead of 
+//re-rendering the the entire tree,resulting in improved performance
+
+
+// The Shadow DOM is a browser technology designed primarily for
+//  scoping variables and CSS in web components.
+
+
+
+//React is considered as library or framework?
+
+// React is called as a library because of its behavior of easy to fit into 
+// any js environment and doesn't bound user to use things React way,
+//It provides a set of tools and functanalities specially for building 
+//user Interfaces , but leaves the decision on how to manage state ,structure 
+//the overall application , and handle data to the developer .
+
+
+// 3. Basic understanding of JSX.
+
+// JSX (JavaScript Syntax Extension or JavaScript XML) is an extension to JavaScript.
+//  It provides an easier way to create UI components in React.
+// Here’s an example of its syntax:
+
+// const element = <h1>Hello, World!</h1>;
+
+//The above code gets transformed in following javascript
+
+//const element=React.createElement("h1",null,"Hello,Word!");
+
+// With JSX, we can write code that looks very similar to HTML or XML, 
+// but we have the power of mixing JavaScript
+// methods and variables into our code. 
+ //Babel(transpiler) takes our jsx code and turns into non jsx code or pure js vanila js  
+// code that the UI Framework (React, in this case) can understand.
+
+
+
+//React VS Angular
+
+///React is called as a library because of its behavior of easy to fit into 
+// any js environment and doesn't bound user to use things React way,
+//  while one the other hand Angular is complete MVC (Model View Controller)
+//   architecture, and restrict user to follow its pattern of framework.
