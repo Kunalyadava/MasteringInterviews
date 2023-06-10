@@ -269,7 +269,8 @@ console.log(admin) //kunal,2,3 */}
 // Redux flow
 // Context API
 // CSS Flex
-// If they give three btns how will you flex it?. And where will you add the flex?.
+// If they give three btns how will you flex it?.
+// And where will you add the flex?.
 
 
 
@@ -585,9 +586,7 @@ let z=20
 {
   var z=30
 }
-//illegal //syntax error //because let cannot be redeclared
-
-let z=20
+//illegal //syntax error 
 function x(){
   var z=30
 }
