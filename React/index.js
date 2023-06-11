@@ -82,10 +82,8 @@
 
 // what is Provider ?
 
-// provider main work is to connect to react js ko redux se connect karna and we install on react-redux library.
-// what is store ?
+// provider main work is to connect to react js to redux  and we install on react-redux library.
 
-//   we store all data of our app stor ka input reducer and store ka output create store function.
 // what is action ?
 
 //   action is nothing but plane javaScript function.
@@ -100,15 +98,11 @@
 //   Rules:- 1) Need Root-Reducer.
 //           2)Reducer must return same value.
 //           3)The reducer must have some initial values.
+
 // switch statement in reducer ?
 //   this is use for reduce the multi use of if-else in code
 // it's look mess so we prefer the switch case there then the if-else
-// Get Data in component From Redux ?
 
-//   Make header and Main Component
-//   Add image and css
-//   Send Data form aAin Component
-//   Get data in header component
 // what is useSelector and types of uses ?
 
 //   useSelector is react-redux hook
@@ -271,11 +265,16 @@
 ////Initialization: During this phase, React component will prepare by setting up the default
 //props and initial state for the upcoming tough journey.
 
-//1 mounting phase : when a new component is created and insearted into the dom
-////or in other words when the life of a component begins .
+//1 mounting phase : when a new component is created and insearted into the dom for the
+////first time or in other words when the life of a component begins .it have two phase 
+// Render phase (function  & return JDX) //commit phase (React updated dom & use effeact)
+  //API request is made
+
+
 // Updating: In this phase, a component will be updated when there is a change in the
 // state or props of a component. This phase will have lifecycle methods
 // like componentWillUpdate, shouldComponentUpdate, render, and componentDidUpdate.
+
 // Unmounting: In this last phase of the component lifecycle, the component will be
 // removed from the DOM or will be unmounted from the browser DOM. This phase will
 // have the lifecycle method named componentWillUnmount.
@@ -285,14 +284,38 @@
 //  will receive the previous state as the first argument, and the props at 
 //  the time the update is applied as the second argument:
 
+
+//Explain the term reconciliation
+// When a component's state or props change then rest will compare the rendered element
+// with previously rendered DOM and will update the actual DOM if it is needed. This
+// process is known as reconciliation.
+
+
 //https://www.geeksforgeeks.org/reactajs-reconciliation/
 
 
+//useEffect=useEffect is a tool that lets us interact with the outside world but not affect
+ //the rendering or performance of the component that it's in.
 
+//  Side effects are not predictable because they are actions which are performed with the "outside world."
+//  We perform a side effect when we need to reach outside of our React components to do something.
+//   Performing a side effect, however, will not give us a predictable result.
+//  Think about if we were to request data (like blog posts) from a server that has failed and
+//   instead of our post data, gives us a 500 status code response.
+//  Virtually all applications rely on side effects to work
+//   in one way or another, aside from the simplest applications.
+//  Common side effects include:
 
+// Making a request to an API for data from a backend server
+// To interact with browser APIs (that is, to use document or window directly)
+// Using unpredictable timing functions like setTimeout or setInterval
 
+// The correct way to perform the side effect in our User component is as follows:
+// We import useEffect from "react"
+// We call it above the returned JSX in our component
+// We pass it two arguments: a function and an dependency array
 
-
+//https://www.freecodecamp.org/news/react-useeffect-absolute-beginners/
 
 
 
