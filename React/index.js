@@ -43,8 +43,8 @@
 // In this process, we can use conditional statements to
 //  decide what content should be rendered.
 
-// In React, there are different ways to conditionally render content based
-//  on the state of a component or other conditions. 
+// In React, there are different ways to conditionally render content 
+// based on the state of a component or other conditions. 
 //  Two common ways are using the ternary operator and the && operator.
 //  https://i.ytimg.com/vi/4d0KO_E7ElU/maxresdefault.jpg
 
@@ -85,7 +85,7 @@
 // provider main work is to connect to react js ko redux se connect karna and we install on react-redux library.
 // what is store ?
 
-//   we store all data of our app stor ka input reducer and store ka output create stor function.
+//   we store all data of our app stor ka input reducer and store ka output create store function.
 // what is action ?
 
 //   action is nothing but plane javaScript function.
@@ -113,13 +113,8 @@
 
 //   useSelector is react-redux hook
 //   and the main work for Selector is to fetch the data from redux to give to react
-// what is useSelector?
 
-//   fetch data from redux to react js
-//   we can use the useSelector
-// Bounce Point
-// the flow of the redux :- first reducer take data from action and place in store file. // read about custom hooks
-// action and reducer they don't need to import/export the file to each other the connect throw the store
+
 
 
 //what is virtual dom in react?
@@ -207,7 +202,7 @@
 // and cannot be passed to other components. 
 //state is mutable and can be asynnchronous
 //It holds the information about the components
-//state cannot be accesssed bt the child components
+//state cannot be accesssed by the child components
 // The this.setState property or hooks is used to update the state values in the component.
 
 
@@ -240,8 +235,7 @@
 //2 props changes :when the components props changes the component will re render . This 
 //can happen when the parrent component passes a new props to the child component.
 
-//3 context changes : when the context value changes ,components that consume the context will
-//re render
+//3 context changes: when the context value changes ,components that consume the context will re render
 
 
 //lazy loading?
@@ -291,6 +285,7 @@
 //  will receive the previous state as the first argument, and the props at 
 //  the time the update is applied as the second argument:
 
+//https://www.geeksforgeeks.org/reactajs-reconciliation/
 
 
 
@@ -333,8 +328,15 @@
 
 
 
+//theory
 
-
+// In React, a state is always owned by one component. Any changes made by this 
+// state can only affect the components below it, i.e its children. Changing state 
+// on a component will never affect its parent or its siblings, only the children 
+// will be affected. This is the main reason that the state is often moved up in 
+// the component tree so that it can be shared between the components that need to
+//  access it.
+//https://www.geeksforgeeks.org/reactjs-unidirectional-data-flow/
 
 
 // Ans- useReducer is a hook that provides an alternative to using useState for
