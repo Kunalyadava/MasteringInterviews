@@ -21,6 +21,7 @@ Insert content before, or after, the content of an element
 </P>
 <!-- https://www.youtube.com/watch?v=GLbi2KmjRKM -->
 
+
 What are Pseudo-classes?
 A pseudo-class is used to define a special state of an element.
 For example, it can be used to:
@@ -41,6 +42,7 @@ Selector	     Example       	   Example description
 :first-of-type	p:first-of-type 	Selects every <p> element that is the first <p> element of its parent
 :focus	   input:focus	Selects the   <input> element that has focus
 :hover	       a:hover	                Selects links on mouse over
+:last of type //p:nth child(even)
 
  */
 
@@ -53,6 +55,8 @@ Selector	     Example       	   Example description
  
  CSS was developed and is maintained by the World Wide Web Consortium (W3C).
   It was first released on December 17, 1996. 
+
+  //
 
  1. What is the Box model in CSS? Which CSS properties are a part of it?
  A rectangle box is wrapped around every HTML element. 

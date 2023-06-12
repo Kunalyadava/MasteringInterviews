@@ -317,7 +317,9 @@
 
 //https://www.freecodecamp.org/news/react-useeffect-absolute-beginners/
 
-
+//stale closure = even when state/props are updated and component re-renders, 
+//some callbacks will still be referencing old variables. Stale closures 
+// capture variables that have outdated values  
 
 
 
