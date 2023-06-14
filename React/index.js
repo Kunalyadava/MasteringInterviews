@@ -323,6 +323,25 @@
 
 
 
+//useRef and useState both are used to store some value
+//when we want our component to "remember"
+//about something but dont want to re render
+//when it changes , we can use the hook useRef
+//we can access dom elememt directly
+//it  returns object with keys and value {current:0}
+//to store some interval ids setInterval etc
+
+
+//useState will reRender its component
+//it is for values which keeps changing
+//it will affect the ui part
+
+//https://codesandbox.io/s/serverless-tdd-9r8fj7
+//https://codesandbox.io/s/day8usestate-phase2-hmyyr4
+//https://codesandbox.io/s/day8-last-rgsv74
+
+
+
 
 
 
