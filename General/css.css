@@ -241,3 +241,35 @@ The float CSS property places an element on the left or right side of its contai
 	justify-content: center;
 	align-items: center;
 } */
+
+
+
+
+
+/* 
+///////
+
+- `display`=flex
+         
+- `flex-direction`
+- `flex-direction` can accept one of four values:
+   `row`
+   `row-reverse`
+    `column`
+     `column-reverse`
+- `flex-wrap`
+     wrap   no-wrap   wrap-reverse
+
+- `flex-flow`
+     
+- `justified-content`
+   `flex-start` `flex-end` `center` 
+  `space-between` `space-around` `space-evenly`
+
+
+
+- `align-items`
+`flex-start` `flex-end` `center` 
+ baseline stretch 
+
+- `align-content` */
