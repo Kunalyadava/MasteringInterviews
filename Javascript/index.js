@@ -1,10 +1,13 @@
 // variables are store location with assigned names it
 //  holds data that we can use or change later
-// A declaration allocates a memory and the assignment assigns a value to this allocated memoery
+// A declaration allocates a memory and the assignment assigns a value to this
+// (itialize the variable with a value),allocated memoery
 
 //Nested > when there a conditional statement present inside conditional statement 
+// Hoisting is JavaScript's default behavior of moving all declarations 
+// to the top of the current scope 
 
-
+//Hoisting means accesssing a variable before initializing it
 
 
 // Hoisting
@@ -12,9 +15,6 @@
 
 //It doesn't care about variable values. All it wants to know what 
 //variables are present in a program.
-
-//it only considers declaration part and not the actual part
-// all hoisting cares about is what variabls and functions are present in a program
 
 
 // when js engine excutes a script it creates execution contexts, 

@@ -37,7 +37,7 @@
 // 5. Conditional rendering.
 
 // In React, conditional rendering is the process of displaying different 
-// content based on certain conditions or states. It allows us to create 
+// content in dom based on certain conditions or states. It allows us to create 
 // dynamic user interfaces that can adapt to changes in data and user interactions.
 
 // In this process, we can use conditional statements to
@@ -340,6 +340,16 @@
 //https://codesandbox.io/s/day8usestate-phase2-hmyyr4
 //https://codesandbox.io/s/day8-last-rgsv74
 
+//props drilling:if we want to pass a data from component A to D
+// then we have pass it through each component between themm
+
+//ContextAPI provides a way to pass data through the component tree without having to pass
+//props down manually at every level. For example, authenticated user, locale preference,
+// UI theme need to be accessed in the application by many components. it worksd on C_P_C //create
+// Eg: const { Provider, Consumer } = React.createContext(defaultValue)
+//to reduce consumer portion we use useContext
+//https://www.youtube.com/watch?v=us4pQzWRznQ&t=4s
+
 
 
 
@@ -404,3 +414,8 @@
 // . Your updates don't depend on previous state You only need to update 
 // a single piece of state.
 // Note-A good example of using useReducer would be the implementation of a cart system
+
+
+//A React functional component is a simple JavaScript function that accepts props and returns a React element.
+// After the introduction of React Hooks, writing functional components has become the ​standard way of 
+// writing React components in modern applications.
