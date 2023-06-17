@@ -314,8 +314,15 @@
 // We import useEffect from "react"
 // We call it above the returned JSX in our component
 // We pass it two arguments: a function and an dependency array
+// useEffect is always called once after the component is mounted.
+// useEffect without the dependency array will always be called again when any state is updated inside the component.
+// useEffect with an empty dependency array will only be called once after the component is mounted.
+// useEffect with one or few dependencies will only be called again depending on when their dependencies update.
+// Multiple useEffects can be declared inside a component.
+// To handle actions before the component will unmount, return a function at the end of the useEffect function.
 
 //https://www.freecodecamp.org/news/react-useeffect-absolute-beginners/
+// https://medium.com/@athletecoder/how-to-useeffect-in-react-97c4e6dc0a88
 
 //stale closure = even when state/props are updated and component re-renders, 
 //some callbacks will still be referencing old variables. Stale closures 
@@ -350,6 +357,31 @@
 //to reduce consumer portion we use useContext
 //https://www.youtube.com/watch?v=us4pQzWRznQ&t=4s
 
+
+
+//AXIOS
+
+// Accessing REST Web Services / HTTP APIs in JavaScript
+// Axios is a Promise-based HTTP client for JavaScript which can be 
+// used in your front-end application and in your Node.js backend.
+
+// By using Axios it’s easy to send asynchronous HTTP request to REST 
+// endpoints and perform CRUD operations. The Axios library can be used 
+// in your plain JavaScript application or can be used together 
+// with more advanced frameworks like Vue.js.
+
+// https://github.com/mzabriskie/axios:
+
+// Make XMLHttpRequests from the browser
+// Make http requests from node.js
+// Supports the Promise API
+// Intercept request and response
+// Transform request and response data
+// Cancel requests
+// Automatic transforms for JSON data
+// Client side support for protecting against XSRF
+
+//https://www.youtube.com/watch?v=Gl-vOU7ZU9A
 
 
 
@@ -419,3 +451,40 @@
 //A React functional component is a simple JavaScript function that accepts props and returns a React element.
 // After the introduction of React Hooks, writing functional components has become the ​standard way of 
 // writing React components in modern applications.
+
+
+
+
+
+// I like to think of a reducer like a “coffee maker”. The coffee maker takes in coffee powder and water. 
+// It then returns a freshly brewed cup of coffee that we can enjoy. Based on this analogy reducers are
+//  functions that take in the current state (coffee powder) and actions (water) and brew a new state (fresh coffee).
+// Reducers are pure functions that take in a state and action and return a new state.
+//A reducer should always follow the following rules:
+//Given a set of inputs, it should always return the same output.
+// No surprises, side effects, API calls, mutations.
+
+
+
+// The useReducer is a hook I use sometimes to manage the state of the application.
+//  It is very similar to the useState hook, just more complex. 
+//  It acts as an alternate hook to the useState hook to manage complex state in your application.
+
+// The useReducer hook uses the same concept as the reducers in Redux. 
+// It is basically a pure function, with no side-effects.
+
+// A function is considered pure, if it adheres to the following rules:
+
+// The function always returns the same output if the same arguments are passed in.
+// The function does not produce any side-effects.
+// With this, it makes reducers easier to test and write.
+
+// The syntax for the useReducer hook is as follows:
+
+// const [state, dispatch] = useReducer(reducer, initialArg, init);
+
+// The useReducer will basically allow React functional components
+//  to access the reducer functions from your application’s state management.
+
+//https://codesandbox.io/s/userreducer-59f94q
+// https://www.youtube.com/watch?v=VdXGIEYZuCw
