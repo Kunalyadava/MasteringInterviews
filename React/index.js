@@ -293,6 +293,66 @@
 
 //https://www.geeksforgeeks.org/reactajs-reconciliation/
 
+// Ans- A React component undergoes three phases in its lifecycle mounting,
+// updating, and unmounting.
+
+// 1. Mounting phase: when a new component is created and inserted into the DOM or,
+//  in other words, when the life of a component begins.
+//   This can only happen once, and is often called "initial render."
+
+// 2. Updating phase: is when the component updates or re-renders. 
+// This reaction is triggered when the props are updated or when the state is updated.
+//  This phase can occur multiple times, which is kind of the point of React.
+
+// 3. Unmounting phase: The last phase within a component's lifecycle, when the
+// component is removed from the DOM.
+
+
+// The rendering process of a React functional component is as follows:
+
+// 1. Initial render: When a functional component is first rendered, React creates a
+// virtual DOM and updates it with the component's initial state and props.
+//  2. Virtual DOM comparison: React compares the updated virtual DOM with the
+// previous virtual DOM to determine what changes have been made. 
+// 3. DOM updates: React makes the necessary updates to the real DOM based on 
+// the comparison of the virtual DOM. This includes adding, removing, or updating elements as needed.
+
+// 4. State and prop updates: If there is a change in the state or props of the component, 
+// React will repeat the virtual DOM comparison and DOM update
+// process. 
+
+// 5. Rendering with useEffect: If the component uses the useEffect hook, React
+// will call the useEffect callblck after the initial render and whenever the specified values change.
+//  This allows you to perform side-effects such as making API calls or updating the component state.
+
+// 6. Cleanup with useEffect: If the useEffect callback returns a function, React will call this function 
+// before unmounting the component or before running the next useEffect call. 
+// This function can be used for cleanup tasks, such as removing event listeners
+
+// 7. Final render: Once the DOM updates have been completed, 
+// the component will be fully rendered and ready to interact with the user
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //useEffect=useEffect is a tool that lets us interact with the outside world but not affect
  //the rendering or performance of the component that it's in.

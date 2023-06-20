@@ -7,7 +7,6 @@
 // Hoisting is JavaScript's default behavior of moving all declarations 
 // to the top of the current scope 
 
-//Hoisting means accesssing a variable before initializing it
 
 
 // Hoisting
@@ -80,7 +79,9 @@
  
 //  Global scope
 // When you execute a script, the JavaScript engine creates a global 
-// execution context. It also assigns variables that you declare outside of functions to the global execution context. These variables are in the global scope. They are also known as global variables.
+// execution context. It also assigns variables that you declare outside
+//  of functions to the global execution context.
+//   These variables are in the global scope. They are also known as global variables.
 
 // Local scope
 // Variables that you declare inside a function are local to that function. 
@@ -133,7 +134,7 @@
 <script>
   {/* var a="Kunal"
 a[0]="a"
-console.log(a)  //masai 
+console.log(a)  //kunal
 var admin=[1,2,3]
 admin[0]="Kunal"
 console.log(admin) //kunal,2,3 */}
@@ -170,7 +171,7 @@ console.log(admin) //kunal,2,3 */}
 // const arr=[1,2,3,4]
 // arr.push(2)
 // console.log(arr)
-// we can mutate but we cannnotbre assign
+// we can mutate but we cannnot re assign
 
 
 
@@ -369,7 +370,8 @@ console.log(admin) //kunal,2,3 */}
 // The spread operator explodes array or objects in place
 
 
-//Statements vs Expressions
+
+
 //function expressions can be anonymous and it supports 
 //hoisting while function declations must have a name
 //example
@@ -387,6 +389,8 @@ console.log(admin) //kunal,2,3 */}
 //   return a+b
 // }
 
+
+//Statements vs Expressions
 
 ////it is a piece of code that always produces something or
 // An expression is anything that evaluates to a value. 
@@ -454,8 +458,8 @@ console.log(a);
 one();
 // Output for the above code is 1 2 2
 // In the above example in the case of function two, its outer lexical
-//  environment is function one’s execution context and for function one,
-//   the outer lexical environment is the global execution context.
+// environment is function one’s execution context and for function one,
+// the outer lexical environment is the global execution context.
 
 // When javascript asked for the value of var a in function two’s 
 // execution context it couldn’t find it so it moved down and searched
@@ -474,7 +478,7 @@ one();
 // console.log(a)
 // var b=200
 
-//in var it is in the global space but in case of a it in script y this happened
+//in var it is in the global space but in case of a let in script y this happened
 //memory was asigned to b in var declaration and these variable b was attacted to global memory
 //in let and cost they are allocated memory(called hoisting) but they are
 //stored in some different memory space so they are not global now
