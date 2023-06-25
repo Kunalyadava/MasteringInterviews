@@ -1,0 +1,57 @@
+<!-- 
+useThrottle
+useMemo
+useContext
+Synchrounous & Asynchronous middleware
+Logger Middleware 
+Flux Architecture
+-->
+
+
+<!-- Flux is an architectural pattern that was popularized by Facebook
+ for building user interfaces, particularly in the context 
+ of React applications. It provides a unidirectional data flow, 
+ making it easier to manage state and handle complex application logic.
+
+The key components of the Flux architecture are:
+
+Dispatcher: Acts as the central hub for handling 
+actions and dispatching them to registered callbacks.
+It ensures that actions are processed in a predictable order.
+
+Actions: Represent events or user interactions that occur
+in the application. They are triggered by various sources,
+such as UI components or server responses. Actions encapsulate
+the data associated with the event and are sent to the dispatcher.
+
+Stores: Stores contain the application state and business logic.
+They respond to actions dispatched by the dispatcher and update
+their data accordingly. Stores are responsible for managing the
+state and exposing methods to retrieve data.
+They emit change events to notify the views about updates.
+
+Views (React Components): React components are responsible 
+for rendering the user interface based on the application 
+state stored in the stores. Views subscribe to store change
+events and update themselves when notified.
+They also trigger actions in response to user interactions.
+
+The data flow in Flux follows a unidirectional path:
+Actions flow into the dispatcher, which then triggers updates in the stores.
+The stores update their state and emit change events. 
+Views, listening to the change events, retrieve the updated state from 
+the stores and re-render accordingly. User interactions trigger actions, continuing the cycle.
+
+The Flux architecture promotes separation of concerns by 
+clearly defining the responsibilities of each component. 
+It helps in maintaining a predictable flow of data and 
+enables better handling of complex application logic 
+and state management, especially in large-scale React applications.
+
+It's important to note that Flux itself is a pattern, 
+and there are different Flux implementations available. 
+The most common implementation is the original Flux 
+library by Facebook, but there are also alternative 
+libraries like Redux and MobX that provide similar 
+unidirectional data flow patterns with their own variations and enhancements.
+ -->
