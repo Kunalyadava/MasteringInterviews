@@ -1,0 +1,52 @@
+- The `setAttribute()` method sets a new value to an attribute.
+- Here attributes can be any of the following
+    - id
+    - class
+    - href
+    - src, etc
+    element.setAttribute(attributeName, attributeValue)
+    <html>
+  <body>
+    <div id="new">
+      <p>Masai School</p>
+    </div>
+  </body>
+</html>
+<script>
+      var newPara = document.createElement("p");
+      newPara.innerText = "The Coding School that cares about you";
+			// Setting class of "para" to p tag
+			newPara.setAttribute("class","para")
+			// Setting id of "container" to p tag
+			newPara.setAttribute("id","container")
+      document.getElementById("new").append(newPara);
+</script>
+Now whatever styles we write for that class “para” or id “container” will be applied to that <p> tag
+
+    <html>
+<style>
+.para {
+	font-size:40px
+}
+</style>
+  <body>
+    <div id="new">
+      <p>Masai School</p>
+    </div>
+  </body>
+</html>
+<script>
+      var newPara = document.createElement("p");
+      newPara.innerText = "The Coding School that cares about you";
+
+			// Setting class of "para" to p tag
+			newPara.setAttribute("class","para")
+
+			// Setting id of "container" to p tag
+			newPara.setAttribute("id","container")
+
+      document.getElementById("new").append(newPara);
+</script>
+<!-- Add a href attribute to an <a> element:
+    
+    myAnchor.setAttribute("href", "https://www.google.com"); -->

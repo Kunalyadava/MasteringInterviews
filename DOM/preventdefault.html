@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 5. Forms by default tries to send data to backend when you
+     click on submit, to stop default behaviour use 
+     `event.preventDefault()`
+
+- Let’s see the difference between onClick and 
+addEventListener by looking into following example -->
+<!-- //withoutform tag -->
+<input id="name" type="text" placeholder="enter name" />
+<input id="mail" type="email" placeholder="Enter email address" />
+<button onClick="getData()">Submit</button>
+<h1 id="nameDisplay">display name here</h1>
+<h2 id="emailDisplay">display email here</h2>
+</body>
+</html>
+<script>
+    function getData() {
+      var username = document.getElementById("name").value;
+      var email = document.getElementById("mail").value;
+      document.getElementById("nameDisplay").innerText = username;
+      document.getElementById("emailDisplay").innerText = email;
+    }
+  </script>

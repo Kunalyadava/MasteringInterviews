@@ -516,9 +516,12 @@
 
 
 
-// I like to think of a reducer like a “coffee maker”. The coffee maker takes in coffee powder and water. 
-// It then returns a freshly brewed cup of coffee that we can enjoy. Based on this analogy reducers are
-//  functions that take in the current state (coffee powder) and actions (water) and brew a new state (fresh coffee).
+// I like to think of a reducer like a “coffee maker”. 
+//The coffee maker takes in coffee powder and water. 
+// It then returns a freshly brewed cup of coffee that we can enjoy.
+// Based on this analogy reducers are
+//  functions that take in the current state (coffee powder)
+// and actions (water) and brew a new state (fresh coffee).
 // Reducers are pure functions that take in a state and action and return a new state.
 //A reducer should always follow the following rules:
 //Given a set of inputs, it should always return the same output.
@@ -528,7 +531,8 @@
 
 // The useReducer is a hook I use sometimes to manage the state of the application.
 //  It is very similar to the useState hook, just more complex. 
-//  It acts as an alternate hook to the useState hook to manage complex state in your application.
+//  It acts as an alternate hook to the useState
+// hook to manage complex state in your application.
 
 // The useReducer hook uses the same concept as the reducers in Redux. 
 // It is basically a pure function, with no side-effects.
@@ -545,6 +549,6 @@
 
 // The useReducer will basically allow React functional components
 //  to access the reducer functions from your application’s state management.
-
 //https://codesandbox.io/s/userreducer-59f94q
 // https://www.youtube.com/watch?v=VdXGIEYZuCw
+//

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- It is necessary to have the `target` property when 
+        an event is fired. We can do the following with the `target` property of the event.
+
+- Get the `element` that fired the event.
+- Access the properties of the `element`.
+- Modify some properties of the `element`, such as the CSS, the attributes, etc. -->
+<p>
+    Click on button in this document to find out which element triggered the
+    onclick event.
+  </p>
+
+  <button>This is a button</button>
+
+  <p id="demo"></p>
+
+  <script>
+    document.querySelector("button").addEventListener("click", myFunction);
+    function myFunction() {
+      var x = event.target;
+      document.getElementById("demo").innerHTML =
+        "Triggered by a " + x.tagName + " element";
+    }
+  </script>
+</body>
+</html>
+<!-- - `target`, is a property of an event which is a reference to the element upon which the event was fired. Just as 'target' means 'aiming at something', it's used to 'aim' at that particular element.
+- This property gives us access to the properties of that element.
+- Since the target property has given us access to the element, we could then read some of the properties (which are the attributes) and also display them somewhere else.
+
+### **Syntax**
+
+The `target` property can only be obtained if the event of an `element` is being listened to. -->

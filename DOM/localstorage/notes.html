@@ -1,0 +1,76 @@
+## **What is localStorage in JavaScript?**
+
+- `localStorage` is a property that allows JavaScript sites and apps to save key-value pairs in a web browser with no expiration date.
+- This means the data stored in the browser will persist even after the browser window is closed.
+
+## **How does localStorage work?**
+
+To use `localStorage` in your web applications, there are five methods to choose from:
+
+1. `setItem()`: Add key and value to `localStorage`
+2. `getItem()`: This is how you get items from `localStorage`
+3. `removeItem()`: Remove an item by key from `localStorage`
+4. `clear()`: Clear all `localStorage`
+## **setItem():**
+
+- Just as the name implies, this method allows you to store values in the `localStorage`
+- It takes two parameters:
+    - a key and
+    - a value.
+- The key can be referenced later to fetch the value attached to it.
+- Using `setItem()`we can store **strings**, **numbers**, **booleans**, **arrays** and **objects**.
+****How to store the JavaScript number in `localStorage`**
+let name = "Masai"
+localStorage.setItem("school",name)
+
+
+
+****How to store the JavaScript array in `localStorage`**
+
+- In order to use local storage with our array, we'll need to convert our array into a string.
+- The way convert an array into a string is by using the `JSON stringify` function.
+
+## Now what is JSON? 🤔🤔
+
+According to Mozilla - "JavaScript Object Notation (JSON) is a standard text-based format for representing structured data based on JavaScript object syntax." [1]
+
+- It is a data interchange format
+- It is based on Javascript object literals
+- used with network requests (AJAX etc.)
+- It can be parsed with almost any language with parsers if not natively
+### **`Why should we use JSON?`**
+
+- JSON is one of the most commonly used data formats to transmit data in web applications. Moreover, its not just JavaScript that supports JSON, many commonly used languages on the Web including PHP, Python, C/C++, Java etc., also support JSON.
+- Thus, JSON can be used to send data from the front-end to the back-end, and vice-versa. Many popular databases like MongoDB, CouchDB, MySQL, Oracle and PostgreSQL also have extensive support for JSON.
+- Think of JSON as an almost universal data format on the Internet.
+- What Does JSON look like ?A JSON string’s format is very similar to a regular JavaScript Object literal which we have studied before.
+- It also consists of key - value pairs.
+- It supports the 6 common data types in JavaScript, String Number Array Boolean Null Object.
+
+var emp=
+{
+"Employees" : [
+{
+"userId":"sqwert",
+"jobTitleName":"Developer",
+"firstName":"Sam",
+"lastName":"Pat",
+
+    },
+    {
+    "userId":"amir1337",
+    "jobTitleName":"Front-end Developer",
+    "firstName":"Amir",
+    "lastName":"Khan",        }
+],
+"count": 2
+
+}
+
+- In the above example, the JSON contains a key called Employees which is an array. It contains 2 objects with several fields.
+- Any data from the above object can be accessed in the same way as a regular JavaScript object literal as you can see from the example.
+
+### **However, notice that in the JSON format all the keys are surrounded by quotes!**
+
+- To convert from a JavaScript Object to a JSON string we can use the JSON.stringify method.
+- To convert from a JSON string to a JavaScript Object we can use the JSON.parse method.

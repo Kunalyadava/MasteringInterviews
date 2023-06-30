@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input id="name" type="text" placeholder="enter name" />
+        <input id="mail" type="email" placeholder="Enter email address" />
+        <input type="submit" />
+      </form>
+      <h1 id="nameDisplay">display name here</h1>
+      <h2 id="emailDisplay">display email here</h2>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit", getData);
+    function getData() {
+      event.preventDefault();
+      var username = document.getElementById("name").value;
+      var email = document.getElementById("mail").value;
+      document.getElementById("nameDisplay").innerText = username;
+      document.getElementById("emailDisplay").innerText = email;
+    }
+  </script>
+  <!-- ## **preventDefault()**
+
+  - The preventDefault() method cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur.
+  - For example, this can be useful when:
+      - Clicking on a "Submit" button, prevent it from submitting a form.
+      - Clicking on a link, prevent the link from following the URL. -->

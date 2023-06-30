@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Until now, we are using onClick event listener, 
+    but we are using it inline to HTML element. 
+    <button onClick="likeMe()">Like👍</button>
+    - But this method of adding event is not recommended, since we are writing JS inside HTML tags.
+- So, to improve this, we have a method called as **`addEventListener()`**
+- The `addEventListener()` method attaches an event handler to a document, same functionality as onClick,it’s
+  just a syntax change. -->
+  <head>
+    <title>OnClick</title>
+</head>
+<body>
+    <button>Like👍</button>
+</body>
+
+</body>
+</html>
+<script>
+    document.querySelector("button").addEventListener("click",likeMe)
+
+function likeMe() {
+    console.log("Someone liked me")
+}
+</script>
