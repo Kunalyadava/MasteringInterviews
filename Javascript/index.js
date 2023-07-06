@@ -478,10 +478,10 @@ one();
 // console.log(a)
 // var b=200
 
-//in var it is in the global space but in case of a let in script y this happened
+//in var it is in the global space but in case of a let it is in script but y this happened
 //memory was asigned to b in var declaration and these variable b was attacted to global memory
 //in let and cost they are allocated memory(called hoisting) but they are
-//stored in some different memory space so they are not global now
+//stored in some different memory space (script) so they are not global now
 
 //TDZ is the time since when the let variable was hoisted and till it is initialed 
 //some value the between that
