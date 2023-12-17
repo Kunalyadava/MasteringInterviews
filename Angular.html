@@ -1,0 +1,166 @@
+What’s the difference between an Angular Component and Module?
+Component: In Angular, a Component is a piece of code that represents a view.
+ It is responsible for rendering the content and handling user interactions with the view.
+  A Module is a container for a group of related components and directives. 
+
+A Component is a class with an associated template that defines a view. 
+A component controls a part of the screen called a view, which is defined by a 
+class that controls the view through its template. 
+
+. The Component class is the logic behind the view, 
+and it is responsible for handling user interactions,
+ updating the data model, and interacting with other components or services.
+ view through an API of properties and methods exposed by the component.
+
+<hr>
+when we create a component in order to use it. We use it's selector
+as an html element .And wherever we use the selector of a component like an html element  .
+There some html get rendered
+That html is called the view tempelate of a component.
+The view tempelate of a component is a form of HTML that tells angular how 
+to render a component
+<hr>
+When we want to display some data in the html element (or value of a variable ) 
+we use string Interpolationbut when we want to assign some dynamic 
+values to an html attribute ["check, disabled , hidden] we use property binding.
+We use property binding for binding HTML properties with component class properties.
+
+<hr>
+Attribute binding or difference between html attribute and html property
+html attribute represents the initial value and it doesn't change.
+
+[attr.aria-hidden]=""
+<hr>
+Event Binding allows us to bind webpage events to a components property 
+or methods . Using Event Binding we can pass data from view to component
+Event binding :(data)="expression"
+<hr>
+Two way data binding binds data from component class to view tempelate and view tempelate 
+to component class . This is a combination of property binding and event binding 
+<hr>
+custom property binding
+
+=>we can pass data from parent component to child component using @Input decorator.
+=>we also call it custom property binding because here we bind the custom properties
+of child component class with the property or method of parent component class
+<hr>
+Type of component selector
+so far we have seen that we can use the selector of a component like a html tag
+so wherever we will use that selector like html tag there
+ the view tempelte of that component will be rendered,but we can also use a component 
+ selector in different ways for example we have already seen that we use use selector 
+ like a html tag but we can also use a selector like a html atrribute or css class
+
+ HTML Tag  
+ selector:"app-nav"
+ <app-nav></app-nav>
+
+ HTML attribute
+ selector:"[app-nav]"
+ <div app-nav ></div>
+
+ HTML class
+ selector:".app-nav"
+<div class="app-nav"></div>
+
+<hr>
+A directive is an Instruction to DOM. In simple words we 
+use directives to manipulate the DOM
+Using directive we tell angular how the DOM element should behave or
+ look like and also which DOM elemenmt to add to the web page and 
+ which one to not add . we can change DOM elements appearance Behaviour
+  or layout using directives they simply help you to extend HTML in some way
+
+Directives in angular can be classified into three types
+COMPONENT DIECTIVE, Attribute Directive, Structural Directive
+
+A componemnt directive is the angular component. It is a directive with a tempelate
+A component directive is nothing but components in angular.
+Components are also a kind of instructions to DOM . 
+wherever we use a component there we instruct
+angular to render the view tempelate of that copmponent.
+
+once we place the selector of our component somewhere in the tempelate 
+at this point of time  we are instructing angular to add the content of our
+components view tempelate and the business logic of the typescript code
+in that place where we have used the selector of that component.
+
+Attribute Directives:
+These directives change the appearance or behavior of an element.
+Examples include [ngClass], [ngStyle], and custom attribute directives
+( to encapsulate and reuse behavior across Angular application).
+
+<hr>
+life cycle hooks
+
+The Angular lifecycle hooks are the methods that angular invokes on the
+ directives and components as it creates, changes, and destroys them.
+
+When the angular application starts, it first creates and renders the root component. 
+Then, it creates and renders its Children's & their children. It forms a tree of components
+Once Angular loads the components, it starts the process of rendering the view.
+ =>To do that, it needs to check the input properties,
+  evaluate the data bindings & expressions, render the projected content etc.
+=>Angular lets us know when these events happen using lifecycle hooks. For Example:
+ngOnInit when Angular initializes the component for the first time.
+=>When a component's input property change, Angular invokes ngonChanges
+If the component is destroyed, Angular invokes ngOnDestroy
+
+Constructor of a Component
+
+Life Cycle of a component begins, when Angular creates the component class.
+ First method that gets invoked is class Constructor.
+
+Constructor is neither a life cycle hook nor it is specific to Angular.
+ It is a JavaScript feature It is a method which gets invoked, when a class is created.
+
+When a constructor is called, at that point, none of the components input properties
+ are updated and available to use. Neither its child components are constructed. 
+ Projected contents are also not available.
+
+Once Angular instantiates the class, it kick-start the first change detection cycle of the component.
+
+
+read from pdf
+<hr>
+Change detection is the mechanism by which angular keeps the template in sync with the component.
+Class decorators, eg @Component and @NgModule
+Property decorators for properties inside classes, eg @Input and @Output
+Method decorators for methods inside classes, e g.
+ @HostListener Parameter decorators for parameters inside class constructors, eg @inject
+
+
+Dependencies are services or objects that a class needs to perform its function.
+ DI is a coding pattern in which a class asks for dependencies from
+  external sources rather than creating them itself.
+
+  A provider is an object declared inside decorators which inform Angular
+   that a particular service is available for Injecting inside the components.
+
+
+  <hr>
+
+A Service is a reusable TypeScript class that can be used in multiple components across your Angular application
+
+Operators in Rxjs are functions that takes an observable as input and transform it into a new observable
+ and return it. We use operators to manipulate the observable data stream
+<hr>
+The @ContentChild  is a decorator, which we use to  get/access the html element ,components and directives 
+ from the view tempelate of the parent component to the component class of the child component
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

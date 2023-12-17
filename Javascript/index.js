@@ -54,7 +54,7 @@
 //global execution context is the default  context in which js code starts 
 // its execution when the file first loads in the browser
 
-//functional execution contet is defined as the context created by the
+//functional execution context is defined as the context created by the
 // js engine whenever it finds any function call
 // Execution context (EC) is defined as the environment in which the JavaScript
 //  code is executed. By environment, I mean what variables JavaScript code has
