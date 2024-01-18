@@ -1,0 +1,20 @@
+An interpreted language is one that does not require compiling into machine language.
+ It is executed by an interpreter who reads the source code and converts 
+ it into a form that is directly executed. The interpreter executes code 
+ line by line which makes JavaScript synchronous in nature.
+
+Languages like C, and C++ need a compiler that converts the programs into a bytecode
+(Bytecode is computer object code that an interpreter converts
+ into binary machine code so it can be read by a computer's hardware processor.)
+ which is then executed by a machine, compiler executes the complete program at one time,
+  which increases the execution speed whereas JavaScript doesn’t need a compiler; 
+  it is directly executed by the browser which interprets the program 
+  instruction by instruction. Since the interpreter is executing the program 
+  instruction by instruction, this leads the slower execution.
+
+  <!-- https://www.techtarget.com/whatis/definition/bytecode -->
+
+  TypeScript
+  Typescript is a strongly typed object-oriented compiled language. It was developed by Microsoft.
+  Code written in TypeScript first needs to get compiled and then converted to JavaScript. This process of conversion is known as Transpilation.
+  TypeScript supports modules, hence it allows modular programming.

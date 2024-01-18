@@ -108,3 +108,175 @@
 
 // test(); hello
 </script>
+
+<!-- let arr=[]
+let x
+for(x=0;x<4;x++);{
+arr.push(x+1)
+}
+console.log(arr)
+output is 5 -->
+
+<!-- 
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+
+// let a = {}
+// a.age = 25
+// a.name = "Kunal"
+
+// let a = new Object()
+// a.age = 25
+// a.name = "Kunal"
+
+// let b= new Array(a)
+// b.push("jhjbhjb")
+// console.log(b)
+
+// let myObject = { value: "42" };
+// let myNumber = +myObject.value;
+// console.log(typeof myNumber)
+
+// function test() {
+//   const obj = {
+//     name: "John",
+//     age: 25,
+//   };
+//   const obj1=obj;
+//   obj1.age = 30;
+//   console.log(obj);
+// }
+// test() -->
+
+
+
+
+
+<!-- let n=prompt("Enter the value of n")
+n=Number.parseInt(n)
+
+let i=1;
+while(i<n){
+    console.log(i)
+    i++
+} 
+
+
+let a={}
+a.name="Kunal"
+a.age=25
+console.log(a)
+
+let b=new Object()
+b.name="yadava"
+b.age=26
+console.log(b)
+
+function personC(name,age){
+    this.age=age
+    this.name=name
+}
+let person=new personC("Kunal",27)
+console.log(person)
+
+
+class personD{
+    constructor(name,age){
+        this.name=name
+        this.age=age
+    }
+}
+let personE= new personD("Vijay",201)
+console.log(personE)
+
+
+Let's go through each block of code and explain them:
+
+1. Using Object Literal Notation:
+javascript
+Copy code
+let a = {};
+a.name = "Kunal";
+a.age = 25;
+console.log(a);
+
+This block of code creates an object a using object literal notation. 
+Properties (name and age) are added to the object, and then it's logged to the console. 
+The object a now has properties name with a value of "Kunal" and age with a value of 25.
+
+2. Using Object Constructor:
+javascript
+Copy code
+let b = new Object();
+b.name = "yadava";
+b.age = 26;
+console.log(b);
+Here, an object b is created using the Object constructor. 
+Properties (name and age) are added similarly to the first example. 
+The resulting object b is the same as the one created using object literal notation.
+
+Similarities: Both approaches (object literal and object constructor)
+ result in the creation of an object with specified properties.
+
+3. Using Constructor Function:
+javascript
+Copy code
+function obj3(name, age) {
+  this.name = name;
+  this.age = age;
+  this.getFullName = function() {
+    return this.name + " " + this.age;
+  };
+}
+
+let instance = new obj3("Yadava", 56);
+console.log(instance.getFullName());
+
+This code defines a constructor function personC that is used to
+ create objects representing people. The new keyword is used to 
+ instantiate an object (person) based on this constructor. 
+ The person object has properties name and age with values "Kunal" and 27, respectively.
+
+Differences: This approach introduces the concept of constructor functions, 
+allowing you to create multiple instances of objects with the same structure (similar to classes).
+
+4. Using ES6 Class:
+javascript
+Copy code
+class personD {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+let personE = new personD("Vijay", 201);
+console.log(personE);
+This block of code defines a class (personD) using ES6 class syntax.
+ The constructor method is used to initialize object properties when an instance is created.
+  An object personE is created based on this class.
+
+Similarities with Constructor Function: The use of constructor in a class 
+serves a similar purpose to the constructor function in the previous example.
+ However, the syntax is more concise and aligns with the class-based approach.
+
+Differences: The class syntax is a more modern and concise way to create constructor functions,
+ providing syntactic sugar over the prototype-based inheritance.
+
+In summary, all the approaches create objects with properties, 
+but the last two (constructor function and ES6 class) 
+offer more structured ways for creating objects, especially when you 
+need to create multiple instances with the same structure. 
+The class syntax is considered more readable and is the preferred way in modern JavaScript.
+
+
+
+
+
+
+
+
+
+
+
+-->

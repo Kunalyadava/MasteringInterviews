@@ -6,6 +6,14 @@
 //Nested > when there a conditional statement present inside conditional statement 
 // Hoisting is JavaScript's default behavior of moving all declarations 
 // to the top of the current scope 
+// When a variable is declared with var, it is hoisted to the top of its scope,
+//  and its initialization (if any) is also hoisted. This means you can use 
+//  the variable before its declaration in the code. However, if a variable is
+//   declared with let or const, it is hoisted to the top of the scope as well,
+//    but its initialization is not hoisted. As a result, if you try to 
+//    access the variable before its declaration, you'll get a "ReferenceError."
+
+
 
 
 
@@ -178,7 +186,9 @@ console.log(admin) //kunal,2,3 */}
 
 
 
-
+// Lexical Scope:
+//  means the scope of a variable is determined by its position in the source code. 
+//  In other words, the location where a variable is declared determines where it can be accessed.
 
 
 // And Objects
@@ -247,7 +257,19 @@ console.log(admin) //kunal,2,3 */}
 // Primitive datatypes AND NON-Primitive datatypes
 // Hoisting 
 // Closures // A function that is bundled with it's lexical scope
-//currying
+
+// A closure in JavaScript is created when a function is defined within another 
+// function (the outer function), allowing the inner function to access variables 
+// from the outer function even after the outer function has finished executing. 
+// In simpler terms, a closure "closes over" the variables of its outer function, preserving them.
+
+
+// Closures:
+// A closure is created when a function is defined inside another 
+// function and has access to the outer function's variables.
+//  Closures allow a function to "remember" the environment 
+//  in which it was created, even after the outer function has finished 
+// //currying
 
 
 //callback hell 
@@ -422,7 +444,7 @@ one(); //Output for the above code is 1 2 undefined
 //  javascript default value assigned to a variable is undefined.
 
 // whenever a context ececution is created along with it a lexical 
-// enviroment is created and each lexical enviroment have referece to
+// enviroment and each lexical enviroment have referece to
 //  its parent lexical enviroments which points to its memory allocation.
 
 function two(){

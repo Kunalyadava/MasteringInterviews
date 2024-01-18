@@ -1,4 +1,4 @@
-What’s the difference between an Angular Component and Module?
+<!-- What’s the difference between an Angular Component and Module?
 Component: In Angular, a Component is a piece of code that represents a view.
  It is responsible for rendering the content and handling user interactions with the view.
   A Module is a container for a group of related components and directives. 
@@ -150,6 +150,73 @@ The @ContentChild  is a decorator, which we use to  get/access the html element 
  
 
 
+Dependency Injection (DI) is a design pattern and a software architectural 
+concept widely used in software development, including frameworks like Angular,
+ Spring (Java), and others. The core idea behind Dependency Injection is to separate
+  the creation and management of a class's dependencies from the class itself.
+
+In simpler terms:
+
+Dependencies:
+
+In a software system, a class often relies on other classes or services to perform certain tasks.
+ These external components that a class depends on are called "dependencies."
+Injection:
+
+Instead of a class creating its dependencies directly, Dependency Injection involves
+ injecting (providing) the required dependencies from the outside.
+Inversion of Control (IoC):
+
+Dependency Injection is a form of Inversion of Control. In a traditional approach,
+ a class controls the creation of its dependencies. With DI,
+  the control is inverted – the responsibility for providing dependencies is moved outside the class.
+
+
+
+
+  The Angular lifecycle hooks are the methods that angular invokes on the
+ directives and components as it creates, changes, and destroys them.
+
+When the angular application starts, it first creates and renders the root component. 
+Then, it creates and renders its Children's & their children. It forms a tree of components
+Once Angular loads the components, it starts the process of rendering the view.
+ =>To do that, it needs to check the input properties,
+  evaluate the data bindings & expressions, render the projected content etc.
+=>Angular lets us know when these events happen using lifecycle hooks. For Example:
+ngOnInit when Angular initializes the component for the first time.
+=>When a component's input property change, Angular invokes ngonChanges
+If the component is destroyed, Angular invokes ngOnDestroy
+
+
+
+ngOnChanges: This lifecycle hook is executed whenever the component's input properties change.
+ngOnInit: This lifecycle hook is executed after the component's c
+onstructor method and is a good place to perform initial setup for the component.
+
+ngDoCheck: This lifecycle hook is executed during every change detection 
+cycle and is a good place to perform custom change detection.
+
+ngAfterContentInit: This lifecycle hook is executed after the component's
+ content has been initialized and is a good place to perform additional setup for the component's content.
+
+
+ngAfterContentChecked: This lifecycle hook is executed after the component's
+ content has been checked and is a good place to perform additional operations based on the component's content.
+
+
+ngAfterViewInit: This lifecycle hook is executed after the component's
+ view has been initialized and is a good place to perform additional
+  setup for the component's view.
+
+
+ngAfterViewChecked: This lifecycle hook is executed after the component's 
+view has been checked and is a good place to perform additional
+ operations based on the component's view.
+
+
+ngOnDestroy: This lifecycle hook is executed just before the 
+component is destroyed and is a good place to perform 
+cleanup operations for the component.
 
 
 
@@ -161,6 +228,4 @@ The @ContentChild  is a decorator, which we use to  get/access the html element 
 
 
 
-
-
-
+ -->
