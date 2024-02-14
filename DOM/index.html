@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onClick="likeMe(event)">Like👍</button>
+    <p id="para">I am paragraph<b>Hello</b> </p>
+    <br>
+    <input id="name" type="text" value="" />
+    <button onClick="catchValue()">Submit</button>
+    <!-- Show output here -->
+    <h1 id="output">output:</h1>
+</body>
+
+<script>
+    console.log("Hello baby")
+    // URL of a page
+console.log("URL of a page",document.URL)
+// title of a page
+console.log("title of a page",document.title)
+// domain
+console.log("domain of a page",document.domain)
+// doctype
+console.log("doctype of a page",document.doctype)
+// head
+console.log("head of a page",document.head)
+// body
+console.log("body of a page",document.body)
+// all elements
+console.log("all of a page",document.all)
+// forms
+console.log("forms of a page",document.forms)
+// links
+console.log("links of a page",document.links)
+// images
+console.log("images of a page",document.images)
+
+function likeMe(event) {
+        console.log("Someone clicked me", event);
+    }
+ 
+    console.log("id",document.getElementById("para"))
+    console.log("innerHTML",document.getElementById("para").innerHTML)
+    console.log("innerText",document.getElementById("para").innerText)
+    document.getElementById("para").textContent = "I am Kunal<b>bye</b>";
+
+/////
+function catchValue() {
+    var studentName = document.getElementById("name").value;
+    document.getElementById("output").innerText = studentName;
+  }
+
+    
+</script>
+</html>

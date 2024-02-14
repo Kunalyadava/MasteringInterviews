@@ -1,0 +1,15 @@
+<div>
+  <label>DOB</label>
+  <input type="date" #dobInput (blur)="calculateAge()">
+</div>
+<div>
+  <label>Age</label>
+  <input type="text" #ageInput>
+</div>
+<app-demo></app-demo>
+{{demoComp.sayHello()}}
+<!-- we wanted to pass input element to component class
+in previous lect we used a method to pass the html elet to component class
+by passing the local reference to that method as its argument (video 27)
+sometimes we want to access html element before calling a method 
+to achieve that we can make use view child decorator-->
