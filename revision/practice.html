@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+
+</html>
+<script>
+    // function currying(x) {
+    //     return function (y) {
+    //         return function (z) {
+    //             return x + y + z;
+    //         };
+    //     };
+    // }
+
+    // const curriedFunction = currying(5)(2)(3);
+    // console.log("curry", curriedFunction); // Outputs: "curry 10"
+    // function currying(x,y,z){
+    //     return x + y + z;
+    // }
+    // console.log("curry",currying(5,2,3))
+
+
+
+    // Another way to use the curried function
+    // const add5 = currying(5);
+    // const add5And2 = add5(2);
+    // const result = add5And2(3);
+    // console.log("curry", result); // Outputs: "curry 10"
+    // function currying(x,y,z){
+    //     return x + y + z;
+    // }
+    // console.log("curry",currying(5,2,3))
+    function curry(x) {
+        return function (y) {
+            return function (z) {
+                return x + y + z
+            }
+        }
+    }
+    console.log("curried",curry(5)(2)(2))
+
+</script>

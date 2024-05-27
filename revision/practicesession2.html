@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script src="practice2.js"></script> -->
+
+</body>
+
+</html>
+<script>
+    // In programming, data types are categories 
+    // of data that tell the compiler or interpreter
+    // how the programmer intends to use the data.
+    // They are broadly divided into two categories:
+    // primitive data types and non-primitive data types.
+
+    //  Primitive data types are the most basic types of data that
+    //  a programming language provides as built-in data types.
+    //  They typically represent single values
+    //  and are not composed of other data types.
+
+
+    //     Null
+    //     Represents the intentional 
+    //     absence of any object value.
+    //     let emptyValue = null;
+
+
+
+    //      Undefined
+    //      Represents a variable that has been
+    //      declared but not assigned a value.
+    //      let notAssigned;
+    //      console.log(notAssigned); // undefined
+
+
+    //  Symbol
+    //  Represents a unique and immutable value
+    //  and can be used as an identifier 
+    //  for object properties.
+    //  let uniqueID = Symbol('id');
+
+    // Boolean
+    // Represents a logical entity and
+    // can have only two values: true or false.
+
+
+    // Number
+    // Represents both integer and floating-point numbers.
+    // let age = 25;
+    // let temperature = 98.6;
+
+    // String
+    // Represents a sequence of 
+    // characters used to create text.
+
+
+
+//Features of Call by Value
+// Function arguments are always passed by value:
+// When a function is called, the values of 
+// the arguments are passed to the function's parameters.
+
+// It copies the value of a variable passed in 
+// a function to a local variable:
+
+// The parameter inside the function receives 
+// a copy of the argument's value, not the argument itself.
+
+// Both these variables occupy separate locations in memory:
+// The original variable and the parameter variable inside
+//  the function are stored in different memory locations.
+
+// Changes made in a particular variable 
+// do not affect the other one:
+// Any modifications to the parameter variable 
+// inside the function do not alter the original argument.
+
+
+    function modifyValue(value) {
+     return   value = value + 10;
+        console.log("Inside function:", value); // This will print the modified value
+    }
+    // let originalValue = 5;
+    // console.log("Before function call:", originalValue); // This will print 5
+
+   let ans= modifyValue(5);
+    console.log("After function call ans:", ans); // This will still print 5
+
+
+
+// Before the function call:
+
+// originalValue is set to 5.
+// During the function call:
+
+// The modifyValue function is called with originalValue as an argument.
+// The value 5 is copied to the parameter value.
+// Inside the function, value 
+// is modified by adding 10, making it 15.
+// The change is local to the function scope,
+// so console.log("Inside function:", value); prints 15.
+
+// After the function call:
+
+// The original variable originalValue remains
+//  unchanged because the function operated on a copy of its value.
+// console.log("After function call:", originalValue); prints 5.
+
+
+//  In JavaScript, when you pass a variable to a function,
+//  you're passing a copy of that 
+//  variable's value. This is known as "call by value.
+
+
+// Copying the Value:
+// When a function is called, the value of the argument 
+// is copied to the parameter of the function.
+// The function works with this copy,
+// not with the original value directly.
+
+// Separate Memory Locations:
+// The original variable and the function parameter occupy different memory locations.
+// Modifying the parameter inside the function does not affect the original variable.
+
+// Isolation of Changes:
+// Any changes made to the parameter inside the function are isolated to that function.
+// The original variable remains unchanged outside the function.
+
+// Function definition with parameters
+// function add(a, b) {
+//   return a + b;
+// }
+
+// Function calls with different arguments
+// let sum1 = add(2, 3);  // a = 2, b = 3
+// let sum2 = add(10, 20); // a = 10, b = 20
+
+// console.log(sum1); // Outputs: 5
+// console.log(sum2); // Outputs: 30
+
+
+// let a = 5;
+// let b;
+// b = a;
+// a = 3;
+// console.log(a);
+// console.log(b);
+
+
+// Non-primitive data types, also known as reference types, 
+// are more complex and include objects. Unlike primitive data types,
+//  they are mutable and can store collections of values and more complex
+//   entities. The primary non-primitive data types are:
+
+// Object
+
+// An object is a collection of properties,
+//  and each property is a key-value pair.
+
+ 
+// let person = {
+//   name: "Alice",
+//   age: 30,
+//   isStudent: true
+// };
+
+
+// Array
+// An array is a list-like object that contains a collection of values,
+//  which can be of any type.
+// let fruits = ["apple", "banana", "cherry"];
+
+// Function
+// A function is a block of code designed to perform a particular task.
+// function greet(name) {
+//   return `Hello, ${name}!`;
+// }
+
+
+// Date
+// The Date object is used to work with dates and times.
+// let now = new Date();
+
+
+// Non-primitive types
+// let obj1 = { value: 10 };
+// let obj2 = obj1; //obj2 is a reference to obj1
+// obj2.value = 20;
+// console.log(obj1.value); // 20
+// console.log(obj2.value); // 20
+
+
+function modifyObject(obj) {
+  obj.name = "Alice";
+  console.log("Inside function:", obj); //{name: 'Alice', age: 25}
+}
+let person = {name:"Bob",age:25};
+console.log("Before function call:", person);  // {name: 'Bob', age: 25}
+modifyObject(person);
+console.log("After function call:", person); //{name: 'Alice', age: 25}
+
+// In JavaScript, the const keyword is used to declare
+//  variables that are meant to be constants.
+//   This means that once a variable is declared
+//    with const, it cannot be reassigned to a 
+//    different value. However, this does not mean
+//     that the value itself is immutable. If the value is an object or
+//      array, the properties or elements of that object 
+//      or array can still be changed (mutated).
+// let obj = { name: "Kunal" };
+// const teacher = obj;
+// obj.name = "John"; //'John'
+
+
+// Const does not mean Immutable: Declaring teacher with
+//  const means you cannot reassign teacher to a different
+//   object. However, the properties of the object
+//    that teacher references can be changed.
+// Shared Reference: Both obj and teacher reference
+//  the same object. Mutating the object through 
+//  either reference will affect the same object.
+
+// let obj = { name: "Kunal" };
+// // Create an object with a property 'name' set to "Kunal"
+// // obj -> { name: "Kunal" }
+// const teacher = obj;
+// // Assign the object referenced by 'obj' to the constant 'teacher'
+// // teacher -> { name: "Kunal" }
+
+// obj.name = "John";
+// // Mutate the 'name' property of the object referenced by 'obj'
+// // Since 'teacher' references the same object, the change is reflected there too
+
+// console.log(obj.name);    // "John"
+// // Output: "John"
+
+// console.log(teacher.name); // "John"
+// // Output: "John"
+
+
+
+
+// Const ensures the reference to the object cannot be changed:
+//  When you declare a variable with const, you cannot reassign
+//   the variable to a different object or value. However, if the value is an object or array,]
+//  you can still change (mutate) the properties of that object or elements of that array.
+
+// const person = {
+//   name: "Kunal",
+//   age: 25
+// };
+
+// // Valid: Mutating the properties of the object
+// person.name = "John";
+// person.age = 26;
+
+// console.log(person); // Output: { name: "John", age: 26 }
+
+// // Invalid: Reassigning the reference
+// person = {
+//   name: "Alice",
+//   age: 30
+// }; // Error: Assignment to constant variable.
+
+
+
+// // Regular function
+// function regularFunction() {
+//     console.log(this); // 'this' refers to the global object or undefined in strict mode
+// }
+
+// // Arrow function
+// const arrowFunction = () => {
+//     console.log(this); // 'this' refers to the enclosing lexical scope, which in this case is the global scope
+// }
+
+// regularFunction(); // Output will depend on where it's called from
+// arrowFunction();   // Output will refer to the global object or undefined, depending on where it's executed
+
+
+// In the example above, this inside the regular 
+// function refers to the global object (or undefined in strict mode),
+//  whereas this inside the arrow function also refers
+//   to the global object. This is because arrow functions
+//    do not have their own this binding and instead
+//     inherit it from the surrounding lexical scope,
+//      which in this case is the global scope.
+
+// This lexical scoping behavior of arrow functions 
+// can help in avoiding issues related to dynamic
+//  scoping and makes them particularly useful in 
+//  certain scenarios, such as when defining methods 
+//  inside objects or when dealing with
+//   event handlers in web development.
+</script>
