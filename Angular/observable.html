@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Observable and Observer Pattern
+    1. Definition
+    The "Observable and Observer" pattern is a design pattern used
+    for message passing where an Observable (publisher)
+    notifies Observers (subscribers) about state changes or events.
+    This pattern allows a one-to-many dependency between
+    objects, ensuring that when one object changes state,
+    all its dependents are notified and updated automatically.
+
+    2. Flow of Functionality
+    Observable Creation:
+
+    An instance of Observable is created. This object will be responsible
+    for managing a list of observers and notifying
+    them of any changes or events.
+
+    Observer Subscription:
+
+    Observers subscribe to the Observable. When an observer subscribes,
+    it is added to the Observable's list of observers.
+
+    Message Passing:
+
+    The Observable can send messages or notifications to all
+    subscribed observers. Each time the Observable passes a
+    message, it is received by all the observers that have subscribed to it.
+
+    Notification Reception:
+
+    When the Observable sends a message, each subscribed Observer
+    receives the message and can perform appropriate
+    actions based on the received information.
+
+    3. Real-Time Usage of Observable and Observer
+    Receiving Response from AJAX:
+
+    In web development, AJAX calls are used to fetch data from
+    a server asynchronously without refreshing the web page.
+    The Observable and Observer pattern can be utilized
+    to handle the responses from these AJAX calls. The Observable
+    represents the AJAX call, and the Observers are
+    the parts of the application that need to react to the data received
+    from the server. For example:
+    An Observable AJAX request is made to fetch user data.
+    Multiple Observers, such as different components of a web page, subscribe to this Observable.
+    When the AJAX response is received, the Observable notifies all subscribed components, which then update their state
+    or render the new data accordingly.
+    Performing Large Tasks in Client (Browser):
+
+    When performing computationally intensive or large tasks in the browser, it is crucial to keep the UI responsive.
+    The Observable and Observer pattern can be employed to manage the execution of these tasks. For example:
+    An Observable represents a long-running task such as file processing, data analysis, or complex calculations.
+    Observers subscribe to the Observable to receive updates on the task's progress or completion.
+    As the task progresses, the Observable sends notifications (e.g., progress updates, intermediate results, or
+    completion status) to the Observers.
+    Observers, such as UI components, can then update the user interface to reflect the current state of the task,
+    ensuring a responsive and interactive user experience.
+    Example in JavaScript
+    Here's a simple implementation of the Observable and Observer pattern in JavaScript: -->
+    <script>
+        class Observable {
+            constructor() {
+                this.observers = [];
+            }
+
+            // Method to add an observer
+            subscribe(observer) {
+                this.observers.push(observer);
+            }
+
+            // Method to remove an observer
+            unsubscribe(observer) {
+                this.observers = this.observers.filter(obs => obs !== observer);
+            }
+
+            // Method to notify all observers
+            notify(data) {
+                this.observers.forEach(observer => observer.update(data));
+            }
+        }
+
+        class Observer {
+            constructor(name) {
+                this.name = name;
+            }
+
+            // Method to receive updates
+            update(data) {
+                console.log(`${this.name} received data: ${data}`);
+            }
+        }
+
+        // Example usage
+        const observable = new Observable();
+
+        const observer1 = new Observer("Observer 1");
+        const observer2 = new Observer("Observer 2");
+
+        observable.subscribe(observer1);
+        observable.subscribe(observer2);
+
+        observable.notify("Hello, Observers!");
+
+        // Unsubscribe observer2
+        observable.unsubscribe(observer2);
+
+        observable.notify("Observer 2 will not receive this");
+    </script>
+
+    <!-- In this example:
+
+    Observable manages a list of observers and notifies them of any updates.
+    Observer defines a simple class with an update method that receives notifications.
+    The notify method of Observable sends data to all subscribed observers,
+    and unsubscribing an observer ensures it no
+    longer receives updates. -->
+
+
+ <!-- //Question  : so the response we fetch from apis are observer
+
+    In the context of fetching responses from APIs using the Observable and Observer pattern, the response itself is not
+    the observer. Instead, the response is the data or event that is communicated through the Observable to the
+    observers. Here’s a more detailed breakdown: -->
+<!-- 
+    Observable: The Observable represents the API call or the
+     stream of data that we expect to receive from the API. It
+    acts as a publisher that will notify its subscribers (observers) when data is available.
+
+    Observer: Observers are the parts of the application that
+     need to react to the data received from the API. They
+    subscribe to the Observable to be notified when new data is available or when an event occurs.
+
+    Data/Message: The actual response fetched from the API
+     is the data or message that is passed from the Observable to
+    the observers.
+
+    Real-Time Usage Example: Fetching API Data
+    Let's take a practical example using RxJS (Reactive Extensions for JavaScript),
+    a library for reactive programming using Observables. 
+    RxJS is commonly used in Angular applications but can be used in any JavaScript application.
+
+    Step-by-Step Process
+
+    Create an Observable for the API Request:
+    The Observable represents the HTTP request to the API.
+    Subscribe Observers to the Observable:
+
+    Components or services that need the data from the API subscribe to this Observable.
+    Handle the Data in Observers:
+
+    When the API response is received, the Observable notifies all subscribed observers with the data.
+    Example Using RxJS
+    Here's how you might implement this in an Angular service using RxJS: -->
+
+ <script.ts>
+    import { Injectable } from '@angular/core';
+    import { HttpClient } from '@angular/common/http';
+    import { Observable } from 'rxjs';
+
+    @Injectable({
+    providedIn: 'root'
+    })
+    export class DataService {
+    private apiUrl = 'https://api.example.com/data';
+
+    constructor(private http: HttpClient) {}
+
+    fetchData(): Observable<any> {
+        return this.http.get(this.apiUrl);
+        }
+        }
+        
+        Subscribing to the Observable
+        In a component, you can subscribe to the fetchData Observable to receive and handle the API response:
+
+        import { Component, OnInit } from '@angular/core';
+        import { DataService } from './data.service';
+
+        @Component({
+        selector: 'app-data',
+        template: `<div *ngIf="data">{{ data | json }}</div>`
+        })
+        export class DataComponent implements OnInit {
+        data: any;
+
+        constructor(private dataService: DataService) {}
+
+        ngOnInit() {
+        this.dataService.fetchData().subscribe(
+        response => {
+        this.data = response;
+        },
+        error => {
+        console.error('Error fetching data', error);
+        });
+        }
+    }
+    </script>
+        <!-- Explanation
+        DataService (Observable): The DataService creates an Observable using
+        HttpClient.get. This Observable will emit
+        the API response when it is available.
+        DataComponent (Observer): The DataComponent subscribes 
+        to the fetchData Observable. When the Observable emits
+        the API response, the component's data property is 
+        updated with the response, and any necessary UI updates can be made.
+
+        In summary, the API response is the data being passed
+         from the Observable (the API call) to the observers
+        (subscribed components or services). The Observable 
+        pattern here helps manage asynchronous data streams and
+        ensures that all subscribers are notified when the -->
+</body>
+
+</html>

@@ -38,13 +38,340 @@
     //     return x + y + z;
     // }
     // console.log("curry",currying(5,2,3))
-    function curry(x) {
-        return function (y) {
-            return function (z) {
-                return x + y + z
-            }
-        }
-    }
-    console.log("curried",curry(5)(2)(2))
+    // function curry(x) {
+    //     return function (y) {
+    //         return function (z) {
+    //             return x + y + z
+    //         }
+    //     }
+    // }
+    // console.log("curried",curry(5)(2)(2))
 
+</script>
+<script>
+    console.log([1, 2, 3, 4].map((x) => (x > 3)))
+    // Output: [false, false, false, true]
+    //  The map function in JavaScript creates a new array
+    //   populated with the results of calling a provided
+    //     function on every element in the calling array.
+    //    The function provided to map does not change the 
+    //    values of the elements directly; instead, it 
+    //    returns new values based on the computation
+    //     within the function.
+
+    // In  code console.log([1, 2, 3, 4].map((x) => (x > 3))),
+    //         the provided function (x) => (x > 3) performs 
+    //  a comparison operation that returns true or false
+    //     for each element in the array. 
+    //   Here is why it doesn't print 1, 2:
+
+    // Original Array: [1, 2, 3, 4]
+
+    // Mapping Function: (x) => (x > 3)
+
+    // For x = 1: 1 > 3 evaluates to false
+    // For x = 2: 2 > 3 evaluates to false
+    // For x = 3: 3 > 3 evaluates to false
+    // For x = 4: 4 > 3 evaluates to true
+    // New Array: The map function collects these 
+    // results and creates a new array:
+    //     [false, false, false, true].
+
+    // The key point is that map returns a new
+    //     array based on the return values of the
+    //     function provided for each element, not the 
+    //     original elements themselves.Since the function
+    //     (x > 3) only returns true or false, the resulting
+    //     array contains boolean values, not the original numbers.
+
+    // If you want to filter the array to include only
+    //  numbers greater than 3, you should use the filter method instead:
+    console.log([1, 2, 3, 4].filter((x) => (x > 3)));
+    //Output: [4]
+    //The filter method returns a new array with all elements that pass the
+    //test implemented by the provided function,
+    //which in this case are the numbers greater than 3.
+
+
+
+    //Note: //if you want to use a function within map that checks certain
+    //conditions and returns true or false based on those 
+    //conditions, you can do so.The map function will then 
+    //return an array of true and false values corresponding 
+    //to each element in the original array. or 
+
+    // if you want to conditionally include or exclude elements
+    //  from the resulting array based on some criteria, 
+    //  you can use a callback function with map(). 
+    //  This callback function should return the new value
+    //   for each element, or undefined if you want to exclude it.
+
+    // const numbers = [1, 2, 3, 4, 5];
+    // const evenNumbers = numbers.map(num => {
+    //     if (num % 2 === 0) {
+    //         return num;
+    //     }
+    // });
+    // console.log(evenNumbers); // Output: [undefined, 2, undefined, 4, undefined]
+
+
+    // The forEach method in JavaScript is used to execute a provided function
+    //  once for each array element. Unlike map, forEach does not create a new array; 
+    // it simply iterates over the array and performs the specified action for each element.
+    //array.forEach(callback(currentValue, index, array), thisArg);
+    // The provided callback function is executed once for 
+    // each element in the array in ascending order. 
+    // It doesn't modify the array directly 
+    // (though it can modify the array elements if desired).
+
+    const numbers = [1, 2, 3, 4, 5];
+    numbers.forEach((number, index, array) => {
+        array[index] = number * 2;
+        console.log(`Index: ${index}, Value: ${array[index]}`);
+    });
+    // Logs the index and the modified value
+    console.log(numbers);
+    // Logs the final modified array
+    // Index: 0, Value: 2
+    // Index: 1, Value: 4
+    // Index: 2, Value: 6
+    // Index: 3, Value: 8
+    // Index: 4, Value: 10
+    // [2, 4, 6, 8, 10]
+
+
+    // Nullish Coalescing Operator (??) and Logical OR Operator (||)
+
+    // Nullish Coalescing Operator (??):
+    // Purpose: Provides a default value if the original value is null or undefined.
+    // Syntax: let result = leftOperand ?? rightOperand;
+    // let a = null;
+    // let b = '';
+    // console.log(a ?? 'default'); // 'default'
+    // console.log(b ?? 'default'); // ''
+
+    // Logical OR Operator (||):
+    // Purpose: Provides a default value if the original value is
+    //  any falsy value (false, 0, -0, 0n, "", null, undefined, NaN).
+    // Syntax: let result = leftOperand || rightOperand;
+    // let a = null;
+    // let b = '';
+    // console.log(a || 'default'); // 'default'
+    // console.log(b || 'default'); // 'default'
+    // Key Differences:
+    // ?? checks specifically for null or undefined.|| checks for any falsy value.
+    // Use Cases:
+    // Use ?? when you want to provide a default value only for
+    //  null or undefined, allowing other falsy
+    //   values (0, '', false, etc.) to be valid.
+    // Use || when you want to provide a default
+    //  value for any falsy value.
+
+
+    // && (AND):
+
+    // Returns the first falsy value encountered or the last value if all are truthy.
+    // Short-circuits (stops evaluating) when a falsy value is found.
+    // Commonly used to ensure multiple conditions are true before executing a block of code.
+    // || (OR):
+
+    // Returns the first truthy value encountered or the last value if all are falsy.
+    // Short-circuits when a truthy value is found.
+    // Commonly used to provide default values.
+</script>
+
+<!-- Minification is the process of reducing the size of a source code file by removing unnecessary characters and formatting
+elements, without affecting its functionality. It is commonly used in web development and software distribution to
+optimize file sizes for improved performance and user experience. Minification tools and build automation techniques
+simplify the process and make it easy to incorporate into development workflows. -->
+
+<body>
+    <!-- JavaScript
+    Definition: JavaScript is a high-level, interpreted programming language that is primarily used for client-side
+    scripting in web browsers.
+    Execution: JavaScript code is executed by JavaScript engines embedded in web browsers (such as V8 in Chrome,
+    SpiderMonkey in Firefox, etc.).
+    Process: JavaScript is typically written in plain text (source code), which is directly interpreted by the
+    JavaScript engine. There is no separate compilation step like other languages that produce bytecode or
+    binary code.
+    Performance: Modern JavaScript engines often employ Just-In-Time (JIT) compilation to convert JavaScript code to
+    machine code (binary code) on the fly for performance optimization.
+    Example:
+    javascript
+    Copy code
+    console.log("Hello, World!");
+    Use Case: Web development, including both client-side (browser) and server-side (with environments like Node.js). -->
+
+    <!-- Typescript
+    TypeScript is a Strongly Typed programming language that supports both dynamic and static typing. It provides
+    classes, visibility scopes, namespaces, inheritance, unions, interfaces, and many other features.
+    Also, it offers comments, variables,
+    statements, expressions, modules, and functions.
+
+    You can execute it on Node.Js or any other browser that supports ECMAScript 3 or its latest versions.
+    Since TypeScript is an enhanced version of JavaScript, all code of JavaScript is syntactically valid TypeScript.
+    However, it doesn’t mean the TypeScript compiler can process all JavaScript:
+    let a = 'a'; a = 1; // throws: error TS2322: Type '1' is not assignable to type 'string'.
+
+    Any & Unknown
+    A type called Any (anything that you wish) can cover unknown
+     is its type-safe system. Here, any allows you to assign
+    and JavaScript variable whenever you want to escape the type system. 
+    It’s widely used to describe incoming variables
+    that haven’t been validated yet and whose type is
+     unknown (for example, from third-party APIs).
+
+    TypeScript supports abstraction through interfaces, while JavaScript does not.
+    
+    Unknown is similar to Any, but it will not allow you 
+    to do anything with it unless it’s explicitly type-checked.?
+
+    Void
+    When there is no value returned, Void is used.
+     Generally, it’s used for the return type of function that returns
+    nothing.
+
+    Never
+    Never is the return type for something that
+     should never happen, such as an exception-throwing function. -->
+
+    <!-- 
+    Static Typing
+    Definition: In statically typed languages, type checking is performed at compile time,
+     before the code is executed.
+
+    Key Characteristics:
+
+    Type Declarations: Variables must be explicitly declared
+     with a type (e.g., int, string) when they are defined.
+
+    Compile-Time Checking: The compiler checks the types of
+     variables and expressions during compilation. Errors are
+    caught early, before the program runs.
+
+    Performance: Since type checking is done at compile time, 
+    the runtime can be more optimized. The compiler can
+    generate more efficient machine code.
+
+    Error Detection: Type errors are detected early in the development
+     process, which can prevent certain types of bugs
+    from occurring at runtime.
+
+    IDE Support: Static typing provides better support for 
+    integrated development environments (IDEs) with features like
+    autocomplete, refactoring, and type checking.
+    Examples of Statically Typed Languages:
+
+    Java
+    C++
+    C#
+    Swift
+    TypeScript (superset of JavaScript)
+    
+    Example:
+    java
+    Copy code
+    int count = 10; // Declared as an integer
+    count = "Hello"; // Compile-time error: Type mismatch
+    Dynamic Typing
+    Definition: In dynamically typed languages, type checking is performed at runtime, when the code is executed.
+
+    Key Characteristics:
+
+    Implicit Types: Variables are not explicitly declared with a type.
+     The type is inferred from the value assigned to
+    the variable.
+
+    Runtime Checking: Types are checked during program execution.
+     This allows for more flexible and expressive code but
+    can lead to runtime errors.
+
+    Flexibility: Dynamic typing allows for rapid prototyping and shorter code,
+     as there is less need for explicit type
+    declarations.
+
+    Performance: Runtime type checking can introduce overhead,
+     potentially making dynamically typed languages slower
+    than statically typed ones.
+
+    Error Detection: Type errors are caught only when the
+     affected code paths are executed, which can make debugging
+    more challenging.
+    Examples of Dynamically Typed Languages:
+    JavaScript
+    Python
+    Ruby
+    PHP
+    Perl
+
+    Example:
+    python
+    count = 10 # Initially assigned an integer
+    count = "Hello" # No error at assignment; type is changed to string
+    print(count + 5) # Runtime error: Can't concatenate str and int
+
+    Summary of Differences
+    When Types Are Checked:
+
+
+    Static Typing: At compile time.
+    Dynamic Typing: At runtime.
+
+    Type Declarations:
+    Static Typing: Explicit type declarations are required.
+    Dynamic Typing: Types are inferred and can change dynamically.
+    Error Detection:
+    Static Typing: Errors are caught during compilation, before execution.
+    Dynamic Typing: Errors are caught during execution,
+    which can lead to runtime crashes if not properly handled.
+    Performance:
+    Static Typing: Generally more efficient at runtime due to optimized machine code.
+    Dynamic Typing: Can be less efficient due to the overhead of runtime type checking -->
+
+
+    <!-- The difference between an interpreted and a compiled language lies in the result
+     of the process of interpreting or compiling. An interpreter produces a result from 
+     a program, while a compiler produces a program written in assembly language -->
+
+
+</body>
+<script>
+
+    // function add(a, b) {
+    //     return a + b
+    //     setInterval(() => {
+    //         console.log(((b, d) => {
+    //             return b + d;
+    //         })
+    //             (2, 3))
+    //     }, 1000)
+    // }
+    // add(2, 4)
+    // console.log(add(2, 4))
+    // In your provided code, the setInterval function is placed after
+    //  the return statement in the add function. This means that the
+    // return statement will exit the function immediately, and the
+    //  code after it won't be executed. To correct this and make sure the setInterval
+    // function works as expected, you should place it before the return statement
+
+    // function add(a, b) {
+    //     setInterval(() => {
+    //         const result = (b, d) => {
+    //             return b + d;
+    //         };
+    //         console.log(result(2, 3)); // This will log 5 every 1 second
+    //     }, 1000);
+    //     return a + b;
+    // }
+    // add(2, 4);
+
+    // console.log("Time in");
+    // let i = 0;
+    // let id = setInterval(() => {
+    //     console.log(i++);
+    //     if (i === 10) {
+    //         clearInterval(id);
+    //         console.log("Timeout");
+    //     }
+    // }, 1000);
 </script>
