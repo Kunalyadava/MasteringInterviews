@@ -290,38 +290,44 @@
 |279| [](#)
 
 1. ### What is Angular Framework?
-<!-- 
-    Angular is a **TypeScript-based open-source** front-end platform that makes it easy to build web, mobile and desktop applications. The major features of this framework include declarative templates, dependency injection, end to end tooling which ease application development. -->
+
+    Angular is a **TypeScript-based open-source** front-end platform that makes it easy to build web,
+    mobile and desktop applications. The major features of this framework include declarative templates,
+    dependency injection, end to end tooling which ease application development.
 
   **[⬆ Back to Top](#table-of-contents)**
 
 2. ### What is the difference between AngularJS and Angular?
-    <!-- Angular is a completely revived component-based framework in which an application
-    is a tree of individual components. -->
-<!-- 
-AngularJS
+    Angular is a completely revived component-based framework in which an application
+    is a tree of individual components.
 
-Architecture: Based on MVC (Model-View-Controller) architecture.
-Language: Primarily uses JavaScript to build the application.
-Concept: Relies on controllers to manage the application logic and interact with the view.
-Mobile Support: Limited support for mobile platforms, often requires additional frameworks like Ionic for mobile app development.
-SEO: Can be challenging to implement SEO-friendly single-page applications due to server-side rendering limitations.
+    AngularJS
+    Architecture: Based on MVC (Model-View-Controller) architecture.
+    Language: Primarily uses JavaScript to build the application.
+    Concept: Relies on controllers to manage the application logic and interact with the view.
+    Mobile Support: Limited support for mobile platforms, often requires additional 
+    frameworks like Ionic for mobile app development.
+    SEO: Can be challenging to implement SEO-friendly single-page applications due to server-side
+    rendering limitations.
 
-Angular
+    Angular
 
-Architecture: Based on a component-based architecture where applications are a tree of individual components.
-Language: Primarily uses TypeScript, a superset of JavaScript, which adds static typing and other features to enhance code quality and maintainability.
-Concept: Utilizes components as the primary building blocks for UI development, facilitating modularity and reusability.
-Mobile Support: Provides comprehensive support for building mobile applications through frameworks like Ionic and NativeScript, enabling native mobile app development.
-SEO: Supports server-side rendering out of the box, making it easier to create SEO-friendly single-page applications. Additionally, Angular Universal facilitates server-side rendering for better SEO performance. -->
+    Architecture: Based on a component-based architecture where applications are a tree of individual components.
+    Language: Primarily uses TypeScript, a superset of JavaScript, which adds static typing and other 
+    features to enhance code quality and maintainability.
+    Concept: Utilizes components as the primary building blocks for UI development, facilitating modularity and reusability.
+    Mobile Support: Provides comprehensive support for building mobile applications through frameworks like 
+    Ionic and NativeScript, enabling native mobile app development.
+    SEO: Supports server-side rendering out of the box, making it easier to create SEO-friendly single-page 
+    applications. Additionally, Angular Universal facilitates server-side rendering for better SEO performance.
 
   **[⬆ Back to Top](#table-of-contents)**
 
 3. ### What is TypeScript?
-    <!-- TypeScript is a strongly typed superset of JavaScript created by Microsoft 
+    TypeScript is a strongly typed superset of JavaScript created by Microsoft 
     that adds optional types, classes, async/await and many other features,
     and compiles to plain JavaScript. Angular is written entirely in TypeScript as a primary language.
-    You can install TypeScript globally as -->
+    You can install TypeScript globally as
     ```cmd
     npm install -g typescript
     ```
@@ -396,20 +402,20 @@ SEO: Supports server-side rendering out of the box, making it easier to create S
   **[⬆ Back to Top](#table-of-contents)**
 
 8. ### What are the differences between Component and Directive?
-    <!-- In a short note, A component(@component) is a directive-with-a-template. -->
-<!-- Component
-Registration: Utilizes @Component metadata annotation.
-Purpose: Primarily used for creating UI widgets with templates.
-Application: Breaks down the application into smaller, manageable components.
-Association: Typically, only one component is associated with a DOM element.
-Rendering: Requires a @View decorator or specifies a templateUrl/template for rendering.
+    In a short note, A component(@component) is a directive-with-a-template.
+    Component
+    Registration: Utilizes @Component metadata annotation.
+    Purpose: Primarily used for creating UI widgets with templates.
+    Application: Breaks down the application into smaller, manageable components.
+    Association: Typically, only one component is associated with a DOM element.
+    Rendering: Requires a @View decorator or specifies a templateUrl/template for rendering.
 
-Directive
-Registration: Utilizes @Directive metadata annotation.
-Purpose: Used to add behavior or manipulate the behavior of existing DOM elements.
-Application: Designs reusable functionalities for DOM manipulation.
-Association: Allows multiple directives to be associated with a single DOM element.
-Rendering: Does not necessarily require a view as it primarily adds behavior or modifies existing behavior. -->
+    Directive
+    Registration: Utilizes @Directive metadata annotation.
+    Purpose: Used to add behavior or manipulate the behavior of existing DOM elements.
+    Application: Designs reusable functionalities for DOM manipulation.
+    Association: Allows multiple directives to be associated with a single DOM element.
+    Rendering: Does not necessarily require a view as it primarily adds behavior or modifies existing behavior.
 
   **[⬆ Back to Top](#table-of-contents)**
 
