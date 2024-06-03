@@ -381,8 +381,14 @@
   **[⬆ Back to Top](#table-of-contents)**
 
 7. ### What are components?
-    Components are the most basic UI building block of an Angular app, which form a tree of Angular components. These components are a subset of directives. Unlike directives, components always have a template, and only one component can be instantiated per element in a template.
-    Let's see a simple example of Angular component
+   A Component is a class with an associated template that defines a view. 
+   A component controls a part of the screen called a view, which is defined by a 
+   class that controls the view through its template. 
+
+   The Component class is the logic behind the view, 
+   and it is responsible for handling user interactions,
+   updating the data model, and interacting with other components or services.
+   view through an API of properties and methods exposed by the component.
     ```typescript
     import { Component } from '@angular/core';
 
@@ -420,7 +426,12 @@
   **[⬆ Back to Top](#table-of-contents)**
 
 9. ### What is a template?
-    A template is a HTML view where you can display data by binding controls to properties of an Angular component. You can store your component's template in one of two places. You can define it inline using the template property, or you can define the template in a separate HTML file and link to it in the component metadata using the @Component decorator's templateUrl property.
+   when we create a component in order to use it. We use it's selector
+   as an html element .And wherever we use the selector of a component like an html element  .
+   There some html get rendered
+   That html is called the view tempelate of a component.
+   The view tempelate of a component is a form of HTML that tells angular how 
+   to render a component
 
     **Using inline template with template syntax,**
     ```typescript
@@ -458,10 +469,10 @@
 
 10. ### What is a module?
 
-   <!-- A module is a logical container that organizes related components, 
+   A module is a logical container that organizes related components, 
    directives, pipes, and services within an application, promoting code
    organization, reusability, and maintainability. It serves
-   as a cohesive unit for managing and scaling Angular application -->
+   as a cohesive unit for managing and scaling Angular application
 
     Lets take an example of **app.module.ts** root module declared with **@NgModule** decorator as below,
     ```typescript
@@ -477,7 +488,7 @@
     })
     export class AppModule { }
     ```
-    <!-- The NgModule decorator has five important (among all) options/arrays:
+    The NgModule decorator has five important (among all) options/arrays:
 
     imports: Specifies the dependencies (other modules) that the current module needs to function properly. In this case, it imports the BrowserModule, which provides essential services for browser-based applications.
 
@@ -487,14 +498,14 @@
 
    providers: Registers services with the module's injector. Services registered here are available for dependency injection throughout the application. In this case, the array is left empty, indicating that no additional services are provided at the module level.
 
-   In summary, this NgModule decorator configures a module with necessary imports, declares its components, sets the root component for bootstrapping, and optionally provides services. -->
+   In summary, this NgModule decorator configures a module with necessary imports, declares its components, sets the root component for bootstrapping, and optionally provides services.
   
 
   **[⬆ Back to Top](#table-of-contents)**
 
 11. ### What are lifecycle hooks available?
 
-    <!-- Angular application goes through an entire set of processes or has a lifecycle right from its initiation to the end of the application. -->
+    Angular application goes through an entire set of processes or has a lifecycle right from its initiation to the end of the application.
     The representation of lifecycle in pictorial representation as follows,
 
     ![ScreenShot](images/lifecycle.png)
@@ -1182,7 +1193,7 @@ Handling: Uses only the .then() clause for chaining and handling.
     });
       // This is, under the hood, `s
     ```
-<!-- When multicasted is subscribed to, it doesn't directly execute
+When multicasted is subscribed to, it doesn't directly execute
 the source observable for each subscriber. Instead, it uses the
 subject to share a single execution of the source observable among all subscribers.
 
@@ -1190,10 +1201,10 @@ subject.subscribe({...}) under the hood manages the subscriptions to
 ensure each subscriber gets the values emitted by the source observable.
 
 This way, the data is efficiently broadcasted to multiple subscribers 
-in a single execution, achieving multicasting. -->
+in a single execution, achieving multicasting.
 
   **[⬆ Back to Top](#table-of-contents)**
-<!--   
+  
 Unicast
 Description: One-to-one communication method
 Advantages: Efficient method to transmit data to a specific device
@@ -1205,7 +1216,7 @@ Disadvantages: Requires multicast support from network infrastructure
 Broadcast
 Description: One-to-all communication method
 Advantages: Simple to implement
-Disadvantages: Generates a lot of network traffic -->
+Disadvantages: Generates a lot of network traffic
 
 46. ### How do you perform error handling in observables?
     You can handle errors by specifying an **error callback** on the observer instead of relying on `try`/`catch`, which are ineffective in asynchronous environment.
