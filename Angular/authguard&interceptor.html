@@ -1,0 +1,407 @@
+// ActivatedRouteSnapshot and state: RouterStateSnapshot.
+
+// authGuard Example:
+<script.ts>
+  export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+  // If user is not authenticated, redirect to login page and save intended URL
+  const returnUrl = state.url;
+  console.log(`User attempted to access ${returnUrl} without authentication. Redirecting to login.`);
+  router.navigate(['/login'], { queryParams: { returnUrl: returnUrl } });
+  return false;
+  }
+
+  // If user is authenticated, allow access to the route
+  return true;
+  };
+  </script>
+  <!-- In this example:
+
+We check if the user has a valid token stored in localStorage.
+If not, we redirect the user to the login page and pass the 
+intended URL as a query parameter (returnUrl), which can be
+ used later to redirect the user back to the original destination after login.
+If the user is authenticated, we allow access to the route.
+
+logGuard Example: -->
+  <script.ts>
+    export const logGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+    // If user is already logged in, redirect to task manager
+    console.log(`User is already authenticated. Redirecting to task manager.`);
+    router.navigate(['/taskmanager']);
+    return false;
+    }
+
+    // If user is not logged in, allow access to the route
+    return true;
+    };
+    </script>
+    <!-- In this example:
+
+We check if the user has a valid token stored in localStorage.
+If the token exists, it means the user is already logged in, so we redirect them to the task manager page.
+If the token does not exist, we allow access to the route, assuming the user is not logged in.
+These examples demonstrate the use of route: ActivatedRouteSnapshot and
+ state: RouterStateSnapshot in implementing authGuard and logGuard functions for Angular route guarding. -->
+
+
+
+    <script.ts>
+      import { HttpInterceptorFn } from "@angular/common/http";
+      // This imports the HttpInterceptorFn type from Angular's HTTP
+      // client module, which is used to type the interceptor function.
+
+      export const authInterceptor: HttpInterceptorFn = (req, next) => {
+      // This defines the authInterceptor function with two parameters:
+      // req: The outgoing HTTP request.
+      // next: A function that forwards the request to
+      // the next interceptor in the chain or sends it to the server
+      // Retrieve the token from localStorage and parse it from JSON string to JavaScript object.
+      const token = JSON.parse(localStorage.getItem("token") as string);
+
+      // Retrieve the company ID from localStorage.
+      const companyId = localStorage.getItem("company_id");
+
+      // Check if the token exists.
+      if (token) {
+      // Clone the request and add the Authorization and Company-Id headers.
+      req = req.clone({
+      setHeaders: {
+      Authorization: `Bearer ${token}`, // Set the Authorization header with the token.
+      "Company-Id": companyId || "" // Set the Company-Id header if companyId is available, else set it to an empty
+      string.
+      },
+      });
+      }
+
+      // Pass the modified or original request to the next handler in the chain.
+      return next(req);
+      };
+      // The modified (or original, if no token was present) request
+      // is passed to the next handler in the HTTP request processing chain.
+
+      </script>
+
+
+      <script.ts>
+        In Angular, route guards are used to control navigation to and from routes within your application.
+        The Angular router provides several types of route guards to help manage navigation:
+
+        1. CanActivate
+        The CanActivate guard is used to determine if a route can be activated. This is typically
+        used for authentication purposes to prevent unauthorized users from accessing certain routes.
+
+        Example:
+
+        import { Injectable } from '@angular/core';
+        import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+        import { Observable } from 'rxjs';
+
+        @Injectable({
+        providedIn: 'root'
+        })
+        export class AuthGuard implements CanActivate {
+        constructor(private router: Router) {}
+
+        canActivate(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
+        ): Observable<boolean> | Promise<boolean> | boolean {
+            const isLoggedIn = !!localStorage.getItem('token');
+
+            if (!isLoggedIn) {
+            this.router.navigate(['/login']);
+            }
+
+            return isLoggedIn;
+            }
+            }
+            2. CanActivateChild
+            The CanActivateChild guard works similarly to CanActivate, but it is used to determine
+            if a child route can be activated. This is useful for protecting nested routes.
+
+            Example:
+
+            import { Injectable } from '@angular/core';
+            import { CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+            import { Observable } from 'rxjs';
+
+            @Injectable({
+            providedIn: 'root'
+            })
+            export class AuthGuardChild implements CanActivateChild {
+            constructor(private router: Router) {}
+
+            canActivateChild(
+            route: ActivatedRouteSnapshot,
+            state: RouterStateSnapshot
+            ): Observable<boolean> | Promise<boolean> | boolean {
+                const isLoggedIn = !!localStorage.getItem('token');
+
+                if (!isLoggedIn) {
+                this.router.navigate(['/login']);
+                }
+
+                return isLoggedIn;
+                }
+                }
+                3. CanDeactivate
+                The CanDeactivate guard is used to determine if a route can be exited. This is useful for
+                prompting users to save changes before navigating away from a form.
+
+                Example:
+
+                import { Injectable } from '@angular/core';
+                import { CanDeactivate } from '@angular/router';
+                import { Observable } from 'rxjs';
+
+                export interface CanComponentDeactivate {
+                canDeactivate: () => Observable<boolean> | Promise<boolean> | boolean;
+                    }
+
+                    @Injectable({
+                    providedIn: 'root'
+                    })
+                    export class CanDeactivateGuard implements CanDeactivate<CanComponentDeactivate> {
+                      canDeactivate(
+                      component: CanComponentDeactivate
+                      ): Observable<boolean> | Promise<boolean> | boolean {
+                          return component.canDeactivate ? component.canDeactivate() : true;
+                          }
+                          }
+                          Component Example:
+
+                          import { Component } from '@angular/core';
+                          import { CanComponentDeactivate } from './can-deactivate.guard';
+
+                          @Component({
+                          selector: 'app-edit',
+                          template: `
+                          <form>
+                            <!-- form fields -->
+                          </form>
+                          `
+                          })
+                          export class EditComponent implements CanComponentDeactivate {
+                          canDeactivate(): boolean {
+                          return confirm('Do you want to discard changes?');
+                          }
+                          }
+
+                          4. CanLoad
+                          The CanLoad guard is used to determine if a module can be loaded. This is typically
+                          used for
+                          Role-Based Access Control (RBAC): Even though a user is authenticated,
+                          they may not have access to certain parts of the application based on their role.
+                          The CanLoad guard can check the user's role or permissions to determine
+                          if they are allowed to load a specific module.
+
+                          License or Subscription Status: In applications where access is tied to a subscription or
+                          license, even authenticated users might not have access to certain features or modules
+                          if their subscription is expired or if they don't have the necessary permissions.
+
+                          Conditional Loading: Depending on the application's configuration or business logic,
+                          certain modules may need to be conditionally loaded based on dynamic factors
+                          such as user preferences, settings, or external conditions.
+
+                          Example:
+
+                          import { Injectable } from '@angular/core';
+                          import { CanLoad, Route, UrlSegment, Router } from '@angular/router';
+                          import { Observable } from 'rxjs';
+
+                          @Injectable({
+                          providedIn: 'root'
+                          })
+                          export class CanLoadGuard implements CanLoad {
+                          constructor(private router: Router) {}
+
+                          canLoad(
+                          route: Route,
+                          segments: UrlSegment[]
+                          ): Observable<boolean> | Promise<boolean> | boolean {
+                              const isLoggedIn = !!localStorage.getItem('token');
+
+                              if (!isLoggedIn) {
+                              this.router.navigate(['/login']);
+                              }
+
+                              return isLoggedIn;
+                              }
+                              }
+                              Summary
+
+                              CanActivate: Checks if a route can be activated, typically used for authentication.
+                              CanActivateChild: Checks if a child route can be activated, useful for nested routes.
+                              CanDeactivate: Checks if a route can be exited, often used to prevent loss of unsaved
+                              changes.
+                              CanLoad: Checks if a module can be loaded, useful for lazy-loading and access control.
+
+                              Each of these guards can be implemented to return an Observable<boolean>, Promise<boolean>
+                                  ,
+                                  or a boolean, depending on whether the check is synchronous or asynchronous. These
+                                  guards
+                                  help manage navigation flow and ensure users interact with the application in a
+                                  controlled manner.
+                                  </script>
+
+                                  <!-- The !! (double negation) operator is used to explicitly
+convert the value into a boolean. If a token exists in the localStorage,
+localStorage.getItem('token') will return a truthy value, and !! will convert it to true,  -->
+
+
+                                  <!-- Pure Pipes: Stateless, efficient, and produce the same output for the same input. 
+They are called only when the input value or parameters change.
+
+Impure Pipes: Stateful or rely on external factors. They are recalculated on
+every change detection cycle and are suitable for scenarios where
+the transformation depends on mutable state or external factors. -->
+
+
+                                  <!-- 
+View Encapsulation: In Angular, view encapsulation refers to the way 
+Angular scopes styles to the component's view. By default, Angular 
+uses Emulated Encapsulation, which means each component's styles are
+scoped to that component's view only. This prevents styles from
+bleeding into other components. Angular also supports Shadow
+DOM encapsulation and None (where styles are global).
+
+ngBind: This term is more commonly associated with AngularJS (Angular 1.x).
+It's a directive that binds the AngularJS application data to HTML tags.
+In Angular (versions 2 and above), a similar functionality is achieved
+using interpolation ({{}}) or property binding ([]).
+
+Signal: This term can refer to various things in different contexts. In
+Angular, it might relate to observable streams or events being emitted
+from components or services.
+
+Subject: In the context of Angular and RxJS (Reactive Extensions for JavaScript), 
+a Subject is a special type of Observable that allows values to be multicasted to
+many Observers. Subjects are both Observers and Observables.
+
+concatMap, switchMap, mergeMap: These are operators provided by RxJS library for
+handling asynchronous operations in Angular applications. They are used in 
+combination with observables to manage the handling of asynchronous data.
+Each has slightly different behavior:
+
+concatMap: Maps each value to an observable, then flattens all of these inner
+observables into a single observable, in a serialized manner. It waits for 
+each inner observable to complete before moving to the next.
+
+switchMap: Similar to concatMap, but it cancels previous subscriptions when
+a new value arrives, switching to the new observable.
+
+mergeMap: Maps each value to an observable, then flattens all of these inner
+observables into a single observable, concurrently. It doesn't wait for inner
+observables to complete before moving to the next.
+
+Preprocessor CSS: This refers to a tool or language that extends CSS with variables, 
+mixins, functions, and many other mechanisms. Popular preprocessors include Sass, LESS, 
+and Stylus. In an Angular context, you can use preprocessors to write more maintainable
+and modular CSS for your components.
+
+Minify CSS: Minification is the process of reducing the size of CSS files By
+removing unnecessary whitespace, comments, and renaming variables to shorter
+names, without affecting the functionality of the code. This improves website
+loading times by reducing file size. In an Angular context, you might use 
+minification tools as part of your build process to optimize CSS files for production deployment. -->
+
+
+
+<!-- Sass (Syntactically Awesome Stylesheets) and SCSS (Sassy CSS) are both CSS preprocessors,
+ meaning they extend the functionality of regular CSS by adding features like variables,
+  nesting, mixins, inheritance, functions, and more. Let's compare them:
+
+Sass:
+Syntax: Sass has its own syntax, which is intended to be more concise and less
+ cluttered than CSS. It uses indentation to define blocks of code and omits
+  semicolons and curly braces.
+
+Example:
+
+sass
+$primary-color: blue
+
+.container
+  width: 100%
+  padding: 20px
+
+  .btn
+    background-color: $primary-color
+    &:hover
+      background-color: darken($primary-color, 10%)
+File Extension: .sass
+
+Features:
+
+Shorter syntax
+No curly braces or semicolons
+Indentation-based
+Limited compatibility with existing CSS
+SCSS:
+Syntax: SCSS (Sassy CSS) is an extension of CSS, meaning it has a syntax similar to
+ CSS with some additional features. It uses curly braces, semicolons, and other CSS conventions.
+
+Example:
+
+scss
+
+$primary-color: blue;
+
+.container {
+  width: 100%;
+  padding: 20px;
+
+  .btn {
+    background-color: $primary-color;
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+File Extension: .scss
+
+Features:
+
+CSS-like syntax
+Full compatibility with existing CSS
+Familiarity to developers coming from traditional CSS
+CSS:
+Syntax: CSS (Cascading Style Sheets) is the standard styling language for the web.
+ It consists of a series of rulesets, each containing selectors and declarations.
+
+Example:
+<style>
+css
+
+.container {
+  width: 100%;
+  padding: 20px;
+}
+
+.container .btn {
+  background-color: blue;
+}
+
+.container .btn:hover {
+  background-color: darkblue;
+}
+</style>
+File Extension: .css
+
+Features:
+
+Widely supported by browsers
+No preprocessing required
+Limited in terms of functionality compared to Sass/SCSS
+
+
+After writing Sass code, it needs to be compiled into regular CSS so that 
+browsers can understand it. You can use various tools for compilation, such as:
+
+Command Line Tools: You can use the command line to compile Sass files. For example:
+sass input.scss output.css -->

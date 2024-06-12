@@ -375,3 +375,364 @@ simplify the process and make it easy to incorporate into development workflows.
     //     }
     // }, 1000);
 </script>
+
+<script>
+    
+// Anonymous:
+
+// Arrow Functions: Can be created without a name, often used for inline functions.
+// Normal Functions: Typically named, which is useful for debugging and self-documenting code.
+// Syntax:
+
+// Arrow Functions: Use a more concise syntax (=>).
+// Normal Functions: Use the traditional function keyword, resulting in more verbose code.
+// Handling multiple expressions:
+
+// Arrow Functions: Less intuitive when handling multiple statements due to needing explicit {} and return.
+// Normal Functions: More straightforward when handling multiple statements.
+// this keyword behavior:
+
+// Arrow Functions: Lexically bind this, meaning they inherit this from the parent scope.
+// Normal Functions: Bind this to the object that calls the function, making them useful for methods.
+// Constructor functionality:
+
+// Arrow Functions: Cannot be used as constructors and will throw an error if used with new.
+// Normal Functions: Can be used as constructors with the new keyword to create instances.
+// Arguments object:
+
+// Arrow Functions: Do not have their own arguments object; use rest parameters (...args) instead.
+// Normal Functions: Have their own arguments object, which is an array-like object accessible within the function.
+// Duplicate named parameters:
+
+// Arrow Functions: ES6 strict mode disallows duplicate named parameters in arrow functions.
+// Normal Functions: Allow duplicate named parameters (not recommended, though).
+// call, apply, and bind:
+
+// Arrow Functions: The methods call, apply, and bind do not change the this value.
+// Normal Functions: These methods can change the this value within the function.
+// Scoping:
+
+// Arrow Functions: Lexically scoped, which means the this value is determined
+//     by the surrounding code context where the arrow function is defined.
+// Normal Functions: Functionally scoped, meaning this is determined by how the function is called.
+
+// Anonymous
+const arrowGreet = () => {
+    console.log("Hello from Arrow Function!");
+  };
+  function normalGreet() {
+    console.log("Hello from Normal Function!");
+  }
+  arrowGreet(); // Output: Hello from Arrow Function!
+  normalGreet(); // Output: Hello from Normal Function!
+  
+  // Syntax
+  const arrowAdd = (a, b) => a + b;
+  function normalAdd(a, b) {
+    return a + b;
+  }
+  console.log(arrowAdd(2, 3)); // Output: 5
+  console.log(normalAdd(2, 3)); // Output: 5
+  
+  // Handling Multiple Expressions
+  const arrowComplexOperation = (a, b) => {
+    const result = a + b;
+    return result * 2;
+  };
+  function normalComplexOperation(a, b) {
+    const result = a + b;
+    return result * 2;
+  }
+  console.log(arrowComplexOperation(2, 3)); // Output: 10
+  console.log(normalComplexOperation(2, 3)); // Output: 10
+  
+  // `this` Keyword Behavior
+  const arrowObj = {
+    value: 10,
+    increment: () => {
+      console.log(this.value); // undefined, inherits `this` from the global scope
+    }
+  };
+  const normalObj = {
+    value: 10,
+    increment: function() {
+      console.log(this.value); // 10, `this` refers to `normalObj`
+    }
+  };
+  arrowObj.increment();
+  normalObj.increment();
+  
+  // Constructor Functionality
+  const ArrowPerson = (name) => {
+    this.name = name;
+  };
+  // const arrowPerson = new ArrowPerson("John"); // Error: ArrowPerson is not a constructor
+  
+  function NormalPerson(name) {
+    this.name = name;
+  }
+  const normalPerson = new NormalPerson("John");
+  console.log(normalPerson.name); // Output: John
+  
+  // Arguments Object
+  const arrowShowArgs = (...args) => {
+    console.log(args); // Uses rest parameters
+  };
+   
+  arrowShowArgs(1, 2, 3); // Output: [1, 2, 3]
+  normalShowArgs(1, 2, 3); // Output: [Arguments] { '0': 1, '1': 2, '2': 3 }
+  
+  // Duplicate Named Parameters
+  // const arrowFunc = (a, a) => a; // SyntaxError: Duplicate parameter name not allowed
+  function normalFunc(a, a) {
+    return a;
+  }
+  console.log(normalFunc(1, 2)); // Output: 2
+  
+  // `call`, `apply`, and `bind`
+  const arrowFuncCall = () => {
+    console.log(this);
+  };
+  function normalFuncCall() {
+    console.log(this);
+  }
+  arrowFuncCall.call({ name: "Alice" }); // Output: Window (or global object in Node.js)
+  normalFuncCall.call({ name: "Alice" }); // Output: { name: "Alice" }
+  
+  // Scoping
+  const arrowOuterFunc = () => {
+    return () => {
+      console.log(this); // Inherits `this` from the arrowOuterFunc scope
+    };
+  };
+  function normalOuterFunc() {
+    return function() {
+      console.log(this); // `this` is determined by the call
+    };
+  }
+  arrowOuterFunc().call({ name: "Alice" }); // Output: Window (or global object in Node.js)
+  normalOuterFunc().call({ name: "Alice" }); // Output: { name: "Alice" }
+  
+
+
+  /////
+
+// mapfilterreduce
+// forEach().map() -> No: forEach() doesn't return an array, so map() cannot be chained to it.
+// map().forEach() -> Yes: Since map() returns an array, forEach() can be chained to iterate over the mapped array.
+// filter().reduce() -> Yes: filter() returns an array, and reduce() can be chained to it to reduce the filtered array to a single value.
+// map().filter() -> Yes: map() returns an array, and filter() can be chained to it to filter the mapped array.
+// forEach().filter() -> No: forEach() doesn't return an array, so filter() cannot be chained to it.
+const bag = [
+    { title: "Apple" },
+    { title: "Banana" },
+    { title: "Orange" },
+    { title: "Grapes" }
+  ];
+  const e = "a"; // searching for titles containing 'a'
+  let newData = bag.filter((elem) => elem.title.toLowerCase().includes(e.toLowerCase()));
+  console.log(newData);
+  // Output: [
+  //   { title: "Apple" },
+  //   { title: "Banana" },
+  //   { title: "Orange" },
+  //   { title: "Grapes" }
+  // ]
+  
+  // const bag = ["Apple", "Banana", "Orange", "Grapes"];
+  // const e = "a"; // searching for strings containing 'a'
+  // let newData = bag.filter((str) => str.toLowerCase().includes(e.toLowerCase()));
+  // console.log(newData);
+  // // Output: ["Apple", "Banana", "Orange", "Grapes" ]
+
+  // The includes method checks if an array contains a specific element.
+  //  It returns true if the element is found, and false
+let fruits = ["apple", "banana", "mango", "orange"];
+let hasMango = fruits.includes("mango");
+console.log(hasMango); // Output: true
+
+//deep.js
+
+// Returning Functions (Closures):
+// Functions in JavaScript can also return other functions. 
+// This is often used to create closures, where the inner 
+// function has access to the variables of the outer function 
+// even after the outer function has finished executing.
+
+function outer() {
+    var a = 10;
+
+    function inner() {
+        console.log(a); // Accesses the 'a' variable from the outer function
+    }
+    return inner;
+}
+var closureFunction = outer();
+closureFunction(); // Outputs: 10
+// When closureFunction() is called, it:
+// Executes the inner function.
+// The inner function logs the value of a to the console.
+// Since inner is a closure, it retains access to the variable
+// a from the scope in which it was created, 
+// which is the outer function's scope.
+
+// outer() is called, and it returns the inner function.
+// closureFunction holds the reference to the returned inner function.
+// When closureFunction() is called, it executes the inner function.
+// The inner function logs the value of a (which is 10) to the
+//  console because it has access to the a variable through closure.
+//
+
+function outer() {
+    var a = 10;
+    function inner() {
+        return a;
+    }
+    return inner;
+}
+console.log(outer()())//10
+// When outer is called, it:
+
+// Declares a variable a with the value 10.
+// Defines an inner function inner that returns the value of a.
+// Returns the inner function.
+// Execution of the returned function:
+
+// outer() returns the inner function.
+// The returned inner function is then immediately invoked by the second pair of parentheses ().
+// Return value of inner:
+// return a;
+// The inner function returns the value of a, which is 10.
+// Output of console.log:
+// console.log(outer()()) logs the return value of the inner function, which is 10
+
+
+
+// ///
+// function outer() {
+//     var a = 10;
+
+//     function inner() {
+//         console.log(a);
+//     }
+
+//     return inner;
+// }
+// console.log(outer()())
+
+// outer() is called, which returns the inner function.
+// The returned inner function is immediately invoked.
+// Inside inner, it logs the value of a (which is 10).
+// The result of this process will be:
+
+// 10
+// undefined
+// The undefined is the result of console.log(outer()()). 
+// The inner function doesn't return a value; it only logs 
+// the value of a. Therefore, the overall expression
+//  console.log(outer()()) logs 10 from the inner function
+//   and then undefined because inner doesn't return anything.
+
+
+///
+
+// function outer() {
+//     var a = 10;
+//     function inner() {
+//         console.log(a);
+//     }
+//     return inner;
+// }
+// console.log(outer())
+
+// ƒ inner() {
+//     console.log(a);
+// }
+// This output is a string representation of the inner function,
+//  indicating that outer() returned the inner function itself.
+
+
+// const products = [
+//     { id: 1, name: "Laptop", price: 1000 },
+//     { id: 2, name: "Phone", price: 700 },
+//     { id: 3, name: "Tablet", price: 500 }
+//   ];
+//   const laptop = console.log(products.find(product => product.name === "Laptop"));
+  // laptop is { id: 1, name: "Laptop", price: 1000 } 
+  // const WSort=products.sort((a,b)=>(a.price-b.price))
+  // console.log(WSort)
+  // console.log([1,2,56,76,3,4].sort((a,b)=>(a-b)))
+
+
+
+//   Definition: The slice method returns a shallow copy of a portion of an array or string into 
+//   a new array or string object selected from start to end (end not included).
+//   The original array or string will not be modified.
+
+// Syntax:
+
+// For arrays: array.slice(start, end)
+// For strings: string.slice(start, end)
+
+// Parameters:
+// start: The zero-based index at which to begin extraction.
+// end (optional): The zero-based index before which to end extraction.
+// The element at this index will not be included. If omitted,
+// extraction goes till the end of the array/string.
+// Examples:
+
+// Array:
+// let fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+// let citrus = fruits.slice(1, 3);
+// // citrus contains ["Orange", "Lemon"]
+// // fruits remains unchanged
+// String:
+
+// let text = "Hello World";
+// let part = text.slice(0, 5);
+// // part contains "Hello"
+// // text remains unchanged
+// Splice
+// Definition: The splice method changes the contents of an array by removing 
+// or replacing existing elements and/or adding new elements in place. 
+// This method directly modifies the original array.
+
+// Syntax: array.splice(start, deleteCount, item1, item2, ...)
+
+// Parameters:
+
+// start: The index at which to start changing the array.
+// deleteCount (optional): The number of elements to remove. If 0, no elements are removed.
+// item1, item2, ... (optional): The elements to add to the array, beginning at the start index.
+// Examples:
+
+// Remove elements:
+
+// let fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+// let removed = fruits.splice(2, 2);
+// // removed contains ["Lemon", "Apple"]
+// // fruits is now ["Banana", "Orange", "Mango"]
+// Replace elements:
+
+// let fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+// let replaced = fruits.splice(2, 1, "Grapes");
+// // replaced contains ["Lemon"]
+// // fruits is now ["Banana", "Orange", "Grapes", "Apple", "Mango"]
+// Add elements:
+// let fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+// fruits.splice(2, 0, "Kiwi", "Pineapple");
+// // fruits is now ["Banana", "Orange", "Kiwi", "Pineapple", "Lemon", "Apple", "Mango"]
+// Key Differences
+
+// Purpose:
+// slice is used for creating a new array or string without modifying the original.
+// splice is used for adding/removing/replacing elements in an array, modifying the original array.
+
+// Modification:
+// slice does not modify the original array/string.
+// splice modifies the original array.
+
+// Return Value:
+// slice returns a new array/string.
+// splice returns an array containing the deleted elements.
+</script>
