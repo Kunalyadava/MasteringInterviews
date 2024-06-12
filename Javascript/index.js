@@ -7,24 +7,24 @@
 // Hoisting is JavaScript's default behavior of moving all declarations 
 // to the top of the current scope 
 // When a variable is declared with var, it is hoisted to the top of its scope,
-//  and its initialization (if any) is also hoisted. This means you can use 
-//  the variable before its declaration in the code. However, if a variable is
-//   declared with let or const, it is hoisted to the top of the scope as well,
-//    but its initialization is not hoisted. As a result, if you try to 
-//    access the variable before its declaration, you'll get a "ReferenceError."
+// and its initialization (if any) is also hoisted. This means you can use 
+// the variable before its declaration in the code. However, if a variable is
+// declared with let or const, it is hoisted to the top of the scope as well,
+// but its initialization is not hoisted. As a result, if you try to 
+// access the variable before its declaration, you'll get a "ReferenceError."
 
 
 
 
 
-// Hoisting
+//Hoisting
 //it only applies to variables and functions
 
 //It doesn't care about variable values. All it wants to know what 
 //variables are present in a program.
 
 
-// when js engine excutes a script it creates execution contexts, 
+//when js engine excutes a script it creates execution contexts, 
 //each execution context has 2 phases 
 
 // Javascript is executed in two phases
@@ -32,7 +32,7 @@
 // 2. Code Component (Thread of execution) Code Execution phase
 
 //Hoisting simply gives higher specificity to JavaScript declarations.
-//  Thus, it makes the computer read and process declarations first before
+//   Thus, it makes the computer read and process declarations first before
 //   analyzing any other code in a program.
 
 // - During the creation phase of the execution context,
@@ -45,7 +45,7 @@
 // - Execution phase:
 //     - Since memory allocation is done, now it will go into execution phase .
 //     - In this phase, JS executes our code line by line and assigns the
-//      value to the variables.
+//       value to the variables.
 
 // - Whatever we saw now is GEC (Global execution phase)
 // - There is one more thing called as functional execution phase
@@ -57,7 +57,7 @@
 
 // Javascript scans the file and gets the delcarations of functions, 
 // variables and class and stores/ moves up to the top of their scope,
-//  prior to the Code execution phase.
+// prior to the Code execution phase.
 
 //global execution context is the default  context in which js code starts 
 // its execution when the file first loads in the browser
@@ -99,26 +99,7 @@
 // Variables that you declare inside a block {} using let or const are
 //  limited only to that block.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Data types
-
 // Primitive Values 
 // Boolean, BigInt, String, Symbol, Null ,Number,  Undefined type
 // Immutable means that which cannot be changed or modified.
@@ -167,7 +148,7 @@ console.log(admin) //kunal,2,3 */}
 //  let obj={name:"Kunal"}
 //  const teacher=obj;
 //  obj.name="John" //'John'
- //here we are not assigning anything to teacher we are just mutating the values
+//  here we are not assigning anything to teacher we are just mutating the values
 
 
 
@@ -225,13 +206,13 @@ console.log(admin) //kunal,2,3 */}
 
 // Each object has a private property which holds a link to another 
 // object called its prototype.That prototype object has a prototype of its own,
-//  and so on until an object is reached with null as its prototype. By definition,
-//   null has no prototype, and acts as the final link in this prototype chain.
+// and so on until an object is reached with null as its prototype. By definition,
+// null has no prototype, and acts as the final link in this prototype chain.
 
 
 // Closures
 // Given InputArr = [1, ‘a’, ‘b’, 5, 6], 
-//Implement InputArr.square() So that it return OutputArr = [1, ‘a’, ‘b’, 25, 36]
+// Implement InputArr.square() So that it return OutputArr = [1, ‘a’, ‘b’, 25, 36]
 
 // const sum = (a, b) => a + b
 // sum(1, 2) // + operation
@@ -268,7 +249,7 @@ console.log(admin) //kunal,2,3 */}
 // A closure is created when a function is defined inside another 
 // function and has access to the outer function's variables.
 //  Closures allow a function to "remember" the environment 
-//  in which it was created, even after the outer function has finished 
+//  in which it was created, even after the outer function has finished  execution
 // //currying
 
 
@@ -393,23 +374,43 @@ console.log(admin) //kunal,2,3 */}
 
 
 
+// Function Declaration:
+// A function declaration defines a named function using the function keyword 
+// followed by the function name, parameters (if any), and the function body. It looks like this:
 
-//function expressions can be anonymous and it supports 
-//hoisting while function declations must have a name
-//example
-// function  sum(a,b){
-//   return a+b
+// function myFunction(parameter) {
+//   // function body
 // }
+// Characteristics:
+// Hoisting: Function declarations are hoisted. This means that 
+// regardless of where a function declaration is within its
+// containing scope, it is available for use before it's declared.
+// This allows you to call a function before its declaration in your code.
 
-//// function(a,b){
-//   return a+b
-// }
+// Name: The function name is mandatory in function declarations.
+//  It's used for referencing the function within its scope and for recursion.
 
 
-//while function declations must have a name and we must define/declare it before using
-//let sum= function (a,b){
-//   return a+b
-// }
+// Function expressions aren’t hoisted, which allows them to retain a copy 
+// of the local variables from the scope where they were defined.
+// Benefits of Function Expressions
+// There are several different ways that function expressions become more useful than function declarations.
+
+// As closures
+// As arguments to other functions
+// As Immediately Invoked Function Expressions (IIFE)
+
+// After a function expression has been stored in a variable, 
+// the variable can be used as a function. Functions stored in 
+// variables do not need function names. They are
+// always invoked (called) using the variable name.
+
+var greet = function() {
+  console.log("Hello, World!");
+};
+
+// Invoking the function using the variable name
+greet(); // Outputs: "Hello, World!"
 
 
 //Statements vs Expressions
@@ -469,7 +470,7 @@ one(); //Output for the above code is 1 2 1
 
 function one(){
   function two(){
-   console.log(a);
+    console.log(a);
   }
   var a=2;
   console.log(a);
@@ -485,7 +486,7 @@ one();
 
 // When javascript asked for the value of var a in function two’s 
 // execution context it couldn’t find it so it moved down and searched
-//  it in its outer lexical environment i.e. function one in this case.
+// it in its outer lexical environment i.e. function one in this case.
 
 
 
@@ -493,8 +494,8 @@ one();
 ///Temporal Dead Zone
 
 //Hoisting simply gives higher specificity to JavaScript declarations.
-// Thus, it makes the computer read and process declarations first before
-// analyzing any other code in a program.
+//Thus, it makes the computer read and process declarations first before
+//analyzing any other code in a program.
 
 // let a=100
 // console.log(a)
@@ -518,7 +519,6 @@ let b=100
 //when you try to acces it .it will give reference error
 //if we try to get any random variable it will give reff error and  x is not def
 
-
 //we cannot re-declare with let or let a=10 ,var a =10 in same scope //syntax error
 
 //const : we cannot re-declare or declare now and assign value later const meant to be 
@@ -526,7 +526,10 @@ let b=100
 
 
 //to avoid TDZ is to put all initialization and declaration on the TOP of the scope
-
+// The Temporal Dead Zone is a behavior in JavaScript that occurs when accessing a variable 
+// that has been declared (using let or const) but not yet initialized. This happens because
+//  let and const declarations are hoisted to the top of their block scope,
+//   but they are not initialized until the code execution reaches the declaration.
 
 
 //block:{  // compound statement } //it is used to combine multiple js groups or statements
@@ -597,9 +600,22 @@ console.log(a)
 
 //here both a are referring to diff memory space (block space and reserved memory space space)
 //it behaves in the same way in functions also
+{
+  let c = 3;
+  const d = 4;
 
+  {
+      let e = 5;
+      console.log(c); // 3 (inner block can access outer block's variables)
+      console.log(d); // 4
+      console.log(e); // 5
+  }
 
+  console.log(e); // ReferenceError: e is not defined (outer block cannot access inner block's variables)
+}
 
+// Function Scope: Variables declared with var are accessible within the function they are declared in.
+// Block Scope: Variables declared with let and const are accessible within the block they are declared in.
 
 //Illegal shadowding
 var z=20
@@ -653,3 +669,87 @@ const f=20;{
 //script
    //a:20
 //here it is following lexical scope pattern
+
+
+
+
+// Block Scope within a Function
+// Variables with let and const inside a block within a function:
+
+// function myFunction() {
+//     if (true) {
+//         let a = 10; // Block-scoped to this if block
+//         const b = 20; // Block-scoped to this if block
+//         console.log(a); // 10
+//         console.log(b); // 20
+//     }
+//     console.log(a); // ReferenceError: a is not defined
+//     console.log(b); // ReferenceError: b is not defined
+// }
+// myFunction();
+
+// In this example, a and b are only accessible within the if block inside myFunction.
+// Trying to access them outside the block, but still within the function, results in a ReferenceError.
+
+
+// Variable with var inside a block within a function:
+
+// function myFunction() {
+//     if (true) {
+//         var c = 30; // Function-scoped to myFunction
+//         console.log(c); // 30
+//     }
+//     console.log(c); // 30 (c is accessible throughout the function)
+// }
+// myFunction();
+
+// In this example, c is declared with var inside the if block. However,
+//  var is function-scoped, so c is accessible throughout the entire myFunction.
+
+// Summary of Scope Rules within Functions
+// Variables declared with let and const are block-scoped. This means they
+//  are only accessible within the block they are defined in, even if that block is inside a function.
+
+// Variables declared with var are function-scoped. This means they are accessible anywhere
+//  within the function, regardless of whether they are declared inside a block.
+
+
+// Example 1: Multiple Blocks within a Function:
+
+
+// function exampleFunction() {
+//     let x = 1; // Block-scoped to exampleFunction
+//     if (true) {
+//         let y = 2; // Block-scoped to this if block
+//         console.log(x); // 1 (accessible, since x is scoped to the outer function block)
+//         console.log(y); // 2
+//     }
+//     console.log(x); // 1
+//     console.log(y); // ReferenceError: y is not defined (y is block-scoped to the if block)
+// }
+// exampleFunction();
+
+// Example 2: Loop Block within a Function:
+// function loopFunction() {
+//     for (let i = 0; i < 3; i++) {
+//         let loopVar = i * 2; // Block-scoped to this for loop block
+//         console.log(loopVar); // Outputs 0, 2, 4 in each iteration
+//     }
+//     console.log(i); // ReferenceError: i is not defined (i is block-scoped to the for loop)
+//     console.log(loopVar); // ReferenceError: loopVar is not defined (loopVar is block-scoped to the for loop)
+// }
+// loopFunction();
+
+// Example 3: Mixing var and Block Scope:
+// function mixFunction() {
+//     if (true) {
+//         var a = 10; // Function-scoped to mixFunction
+//         let b = 20; // Block-scoped to this if block
+//     }
+//     console.log(a); // 10 (accessible, since a is function-scoped)
+//     console.log(b); // ReferenceError: b is not defined (b is block-scoped to the if block)
+// }
+// mixFunction();
+
+// Block Scope (let, const): Limited to the block they are declared in, even if the block is inside a function.
+// Function Scope (var): Limited to the function they are declared in, accessible throughout the function regardless of blocks.
