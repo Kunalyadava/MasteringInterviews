@@ -1,3 +1,10 @@
+//[1,2,3]===[1,2,3] 0r {}==={}
+//false
+//because they are stored at different memory locations and
+//equility operator in non premitives looks for same identity,
+//same location,same reference and not value
+
+
 // false 0 (zero) '' or “” (empty string) null undefined.
 // NaN.
 
@@ -61,7 +68,8 @@
 
 // In JavaScript, when an array is converted to a string,
 //  the elements of the array are concatenated with
-//  commas between them. However, in the case of an empty array, there are no elements to concatenate, so the resulting string is simply an empty string ("").
+//  commas between them. However, in the case of an empty array,
+// there are no elements to concatenate, so the resulting string is simply an empty string ("").
 
 // Thus, the expression [] + "1" will evaluate 
 //   to the string "1". The empty array is converted 
@@ -89,3 +97,39 @@
 
 // console.log(obj + 1);  // Output: 43 (valueOf() is used)
 // console.log(String(obj));  // Output: "Hello" (toString() is used)
+
+//scopes.js
+
+// let a=[10,20,30]
+// let b=[10,20,30]
+// console.log(a===b)  false
+
+// let a=10
+// let b=[10,20,30]
+// console.log(a===b)
+
+
+// for(let i=0;i<10;i++){
+    
+// }
+// console.log(i) //ref error
+
+// let a=11;
+// if(true){
+//     let b=10;
+//     if(true){
+//         console.log(b)
+//     }
+// }
+// console.log(a)
+// //10 
+// //11
+function a(){
+    var b=10;
+    c();
+    function c(){
+        console.log(b)
+}
+}
+a()
+// console.log(b)
