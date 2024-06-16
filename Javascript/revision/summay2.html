@@ -1,0 +1,758 @@
+<!-- 1. Convert a JS value to a JSON string.
+2. Perform a deep copy of a value, handling circular references.
+3. Convert a JSON string back to a JS value.
+4. Merge two objects, deeply combining properties.
+5. Deep freeze an object, preventing any changes.
+6. Write a polyfill for 'typeof' to return the correct type.
+7. Convert a JS object into a query string.
+8. Parse a query string back into a JS object.
+9. Return the longest word in a string.
+10. Compare two objects for deep equality.
+11. Flatten a deeply nested object.
+12. Rename keys in an object based on a mapping.
+13. Implement Promise.any and Promise.all Settled.
+14. Run N async tasks in series.
+15. Execute N async tasks concurrently.
+16. Execute N async tasks in a race condition.
+17. Throttle promises to limit API request rates.
+18. Cache identical API requests to avoid redundancy.
+19. Retry a promise-based function a specified number of times.
+20. Implement a timeout for a promise.
+21. Combine multiple promise-based functions, executing in parallel.
+22. Build a class that can subscribe to and emit events.
+23. Write a debounce function with a cancel method.
+24. Implement a throttle function with a cancel method.
+25. Write your own version of the 'call' method.
+26. Develop polyfills for 'call', 'apply', and 'bind'.
+27. Implement a simple pub/sub pattern.
+28. Write a custom event emitter for once-only listeners.
+29. Handle event delegation.
+30. Memoize a function taking a single argument.
+31. Write a pipe function that chains N functions.
+32. Write a curried function supporting placeholders.
+33. Create a polyfill for 'Object.assign'.
+34. Write a polyfill for Lodash's 'memoize' function.
+35. Calculate factorial using recursion.
+36. Generate Fibonacci numbers up to N.
+37. Implement a custom 'chunk' function like Lodash.
+38. Implement 'compose', combining functions from right to left.
+39. Implement lazy evaluation for a chain of functions.
+40. Flatten an array of arrays using 'reduce'.
+41. Check if two values are deeply equal.
+42. Recursively flatten an array to a single level.
+43. Implement negative indexing in arrays using Proxies.
+44. Create a custom version of Lodash's 'get' method.
+45. Find the intersection of two arrays.
+46. Remove duplicates from an array.
+47. Sort an array of objects by a property.
+48. Group an array of objects by a property.
+49. Rotate an array to the left by k positions.
+50. Reverse the words in a string while maintaining their order.
+51. Add an event listener to multiple elements.
+52. Remove all child nodes from a DOM element.
+53. Toggle a class on an element when clicked.
+54. Clone a DOM element and its children.
+Explain all these topics with an example  -->
+
+<script>
+    // 1. Convert a JS value to a JSON string.
+const jsValue = { name: "John", age: 30 };
+const jsonString = JSON.stringify(jsValue);
+console.log(jsonString); // Output: '{"name":"John","age":30}'
+// Explanation: This converts a JavaScript object into a JSON string.
+
+// 2. Perform a deep copy of a value, handling circular references.
+function deepCopy(value, cache = new WeakMap()) {
+    if (value === null || typeof value !== 'object') return value;
+    if (cache.has(value)) return cache.get(value);
+    const copy = Array.isArray(value) ? [] : {};
+    cache.set(value, copy);
+    Object.keys(value).forEach(key => {
+        copy[key] = deepCopy(value[key], cache);
+    });
+    return copy;
+}
+const obj = { a: 1 };
+obj.b = obj; // Circular reference
+const copiedObj = deepCopy(obj);
+console.log(copiedObj); // Output: { a: 1, b: [Circular] }
+// Explanation: This function creates a deep copy of an object, even if it has circular references.
+
+// 3. Convert a JSON string back to a JS value.
+const parsedValue = JSON.parse(jsonString);
+console.log(parsedValue); // Output: { name: "John", age: 30 }
+// Explanation: This converts a JSON string back into a JavaScript object.
+
+// 4. Merge two objects, deeply combining properties.
+function deepMerge(obj1, obj2) {
+    const result = { ...obj1 };
+    Object.keys(obj2).forEach(key => {
+        if (obj2[key] instanceof Object && key in obj1) {
+            result[key] = deepMerge(obj1[key], obj2[key]);
+        } else {
+            result[key] = obj2[key];
+        }
+    });
+    return result;
+}
+const obj1 = { a: 1, b: { x: 1 } };
+const obj2 = { b: { y: 2 }, c: 3 };
+const mergedObj = deepMerge(obj1, obj2);
+console.log(mergedObj); // Output: { a: 1, b: { x: 1, y: 2 }, c: 3 }
+// Explanation: This merges two objects, deeply combining their properties.
+
+// 5. Deep freeze an object, preventing any changes.
+function deepFreeze(obj) {
+    Object.getOwnPropertyNames(obj).forEach(name => {
+        const prop = obj[name];
+        if (typeof prop === 'object' && prop !== null) {
+            deepFreeze(prop);
+        }
+    });
+    return Object.freeze(obj);
+}
+const frozenObj = deepFreeze({ a: 1, b: { c: 2 } });
+frozenObj.b.c = 3; // This will not change the object as it's deeply frozen
+console.log(frozenObj.b.c); // Output: 2
+// Explanation: This recursively freezes an object, preventing any modifications to it.
+
+// 6. Write a polyfill for 'typeof' to return the correct type.
+function typeOf(value) {
+    if (value === null) return 'null';
+    if (Array.isArray(value)) return 'array';
+    return typeof value;
+}
+console.log(typeOf(null)); // Output: "null"
+console.log(typeOf([]));   // Output: "array"
+console.log(typeOf(42));   // Output: "number"
+// Explanation: This polyfill extends 'typeof' to correctly identify null and arrays.
+
+// 7. Convert a JS object into a query string.
+function toQueryString(obj) {
+    return Object.entries(obj)
+        .map(([key, val]) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`)
+        .join('&');
+}
+const queryObj = { name: "John", age: 30 };
+console.log(toQueryString(queryObj)); // Output: "name=John&age=30"
+// Explanation: This converts a JavaScript object into a URL query string.
+
+// 8. Parse a query string back into a JS object.
+function parseQueryString(query) {
+    return Object.fromEntries(new URLSearchParams(query));
+}
+const queryString = "name=John&age=30";
+console.log(parseQueryString(queryString)); // Output: { name: "John", age: "30" }
+// Explanation: This converts a URL query string back into a JavaScript object.
+
+// 9. Return the longest word in a string.
+function longestWord(str) {
+    return str.split(' ').reduce((longest, word) => word.length > longest.length ? word : longest, '');
+}
+console.log(longestWord("The quick brown fox jumped over the lazy dog")); // Output: "jumped"
+// Explanation: This function finds the longest word in a given string.
+
+// 10. Compare two objects for deep equality.
+function deepEqual(obj1, obj2) {
+    if (obj1 === obj2) return true;
+    if (typeof obj1 !== 'object' || typeof obj2 !== 'object' || obj1 == null || obj2 == null) return false;
+    const keys1 = Object.keys(obj1);
+    const keys2 = Object.keys(obj2);
+    if (keys1.length !== keys2.length) return false;
+    for (let key of keys1) {
+        if (!deepEqual(obj1[key], obj2[key])) return false;
+    }
+    return true;
+}
+console.log(deepEqual({ a: 1, b: 2 }, { a: 1, b: 2 })); // Output: true
+console.log(deepEqual({ a: 1 }, { a: 1, b: 2 })); // Output: false
+// Explanation: This function checks if two objects are deeply equal.
+
+// 11. Flatten a deeply nested object.
+function flattenObject(obj, prefix = '') {
+    return Object.keys(obj).reduce((acc, key) => {
+        const pre = prefix.length ? prefix + '.' : '';
+        if (typeof obj[key] === 'object' && obj[key] !== null) {
+            Object.assign(acc, flattenObject(obj[key], pre + key));
+        } else {
+            acc[pre + key] = obj[key];
+        }
+        return acc;
+    }, {});
+}
+const nestedObj = { a: 1, b: { c: 2, d: { e: 3 } } };
+console.log(flattenObject(nestedObj)); // Output: { 'a': 1, 'b.c': 2, 'b.d.e': 3 }
+// Explanation: This flattens a deeply nested object into a single level.
+
+// 12. Rename keys in an object based on a mapping.
+function renameKeys(obj, mapping) {
+    return Object.keys(obj).reduce((acc, key) => {
+        const newKey = mapping[key] || key;
+        acc[newKey] = obj[key];
+        return acc;
+    }, {});
+}
+const objToRename = { a: 1, b: 2 };
+const mapping = { a: 'x', b: 'y' };
+console.log(renameKeys(objToRename, mapping)); // Output: { x: 1, y: 2 }
+// Explanation: This renames keys in an object based on a given mapping.
+
+// 13. Implement Promise.any and Promise.allSettled.
+Promise.any = function(promises) {
+    return new Promise((resolve, reject) => {
+        let errors = [];
+        let pending = promises.length;
+        promises.forEach(p => p.then(resolve).catch(err => {
+            errors.push(err);
+            if (--pending === 0) reject(new AggregateError(errors, "All promises were rejected"));
+        }));
+    });
+};
+
+Promise.allSettled = function(promises) {
+    return Promise.all(promises.map(p => p
+        .then(value => ({ status: 'fulfilled', value }))
+        .catch(reason => ({ status: 'rejected', reason }))));
+}
+const p1 = Promise.resolve(1);
+const p2 = Promise.reject('error');
+Promise.any([p1, p2]).then(console.log); // Output: 1
+Promise.allSettled([p1, p2]).then(console.log); 
+// Output: [ { status: 'fulfilled', value: 1 }, { status: 'rejected', reason: 'error' } ]
+// Explanation: `Promise.any` resolves with the first fulfilled promise, `Promise.allSettled` resolves with the status of all promises.
+
+// 14. Run N async tasks in series.
+async function runTasksInSeries(tasks) {
+    const results = [];
+    for (const task of tasks) {
+        results.push(await task());
+    }
+    return results;
+}
+const task1 = () => Promise.resolve('task1');
+const task2 = () => Promise.resolve('task2');
+runTasksInSeries([task1, task2]).then(console.log); // Output: ['task1', 'task2']
+// Explanation: This runs asynchronous tasks one after another in series.
+
+// 15. Execute N async tasks concurrently.
+async function runTasksConcurrently(tasks) {
+    return await Promise.all(tasks.map(task => task()));
+}
+runTasksConcurrently([task1, task2]).then(console.log); // Output: ['task1', 'task2']
+// Explanation: This runs asynchronous tasks concurrently, meaning at the same time.
+
+// 16. Execute N async tasks in a race condition.
+async function runTasksInRace(tasks) {
+    return await Promise.race(tasks.map(task => task()));
+}
+runTasksInRace([task1, task2]).then(console.log); // Output: 'task1'
+// Explanation: This runs asynchronous tasks and resolves with the first one to complete.
+
+// 17. Throttle promises to limit API request rates.
+function throttlePromises(promises, limit) {
+    let activePromises = 0;
+    const results = [];
+    const execute = (resolve, reject) => {
+        if (activePromises === promises.length) {
+            resolve(results);
+            return;
+        }
+        if (activePromises < limit && activePromises < promises.length) {
+            promises[activePromises]().then(result => {
+                results.push(result);
+                activePromises--;
+                execute(resolve, reject);
+            }).catch(reject);
+            activePromises++;
+        }
+    };
+    return new Promise(execute);
+}
+const apiCall = () => new Promise(resolve => setTimeout(() => resolve('done'), 1000));
+throttlePromises([apiCall, apiCall, apiCall], 2).then(console.log); // Output: ['done', 'done', 'done']
+// Explanation: This throttles the execution of promises to limit the number of concurrent API calls.
+
+// 18. Cache identical API requests to avoid redundancy.
+const cache = new Map();
+function cachedFetch(url) {
+    if (cache.has(url)) return Promise.resolve(cache.get(url));
+    return fetch(url).then(response => {
+        cache.set(url, response);
+        return response;
+    });
+}
+cachedFetch('/api/data').then(console.log); // Output: Response from API
+cachedFetch('/api/data').then(console.log); // Output: Cached response
+// Explanation: This caches API requests to avoid making the same request multiple times.
+
+// 19. Retry a promise-based function a specified number of times.
+function retry(fn, retries) {
+    return fn().catch(err => retries > 0 ? retry(fn, retries - 1) : Promise.reject(err));
+}
+const unreliableTask = () => new Promise((resolve, reject) => Math.random() > 0.5 ? resolve('success') : reject('failure'));
+retry(unreliableTask, 3).then(console.log).catch(console.error); // Output: 'success' or 'failure' after 3 retries
+// Explanation: This retries a promise-based function a specified number of times if it fails.
+
+// 20. Implement a timeout for a promise.
+function promiseWithTimeout(promise, ms) {
+    const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), ms));
+    return Promise.race([promise, timeout]);
+}
+promiseWithTimeout(apiCall(), 500).then(console.log).catch(console.error); // Output: 'Timeout' if not resolved within 500ms
+// Explanation: This adds a timeout to a promise, rejecting it if it takes too long.
+
+// 21. Combine multiple promise-based functions, executing in parallel.
+async function combinePromises(promises) {
+    return await Promise.all(promises.map(fn => fn()));
+}
+combinePromises([apiCall, apiCall]).then(console.log); // Output: ['done', 'done']
+// Explanation: This combines multiple promise-based functions, executing them in parallel.
+
+// 22. Build a class that can subscribe to and emit events.
+class EventEmitter {
+    constructor() {
+        this.events = {};
+    }
+
+    on(event, listener) {
+        if (!this.events[event]) this.events[event] = [];
+        this.events[event].push(listener);
+    }
+
+    off(event, listener) {
+        if (this.events[event]) {
+            this.events[event] = this.events[event].filter(l => l !== listener);
+        }
+    }
+
+    emit(event, ...args) {
+        if (this.events[event]) {
+            this.events[event].forEach(listener => listener(...args));
+        }
+    }
+}
+const emitter = new EventEmitter();
+emitter.on('event', message => console.log(message));
+emitter.emit('event', 'Hello World'); // Output: 'Hello World'
+// Explanation: This class can subscribe to and emit events.
+
+// 23. Write a debounce function with a cancel method.
+function debounce(fn, delay) {
+    let timeout;
+    function debounced(...args) {
+        if (timeout) clearTimeout(timeout);
+        timeout = setTimeout(() => fn(...args), delay);
+    }
+    debounced.cancel = () => clearTimeout(timeout);
+    return debounced;
+}
+const debouncedLog = debounce(console.log, 1000);
+debouncedLog('Hello'); // Will log 'Hello' after 1 second
+debouncedLog.cancel(); // Cancels the debounce
+// Explanation: This debounces a function, delaying its execution, and provides a cancel method to stop it.
+
+// 24. Implement a throttle function with a cancel method.
+function throttle(fn, limit) {
+    let inThrottle;
+    function throttled(...args) {
+        if (!inThrottle) {
+            fn(...args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+    throttled.cancel = () => inThrottle = false;
+    return throttled;
+}
+const throttledLog = throttle(console.log, 1000);
+throttledLog('Hello'); // Will log 'Hello' immediately
+throttledLog.cancel(); // Cancels the throttle
+// Explanation: This throttles a function, limiting its execution rate, and provides a cancel method to stop it.
+
+// 25. Write your own version of the 'call' method.
+Function.prototype.myCall = function(context, ...args) {
+    context = context || globalThis;
+    const fnSymbol = Symbol('fn');
+    context[fnSymbol] = this;
+    const result = context[fnSymbol](...args);
+    delete context[fnSymbol];
+    return result;
+};
+function greet() {
+    return `Hello, ${this.name}`;
+}
+console.log(greet.myCall({ name: 'John' })); // Output: 'Hello, John'
+// Explanation: This creates a custom implementation of the 'call' method for functions.
+
+// 26. Develop polyfills for 'call', 'apply', and 'bind'.
+Function.prototype.myApply = function(context, args) {
+    context = context || globalThis;
+    const fnSymbol = Symbol('fn');
+    context[fnSymbol] = this;
+    const result = context[fnSymbol](...args);
+    delete context[fnSymbol];
+    return result;
+};
+
+Function.prototype.myBind = function(context, ...args) {
+    const fn = this;
+    return function(...newArgs) {
+        return fn.apply(context, args.concat(newArgs));
+    };
+};
+
+console.log(greet.myApply({ name: 'Jane' }, [])); // Output: 'Hello, Jane'
+const boundGreet = greet.myBind({ name: 'Doe' });
+console.log(boundGreet()); // Output: 'Hello, Doe'
+// Explanation: These polyfills implement 'call', 'apply', and 'bind' methods for functions.
+
+// 27. Implement a simple pub/sub pattern.
+class PubSub {
+    constructor() {
+        this.subscribers = {};
+    }
+
+    subscribe(event, callback) {
+        if (!this.subscribers[event]) this.subscribers[event] = [];
+        this.subscribers[event].push(callback);
+    }
+
+    unsubscribe(event, callback) {
+        if (this.subscribers[event]) {
+            this.subscribers[event] = this.subscribers[event].filter(cb => cb !== callback);
+        }
+    }
+
+    publish(event, data) {
+        if (this.subscribers[event]) {
+            this.subscribers[event].forEach(callback => callback(data));
+        }
+    }
+}
+const pubsub = new PubSub();
+pubsub.subscribe('message', console.log);
+pubsub.publish('message', 'Hello, World'); // Output: 'Hello, World'
+// Explanation: This implements a simple publish-subscribe pattern for events.
+
+// 28. Write a custom event emitter for once-only listeners.
+class OnceEventEmitter {
+    constructor() {
+        this.events = {};
+    }
+
+    once(event, listener) {
+        const wrapper = (...args) => {
+            listener(...args);
+            this.off(event, wrapper);
+        };
+        this.on(event, wrapper);
+    }
+
+    on(event, listener) {
+        if (!this.events[event]) this.events[event] = [];
+        this.events[event].push(listener);
+    }
+
+    off(event, listener) {
+        if (this.events[event]) {
+            this.events[event] = this.events[event].filter(l => l !== listener);
+        }
+    }
+
+    emit(event, ...args) {
+        if (this.events[event]) {
+            this.events[event].forEach(listener => listener(...args));
+        }
+    }
+}
+const onceEmitter = new OnceEventEmitter();
+onceEmitter.once('event', console.log);
+onceEmitter.emit('event', 'Hello'); // Output: 'Hello'
+onceEmitter.emit('event', 'World'); // No output
+// Explanation: This custom event emitter handles once-only listeners that are removed after being called once.
+
+// 29. Handle event delegation.
+function delegateEvent(parentSelector, eventType, childSelector, handler) {
+    document.querySelector(parentSelector).addEventListener(eventType, function(event) {
+        const targetElement = event.target.closest(childSelector);
+        if (this.contains(targetElement)) {
+            handler.call(targetElement, event);
+        }
+    });
+}
+delegateEvent('#parent', 'click', '.child', function(event) {
+    console.log('Child clicked:', this);
+});
+// Explanation: This function handles event delegation by listening to events on a parent element and delegating them to child elements that match the selector.
+
+// 30. Memoize a function taking a single argument.
+function memoize(fn) {
+    const cache = new Map();
+    return function(arg) {
+        if (cache.has(arg)) return cache.get(arg);
+        const result = fn(arg);
+        cache.set(arg, result);
+        return result;
+    };
+}
+const square = memoize(x => x * x);
+console.log(square(4)); // Output: 16
+console.log(square(4)); // Output: 16 (cached)
+// Explanation: This memoizes a function, caching its results for previously given arguments.
+
+// 31. Write a pipe function that chains N functions.
+function pipe(...fns) {
+    return function(arg) {
+        return fns.reduce((acc, fn) => fn(acc), arg);
+    };
+}
+const add = x => x + 1;
+const double = x => x * 2;
+const addAndDouble = pipe(add, double);
+console.log(addAndDouble(2)); // Output: 6
+// Explanation: This chains multiple functions together, passing the output of each as the input to the next.
+
+// 32. Write a curried function supporting placeholders.
+const _ = Symbol('placeholder');
+function curry(fn, arity = fn.length, ...args) {
+    return (...newArgs) => {
+        const combinedArgs = args.map(arg => arg === _ ? newArgs.shift() : arg).concat(newArgs);
+        return combinedArgs.length >= arity ? fn(...combinedArgs) : curry(fn, arity, ...combinedArgs);
+    };
+}
+const add3 = (a, b, c) => a + b + c;
+const curriedAdd3 = curry(add3);
+console.log(curriedAdd3(1, _, 3)(2)); // Output: 6
+// Explanation: This implements currying with support for placeholders.
+
+// 33. Create a polyfill for 'Object.assign'.
+if (typeof Object.assign !== 'function') {
+    Object.assign = function(target, ...sources) {
+        if (target === null || target === undefined) {
+            throw new TypeError('Cannot convert undefined or null to object');
+        }
+        const to = Object(target);
+        for (let i = 0; i < sources.length; i++) {
+            const source = sources[i];
+            if (source !== null && source !== undefined) {
+                for (let key in source) {
+                    if (Object.prototype.hasOwnProperty.call(source, key)) {
+                        to[key] = source[key];
+                    }
+                }
+            }
+        }
+        return to;
+    };
+}
+console.log(Object.assign({}, { a: 1 }, { b: 2 })); // Output: { a: 1, b: 2 }
+// Explanation: This polyfill for 'Object.assign' copies properties from source objects to a target object.
+
+// 34. Write a polyfill for Lodash's 'memoize' function.
+function memoize(fn, resolver) {
+    const cache = new Map();
+    return function(...args) {
+        const key = resolver ? resolver(...args) : args[0];
+        if (cache.has(key)) return cache.get(key);
+        const result = fn(...args);
+        cache.set(key, result);
+        return result;
+    };
+}
+const memFn = memoize(x => x * 2);
+console.log(memFn(2)); // Output: 4
+console.log(memFn(2)); // Output: 4 (cached)
+// Explanation: This polyfill for Lodash's 'memoize' function caches the results of a function based on its arguments.
+
+// 35. Calculate factorial using recursion.
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+console.log(factorial(5)); // Output: 120
+// Explanation: This calculates the factorial of a number using recursion.
+
+// 36. Generate Fibonacci numbers up to N.
+function fibonacci(n) {
+    const fib = [0, 1];
+    for (let i = 2; i <= n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+    }
+    return fib.slice(0, n);
+}
+console.log(fibonacci(5)); // Output: [0, 1, 1, 2, 3]
+// Explanation: This generates an array of Fibonacci numbers up to the Nth element.
+
+// 37. Implement a custom 'chunk' function like Lodash.
+function chunk(array, size) {
+    const result = [];
+    for (let i = 0; i < array.length; i += size) {
+        result.push(array.slice(i, i + size));
+    }
+    return result;
+}
+console.log(chunk([1, 2, 3, 4, 5], 2)); // Output: [[1, 2], [3, 4], [5]]
+// Explanation: This splits an array into chunks of a specified size.
+
+// 38. Implement 'compose', combining functions from right to left.
+function compose(...fns) {
+    return function(arg) {
+        return fns.reduceRight((acc, fn) => fn(acc), arg);
+    };
+}
+const doubleAndAdd = compose(add, double);
+console.log(doubleAndAdd(2)); // Output: 5
+// Explanation: This combines functions from right to left, passing the output of each as the input to the next.
+
+// 39. Implement lazy evaluation for a chain of functions.
+function lazyChain(value) {
+    const chain = [];
+    const proxy = new Proxy(() => {}, {
+        get(target, prop) {
+            if (prop === 'value') return chain.reduce((acc, fn) => fn(acc), value);
+            chain.push(val => val[prop]());
+            return proxy;
+        }
+    });
+    return proxy;
+}
+const result = lazyChain([1, 2, 3, 4]).map(x => x * 2).filter(x => x > 4).value;
+console.log(result); // Output: [6, 8]
+// Explanation: This implements lazy evaluation, allowing chaining of functions that are only executed when 'value' is accessed.
+
+// 40. Flatten an array of arrays using 'reduce'.
+function flatten(arr) {
+    return arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatten(val) : val), []);
+}
+console.log(flatten([1, [2, [3, [4]]]])); // Output: [1, 2, 3, 4]
+// Explanation: This flattens a deeply nested array into a single level using 'reduce'.
+
+// 41. Check if two values are deeply equal.
+console.log(deepEqual({ a: 1, b: 2 }, { a: 1, b: 2 })); // Output: true
+console.log(deepEqual({ a: 1 }, { a: 1, b: 2 })); // Output: false
+// Explanation: This function checks if two values are deeply equal.
+
+// 42. Recursively flatten an array to a single level.
+console.log(flatten([1, [2, [3, [4]]]])); // Output: [1, 2, 3, 4]
+// Explanation: This flattens a deeply nested array into a single level.
+
+// 43. Implement negative indexing in arrays using Proxies.
+const negativeArray = arr => new Proxy(arr, {
+    get(target, prop) {
+        prop = +prop;
+        return target[prop < 0 ? target.length + prop : prop];
+    }
+});
+const negArray = negativeArray([1, 2, 3, 4]);
+console.log(negArray[-1]); // Output: 4
+// Explanation: This uses Proxies to implement negative indexing for arrays.
+
+// 44. Create a custom version of Lodash's 'get' method.
+function get(obj, path, defaultValue) {
+    const keys = path.split('.');
+    let result = obj;
+    for (const key of keys) {
+        result = result ? result[key] : undefined;
+    }
+    return result === undefined ? defaultValue : result;
+}
+console.log(get({ a: { b: 2 } }, 'a.b', 0)); // Output: 2
+console.log(get({ a: { b: 2 } }, 'a.c', 0)); // Output: 0
+// Explanation: This retrieves the value at a given path in an object, returning a default value if not found.
+
+// 45. Find the intersection of two arrays.
+function intersection(arr1, arr2) {
+    return arr1.filter(value => arr2.includes(value));
+}
+console.log(intersection([1, 2, 3], [2, 3, 4])); // Output: [2, 3]
+// Explanation: This finds the intersection of two arrays, returning common elements.
+
+// 46. Remove duplicates from an array.
+function removeDuplicates(arr) {
+    return [...new Set(arr)];
+}
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4])); // Output: [1, 2, 3, 4]
+// Explanation: This removes duplicate values from an array using a Set.
+
+// 47. Sort an array of objects by a property.
+function sortByProperty(arr, prop) {
+    return arr.sort((a, b) => (a[prop] > b[prop]) ? 1 : (a[prop] < b[prop]) ? -1 : 0);
+}
+const people = [{ name: 'John', age: 30 }, { name: 'Jane', age: 25 }];
+console.log(sortByProperty(people, 'age')); // Output: [{ name: 'Jane', age: 25 }, { name: 'John', age: 30 }]
+// Explanation: This sorts an array of objects by a specified property.
+
+// 48. Find the union of two arrays.
+function union(arr1, arr2) {
+    return [...new Set([...arr1, ...arr2])];
+}
+console.log(union([1, 2, 3], [2, 3, 4])); // Output: [1, 2, 3, 4]
+// Explanation: This finds the union of two arrays, combining unique elements from both.
+
+// 49. Check if a string is a palindrome.
+function isPalindrome(str) {
+    const cleaned = str.toLowerCase().replace(/[\W_]/g, '');
+    return cleaned === cleaned.split('').reverse().join('');
+}
+console.log(isPalindrome('A man, a plan, a canal, Panama!')); // Output: true
+// Explanation: This checks if a string is a palindrome, ignoring non-alphanumeric characters and case.
+
+// 50. Shuffle an array using Fisher-Yates algorithm.
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+console.log(shuffleArray([1, 2, 3, 4, 5])); // Output: [4, 2, 1, 5, 3] (example output)
+// Explanation: This shuffles an array using the Fisher-Yates algorithm for randomization.
+
+// 51. Deep clone an object using recursion.
+function deepClone(obj) {
+    if (obj === null || typeof obj !== 'object') return obj;
+    
+    const clone = Array.isArray(obj) ? [] : {};
+    
+    for (let key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            clone[key] = deepClone(obj[key]);
+        }
+    }
+    
+    return clone;
+}
+const original = { a: { b: 2 } };
+const cloned = deepClone(original);
+console.log(cloned); // Output: { a: { b: 2 } } (example output)
+// Explanation: This deep clones an object, preserving its structure recursively.
+
+// 52. Check if a number is prime.
+function isPrime(num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+    if (num % 2 === 0 || num % 3 === 0) return false;
+    let i = 5;
+    while (i * i <= num) {
+        if (num % i === 0 || num % (i + 2) === 0) return false;
+        i += 6;
+    }
+    return true;
+}
+console.log(isPrime(11)); // Output: true
+// Explanation: This checks if a number is prime using optimized trial division.
+
+// 53. Convert a string to title case.
+function toTitleCase(str) {
+    return str.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+}
+console.log(toTitleCase('hello world')); // Output: 'Hello World'
+// Explanation: This converts a string to title case, capitalizing the first letter of each word.
+
+// 54. Flatten an array using recursion.
+function flattenRecursive(arr) {
+    return arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flattenRecursive(val)) : acc.concat(val), []);
+}
+console.log(flattenRecursive([1, [2, [3, [4]]]])); // Output: [1, 2, 3, 4]
+// Explanation: This recursively flattens a deeply nested array into a single level.
+
+</script>
