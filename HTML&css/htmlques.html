@@ -1,354 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <!-- The <meta> tag contents are not visible on your browser, but they can be parsed by the machine.
     They are just used to give additional information about the HTML document.
     The <meta> tags are added to our HTML document for the purpose of Search Engine Optimisation.
     They are added inside the <head> tag & are used by browsers, search engines & other web services.
     Through <meta> tag, designer can control the viewport. -->
 
+    The Document Object Model (DOM) is a programming interface for
+    HTML(HyperText Markup Language) and XML(Extensible markup language)
+    documents. It defines the logical structure of documents and the way a
+    document is accessed and manipulated. Note: It is called a Logical structure
+    because DOM doesn’t specify any relationship between objects. DOM is a way
+    to represent the webpage in a structured hierarchical way so that it will
+    become easier for programmers and users to glide through the document. With
+    DOM, we can easily access and manipulate tags, IDs, classes, Attributes, or
+    Elements of HTML using commands or methods provided by the Document object.
+    Using DOM, the JavaScript gets access to HTML as well as CSS of the web page
+    and can also add behavior to the HTML elements. so basically Document Object
+    Model is an API that represents and interacts with HTML or XML documents.
 
-    The Document Object Model (DOM) is a programming interface for HTML(HyperText Markup Language) 
-    and XML(Extensible markup language) documents. It defines the logical structure of 
-    documents and the way a document is accessed and manipulated.
-
-    Note: It is called a Logical structure because DOM doesn’t specify
-     any relationship between objects. 
-    
-    DOM is a way to represent the webpage in a structured hierarchical
-     way so that it will become easier for programmers and users to
-      glide through the document. With DOM, we can easily access and 
-      manipulate tags, IDs, classes, Attributes, or Elements of HTML
-       using commands or methods provided by the Document object. 
-       Using DOM, the JavaScript gets access to HTML as well as
-        CSS of the web page and can also add behavior to the
-         HTML elements. so basically Document Object Model 
-         is an API that represents and interacts with HTML
-         or XML documents.
-    
-    
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body></body>
 </html>
 <script>
-//  . Are the HTML tags and elements the same thing?
-// No. HTML elements are defined by a starting tag, may contain some content and a
-//  closing tag.For example, <h1>Heading 1</h1> is a HTML element but just <h1> 
-//     is a starting tag and </h1> is a closing tag.
+  //  . Are the HTML tags and elements the same thing?
+  // No. HTML elements are defined by a starting tag, may contain some content and a
+  //  closing tag.For example, <h1>Heading 1</h1> is a HTML element but just <h1>
+  //     is a starting tag and </h1> is a closing tag.
+
+  // What are tags and attributes in HTML?
+  // Tags are the primary component of the HTML that defines how the content will be
+  //  structured/ formatted, whereas Attributes are used along with
+  //  the HTML tags to define the characteristics of the element. For example,
+  //   <p align=” center”>Interview questions</p>, in this the ‘align’
+  //is the attribute using which we will align the paragraph to show in the center of the view.
+
+  //  What are void elements in HTML?
+  // HTML elements which do not have closing tags or do not need to be
+  // closed are Void elements. For Example <br />, <img />, <hr />, etc.
+
+  // 5. What are HTML Entities?
+  // In HTML some characters are reserved like ‘<’, ‘>’, ‘/’, etc. To use these characters in
+  // our webpage we need to use the character entities called HTML Entities. Below are a
+  // few mapping between the reserved character and its respective entity character to be
+  // used.
+
+  // . What is the ‘class’ attribute in HTML?
+  // The class attribute is used to specify the class name for an HTML element. Multiple
+  // elements in HTML can have the same class value.
+
+  // What is the difference between the ‘id’ attribute and the
+  // ‘class’ attribute of HTML elements?
+  // Multiple elements in HTML can have the same class value, whereas a value of id
+  // attribute of one element cannot be associated with another HTML element.
+
+  // What are the various formatting tags in HTML
+
+  // <b> - makes text bold
+  // <i> - makes text italic
+  // <em> - makes text italic but with added semantics importance
+  // <big> - increases the font size of the text by one unit
+  // <small> - decreases the font size of the text by one unit
+  // <sub> - makes the text a subscript
+  // <sup> - makes the text a superscript
+  // <del> - displays as strike out text
+  // <strong> - marks the text as important
+  // <mark> - highlights the text
+  // <ins> - displays as added text
+
+  // The <strong> tag specifies the strong importance of the content.
+  //      It can be used to highlight seriousness,
+  //     urgency, or importance. It indicates how something must be understood.
+
+  // The <b> tag highlights in bold a part of the text to make
+  //      it more obvious for the user.It is a style. It doesn’t convey any
+  //      additional importance.
+
+  // The effect on a normal webpage of the tags <strong>, <b>  and <em>, <i> is the
+  // same. <b> and <i> tags stands for bold and italic. These two tags only apply font
+  // styling and bold tag <b>, just adds more ink to the text, these tags don't say
+  // anything about the text.
+
+  // A div is a block-level element and a span is an inline element.
+  // The div should be used to wrap sections of a document,
+  //  while use spans to wrap small portions of text, images, etc.
+  // div accepts align attribute but span do not
+
+  //viewPort
+  // The viewport is the user's visible area of a web page
+
+  // Whereas, <strong> and <em> tags represent that the span of text is of strong importance or
+  // more importance and emphatic stress respectively
+  // than the rest of the text. These tags have semantic meaning.
+
+  //  What are the different kinds of Doctypes available?
+  // The three kinds of Doctypes which are available:
+  // Strict Doctype
+  // Transitional Doctype
+  // Frameset Doctype
+
+  // 16. What is the significance of <head> and <body> tag in HTML?
+  // <head> tag provides the information about the document. It should always be enclosed in the <html> tag.
+  // This tag contains the metadata about the webpage and the tags which are enclosed by head tag like
+  //  <link>, <meta>, <style>, <script>, etc. are not displayed on the web page. Also, there can be only
+  // 1 <head> tag in the entire Html document and will always be before the <body> tag.
+
+  // <body> tag defines the body of the HTML document. It should always be enclosed in the <html> tag.
+  //  All the contents which needs to be displayed on the web page like images, text, audio, video,
+  //  contents, using elements like <p>, <img>, <audio>, <heading>, <video>, <div>, etc. will always
+  //  be enclosed by the <body> tag. Also, there can be only 1 body element in an HTML document
+  //  and will always be after the <head> tag.
+
+  // Can we display a web page inside a web page or Is nesting of webpages possible?
+  // Yes, we can display a web page inside another HTML web page. HTML provides a tag
+  // <iframe> using which we can achieve this functionality.
+  // <iframe src=”url of the web page to embed” />
+
+  //  How is Cell Padding different from Cell Spacing?
+  // Cell Spacing is the space or gap between two consecutive cells. Whereas,
+  // Cell Padding is the space or gap between the text/ content of the cell
+  // and the edge/ border of the cell. Please refer to the above figure example to find the difference.
+
+  //  How can we club two or more rows or columns into a single row or column in an HTML table?
+  // HTML provides two table attributes “rowspan” and “colspan” to make a cell
+  //  span to multiple rows and columns respectively.
+
+  // 20. Is it possible to change an inline element into a block level element?
+  // Yes, it is possible using the “display” property with its value as “block”,
+  // to change the inline element into a block-level element.
+
+  // In how many ways can we position an HTML element? Or what are the
+  // permissible values of the position attribute?
 
-// What are tags and attributes in HTML?
-// Tags are the primary component of the HTML that defines how the content will be
-//  structured/ formatted, whereas Attributes are used along with 
-//  the HTML tags to define the characteristics of the element. For example,
-//   <p align=” center”>Interview questions</p>, in this the ‘align’ 
-//is the attribute using which we will align the paragraph to show in the center of the view.
+  // There are mainly 7 values of position attribute that can
+  //  be used to position an HTML element:
 
-//  What are void elements in HTML?
-// HTML elements which do not have closing tags or do not need to be 
-// closed are Void elements. For Example <br />, <img />, <hr />, etc.
+  // static: Default value. Here the element is positioned according
+  // to the normal flow of the document.
 
+  // absolute: Here the element is positioned relative to its parent element.
+  //  The final position is determined by the values of left, right, top, bottom.
+
+  // fixed: This is similar to absolute except here the elements are positioned
+  //  relative to the <html> element.
 
+  // relative: Here the element is positioned according to the normal flow
+  // of the document and positioned relative to its original/ normal position.
 
+  // initial: This resets the property to its default value.
+
+  // inherit: Here the element inherits or takes the property of its parent.
+  //sticky
 
-// 5. What are HTML Entities?
-// In HTML some characters are reserved like ‘<’, ‘>’, ‘/’, etc. To use these characters in
-// our webpage we need to use the character entities called HTML Entities. Below are a
-// few mapping between the reserved character and its respective entity character to be
-// used.
+  // In how many ways you can display HTML elements?
 
-// . What is the ‘class’ attribute in HTML?
-// The class attribute is used to specify the class name for an HTML element. Multiple
-// elements in HTML can have the same class value.
+  // inline: Using this we can display any block-level element as an inline element.
+  // The height and width attribute values of the element will not affect.
+  // block: using this, we can display any inline element as a block-level element.
+  // inline-block: This property is similar to inline, except by using the display as
+  // inline-block, we can actually format the element using height and width values.
+  // flex: It displays the container and element as a flexible structure. It follows flexbox property.
+  // inline-flex: It displays the flex container as an inline element while its content follows the flexbox properties.
+  // grid: It displays the HTML elements as a grid container.
+  // none: Using this property we can hide the HTML element.
 
+  // What is the difference between “display: none” and “visibility:
+  //  hidden”, when used as attributes to the HTML element.
+
+  // When we use the attribute “visibility: hidden” for an HTML
+  // element then that element will be hidden from the webpage but still
+  // takes up space. Whereas, if we use the “display: none” attribute for
+  // an HTML element then the element will be hidden, and also it
+  // won’t take up any space on the webpage.
 
+  // How to specify the link in HTML and explain the target attribute?
 
-// What is the difference between the ‘id’ attribute and the
-// ‘class’ attribute of HTML elements?
-// Multiple elements in HTML can have the same class value, whereas a value of id
-// attribute of one element cannot be associated with another HTML element.
+  //<a href="website-link-goes-here" target="_blank">
 
-// What are the various formatting tags in HTML
-
-// <b> - makes text bold
-// <i> - makes text italic
-// <em> - makes text italic but with added semantics importance
-// <big> - increases the font size of the text by one unit
-// <small> - decreases the font size of the text by one unit
-// <sub> - makes the text a subscript
-// <sup> - makes the text a superscript
-// <del> - displays as strike out text
-// <strong> - marks the text as important
-// <mark> - highlights the text
-// <ins> - displays as added text
-
-
-    // The <strong> tag specifies the strong importance of the content.
-    //      It can be used to highlight seriousness, 
-    //     urgency, or importance. It indicates how something must be understood.
-
-    // The <b> tag highlights in bold a part of the text to make
-    //      it more obvious for the user.It is a style. It doesn’t convey any 
-    //      additional importance.
-
-
-      // The effect on a normal webpage of the tags <strong>, <b>  and <em>, <i> is the
-// same. <b> and <i> tags stands for bold and italic. These two tags only apply font
-// styling and bold tag <b>, just adds more ink to the text, these tags don't say
-// anything about the text.
-
-
-
-
-
-// A div is a block-level element and a span is an inline element.
-// The div should be used to wrap sections of a document,
-//  while use spans to wrap small portions of text, images, etc.
-// div accepts align attribute but span do not
-
-
-//viewPort
-// The viewport is the user's visible area of a web page
-
-
-
-// Whereas, <strong> and <em> tags represent that the span of text is of strong importance or 
-// more importance and emphatic stress respectively
-// than the rest of the text. These tags have semantic meaning.
-
-
-
-//  What are the different kinds of Doctypes available?
-// The three kinds of Doctypes which are available:
-// Strict Doctype
-// Transitional Doctype
-// Frameset Doctype  
-
-
-// 16. What is the significance of <head> and <body> tag in HTML?
-// <head> tag provides the information about the document. It should always be enclosed in the <html> tag.
-// This tag contains the metadata about the webpage and the tags which are enclosed by head tag like
-//  <link>, <meta>, <style>, <script>, etc. are not displayed on the web page. Also, there can be only        
-    // 1 <head> tag in the entire Html document and will always be before the <body> tag.
-
-// <body> tag defines the body of the HTML document. It should always be enclosed in the <html> tag.
-//  All the contents which needs to be displayed on the web page like images, text, audio, video,
-//  contents, using elements like <p>, <img>, <audio>, <heading>, <video>, <div>, etc. will always 
-//  be enclosed by the <body> tag. Also, there can be only 1 body element in an HTML document 
-//  and will always be after the <head> tag.
-
-
-// Can we display a web page inside a web page or Is nesting of webpages possible?
-// Yes, we can display a web page inside another HTML web page. HTML provides a tag 
-// <iframe> using which we can achieve this functionality.
-// <iframe src=”url of the web page to embed” />
-
-//  How is Cell Padding different from Cell Spacing?
-// Cell Spacing is the space or gap between two consecutive cells. Whereas, 
-// Cell Padding is the space or gap between the text/ content of the cell 
-// and the edge/ border of the cell. Please refer to the above figure example to find the difference.
-
-
-//  How can we club two or more rows or columns into a single row or column in an HTML table?
-// HTML provides two table attributes “rowspan” and “colspan” to make a cell
-//  span to multiple rows and columns respectively.
-
-
-// 20. Is it possible to change an inline element into a block level element?
-// Yes, it is possible using the “display” property with its value as “block”, 
-// to change the inline element into a block-level element.
-
-
-
-
-
-
-// In how many ways can we position an HTML element? Or what are the 
-// permissible values of the position attribute?
-
-// There are mainly 7 values of position attribute that can
-//  be used to position an HTML element:
-
-// static: Default value. Here the element is positioned according 
-// to the normal flow of the document.
-
-// absolute: Here the element is positioned relative to its parent element.
-//  The final position is determined by the values of left, right, top, bottom.
-
-// fixed: This is similar to absolute except here the elements are positioned
-//  relative to the <html> element.
-
-// relative: Here the element is positioned according to the normal flow 
-// of the document and positioned relative to its original/ normal position.
-
-// initial: This resets the property to its default value.
-
-// inherit: Here the element inherits or takes the property of its parent.
-//sticky
-
-
-
-
-// In how many ways you can display HTML elements?
-
-// inline: Using this we can display any block-level element as an inline element. 
-// The height and width attribute values of the element will not affect.
-// block: using this, we can display any inline element as a block-level element. 
-// inline-block: This property is similar to inline, except by using the display as
-// inline-block, we can actually format the element using height and width values.
-// flex: It displays the container and element as a flexible structure. It follows flexbox property.
-// inline-flex: It displays the flex container as an inline element while its content follows the flexbox properties.
-// grid: It displays the HTML elements as a grid container.
-// none: Using this property we can hide the HTML element.
-
-
-
-// What is the difference between “display: none” and “visibility:
-//  hidden”, when used as attributes to the HTML element.
-
-// When we use the attribute “visibility: hidden” for an HTML 
-// element then that element will be hidden from the webpage but still 
-// takes up space. Whereas, if we use the “display: none” attribute for 
-// an HTML element then the element will be hidden, and also it 
-// won’t take up any space on the webpage.
-
-// How to specify the link in HTML and explain the target attribute?
-
-//<a href="website-link-goes-here" target="_blank">
-
-// HTML provides a hyperlink - <a> tag to specify the links in a webpage. 
-// The ‘href’ attribute is used to specify the url of the page the link goes to  and the ‘target’ attribute 
-//href attribute can have following elements <a> <area> <link> <base>
-// is used to specify, where do we want to open the linked document. 
-// The ‘target’ attribute can have the following values:
-
-
-// _self: This is a default value. It opens the document in 
-//the same window or tab as it was clicked.
-// _blank: It opens the document in a new window or tab.
-// _parent: It opens the document in a parent frame.
-// _top: It opens the document in a full-body window.
-
-
-//  In how many ways can we specify the CSS styles for the HTML element?
-// There are three ways in which we can specify the styles for HTML elements
-
-// Inline: Here we use the ‘style’ attribute inside the HTML element.
-// Internal: Here we use the <style> tag inside the <head> tag. 
-//     To apply the style we bind the elements using ‘id’ or ‘class’ attributes.
-// External: Here we use the <link> tag inside <head> tag to
-//      reference the CSS file into our HTML code. 
-//      Again the binding between elements and styles
-//       is done using ‘id’ or ‘class’ attributes.
-
-
-
-//HTML <img> tag is used to add image inside webpage/website.
-// the <img> tag has two required attributes:
-// src - Specifies the path to the image
-// alt - Specifies an alternate text for the image
-
-
-//the src attribute specifies the location (URL) of the external resource.
-// Attribute Values: It contains single value URL which specifies
-//  the link of source image. There are two types of URL link which are listed below:
-// Absolute URL: It points to another webpage.
-// Relative URL: It points to other files of same web page
-
-
-
-// diff between link tag <link> and anchor tag <a>?
-
-//the anchor tag<a> is used to create a hyperlink  
-    // which is used to link from one page to another  and these links are
-    //  clickable, whereas,
-    // link tag <link> defines a relationship between 
-    //  a document and an external resource and these are not clickable.
-
-    //how to handle events in html
-    // HTML allows event trigger actions in browsers using javascript or 
-    // . There are a lot of events like ‘onclick’, ‘ondrag’, ‘onchange’, etc.
-
-// What are some of the advantages of HTML5 over its previous versions?
-
-//It has Multimedia Support.
-//javascript can be run in the background.
-//HTML5 also allows users to draw various shapes like rectangles, circles, triangles,
-//Included new Semantic tags and form control tags.
-
-
-
-
-//Inline and block elements in HTML5?
-
-// Inline elements just take up the space that is absolutely necessary for
-// the content and does not start from a new line.
-// Example:- <span>, <a>,<strong>, <img>,<button>, <em>, <select>,
-// <abbr>, <label>, <sub>,<cite>, <abbr>, <script>,<label>, <i>, <input>,<output>, <q>, etc.
-
-//Block elements start on a new line and consume the full width of the page available.
-// Example:- <div>, <p>, <header>,<footer>, <h1>...<h6>, <form>,<table>, <canvas>, <video>,
-// <blockquote>, <pre>, <ul>,<ol>, <figcaption>, <figure>,<hr>, <article>, <section>, etc
-
-//image tag figure tag
-//The figure tag in HTML5 is used to add self-contained content like illustrations,
-//  diagrams, photos, or codes listing in a document. HTML img tag is used to
-//   add image or to set the background in the webpage
-
-
-// What are Semantic Elements?
-// Semantic elements are those which describe the particular meaning to 
-// the browser and the developer. Elements like <form>, <table>, <article>,
-//      <figure>, etc., are semantic elements.
-
-
-
-    //Is the <datalist> tag and <select> tag same?
-
-    // No,In the case of <select> tag a user will have to choose from a list of options, whereas <datalist> 
-    //     when used along with the <input> tag provides a suggestion that the user selects one of 
-    //     the options given or can enter some entirely different value.
-
-// Explain the concept of web storage in HTML5.
-// This web storage helps in storing some of the static data in the local storage of the browser so that
-//  we do not need to fetch it from the server every time we need it. There is a size limit 
-//  based on different browsers. This helps in decreasing the load time and a smooth user
-//   experience. There are two types of web storage that are used to store data locally in HTML5:
-
-// Local Storage - This helps in storing data that will be retained even though the user reopens
-//  the browser. It is stored for each webapp on different browsers.
-// Session Storage - This is used for one session only. After the user closes the browser this gets deleted.
-
-
-
-// HTML5 supports the following three types of audio file formats: MP3 wav ogg
-
-// What are the server-sent events in HTML5?
-// The events pushed from the webserver to the browsers are called server-sent events. 
-
-
-// Why do we need the MathML element in HTML5?
-// MathML stands for Mathematical Markup Language. It is used for displaying mathematical 
-// expressions on web pages. For this <math> tag is used.
-
-
-//     What are the New tags in Media Elements in HTML5?
-// <audio> - Used for sounds, audio streams, or music, embed audio content without any additional plug-in.
-// <video> - Used for video streams, embed video content etc.
-// <source> - Used for multiple media resources in media elements, such as audio, video, etc.
-// <embed> - Used for an external application or embedded content.
-// <track> - Used for subtitles in the media elements such as video or audio.
-
-
-
-// The <label> tag is used to specify a label for an <input> element of a form. It adds a label 
-//     to a form control such as text, email, password, textarea etc. It toggles 
-//     the control when a user clicks on a text within the <label> element.
-
- </script>
+  // HTML provides a hyperlink - <a> tag to specify the links in a webpage.
+  // The ‘href’ attribute is used to specify the url of the page the link goes to  and the ‘target’ attribute
+  //href attribute can have following elements <a> <area> <link> <base>
+  // is used to specify, where do we want to open the linked document.
+  // The ‘target’ attribute can have the following values:
+
+  // _self: This is a default value. It opens the document in
+  //the same window or tab as it was clicked.
+  // _blank: It opens the document in a new window or tab.
+  // _parent: It opens the document in a parent frame.
+  // _top: It opens the document in a full-body window.
+
+  //  In how many ways can we specify the CSS styles for the HTML element?
+  // There are three ways in which we can specify the styles for HTML elements
+
+  // Inline: Here we use the ‘style’ attribute inside the HTML element.
+  // Internal: Here we use the <style> tag inside the <head> tag.
+  //     To apply the style we bind the elements using ‘id’ or ‘class’ attributes.
+  // External: Here we use the <link> tag inside <head> tag to
+  //      reference the CSS file into our HTML code.
+  //      Again the binding between elements and styles
+  //       is done using ‘id’ or ‘class’ attributes.
+
+  //HTML <img> tag is used to add image inside webpage/website.
+  // the <img> tag has two required attributes:
+  // src - Specifies the path to the image
+  // alt - Specifies an alternate text for the image
+
+  //the src attribute specifies the location (URL) of the external resource.
+  // Attribute Values: It contains single value URL which specifies
+  //  the link of source image. There are two types of URL link which are listed below:
+  // Absolute URL: It points to another webpage.
+  // Relative URL: It points to other files of same web page
+
+  // diff between link tag <link> and anchor tag <a>?
+
+  //the anchor tag<a> is used to create a hyperlink
+  // which is used to link from one page to another  and these links are
+  //  clickable, whereas,
+  // link tag <link> defines a relationship between
+  //  a document and an external resource and these are not clickable.
+
+  //how to handle events in html
+  // HTML allows event trigger actions in browsers using javascript or
+  // . There are a lot of events like ‘onclick’, ‘ondrag’, ‘onchange’, etc.
+
+  // What are some of the advantages of HTML5 over its previous versions?
+
+  //It has Multimedia Support.
+  //javascript can be run in the background.
+  //HTML5 also allows users to draw various shapes like rectangles, circles, triangles,
+  //Included new Semantic tags and form control tags.
+
+  //Inline and block elements in HTML5?
+
+  // Inline elements just take up the space that is absolutely necessary for
+  // the content and does not start from a new line.
+  // Example:- <span>, <a>,<strong>, <img>,<button>, <em>, <select>,
+  // <abbr>, <label>, <sub>,<cite>, <abbr>, <script>,<label>, <i>, <input>,<output>, <q>, etc.
+
+  //Block elements start on a new line and consume the full width of the page available.
+  // Example:- <div>, <p>, <header>,<footer>, <h1>...<h6>, <form>,<table>, <canvas>, <video>,
+  // <blockquote>, <pre>, <ul>,<ol>, <figcaption>, <figure>,<hr>, <article>, <section>, etc
+
+  //image tag figure tag
+  //The figure tag in HTML5 is used to add self-contained content like illustrations,
+  //  diagrams, photos, or codes listing in a document. HTML img tag is used to
+  //   add image or to set the background in the webpage
+
+  // What are Semantic Elements?
+  // Semantic elements are those which describe the particular meaning to
+  // the browser and the developer. Elements like <form>, <table>, <article>,
+  //      <figure>, etc., are semantic elements.
+
+  //Is the <datalist> tag and <select> tag same?
+
+  // No,In the case of <select> tag a user will have to choose from a list of options, whereas <datalist>
+  //     when used along with the <input> tag provides a suggestion that the user selects one of
+  //     the options given or can enter some entirely different value.
+
+  // Explain the concept of web storage in HTML5.
+  // This web storage helps in storing some of the static data in the local storage of the browser so that
+  //  we do not need to fetch it from the server every time we need it. There is a size limit
+  //  based on different browsers. This helps in decreasing the load time and a smooth user
+  //   experience. There are two types of web storage that are used to store data locally in HTML5:
+
+  // Local Storage - This helps in storing data that will be retained even though the user reopens
+  //  the browser. It is stored for each webapp on different browsers.
+  // Session Storage - This is used for one session only. After the user closes the browser this gets deleted.
+
+  // HTML5 supports the following three types of audio file formats: MP3 wav ogg
+
+  // What are the server-sent events in HTML5?
+  // The events pushed from the webserver to the browsers are called server-sent events.
+
+  // Why do we need the MathML element in HTML5?
+  // MathML stands for Mathematical Markup Language. It is used for displaying mathematical
+  // expressions on web pages. For this <math> tag is used.
+
+  //     What are the New tags in Media Elements in HTML5?
+  // <audio> - Used for sounds, audio streams, or music, embed audio content without any additional plug-in.
+  // <video> - Used for video streams, embed video content etc.
+  // <source> - Used for multiple media resources in media elements, such as audio, video, etc.
+  // <embed> - Used for an external application or embedded content.
+  // <track> - Used for subtitles in the media elements such as video or audio.
+
+  // The <label> tag is used to specify a label for an <input> element of a form. It adds a label
+  //     to a form control such as text, email, password, textarea etc. It toggles
+  //     the control when a user clicks on a text within the <label> element.
+</script>

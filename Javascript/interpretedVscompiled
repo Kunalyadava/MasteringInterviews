@@ -16,5 +16,6 @@ Languages like C, and C++ need a compiler that converts the programs into a byte
 
   TypeScript
   Typescript is a strongly typed object-oriented compiled language. It was developed by Microsoft.
-  Code written in TypeScript first needs to get compiled and then converted to JavaScript. This process of conversion is known as Transpilation.
+  Code written in TypeScript first needs to get compiled and then converted to JavaScript. 
+  This process of conversion is known as Transpilation.
   TypeScript supports modules, hence it allows modular programming.
