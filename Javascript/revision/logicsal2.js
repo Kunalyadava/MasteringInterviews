@@ -131,3 +131,10 @@ console.log(a); // Output: [1, 1, 3, 4, 5, 9]
 //  using the default value if the operand is nullish.
 
 
+// let obj = (a: 1, b: 2); 
+let keys = Object.entries(obj); 
+console.log(keys);
+// The correct answer, based on the corrected
+//  JavaScript code and the functionality of Object.entries(obj), is:
+
+ [['a', 1], ['b', 2]]
