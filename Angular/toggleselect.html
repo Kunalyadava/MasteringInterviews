@@ -104,37 +104,5 @@ Let's look at the code with comments to make it more explicit about what happens
     and updates the selectedItems array and the selected properties of the items accordingly.
     The toggleItemSelection method handles individual item selection and ensures
     the selectAll state is updated based on whether all items are selected or not.
+///
 
-
-
-
-    /////
-
-
-    The aot --false option is related to Angular development, specifically Angular CLI (Command Line Interface). Angular
-    offers two primary modes of compilation: Just-in-Time (JIT) and Ahead-of-Time (AOT). Here's a brief explanation:
-
-    Just-in-Time (JIT) Compilation
-    JIT Compilation compiles your application in the browser at runtime.
-    It is typically used during development because it has faster build times.
-    Ahead-of-Time (AOT) Compilation
-    AOT Compilation compiles your application during the build process before it gets to the browser.
-    It provides better performance in production because it reduces the amount of work the browser needs to do.
-    It helps with faster rendering, smaller Angular framework download size, and early detection of template errors.
-    aot --false
-    When you use the Angular CLI, you can specify whether you want to use AOT compilation. The --aot flag controls this:
-
-    --aot (or --aot=true): Enables AOT compilation.
-    --aot=false: Disables AOT compilation and uses JIT instead.
-    So, the command aot --false (usually written as ng build --aot=false or ng serve --aot=false) tells the Angular CLI
-    to build the application without AOT, using JIT compilation. This is typically used during development for the
-    following reasons:
-
-    Faster Build Times: JIT compilation is faster, which can speed up the development process.
-    Easier Debugging: Source maps and debugging information can be more straightforward with JIT.
-    However, for production builds, it is generally recommended to use AOT (ng build --prod which includes --aot=true by
-    default) for the performance benefits it provides
-
-    export NODE_OPTIONS=--max-old-space-size=4096
-    Out of Memory Errors: If you receive errors indicating that Node.js has run out of memory during compilation.
-    Slow Performance: If compilation is taking an unusually long time, increasing memory might help improve performance.
