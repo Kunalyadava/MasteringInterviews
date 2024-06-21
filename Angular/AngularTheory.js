@@ -349,18 +349,27 @@ Better Caching: Since chunk files can be cached by the browser, subsequent visit
 // This makes web pages more responsive and improves the user experience. 
 // Here's a brief overview of the components that make up Ajax:
 
-// XHTML and CSS: Used for structuring and styling the content displayed on the web page.
-// Document Object Model (DOM): Allows dynamic interaction and updating of the web page content.
-// XMLHttpRequest: An object that enables asynchronous data exchange with the web server, 
-// allowing parts of the page to update without a full reload.
-// XML, HTML, and XSLT: Used for data interchange and manipulation.
-// JavaScript: Binds everything together by handling data requests 
-// and updating the web page content dynamically.
-// Ajax allows users to interact with a web page smoothly, with 
-// only portions of the page being reloaded or updated as 
-// needed, rather than the entire page.
+    // In web development, AJAX calls are used to fetch data from
+    // a server asynchronously without refreshing the web page.
+    // The Observable and Observer pattern can be utilized
+    // to handle the responses from these AJAX calls. The Observable
+    // represents the AJAX call, and the Observers are
+    // the parts of the application that need to react to the data received
+    // from the server. For example:
+    // An Observable AJAX request is made to fetch user data.
+    // Multiple Observers, such as different components of a web page, subscribe to this Observable.
+    // When the AJAX response is received, the Observable notifies all subscribed components, which then update their state
+    // or render the new data accordingly.
+    // Performing Large Tasks in Client (Browser):
 
-
+    // When performing computationally intensive or large tasks in the browser, it is crucial to keep the UI responsive.
+    // The Observable and Observer pattern can be employed to manage the execution of these tasks. For example:
+    // An Observable represents a long-running task such as file processing, data analysis, or complex calculations.
+    // Observers subscribe to the Observable to receive updates on the task's progress or completion.
+    // As the task progresses, the Observable sends notifications (e.g., progress updates, intermediate results, or
+    // completion status) to the Observers.
+    // Observers, such as UI components, can then update the user interface to reflect the current state of the task,
+    // ensuring a responsive and interactive user experience.
 
 // RxJS (Reactive Extensions for JavaScript) is a library for reactive programming using 
 // observables, which makes it easier to compose asynchronous or callback-based code. 
@@ -383,7 +392,16 @@ Better Caching: Since chunk files can be cached by the browser, subsequent visit
 // Schedulers: These are centralized dispatchers to control concurrency, allowing you to 
 // manage when and how execution happens (e.g., synchronously or asynchronously).
 
-
+// XHTML and CSS: Used for structuring and styling the content displayed on the web page.
+// Document Object Model (DOM): Allows dynamic interaction and updating of the web page content.
+// XMLHttpRequest: An object that enables asynchronous data exchange with the web server, 
+// allowing parts of the page to update without a full reload.
+// XML, HTML, and XSLT: Used for data interchange and manipulation.
+// JavaScript: Binds everything together by handling data requests 
+// and updating the web page content dynamically.
+// Ajax allows users to interact with a web page smoothly, with 
+// only portions of the page being reloaded or updated as 
+// needed, rather than the entire page.
 
 
 // HTTP (Hypertext Transfer Protocol) is the protocol used to make requests and receive 
@@ -513,6 +531,7 @@ Better Caching: Since chunk files can be cached by the browser, subsequent visit
 
 
 // Q: Why would I use providedIn: 'root' if I think using providers array in AppModule looks cleaner?
+
 // The main difference is that between the two methods, providedIn supports tree-shaking, and providers array does not.
 
 // 'root': Provides the service globally across the application. Angular will inject the 
