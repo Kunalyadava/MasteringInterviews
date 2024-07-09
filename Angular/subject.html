@@ -1,0 +1,382 @@
+<script.ts>
+    //child
+    
+    import { Component, OnInit } from '@angular/core';
+    
+    @Component({
+      selector: 'app-child',
+      template: `<p>{{childData}}</p>`
+    })
+    export class ChildComponent implements OnInit {
+      // Public property that holds the data
+      childData: string = 'Hello from Child Component!';
+    
+      constructor() {}
+    
+      ngOnInit(): void {}
+    
+      // Public method to get data
+      getChildData(): string {
+        return this.childData;
+      }
+    }
+    
+    
+    
+    //parent
+    
+    import { Component, AfterViewInit, ViewChild } from '@angular/core';
+    import { ChildComponent } from './child/child.component';
+    
+    @Component({
+      selector: 'app-parent',
+      template: `
+        <app-child></app-child>
+        <button (click)="getDataFromChild()">Get Data from Child</button>
+        <p>{{ parentData }}</p>
+      `
+    })
+    export class ParentComponent implements AfterViewInit {
+      @ViewChild(ChildComponent) myChildComponent!: ChildComponent;
+    
+      parentData: string = '';
+    
+      constructor() {}
+    
+      ngAfterViewInit(): void {
+        // Access child component properties or methods here
+        // However, it's better to interact with child component on some event, like a button click
+      }
+    
+      getDataFromChild(): void {
+        // Using ViewChild to get data from child component
+        this.parentData = this.myChildComponent.getChildData();
+      }
+    }
+    
+    @ViewChild Decorator with myChildComponent
+    Decorator: @ViewChild
+    
+    The @ViewChild decorator in Angular is used to query and get a reference to a child component,
+     directive, or DOM element within the parent component. It allows the parent component to interact
+    with the child component directly.
+    
+    Argument: ChildComponent
+    
+    The argument passed to @ViewChild is the type of the component or directive you want to query. 
+    In this case, ChildComponent is the class of the child component that you want to reference.
+    
+    Variable: myChildComponent
+    
+    myChildComponent is the variable that will hold the reference to the instance of the ChildComponent. 
+    By declaring this variable with @ViewChild, Angular will automatically populate it with the instance 
+    of ChildComponent after the view is initialized.
+    
+    Type Assertion: !: ChildComponent;
+    The !: ChildComponent; syntax is a TypeScript non-null assertion operator. It tells TypeScript that 
+    myChildComponent will be assigned a value by Angular and it will not be null or undefined. This is 
+    necessary because TypeScript’s strict null checks would otherwise consider this property as 
+    potentially undefined.
+    
+    Step-by-Step Explanation
+    
+    Parent Component Definition:
+    The parent component is defined with a @Component decorator that 
+    specifies its metadata (selector, template, styles).
+    
+    Using @ViewChild:
+    
+    Inside the parent component class, the @ViewChild decorator is 
+    used to declare a variable myChildComponent:
+    
+    @ViewChild(ChildComponent) myChildComponent!: ChildComponent;
+    
+    This tells Angular to look for an instance of ChildComponent within the parent component’s 
+    template and assign it to the myChildComponent variable.
+    
+    Lifecycle Hook - ngAfterViewInit:
+    Angular initializes the myChildComponent variable after the view initialization is complete. 
+    This occurs in the ngAfterViewInit lifecycle hook.
+    
+    ngAfterViewInit(): void {
+      // Now you can access the child component's properties and methods
+      console.log(this.myChildComponent.childData);
+      this.myChildComponent.someMethod();
+    }
+    
+    At this point, this.myChildComponent is a reference to the actual instance of the ChildComponent 
+    within the template. You can access its properties and methods just like you would with any other 
+    object.
+    
+    Accessing Child Component Data and Methods:
+    In the example, a button click event triggers the getDataFromChild method.
+    
+    getDataFromChild(): void {
+      // Using ViewChild to get data from child component
+      this.parentData = this.myChildComponent.getChildData();
+    }
+    
+    
+    
+    This method uses the myChildComponent reference to call the getChildData method on the 
+    ChildComponent instance. The returned data is then assigned to parentData, which can be used 
+    within the parent component.
+    
+    Summary
+    The @ViewChild(ChildComponent) myChildComponent!: ChildComponent; line tells Angular to find the 
+    ChildComponent instance within the parent component's template and assign it to the myChildComponent 
+    variable.
+    
+    The parent component can then use this reference to access the child component's properties and 
+    methods, enabling communication and data sharing between the parent and child components.
+    This setup is especially useful for scenarios where the parent component needs to interact with 
+    or retrieve data from the child component after the child component has been initialized.
+    
+    Can We Say the Variable Will Hold the Child Component's Instance?
+    
+    Yes, we can say that the variable myChildComponent will hold the child component's instance. 
+    After Angular initializes the view, myChildComponent will contain a reference to the actual 
+    ChildComponent instance present in the template. This allows the parent component to directly 
+    access and manipulate the child component’s properties and methods.
+    
+    
+    
+    //dataPassing using @output decorator
+    //ChildComponent
+    import { Component, EventEmitter, Output } from '@angular/core';
+    
+    @Component({
+      selector: 'app-child',
+      template: `
+        <button (click)="sendDataToParent()">Send Data to Parent</button>
+      `
+    })
+    export class ChildComponent {
+      @Output() dataEmitter = new EventEmitter<string>();
+    
+      childData: string = 'Hello from Child Component!';
+    
+      sendDataToParent(): void {
+        this.dataEmitter.emit(this.childData);
+      }
+    }
+    //parentComponent
+    import { Component } from '@angular/core';
+    
+    @Component({
+      selector: 'app-parent',
+      template: `
+        <app-child (dataEmitter)="receiveData($event)"></app-child>
+        <p>{{ parentData }}</p>
+      `
+    })
+    export class ParentComponent {
+      parentData: string = '';
+    
+      receiveData(data: string): void {
+        this.parentData = data;
+      }
+    }
+    
+    
+    Explanation:
+    The child component uses the @Output decorator to define an EventEmitter.
+    The sendDataToParent method emits the childData when a button is clicked.
+    The parent component listens for the dataEmitter event using Angular’s event 
+    binding syntax ((dataEmitter)="receiveData($event)").
+    The parent component’s receiveData method handles the emitted data.
+    
+    Comparison
+    @ViewChild: Best when the parent component needs to directly interact with the child component’s 
+    properties and methods. It allows the parent component to fetch data on demand.
+    
+    @Output: Best when the child component needs to inform the parent component about data changes 
+    or specific actions/events. It is more suitable for event-driven data communication and promotes
+     loose coupling.
+
+
+
+      
+    //promises
+    toPromise() Usage
+    The toPromise() method is a function that converts an Observable into a Promise.
+    
+    import { HttpClient } from '@angular/common/http';
+    import { Component } from '@angular/core';
+    
+    @Component({
+      selector: 'app-example',
+      template: `<div *ngIf="data">{{ data }}</div>`
+    })
+    export class ExampleComponent {
+      data: any;
+    
+      constructor(private http: HttpClient) {
+        this.fetchData();
+      }
+    
+      fetchData() {
+        this.http.get('https://api.example.com/data').toPromise()
+          .then(response => {
+            this.data = response;
+          })
+          .catch(error => {
+            console.error('Error fetching data', error);
+          });
+      }
+    }
+    
+    In this example, this.http.get() returns an Observable, which is then converted into a Promise using toPromise(). 
+    This allows us to use .then() and .catch() to handle the asynchronous data.
+    
+    Note
+    As of RxJS 7, toPromise() is deprecated. Instead, you should use firstValueFrom() or lastValueFrom():
+    
+    import { firstValueFrom } from 'rxjs';
+    
+    this.http.get('https://api.example.com/data').pipe(firstValueFrom())
+      .then(response => {
+        this.data = response;
+      })
+      .catch(error => {
+        console.error('Error fetching data', error);
+      });
+    
+    //Promise.all waits for all of them to resolve and then provides an array of their results.
+    
+    const promise1 = fetch('https://api.example.com/data1').then(response => response.json());
+    const promise2 = fetch('https://api.example.com/data2').then(response => response.json());
+    const promise3 = fetch('https://api.example.com/data3').then(response => response.json());
+    
+    Promise.all([promise1, promise2, promise3])
+      .then(responses => {
+        const [data1, data2, data3] = responses;
+        console.log('All data fetched:', data1, data2, data3);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+    //
+    Key Points to Understand
+    Immediate Rejection Handling: Promise.all() rejects as soon as any of the promises in the array rejects. 
+    It does not wait for the other promises to complete.
+    
+    Ignored Results: Once a promise rejects, the results of any other pending promises are ignored. 
+    If those promises eventually resolve or reject, their outcomes are not considered by 
+    the Promise.all() that has already rejected.
+    
+    Handling rejections: To handle both rejections and fulfillments of multiple promises, use Promise.allSettled() instead.
+    
+    Differences and Use Cases
+    
+    toPromise(): Use this when you want to convert an Observable to a Promise.
+    This is handy in Angular applications when dealing with libraries or legacy code that uses Promises.
+    
+    Promise.all(): Use this when you have multiple asynchronous operations that can be performed concurrently,
+    and you want to wait for all of them to complete before proceeding. It helps in situations where you need 
+    all pieces of data before rendering or performing some action.
+    
+    // Promise.allSettled()
+    The syntax for Promise.allSettled() is
+    Promise.allSettled(iterable);
+    
+    
+    //example to understand how Promise.allSettled() works:
+    
+    
+    const promise1 = Promise.resolve(42);
+    const promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'Timeout'));
+    const promise3 = new Promise((resolve, reject) => setTimeout(resolve, 200, 'Resolved'));
+    
+    Promise.allSettled([promise1, promise2, promise3])
+      .then(results => {
+        results.forEach(result => {
+          if (result.status === 'fulfilled') {
+            console.log('Fulfilled:', result.value);
+          } else {
+            console.error('Rejected:', result.reason);
+          }
+        });
+      });
+    
+    
+    Handling Multiple Promises
+    Handling Success and Failure: With Promise.allSettled(), you can handle both successful and failed promises in a single .then() handler. 
+    This is particularly useful when you need to execute cleanup or logging operations based on the outcome of each promise.
+    
+    Non-Blocking: Unlike Promise.all(), Promise.allSettled() does not short-circuit on the first rejection. It waits for all 
+    promises to resolve or reject before proceeding, making it suitable for scenarios where you need to know the status of every promise.
+    
+    Compatibility
+    Promise.allSettled() is part of ECMAScript 2020 (ES2020) and is supported in modern browsers and Node.js versions that implement ES2020 features. 
+    If you need to support older environments, consider using a polyfill or alternative techniques.
+    
+    
+    //other
+    order: string | null = null; // Holds the current sorting order (column name) or null if no sorting
+    
+    constructor(private apiService: ApiService, private commonService: CommonService) {}
+    
+    ngOnInit() {
+      this.getProjects(); // Fetch projects when the component initializes
+    }
+    
+    getProjects() {
+      this.commonService.showLoader(); // Show loader
+      this.isLoading = true; // Indicate loading state
+    
+      let apiUrl = environment.GET_ALL_PROJECT; // Base API URL
+      if (this.order) {
+        apiUrl += `?sort=${this.order}`; // Append sorting parameter if order is set
+      }
+    
+      this.apiService.get(apiUrl).pipe(takeUntil(this.destroy$))
+        .subscribe(
+          (response) => {
+            this.commonService.hideLoader(); // Hide loader
+            this.isLoading = false; // End loading state
+            if (!response.is_error) {
+              this.projectList = response.data; // Update project list with response data
+              this.updatePagedProjects(); // Additional processing (e.g., pagination)
+            } else {
+              this.commonService.error(response.message); // Handle error
+            }
+          }
+        );
+    }
+    
+    setOrder(order: string) {
+      if (this.order === order) {
+        this.order = null; // Clear sorting if the same column is clicked again
+      } else {
+        this.order = order; // Set new sorting column
+      }
+      this.getProjects(); // Fetch projects with the new sorting order
+    }
+    
+    //
+    <th>
+      <div (click)="setOrder('fundingRequirmentAmmount')">
+        Funding amount
+        <span *ngIf="order === 'fundingRequirmentAmmount'" class="arrow">
+          <span class="up">▲</span>
+        </span>
+        <span *ngIf="order !== 'fundingRequirmentAmmount'" class="arrow">
+          <span class="down">▼</span>
+        </span>
+      </div>
+    </th>
+    <th scope="col">
+      <div (click)="setOrder('roiForProject')">
+        ROI
+        <span *ngIf="order === 'roiForProject'" class="arrow">
+          <span class="up">▲</span>
+        </span>
+        <span *ngIf="order !== 'roiForProject'" class="arrow">
+          <span class="down">▼</span>
+        </span>
+      </div>
+    </th>
+    
+    </script.ts>
+   

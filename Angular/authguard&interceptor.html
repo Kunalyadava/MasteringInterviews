@@ -25,229 +25,177 @@ intended URL as a query parameter (returnUrl), which can be
  used later to redirect the user back to the original destination after login.
 If the user is authenticated, we allow access to the route.
 
-logGuard Example: -->
-  <script.ts>
-    export const logGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-    // If user is already logged in, redirect to task manager
-    console.log(`User is already authenticated. Redirecting to task manager.`);
-    router.navigate(['/taskmanager']);
-    return false;
-    }
+<!-- Copy everything within the <div> to get all explanations -->
 
-    // If user is not logged in, allow access to the route
-    return true;
+  <div>
+    <b>logGuard Example:</b>
+    <script.ts>
+    export const logGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        // If user is already logged in, redirect to task manager
+        console.log(`User is already authenticated. Redirecting to task manager.`);
+        router.navigate(['/taskmanager']);
+        return false;
+      }
+    
+      // If user is not logged in, allow access to the route
+      return true;
     };
     </script>
-    <!-- In this example:
-
-We check if the user has a valid token stored in localStorage.
-If the token exists, it means the user is already logged in, so we redirect them to the task manager page.
-If the token does not exist, we allow access to the route, assuming the user is not logged in.
-These examples demonstrate the use of route: ActivatedRouteSnapshot and
- state: RouterStateSnapshot in implementing authGuard and logGuard functions for Angular route guarding. -->
-
-
-
+    
+    In this example:
+    <ul>
+      <li>We check if the user has a valid token stored in localStorage.</li>
+      <li>If the token exists, it means the user is already logged in, so we redirect them to the task manager page.</li>
+      <li>If the token does not exist, we allow access to the route, assuming the user is not logged in.</li>
+    </ul>
+    
+    <b>authInterceptor Example:</b>
     <script.ts>
-      import { HttpInterceptorFn } from "@angular/common/http";
-      // This imports the HttpInterceptorFn type from Angular's HTTP
-      // client module, which is used to type the interceptor function.
-
-      export const authInterceptor: HttpInterceptorFn = (req, next) => {
-      // This defines the authInterceptor function with two parameters:
-      // req: The outgoing HTTP request.
-      // next: A function that forwards the request to
-      // the next interceptor in the chain or sends it to the server
+    import { HttpInterceptorFn } from "@angular/common/http";
+    
+    export const authInterceptor: HttpInterceptorFn = (req, next) => {
       // Retrieve the token from localStorage and parse it from JSON string to JavaScript object.
       const token = JSON.parse(localStorage.getItem("token") as string);
-
+    
       // Retrieve the company ID from localStorage.
       const companyId = localStorage.getItem("company_id");
-
+    
       // Check if the token exists.
       if (token) {
-      // Clone the request and add the Authorization and Company-Id headers.
-      req = req.clone({
-      setHeaders: {
-      Authorization: `Bearer ${token}`, // Set the Authorization header with the token.
-      "Company-Id": companyId || "" // Set the Company-Id header if companyId is available, else set it to an empty
-      string.
-      },
-      });
+        // Clone the request and add the Authorization and Company-Id headers.
+        req = req.clone({
+          setHeaders: {
+            Authorization: `Bearer ${token}`, // Set the Authorization header with the token.
+            "Company-Id": companyId || "" // Set the Company-Id header if companyId is available, else set it to an empty string.
+          },
+        });
       }
-
+    
       // Pass the modified or original request to the next handler in the chain.
       return next(req);
-      };
-      // The modified (or original, if no token was present) request
-      // is passed to the next handler in the HTTP request processing chain.
-
-      </script>
-
-
-      <script.ts>
-        In Angular, route guards are used to control navigation to and from routes within your application.
-        The Angular router provides several types of route guards to help manage navigation:
-
-        1. CanActivate
-        The CanActivate guard is used to determine if a route can be activated. This is typically
-        used for authentication purposes to prevent unauthorized users from accessing certain routes.
-
-        Example:
-
-        import { Injectable } from '@angular/core';
-        import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-        import { Observable } from 'rxjs';
-
-        @Injectable({
-        providedIn: 'root'
-        })
-        export class AuthGuard implements CanActivate {
-        constructor(private router: Router) {}
-
-        canActivate(
+    };
+    </script>
+    
+    <b>Route Guards in Angular:</b>
+    <script.ts>
+    // CanActivate Example
+    @Injectable({
+      providedIn: 'root'
+    })
+    export class AuthGuard implements CanActivate {
+      constructor(private router: Router) {}
+    
+      canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
-        ): Observable<boolean> | Promise<boolean> | boolean {
-            const isLoggedIn = !!localStorage.getItem('token');
-
-            if (!isLoggedIn) {
-            this.router.navigate(['/login']);
-            }
-
-            return isLoggedIn;
-            }
-            }
-            2. CanActivateChild
-            The CanActivateChild guard works similarly to CanActivate, but it is used to determine
-            if a child route can be activated. This is useful for protecting nested routes.
-
-            Example:
-
-            import { Injectable } from '@angular/core';
-            import { CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-            import { Observable } from 'rxjs';
-
-            @Injectable({
-            providedIn: 'root'
-            })
-            export class AuthGuardChild implements CanActivateChild {
-            constructor(private router: Router) {}
-
-            canActivateChild(
-            route: ActivatedRouteSnapshot,
-            state: RouterStateSnapshot
-            ): Observable<boolean> | Promise<boolean> | boolean {
-                const isLoggedIn = !!localStorage.getItem('token');
-
-                if (!isLoggedIn) {
-                this.router.navigate(['/login']);
-                }
-
-                return isLoggedIn;
-                }
-                }
-                3. CanDeactivate
-                The CanDeactivate guard is used to determine if a route can be exited. This is useful for
-                prompting users to save changes before navigating away from a form.
-
-                Example:
-
-                import { Injectable } from '@angular/core';
-                import { CanDeactivate } from '@angular/router';
-                import { Observable } from 'rxjs';
-
-                export interface CanComponentDeactivate {
-                canDeactivate: () => Observable<boolean> | Promise<boolean> | boolean;
-                    }
-
-                    @Injectable({
-                    providedIn: 'root'
-                    })
-                    export class CanDeactivateGuard implements CanDeactivate<CanComponentDeactivate> {
-                      canDeactivate(
-                      component: CanComponentDeactivate
-                      ): Observable<boolean> | Promise<boolean> | boolean {
-                          return component.canDeactivate ? component.canDeactivate() : true;
-                          }
-                          }
-                          Component Example:
-
-                          import { Component } from '@angular/core';
-                          import { CanComponentDeactivate } from './can-deactivate.guard';
-
-                          @Component({
-                          selector: 'app-edit',
-                          template: `
-                          <form>
-                            <!-- form fields -->
-                          </form>
-                          `
-                          })
-                          export class EditComponent implements CanComponentDeactivate {
-                          canDeactivate(): boolean {
-                          return confirm('Do you want to discard changes?');
-                          }
-                          }
-
-                          4. CanLoad
-                          The CanLoad guard is used to determine if a module can be loaded. This is typically
-                          used for
-                          Role-Based Access Control (RBAC): Even though a user is authenticated,
-                          they may not have access to certain parts of the application based on their role.
-                          The CanLoad guard can check the user's role or permissions to determine
-                          if they are allowed to load a specific module.
-
-                          License or Subscription Status: In applications where access is tied to a subscription or
-                          license, even authenticated users might not have access to certain features or modules
-                          if their subscription is expired or if they don't have the necessary permissions.
-
-                          Conditional Loading: Depending on the application's configuration or business logic,
-                          certain modules may need to be conditionally loaded based on dynamic factors
-                          such as user preferences, settings, or external conditions.
-
-                          Example:
-
-                          import { Injectable } from '@angular/core';
-                          import { CanLoad, Route, UrlSegment, Router } from '@angular/router';
-                          import { Observable } from 'rxjs';
-
-                          @Injectable({
-                          providedIn: 'root'
-                          })
-                          export class CanLoadGuard implements CanLoad {
-                          constructor(private router: Router) {}
-
-                          canLoad(
-                          route: Route,
-                          segments: UrlSegment[]
-                          ): Observable<boolean> | Promise<boolean> | boolean {
-                              const isLoggedIn = !!localStorage.getItem('token');
-
-                              if (!isLoggedIn) {
-                              this.router.navigate(['/login']);
-                              }
-
-                              return isLoggedIn;
-                              }
-                              }
-                              Summary
-
-                              CanActivate: Checks if a route can be activated, typically used for authentication.
-                              CanActivateChild: Checks if a child route can be activated, useful for nested routes.
-                              CanDeactivate: Checks if a route can be exited, often used to prevent loss of unsaved
-                              changes.
-                              CanLoad: Checks if a module can be loaded, useful for lazy-loading and access control.
-
-                              Each of these guards can be implemented to return an Observable<boolean>, Promise<boolean>
-                                  ,
-                                  or a boolean, depending on whether the check is synchronous or asynchronous. These
-                                  guards
-                                  help manage navigation flow and ensure users interact with the application in a
-                                  controlled manner.
-                                  </script>
+      ): Observable<boolean> | Promise<boolean> | boolean {
+        const isLoggedIn = !!localStorage.getItem('token');
+    
+        if (!isLoggedIn) {
+          this.router.navigate(['/login']);
+        }
+    
+        return isLoggedIn;
+      }
+    }
+    
+    // CanActivateChild Example
+    @Injectable({
+      providedIn: 'root'
+    })
+    export class AuthGuardChild implements CanActivateChild {
+      constructor(private router: Router) {}
+    
+      canActivateChild(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
+      ): Observable<boolean> | Promise<boolean> | boolean {
+        const isLoggedIn = !!localStorage.getItem('token');
+    
+        if (!isLoggedIn) {
+          this.router.navigate(['/login']);
+        }
+    
+        return isLoggedIn;
+      }
+    }
+    
+    // CanDeactivate Example
+    @Injectable({
+      providedIn: 'root'
+    })
+    export class CanDeactivateGuard implements CanDeactivate<CanComponentDeactivate> {
+      canDeactivate(
+        component: CanComponentDeactivate
+      ): Observable<boolean> | Promise<boolean> | boolean {
+        return component.canDeactivate ? component.canDeactivate() : true;
+      }
+    }
+    
+    // CanLoad Example
+    @Injectable({
+      providedIn: 'root'
+    })
+    export class CanLoadGuard implements CanLoad {
+      constructor(private router: Router) {}
+    
+      canLoad(
+        route: Route,
+        segments: UrlSegment[]
+      ): Observable<boolean> | Promise<boolean> | boolean {
+        const isLoggedIn = !!localStorage.getItem('token');
+    
+        if (!isLoggedIn) {
+          this.router.navigate(['/login']);
+        }
+    
+        return isLoggedIn;
+      }
+    }
+    </script>
+    
+    <b>Component Example:</b>
+    <script.ts>
+    import { Component } from '@angular/core';
+    import { CanComponentDeactivate } from './can-deactivate.guard';
+    
+    @Component({
+      selector: 'app-edit',
+      template: `
+        <form>
+          <!-- form fields -->
+        </form>
+      `
+    })
+    export class EditComponent implements CanComponentDeactivate {
+      canDeactivate(): boolean {
+        return confirm('Do you want to discard changes?');
+      }
+    }
+    </script>
+    
+    <b>Summary:</b>
+    <ul>
+      <li><b>CanActivate:</b> Checks if a route can be activated, typically used for authentication.</li>
+      <li><b>CanActivateChild:</b> Checks if a child route can be activated, useful for nested routes.</li>
+      <li><b>CanDeactivate:</b> Checks if a route can be exited, often used to prevent loss of unsaved changes.</li>
+      <li><b>CanLoad:</b> Checks if a module can be loaded, useful for lazy-loading and access control.</li>
+    </ul>
+    
+    Each of these guards can be implemented to return an Observable<boolean>, Promise<boolean>, or a boolean, depending on whether the check is synchronous or asynchronous. 
+      These guards help manage navigation flow and ensure users interact with the application in a controlled manner.
+    </div>
+    
+    <button onclick="copyToClipboard(this)">Copy All</button>
+    <script>
+    function copyToClipboard(button) {
+      const content = button.previousElementSibling.innerText;
+      navigator.clipboard.writeText(content);
+    }
+    </script>
+    
 
                                   <!-- The !! (double negation) operator is used to explicitly
 convert the value into a boolean. If a token exists in the localStorage,

@@ -229,3 +229,120 @@ https://www.youtube.com/watch?v=jJ5a1dBxfno
 
 
  -->
+<!-- Copy everything within the <div> to get all explanations -->
+
+  <div>
+    <b>Property Binding:</b> Property binding in Angular is used to bind data from a component to an element property in the view template. The data flows in one direction, from the component to the DOM.<br>
+    Example:<br>
+    <input [value]="name"><br>
+    Here, the value of the input element is set to the component's `name` property.<br><br>
+    
+    <b>Interpolation / innerHTML:</b> Interpolation allows you to embed expressions within the HTML template. It is represented by double curly braces `{{}}`.<br>
+    Example:<br>
+    <p>{{message}}</p><br>
+    The content of the `<p>` element is set to the value of the `message` property from the component.<br><br>
+    
+    <b>Value Binding:</b> Value binding binds the value attribute of an HTML element to a property in the component.<br>
+    Example:<br>
+    <input [value]="username"><br>
+    The input element's value is bound to the `username` property in the component.<br><br>
+    
+    <b>Attribute Binding:</b> Attribute binding is used to bind a value to an attribute of an HTML element. This is done using the `attr` prefix.<br>
+    Example:<br>
+    <td [attr.colspan]="colspan"></td><br>
+    The `colspan` attribute of the `<td>` element is bound to the `colspan` property in the component.<br><br>
+    
+    <b>Style Binding:</b> Style binding binds a style property of an HTML element to a property in the component. This is done using the `style` prefix.<br>
+    Example:<br>
+    <div [style.background-color]="bgColor"></div><br>
+    The background color of the `<div>` element is bound to the `bgColor` property in the component.<br><br>
+    
+    <b>Event Binding:</b> Event binding allows you to bind events to methods in your component. This is done using parentheses `()`.<br>
+    Example:<br>
+    <button (click)="handleClick()">Click me</button><br>
+    The `click` event of the `<button>` element is bound to the `handleClick` method in the component.<br><br>
+    
+    <b>One Way Binding:</b> One-way binding updates the view with data from the component. This means changes in the component are reflected in the view, but not the other way around.<br>
+    Example:<br>
+    <p>{{name}}</p><br>
+    The `<p>` element displays the value of the `name` property from the component.<br><br>
+    
+    <b>Two Way Binding:</b> Two-way binding allows synchronization of data between the component and the view. This is achieved using the `ngModel` directive.<br>
+    Example:<br>
+    <input [(ngModel)]="name"><br>
+    The value of the `name` property in the component and the value of the input field are synchronized.<br><br>
+    
+    <b>(click)=callfun():</b> Event binding for the click event, calling the `callfun` function when the button is clicked.<br>
+    Example:<br>
+    <button (click)="callfun()">Click me</button><br><br>
+    
+    <b>(keydown.space)=onSpacebarDownEvent():</b> Event binding for the keydown event when the spacebar is pressed, calling the `onSpacebarDownEvent` function.<br>
+    Example:<br>
+    <input (keydown.space)="onSpacebarDownEvent()"><br><br>
+    
+    <b>(on-click)=onButtonClick():</b> Incorrect syntax. Correct event binding should use parentheses:<br>
+    Example:<br>
+    <button (click)="onButtonClick()">Click me!</button><br><br>
+    
+    <b>dragover:</b> Event binding for the dragover event, calling the specified function when the dragged item is over the element.<br>
+    Example:<br>
+    <div (dragover)="onDragOver($event)"></div><br><br>
+    
+    <b>dbclick:</b> Event binding for the double-click event, calling the specified function when the element is double-clicked.<br>
+    Example:<br>
+    <button (dblclick)="onDoubleClick()">Double click me</button><br><br>
+    
+    <b>drag:</b> Event binding for the drag event, calling the specified function when the element is being dragged.<br>
+    Example:<br>
+    <div (drag)="onDrag($event)"></div><br><br>
+    
+    <b>blur:</b> Event binding for the blur event, calling the specified function when the element loses focus.<br>
+    Example:<br>
+    <input (blur)="onBlur()"><br><br>
+    
+    <b>focus:</b> Event binding for the focus event, calling the specified function when the element gains focus.<br>
+    Example:<br>
+    <input (focus)="onFocus()"><br><br>
+    
+    <b>scroll:</b> Event binding for the scroll event, calling the specified function when the element is scrolled.<br>
+    Example:<br>
+    <div (scroll)="onScroll($event)"></div><br><br>
+    
+    <b>keydown:</b> Event binding for the keydown event, calling the specified function when a key is pressed.<br>
+    Example:<br>
+    <input (keydown)="onKeyDown($event)"><br><br>
+    
+    <b>keyup:</b> Event binding for the keyup event, calling the specified function when a key is released.<br>
+    Example:<br>
+    <input (keyup)="onKeyUp($event)"><br><br>
+    
+    <b>[ngSwitch]:</b> Directive that conditionally swaps the DOM structure based on a value.<br>
+    Example:<br>
+    <div [ngSwitch]="condition"><br>
+      <p *ngSwitchCase="1">Case 1</p><br>
+      <p *ngSwitchCase="2">Case 2</p><br>
+      <p *ngSwitchDefault>Default case</p><br>
+    </div><br><br>
+    
+    <b>[ngClass]:</b> Directive that adds or removes CSS classes based on component state.<br>
+    Example:<br>
+    <div [ngClass]="{active: isActive}">Content</div><br><br>
+    
+    <b>[ngStyle]:</b> Directive that adds or removes inline styles based on component state.<br>
+    Example:<br>
+    <div [ngStyle]="{'font-size.px': fontSize}">Styled text</div><br><br>
+    
+    <b>ngNonBindable:</b> Directive that tells Angular not to compile or bind the content of the element.<br>
+    Example:<br>
+    <div ngNonBindable>{{text}}</div><br>
+    The content inside the `<div>` is not compiled or bound by Angular, so it displays `{{text}}` as is.<br><br>
+    </div>
+    
+    <button onclick="copyToClipboard(this)">Copy All</button>
+    <script>
+    function copyToClipboard(button) {
+        const content = button.previousElementSibling.innerText;
+        navigator.clipboard.writeText(content);
+    }
+    </script>
+    
