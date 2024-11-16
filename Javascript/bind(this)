@@ -140,3 +140,66 @@ Using `bind(this)` is a way to ensure the correct `this`
 context is maintained, but with modern JavaScript and Angular 
 practices, using arrow functions for callbacks and event 
 handlers is a cleaner and more concise solution.
+
+<!-- get() and getRawValue() -->
+
+### **`get()` Method**
+
+Think of the `get()` method as a **tool to retrieve a specific form field** from a form. 
+
+Imagine you have a form with several input fields, and you want to access just one of them, 
+say the "name" field. Instead of getting the whole form and manually finding the field, 
+you use `get('name')` to **directly access** that specific field.
+
+#### Example:
+```ts
+const form = new FormGroup({
+  name: new FormControl('John'),
+  email: new FormControl('john@example.com')
+});
+
+// Use get() to access the 'name' form control directly
+const nameControl = form.get('name');
+console.log(nameControl?.value); // "John"
+```
+
+So, `get()` is useful when you want to **focus on one specific control** and check its value, or change it.
+
+---
+
+### **`getRawValue()` Method**
+
+Now, `getRawValue()` is like getting the **whole form's data**, but it also 
+includes the values of controls that might be **disabled**. 
+
+Normally, if a control is disabled, its value isn't included when you call 
+`form.value`. But if you use `getRawValue()`, it **includes all the values**, even for disabled fields.
+
+#### Example:
+```ts
+const form = new FormGroup({
+  name: new FormControl('John'),
+  email: new FormControl('john@example.com', { disabled: true })
+});
+
+// Use getRawValue() to get all the form values, even from the disabled 'email' field
+const formData = form.getRawValue();
+console.log(formData); // { name: 'John', email: 'john@example.com' }
+```
+
+In this case, if you used `form.value`, it would not include the `email` 
+field because it's disabled. But `getRawValue()` ensures you get **everything**.
+
+---
+
+### **Summary:**
+
+- **`get()`**: Lets you access a **specific form control** by its name. 
+You can then interact with it, like checking its value or updating it.
+- **`getRawValue()`**: Gives you the **entire form data**, including 
+the values of **disabled controls**, which aren't part of the regular `form.value`.
+
+So, in simple terms:
+- `get()` = "I want to check or modify a **single form field**."
+- `getRawValue()` = "I want to **see all the form data**, including any disabled fields."
+
