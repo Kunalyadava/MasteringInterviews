@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Event Loop</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #f8f9fa;
+        color: #333;
+      }
+
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
+
+      .section {
+        margin: 20px 0;
+      }
+
+      .question {
+        font-weight: bold;
+        font-size: 1.2em;
+        color: #34495e;
+      }
+
+      .answer {
+        margin-top: 10px;
+        font-size: 1em;
+        padding-left: 20px;
+      }
+
+      .code-block {
+        background-color: #34495e;
+        padding: 15px;
+        color: #ecf0f1;
+        border-radius: 5px;
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+        margin-top: 20px;
+      }
+
+      .code {
+        font-family: "Courier New", monospace;
+        color: #ecf0f1;
+      }
+
+      ul {
+        margin-left: 40px;
+      }
+
+      li {
+        margin-bottom: 8px;
+      }
+
+      .event-loop-diagram {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+      }
+
+      .diagram-box {
+        width: 200px;
+        height: 150px;
+        background-color: #2980b9;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 8px;
+        font-size: 1.1em;
+        margin: 0 15px;
+      }
+
+      .arrow {
+        font-size: 1.5em;
+        margin: 30px 0;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Event Loop Explained</h1>
+
+    <div class="section">
+      <div class="question">What is the Event Loop?</div>
+      <div class="answer">
+        The <strong>event loop</strong> is a mechanism in JavaScript that allows
+        asynchronous operations to be executed, even though JavaScript is a
+        single-threaded language. It helps manage non-blocking operations such
+        as network requests, timers, and user interactions without freezing the
+        execution of other code.
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="question">How Does the Event Loop Work?</div>
+      <div class="answer">
+        The event loop follows this basic process:
+        <ul>
+          <li>1. Execute synchronous code (in the call stack).</li>
+          <li>
+            2. Once the call stack is empty, the event loop checks the callback
+            queue for any ready-to-execute functions.
+          </li>
+          <li>
+            3. Move the function from the callback queue to the call stack to be
+            executed.
+          </li>
+          <li>
+            4. Continue executing the next available functions, maintaining a
+            non-blocking environment.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="question">What are the Main Components?</div>
+      <div class="answer">
+        The event loop involves the following components:
+        <ul>
+          <li>
+            <strong>Call Stack</strong>: Where the current executing code
+            resides.
+          </li>
+          <li>
+            <strong>Callback Queue</strong>: Holds functions that are ready to
+            execute (callbacks).
+          </li>
+          <li>
+            <strong>Web APIs</strong>: External environment functions that
+            handle asynchronous operations like timers, DOM events, HTTP
+            requests.
+          </li>
+          <li>
+            <strong>Event Loop</strong>: Monitors the call stack and moves ready
+            callbacks from the callback queue to the stack.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="question">Event Loop Process Example:</div>
+      <div class="answer">
+        Consider the following JavaScript code:
+        <div class="code-block">
+          <pre><code> 
+console.log("Start");
+
+setTimeout(() => {
+  console.log("First Timeout");
+}, 1000);
+
+setTimeout(() => {
+  console.log("Second Timeout");
+}, 500);
+
+console.log("End");
+                </code></pre>
+        </div>
+        <p>
+          This example demonstrates how the event loop works by managing
+          multiple asynchronous timeouts:
+        </p>
+        <ul>
+          <li>First, the synchronous code (console logs) executes.</li>
+          <li>
+            Then, the `setTimeout` functions are handed off to the Web APIs.
+          </li>
+          <li>
+            Once the specified delay is reached, the callbacks are placed into
+            the callback queue.
+          </li>
+          <li>
+            Finally, the event loop places the callbacks from the callback queue
+            into the call stack for execution, maintaining order.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="event-loop-diagram">
+      <div class="diagram-box">
+        <strong>Call Stack</strong><br />
+        Executes functions synchronously
+      </div>
+      <div class="arrow">⟶</div>
+      <div class="diagram-box">
+        <strong>Web APIs</strong><br />
+        Handles async tasks like setTimeout
+      </div>
+      <div class="arrow">⟶</div>
+      <div class="diagram-box">
+        <strong>Callback Queue</strong><br />
+        Holds completed async functions
+      </div>
+      <div class="arrow">⟶</div>
+      <div class="diagram-box">
+        <strong>Event Loop</strong><br />
+        Moves tasks from queue to stack
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="question">What Happens with `setTimeout`?</div>
+      <div class="answer">
+        Consider this example where two `setTimeout` functions are called with
+        different delays:
+        <div class="code-block">
+          <pre><code>
+console.log("Start");
+
+setTimeout(() => { console.log("First Timeout"); }, 1000);
+setTimeout(() => { console.log("Second Timeout"); }, 500);
+
+console.log("End");
+                </code></pre>
+        </div>
+        <p>
+          Even though both timeouts are set with different delays, the event
+          loop ensures that:
+        </p>
+        <ul>
+          <li>
+            The synchronous code is executed first (log "Start" and "End").
+          </li>
+          <li>
+            After 500 ms, the second timeout callback is added to the callback
+            queue, and after 1000 ms, the first timeout callback is added.
+          </li>
+          <li>
+            Once the call stack is empty, the event loop moves the callbacks
+            from the callback queue to the call stack, where they are executed
+            in order.
+          </li>
+        </ul>
+        <p><strong>Output:</strong></p>
+        <pre><code>
+Start
+End
+Second Timeout
+First Timeout
+            </code></pre>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RxJS Overview</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      h1,
+      h2 {
+        color: #2c3e50;
+      }
+
+      .question {
+        font-weight: bold;
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #34495e;
+      }
+
+      .answer {
+        margin-bottom: 20px;
+        padding-left: 20px;
+        font-size: 1em;
+      }
+
+      .code {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+      }
+
+      .code-block {
+        background-color: #34495e;
+        padding: 20px;
+        color: #ecf0f1;
+        border-radius: 8px;
+        font-size: 1.1em;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+
+      ul {
+        list-style-type: disc;
+        margin-left: 40px;
+      }
+
+      ol {
+        list-style-type: decimal;
+        margin-left: 40px;
+      }
+
+      li {
+        margin-bottom: 8px;
+      }
+
+      blockquote {
+        font-style: italic;
+        color: #7f8c8d;
+        border-left: 4px solid #ccc;
+        padding-left: 15px;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>RxJS Questions and Answers</h1>
+
+    <div class="question">Question 1: What is the full form of RxJS?</div>
+    <div class="answer">
+      RxJS stands for <strong>Reactive Extensions for JavaScript</strong>. It's
+      a library for composing asynchronous and event-based programs by using
+      observable sequences.
+    </div>
+
+    <div class="question">Question 2: What is the purpose of RxJS?</div>
+    <div class="answer">
+      RxJS allows you to handle asynchronous data streams and events. It
+      provides a set of operators and observables to make it easy to work with
+      complex data flows, particularly useful in front-end frameworks like
+      Angular where reactive programming patterns are beneficial for handling UI
+      events, HTTP requests, and more.
+    </div>
+
+    <div class="question">Question 3: What are observables and observers?</div>
+    <div class="answer">
+      <ul>
+        <li>
+          <strong>Observables</strong>: These are data producers that can emit
+          values over time (similar to streams). Observables are lazy, meaning
+          they do not emit any values until they are subscribed to.
+        </li>
+        <li>
+          <strong>Observers</strong>: These are data consumers, essentially the
+          objects or functions that listen to values emitted by the Observable.
+          Observers can handle emitted values, errors, and completion signals
+          from Observables.
+        </li>
+      </ul>
+    </div>
+
+    <div class="question">
+      Question 4: Explain the use of <code>subscribe</code> with sample code
+    </div>
+    <div class="answer">
+      The <code>subscribe</code> method allows you to execute logic each time an
+      Observable emits a value.
+      <div class="code-block">
+        <code>
+          import { Observable } from 'rxjs'; const observable = new
+          Observable(subscriber => { subscriber.next('Hello');
+          subscriber.next('World'); subscriber.complete(); });
+          observable.subscribe({ next(value) { console.log(value); }, error(err)
+          { console.error('Error:', err); }, complete() {
+          console.log('Completed'); } }); // Output: // Hello // World //
+          Completed
+        </code>
+      </div>
+    </div>
+
+    <div class="question">Question 5: How to unsubscribe in RxJS?</div>
+    <div class="answer">
+      To stop receiving values from an Observable, you need to unsubscribe,
+      which is particularly useful to prevent memory leaks.
+      <div class="code-block">
+        <code>
+          const subscription = observable.subscribe(value =>
+          console.log(value)); // Unsubscribe when you no longer need the
+          subscription subscription.unsubscribe();
+        </code>
+      </div>
+    </div>
+
+    <div class="question">
+      Question 6: Explain the concept of operators with sample code
+    </div>
+    <div class="answer">
+      Operators in RxJS are functions that manipulate data streams. Common
+      operators include <code>map</code>, <code>filter</code>, and
+      <code>mergeMap</code>.
+      <div class="code-block">
+        <code>
+          import { of } from 'rxjs'; import { map, filter } from
+          'rxjs/operators'; const observable = of(1, 2, 3, 4, 5).pipe(
+          filter(value => value % 2 === 0), map(value => value * 10) );
+          observable.subscribe(value => console.log(value)); // Output: // 20 //
+          40
+        </code>
+      </div>
+    </div>
+
+    <div class="question">Question 7: How to install RxJS?</div>
+    <div class="answer">
+      To install RxJS, use npm:
+      <div class="code-block">
+        <code>npm install rxjs</code>
+      </div>
+    </div>
+
+    <div class="question">
+      Question 8: Differentiate between Promise and RxJS
+    </div>
+    <div class="answer">
+      <ul>
+        <li>
+          <strong>Promises</strong>: A Promise handles a single asynchronous
+          event (resolved once). Once created, it cannot be canceled.
+        </li>
+        <li>
+          <strong>RxJS (Observables)</strong>: Observables handle a stream of
+          events over time, can emit multiple values, and support operators to
+          transform data streams. Observables are cancellable (using
+          <code>unsubscribe</code>).
+        </li>
+      </ul>
+    </div>
+
+    <div class="question">
+      Question 9: In Angular, where have you used RxJS?
+    </div>
+    <div class="answer">
+      RxJS is commonly used in Angular for:
+      <ul>
+        <li>
+          <strong>HTTP requests</strong>: Observables handle responses from the
+          HttpClient.
+        </li>
+        <li><strong>Event handling</strong>: Handling UI events reactively.</li>
+        <li>
+          <strong>Form handling</strong>: Reactive forms use Observables to
+          manage form controls.
+        </li>
+        <li>
+          <strong>State management</strong>: Handling state updates and
+          communication between components.
+        </li>
+      </ul>
+    </div>
+
+    <div class="question">
+      Question 10: Which operators have you used from RxJS?
+    </div>
+    <div class="answer">
+      Commonly used operators include <code>map</code>, <code>filter</code>,
+      <code>switchMap</code>, <code>mergeMap</code>, <code>concatMap</code>,
+      <code>take</code>, <code>catchError</code>, and <code>debounceTime</code>.
+    </div>
+
+    <div class="question">
+      Question 11: What is Push/Reactive vs Pull/Imperative?
+    </div>
+    <div class="answer">
+      <ul>
+        <li>
+          <strong>Push/Reactive</strong>: In reactive programming, values are
+          pushed to consumers as they become available. Observables follow this
+          pattern, where subscribers are notified whenever there’s a new value.
+        </li>
+        <li>
+          <strong>Pull/Imperative</strong>: In imperative programming, consumers
+          actively pull data from a source when needed (like using a function to
+          get a value). Promises can be seen as somewhat pull-oriented since
+          they represent a single response that consumers await.
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

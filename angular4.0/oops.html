@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OOP in Angular & Inheritance</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f4f7f6;
+        margin: 20px;
+        color: #333;
+      }
+
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
+
+      .section {
+        margin: 20px 0;
+        padding: 20px;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+      }
+
+      .question {
+        font-weight: bold;
+        font-size: 1.4em;
+        color: #34495e;
+      }
+
+      .answer {
+        font-size: 1.1em;
+        margin-top: 10px;
+        padding-left: 20px;
+      }
+
+      .code-block {
+        background-color: #2c3e50;
+        padding: 15px;
+        color: #ecf0f1;
+        border-radius: 5px;
+        margin-top: 20px;
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+      }
+
+      pre {
+        margin: 0;
+      }
+
+      .inheritance-example {
+        background-color: #e74c3c;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 1.1em;
+        margin-top: 20px;
+      }
+
+      .inheritance-example p {
+        margin: 5px 0;
+      }
+
+      .inheritance-example ul {
+        list-style-type: none;
+        padding-left: 20px;
+      }
+
+      .inheritance-example li {
+        margin: 5px 0;
+      }
+
+      .code-output {
+        font-size: 1.1em;
+        color: #2c3e50;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>OOP in Angular & Inheritance</h1>
+
+    <div class="section">
+      <div class="question">
+        What is Object-Oriented Programming (OOP) in Angular?
+      </div>
+      <div class="answer">
+        Angular is built on TypeScript, which supports Object-Oriented
+        Programming (OOP) principles. OOP in Angular is about organizing code
+        using classes, objects, inheritance, encapsulation, polymorphism, and
+        abstraction. Angular components, services, and directives are all based
+        on classes and methods, which makes OOP a core concept in building
+        Angular applications.
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="question">Key OOP Concepts in Angular:</div>
+      <div class="answer">
+        <ul>
+          <li>
+            <strong>Classes:</strong> Used to define Angular components,
+            services, and directives.
+          </li>
+          <li>
+            <strong>Encapsulation:</strong> Data and behavior are encapsulated
+            in Angular classes (components, services).
+          </li>
+          <li>
+            <strong>Inheritance:</strong> Allows one class to inherit from
+            another, enabling code reuse and specialization.
+          </li>
+          <li>
+            <strong>Polymorphism:</strong> Enables objects of different types to
+            be treated as instances of the same class, enhancing flexibility.
+          </li>
+          <li>
+            <strong>Abstraction:</strong> Hides complex implementation details
+            and exposes only necessary functionality.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="question">What is Inheritance in Angular?</div>
+      <div class="answer">
+        Inheritance in Angular allows a class (child class) to inherit
+        properties and methods from another class (parent class). This is useful
+        for code reuse and extending functionality without duplicating code. In
+        Angular, inheritance is commonly used with components, services, and
+        directives to build specialized versions of a base class.
+      </div>
+    </div>
+
+    <div class="section inheritance-example">
+      <div class="question">
+        Example of Inheritance in Angular (Component Inheritance):
+      </div>
+      <div class="answer">
+        Here is an example of a parent class and a child class in Angular,
+        demonstrating inheritance.
+      </div>
+      <div class="code-block">
+        <pre><code>
+// Parent class Component
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-base',
+  template: `<h1>Base Component</h1>`
+})
+export class BaseComponent {
+  message = "Hello from the base component!";
+
+  showMessage() {
+    console.log(this.message);
+  }
+}
+
+// Child class Component extending the parent
+@Component({
+  selector: 'app-child',
+  template: `<h1>Child Component</h1>`
+})
+export class ChildComponent extends BaseComponent {
+  constructor() {
+    super();
+    this.message = "Hello from the child component!";
+  }
+
+  // Overriding the method from BaseComponent
+  showMessage() {
+    console.log(`Child's Message: ${this.message}`);
+  }
+}
+            </code></pre>
+      </div>
+      <div class="answer">
+        In this example:
+        <ul>
+          <li>
+            <strong>BaseComponent:</strong> This is the parent class with a
+            message and method to show it.
+          </li>
+          <li>
+            <strong>ChildComponent:</strong> This class extends the
+            `BaseComponent`, overriding the `showMessage()` method to customize
+            its behavior.
+          </li>
+        </ul>
+        The child class has access to the parent class's properties and methods,
+        and can override them as needed.
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="question">Benefits of Inheritance in Angular:</div>
+      <div class="answer">
+        <ul>
+          <li>
+            <strong>Code Reusability:</strong> Child classes can reuse code from
+            parent classes without duplication.
+          </li>
+          <li>
+            <strong>Maintainability:</strong> Inheritance allows you to extend
+            and customize behavior without modifying existing code.
+          </li>
+          <li>
+            <strong>Modularity:</strong> Helps in creating a modular code
+            structure where components and services can be extended as needed.
+          </li>
+          <li>
+            <strong>Clean Structure:</strong> Code becomes more organized,
+            making it easier to manage large applications.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="question">How is Inheritance Used in Angular Services?</div>
+      <div class="answer">
+        Angular services can also benefit from inheritance. You can create a
+        base service with shared functionality (e.g., logging, data handling),
+        and then extend this service in other services that need more specific
+        behavior.
+      </div>
+      <div class="code-block">
+        <pre><code>
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class BaseService {
+  log(message: string) {
+    console.log('Base Log: ' + message);
+  }
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ChildService extends BaseService {
+  log(message: string) {
+    console.log('Child Log: ' + message);  // Overridden method
+  }
+
+  fetchData() {
+    this.log('Fetching data...');
+  }
+}
+            </code></pre>
+      </div>
+      <div class="answer">
+        In this example:
+        <ul>
+          <li>
+            <strong>BaseService:</strong> A base service providing a simple log
+            method.
+          </li>
+          <li>
+            <strong>ChildService:</strong> A service that extends `BaseService`,
+            overrides the log method, and adds new functionality like
+            `fetchData`.
+          </li>
+        </ul>
+        This is useful for creating specialized services while still leveraging
+        the common behavior in the base service.
+      </div>
+    </div>
+  </body>
+</html>

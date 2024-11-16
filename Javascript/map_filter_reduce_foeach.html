@@ -294,3 +294,150 @@ function greet(greeting, year, receiver) {
 
 console.log(g)
 </script>
+<script>
+  // .at(index) - Returns the element at the given index in the array.
+[3, 4, 5, 6].at(1); // 4
+// Example: Returns the element at index 1, which is `4`.
+// Difference: Directly accesses an element without modifying the array.
+
+// .pop() - Removes the last element from an array and returns it. This method mutates the original array.
+let arr1 = [3, 4, 5, 6];
+arr1.pop(); // 6
+console.log(arr1); // [3, 4, 5]
+// Example: Removes the last element (`6`), leaving `[3, 4, 5]`.
+// Difference: Mutates the array by removing the last element.
+
+// .push(element) - Adds one or more elements to the end of an array and returns the new length of the array. This method mutates the original array.
+let arr2 = [3, 4, 5, 6];
+arr2.push(7); // 5
+console.log(arr2); // [3, 4, 5, 6, 7]
+// Example: Adds `7` to the end, making it `[3, 4, 5, 6, 7]`.
+// Difference: Mutates the array by adding elements to the end.
+
+// .fill(value) - Fills all the elements of an array from a start index to an end index with a static value.
+[3, 4, 5, 6].fill(1); // [1, 1, 1, 1]
+// Example: Fills the array with `1`, resulting in `[1, 1, 1, 1]`.
+// Difference: Replaces all elements with a specified value.
+
+// .join(separator) - Joins all elements of an array into a string, separated by a specified separator.
+[3, 4, 5, 6].join("-"); // '3-4-5-6'
+// Example: Joins the elements with a hyphen, resulting in `'3-4-5-6'`.
+// Difference: Converts the array into a string.
+
+// .shift() - Removes the first element from an array and returns it. This method mutates the original array.
+let arr3 = [3, 4, 5, 6];
+arr3.shift(); // 3
+console.log(arr3); // [4, 5, 6]
+// Example: Removes the first element (`3`), leaving `[4, 5, 6]`.
+// Difference: Mutates the array by removing the first element.
+
+// .reverse() - Reverses the order of the elements in an array. This method mutates the original array.
+let arr4 = [3, 4, 5, 6];
+arr4.reverse(); // [6, 5, 4, 3]
+// Example: Reverses the array to `[6, 5, 4, 3]`.
+// Difference: Mutates the array by reversing the order of elements.
+
+// .unshift(element) - Adds one or more elements to the beginning of an array and returns the new length of the array. This method mutates the original array.
+let arr5 = [3, 4, 5, 6];
+arr5.unshift(1); // 5
+console.log(arr5); // [1, 3, 4, 5, 6]
+// Example: Adds `1` to the beginning, making it `[1, 3, 4, 5, 6]`.
+// Difference: Mutates the array by adding elements to the beginning.
+
+// .includes(value) - Determines whether an array contains a certain value among its entries.
+[3, 4, 5, 6].includes(5); // true
+// Example: Checks if `5` is in the array, returning `true`.
+// Difference: Checks for the presence of a value without modifying the array.
+
+// .map(callback) - Creates a new array with the results of calling a provided function on every element in the calling array.
+[3, 4, 5, 6].map((num) => num + 6); // [9, 10, 11, 12]
+// Example: Adds `6` to each element, resulting in `[9, 10, 11, 12]`.
+// Difference: Creates a new array without modifying the original array.
+
+// .find(callback) - Returns the first element in the array that satisfies the provided testing function.
+[3, 4, 5, 6].find((num) => num > 4); // 5
+// Example: Finds the first element greater than `4`, which is `5`.
+// Difference: Returns a single value based on a condition without modifying the array.
+
+// .filter(callback) - Creates a new array with all elements that pass the test implemented by the provided function.
+[3, 4, 5, 6].filter((num) => num > 4); // [5, 6]
+// Example: Filters the array to elements greater than `4`, resulting in `[5, 6]`.
+// Difference: Creates a new array with elements that meet a condition without modifying the original array.
+
+// .every(callback) - Tests whether all elements in the array pass the test implemented by the provided function.
+[3, 4, 5, 6].every((num) => num > 5); // false
+// Example: Checks if every element is greater than `5`. Since not all elements are, it returns `false`.
+// Difference: Returns a boolean based on a condition without modifying the array.
+
+// .findIndex(callback) - Returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns `-1`.
+[3, 4, 5, 6].findIndex((num) => num > 4); // 2
+// Example: Finds the index of the first element greater than `4`, which is `2`.
+// Difference: Returns the index of the element based on a condition without modifying the array.
+
+// .reduce(callback, initialValue) - Executes a reducer function (that you provide) on each element of the array, resulting in a single output value.
+[3, 4, 5, 6].reduce((acc, num) => acc + num, 8); // 26
+// Example: Sums all elements starting with the initial value `8`, resulting in `26`.
+// Difference: Produces a single accumulated result without modifying the array.
+
+
+
+
+</script>
+<script>
+//   Summary of Differences:
+// Mutating vs. Non-Mutating Methods: Methods like .pop(), .push(), .shift(), .reverse(), .unshift(), and .fill() mutate the original array. In contrast, methods like 
+// .at(), .includes(), .map(), .find(), .filter(), .every(), .findIndex(), .reduce(), and .join() do not mutate the original array.
+// Return Types: Some methods return elements or values (.at(), .pop(), .shift(), .find(), .reduce(), .every(), .includes()), some return 
+// arrays (.map(), .filter(), .reverse(), .push(), .unshift(), .fill()), and others return strings (.join()).
+// Behavior: Some methods are used to add or remove elements (.push(), .pop(), .shift(), .unshift()), some to transform elements (.map(), 
+// .fill()), some to check conditions (.every(), .includes()), some to find values or indices (.find(), .findIndex()), and some to aggregate results (.reduce()).
+</script>
+
+<script>
+  // Define the fakeMap function
+Array.prototype.fakeMap = function(callback) {
+    // Create a new array to hold the results
+    const result = [];
+    // Loop through each element in the array
+    for (let i = 0; i < this.length; i++) {
+        // Apply the callback function to each element
+        result.push(callback(this[i], i, this));
+    }
+    // Return the new array
+    return result;
+};
+
+// Example usage of fakeMap
+const originalArray = [3, 4, 5, 6];
+const newArray = originalArray.fakeMap(num => num + 6);
+
+console.log(newArray); // [9, 10, 11, 12]
+console.log(originalArray); // [3, 4, 5, 6] - remains unchanged
+
+</script>
+
+<!-- Differences Between fakeMap and Native .map()
+Performance and Optimization:
+
+Native .map(): The native .map() method is highly optimized and implemented in low-level code within the JavaScript engine, making it faster and more efficient.
+Custom fakeMap: The custom fakeMap implementation is written in JavaScript and may not be as optimized as the native method.
+Edge Case Handling:
+
+Native .map(): The native .map() method has built-in handling for various edge cases, such as sparse arrays (arrays with missing elements).
+Custom fakeMap: The custom implementation may not handle all edge cases unless explicitly programmed to do so. For example, it does not handle sparse arrays out-of-the-box.
+Method Availability:
+
+Native .map(): The native .map() method is available on all arrays as part of the standard JavaScript Array prototype.
+Custom fakeMap: The custom fakeMap method must be added to the Array prototype manually and is not available by default.
+Error Handling:
+
+Native .map(): The native .map() method includes robust error handling and validation.
+Custom fakeMap: The custom implementation may require additional error handling to match the robustness of the native method.
+Specification Compliance:
+
+Native .map(): Fully compliant with the ECMAScript specification, ensuring consistent behavior across all JavaScript environments.
+Custom fakeMap: Needs careful implementation to ensure it behaves consistently with the specification. There might be subtle differences if the implementation is not thorough.
+Prototype Method:
+
+Native .map(): Always part of the Array prototype.
+Custom fakeMap: Needs to be explicitly added to the Array prototype. -->

@@ -90,6 +90,35 @@ These directives change the appearance or behavior of an element.
 Examples include [ngClass], [ngStyle], and custom attribute directives
 ( to encapsulate and reuse behavior across Angular application).
 
+
+A structural directive is a directive that changes the structure of the DOM by adding
+ or removing elements. Structural directives allow you to control the layout and display
+  of elements in a flexible way, often based on conditions or collections.
+
+Structural directives are unique in that they use an asterisk (*) prefix and can 
+dynamically insert, remove, or manipulate elements within the DOM. When Angular 
+sees the asterisk, it interprets the directive as needing to create or alter 
+a new embedded view based on the directive's logic.
+
+*ngIf: Conditionally includes or excludes an element based on a boolean expression.
+
+<div *ngIf="isVisible">This is displayed if isVisible is true.</div>
+If isVisible is false, Angular removes this <div> from the DOM.
+
+  
+*ngFor: Repeats an element for each item in a list.
+<div *ngFor="let item of items">{{ item }}</div>
+If items is an array, Angular creates one <div> for each item.
+
+
+*ngSwitch: Displays different templates based on the current value of a variable.\
+<div [ngSwitch]="status">
+  <p *ngSwitchCase="'success'">Success</p>
+  <p *ngSwitchCase="'error'">Error</p>
+  <p *ngSwitchDefault>Unknown status</p>
+</div>
+
+
 <hr>
 life cycle hooks
 
@@ -190,8 +219,8 @@ If the component is destroyed, Angular invokes ngOnDestroy
 
 
 ngOnChanges: This lifecycle hook is executed whenever the component's input properties change.
-ngOnInit: This lifecycle hook is executed after the component's c
-onstructor method and is a good place to perform initial setup for the component.
+ngOnInit: This lifecycle hook is executed after the component's constructor 
+method and is a good place to perform initial setup for the component.
 
 ngDoCheck: This lifecycle hook is executed during every change detection 
 cycle and is a good place to perform custom change detection.

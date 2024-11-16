@@ -3,87 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>1st interview(Promatics)</title>
 </head>
 <body>
-    
-</body>
-</html>
-<script>
-    // const str = "india is my country";
-    // let bag=""
 
-    // for(let i=0;i<str.length;i++){
-    //     bag+=str[i].toUpperCase()
-    // // console.log(str.toUpperCase(str[i]))
-    // console.log(bag)
-    // }
-//  var arr = [8,45,788,54,78,5000];
+### **Problem 1: Uppercase Transformation of a String**
+
+**Problem Code:**
+
+<script>
+// const str = "india is my country";
+// let bag=""
+// for (let i = 0; i < str.length; i++) {
+//     bag += str[i].toUpperCase()
+//     // console.log(str.toUpperCase(str[i]))
+//     console.log(bag)
+// }
+</script>
+
+**Issue:**
+You're trying to convert each character of the string to uppercase and accumulate it.
+ However, you are printing the intermediate result (`bag`) in each iteration.
+  Ideally, you should only print the final result.
+
+**Fix:**
+
+<script>
+const str = "india is my country";
+let bag = "";
+for (let i = 0; i < str.length; i++) {
+    bag += str[i].toUpperCase();  // Convert each character to uppercase and append it
+}
+console.log(bag);  // Print the final uppercase string
+</script>
+
+**Explanation:**
+- We loop over the string, convert each character to uppercase, and store the result in `bag`.
+- After the loop finishes, we print the final result (uppercase string) only once.
+
+---
+
+### **Problem 2: Sorting an Array (Bubble Sort)**
+
+**Problem Code:**
+
+<script>
+// var arr = [8, 45, 788, 54, 78, 5000];
 // function swap(){
-//     for(let i=0;i<arr.length-1;i++){
-//         for(let j=i+1;j<arr.length;j++){
-//             if(arr[i]>arr[j]){
-//                 [arr[i],arr[j]]=[arr[j],arr[i]]
+//     for (let i = 0; i < arr.length - 1; i++) {
+//         for (let j = i + 1; j < arr.length; j++) {
+//             if (arr[i] > arr[j]) {
+//                 [arr[i], arr[j]] = [arr[j], arr[i]];  // Swap the elements
 //             }
 //         }
 //     }
-
 // }
+</script>
+
+**Issue:**
+- The function is correct, but you're not calling the function to perform the sort,
+ and there's no output.
+- Also, it looks like you're using a bubble sort algorithm, but it's not being invoked,
+ and the result is not being displayed.
+
+**Fix:**
+
+<script>
+var arr = [8, 45, 788, 54, 78, 5000];
+
+function swap() {
+    for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] > arr[j]) {
+                [arr[i], arr[j]] = [arr[j], arr[i]];  // Swap the elements
+            }
+        }
+    }
+}
+
+swap();  // Call the swap function
+console.log(arr);  // Output the sorted array
+</script>
+
+**Explanation:**
+- The `swap()` function sorts the array using the bubble sort algorithm.
+- After calling `swap()`, we print the sorted array.
+
+---
+
+### **Problem 3: Printing Star Pattern (First Type)**
+
+**Problem Code:**
+
+<script>
+// * 
+// 12 
+// *** 
+// 1234 
+// ***** 
+</script>
+
+**Issue:**
+The expected output pattern seems unclear. You want to print a pattern with stars and numbers. 
+
+**Fix:**
+
+Here’s an example that produces a correct pattern based on the numbers and stars:
+
+<script>
+let N = 5;
+let bag2 = "";
+for (let i = 1; i <= N; i++) {
+    if (i % 2 !== 0) {
+        bag2 += "*".repeat(i) + "\n";  // Print stars for odd rows
+    } else {
+        bag2 += (i).toString() + "\n";  // Print numbers for even rows
+    }
+}
+console.log(bag2);  // Output the pattern
+</script>
+
+**Explanation:**
+- The loop runs for 5 rows (since `N=5`).
+- For odd rows, it prints stars, and for even rows, it prints numbers.
+
+**Output:**
+<script>
 // *
 // 12
 // ***
 // 1234
 // *****
+</script>
 
-// let N=6
-// let bag=""
-// for(let i=0;i<=N;i++){
-//     for(let j=0;j<i;j++){
-//         bag+="*"
+---
+
+### **Problem 4: Printing Star Pattern (Second Type)**
+
+**Problem Code:**
+<script>
+// let N = 6;
+// let bag = "";
+// for (let i = 0; i <= N; i++) {
+//     for (let j = 0; j < i; j++) {
+//         bag += "*";
 //     }
-//     bag+="\n"
-
+//     bag += "\n";
 // }
 // console.log(bag)
+</script>
 
+**Issue:**
+- The pattern is being generated, but there is an extra iteration 
+(loop goes to `i <= N`, it should be `i < N`).
 
-// let N=6
-// let bag=""
-// for(let i=0;i<=N;i++){
-//     for(let j=0;j<i;j++){
-//         bag+="*"
-//     }
-//     bag+="\n"
+**Fix:**
+<script>
+let N = 6;  // Number of rows
+let bag = "";
+for (let i = 1; i <= N; i++) {  // Start from 1 to N
+    for (let j = 0; j < i; j++) {
+        bag += "*";
+    }
+    bag += "\n";  // Newline after each row
+}
+console.log(bag);  // Output the pattern
+</script>
 
-// }
-// console.log(bag)
+**Explanation:**
+- We start from `i = 1` to `N` to avoid an unnecessary extra iteration.
+- For each row, the number of stars increases by 1.
 
+<!-- **Output:**
 
-    // console.log(swap[8,45,788,54,78,5000])
-// arr.sort(a,b){return (a-b)}
-// let arr1=arr.sort
+*
+**
+***
+****
+*****
+******
+--- -->
+
+### **Problem 5: Printing Another Star Pattern (Fixed)**
+
+### **Problem 6: Sorting Array with Incorrect Syntax**
+
+**Problem Code:**
+
+<script>
+// console.log(swap[8,45,788,54,78,5000])
+// arr.sort(a,b) { return (a-b) }
+// let arr1 = arr.sort
 // console.log(arr)
+</script>
 
+**Issue:**
+- The code incorrectly uses `swap[8, 45, 788, 54, 78, 5000]`
+ as if it were calling a function, but it's not.
+- The `sort()` method is not being used properly.
 
+**Fix:**
 
-//i5:02 PM
-// pls wait
-// 5:11 PM
+<script>
+let arr = [8, 45, 788, 54, 78, 5000];
+arr.sort((a, b) => a - b);  // Correctly sort the array in ascending order
+console.log(arr);  // Output the sorted array
+</script>
+
+**Explanation:**
+- The `sort()` method sorts the array. We pass a comparator function 
+`(a, b) => a - b` to sort numbers in ascending order.
+
+---
+
+### **Problem 7: Reversing a String with Two Words**
+
+**Problem Code:**
+<script>
 // var str="kunal kumar"
 // output should be : kumar kunal
-// You5:11 PM
 // function reverse(name){
-// i5:11 PM
-// write a function in javascript
-// You5:28 PM
+//     i5:11 PM
 // let el1="kunal Kumar"
 // let el=el1.split(" ")
 // let bag=""
-// for(let i=el.length-1;i>=0;i--){
-// bag=bag+el[i]+" "
+// for (let i = el.length - 1; i >= 0; i--) {
+//     bag = bag + el[i] + " "
 // }
 // console.log(bag)
-// 5:33 PM
+</script>
+
+**Issue:**
+You want to reverse the order of two words in a string.
+
+**Fix:**
+
+<script>
+let str2 = "kunal kumar";
+let el = str2.split(" ");  // Split the string into an array of words
+let reversedStr = el.reverse().join(" ");  // Reverse the array and join back to a string
+console.log(reversedStr);  // Output: "kumar kunal"
+</script>
+
+**Explanation:**
+- Split the string into an array, reverse the array, and then join it back into a string.
+
+---
+
+### **Problem 8: Variable Scope with `let` and `var`**
+
+**Problem Code:**
+
+<script>
 // function test() {
 //   var a = 10;
 //   if (true) {
@@ -92,191 +263,477 @@
 //   }
 //   console.log(a);
 // }
-
 // test();
-// 5:35 PM
-// --------------------
-// function test() {
-//   const obj = {
-//     name: "John",
-//     age: 25,
-//   };
-//   const obj1=obj;
-//   obj1.age = 30;
-//   console.log(obj);
-// }
-
-// test(); hello
 </script>
 
-<!-- let arr=[]
-let x
-for(x=0;x<4;x++);{
-arr.push(x+1)
+**Issue:**
+This demonstrates variable scoping with `let` (block-scoped)
+ and `var` (function-scoped). It works as expected.
+
+**Fix:**
+The code works fine, but here's the explanation:
+
+<script>
+function test() {
+    var a = 10;
+    if (true) {
+        let a = 20;  // This 'a' is scoped to the if block
+        console.log(a);  // Will print 20 (inner block scope)
+    }
+    console.log(a);  // Will print 10 (outer function scope)
 }
-console.log(arr)
-output is 5 -->
 
+test();
+</script>
 <!-- 
-// Online Javascript Editor for free
-// Write, Edit and Run your Javascript code using JS Online Compiler
+**Output:`
+20
+10
+``` -->
 
-// let a = {}
-// a.age = 25
-// a.name = "Kunal"
 
-// let a = new Object()
-// a.age = 25
-// a.name = "Kunal"
+### **Problem 9: Object References**
 
-// let b= new Array(a)
-// b.push("jhjbhjb")
-// console.log(b)
+**Problem Code:**
 
-// let myObject = { value: "42" };
-// let myNumber = +myObject.value;
-// console.log(typeof myNumber)
-
+<script>
 // function test() {
 //   const obj = {
 //     name: "John",
 //     age: 25,
 //   };
-//   const obj1=obj;
+//   const obj1 = obj;
 //   obj1.age = 30;
 //   console.log(obj);
 // }
-// test() -->
+// test();
+</script>
 
+**Issue:**
+You are modifying the object through `obj1`, which affects the original `obj`
+ because both `obj` and `obj1` point to the same object.
 
+**Fix
 
+:**
 
-
-<!-- let n=prompt("Enter the value of n")
-n=Number.parseInt(n)
-
-let i=1;
-while(i<n){
-    console.log(i)
-    i++
-} 
-
-
-let a={}
-a.name="Kunal"
-a.age=25
-console.log(a)
-
-let b=new Object()
-b.name="yadava"
-b.age=26
-console.log(b)
-
-function personC(name,age){
-    this.age=age
-    this.name=name
+<script>
+function test() {
+    const obj = {
+        name: "John",
+        age: 25,
+    };
+    const obj1 = obj;  // obj1 points to the same object as obj
+    obj1.age = 30;  // Modifying obj1 also modifies obj
+    console.log(obj);  // Output: { name: "John", age: 30 }
 }
-let person=new personC("Kunal",27)
-console.log(person)
 
+test();
+</script>
 
-class personD{
-    constructor(name,age){
-        this.name=name
-        this.age=age
-    }
+**Explanation:**
+- `obj1` and `obj` reference the same object, so changing `obj1.age` also changes `obj.age`.
+
+---
+
+### **Problem 10: Array Push Loop with Extra Semicolon**
+
+**Problem Code:**
+
+</script>
+let arr = [];
+let x;
+for (x = 0; x < 4; x++); {
+    arr.push(x + 1);
 }
-let personE= new personD("Vijay",201)
-console.log(personE)
+console.log(arr);  // Output: [5]
+</script>
+
+**Issue:**
+There's an extra semicolon (`;`) after the `for` loop, which causes the loop body to
+ execute only once after the loop finishes.
+
+**Fix:**
+<script>
+let arr = [];
+let x;
+for (x = 0; x < 4; x++) {  // Remove the semicolon after the for loop
+    arr.push(x + 1);
+}
+console.log(arr);  // Output: [1, 2, 3, 4]
+</script>
+
+**Explanation:**
+- The semicolon after `for` was causing the loop to run without executing the body properly.
+ Removing it ensures the loop executes as expected.
+
+</body>
+</html>
+<!--
+// Problem 1: Object Initialization in JavaScript
+
+// 1. Object creation using the object literal syntax
+let a = {};  // Create an empty object using literal syntax
+a.age = 25;  // Add property 'age' with value 25
+a.name = "Kunal";  // Add property 'name' with value "Kunal"
+
+// 2. Object creation using the Object constructor
+let a = new Object();  // Create an empty object using the Object constructor
+a.age = 25;  // Add property 'age' with value 25
+a.name = "Kunal";  // Add property 'name' with value "Kunal"
+
+// Both approaches will result in the same object:
+// { age: 25, name: "Kunal" }
+
+// --------------------------------------
+
+// Problem 2: Using Array to Store an Object
+
+let a = { age: 25, name: "Kunal" };  // Create an object with properties 'age' and 'name'
+let b = new Array(a);  // Create an array with 'a' as the first element
+b.push("jhjbhjb");  // Add a new string "jhjbhjb" to the array
+console.log(b);  // Output: [ { age: 25, name: "Kunal" }, "jhjbhjb" ]
+
+// Explanation:
+// - 'b' starts as an array with a single object element: { age: 25, name: "Kunal" }
+// - Then, "jhjbhjb" is added as a second element to the array
+
+// --------------------------------------
+
+// Problem 3: Type Conversion with the Unary Plus Operator
+
+let myObject = { value: "42" };  // Create an object with 'value' as a string "42"
+let myNumber = +myObject.value;  // Convert the string "42" to a number using the unary plus
+console.log(typeof myNumber);  // Output: "number"
+
+// Explanation:
+// - The unary plus (+) converts the string "42" to the number 42.
+// - The typeof operator checks the type of the variable 'myNumber', which is now a number.
+
+// --------------------------------------
+
+// Problem 4: Function with Object Mutation (Reference Type Behavior)
+
+function test() {
+  const obj = { name: "John", age: 25 };  // Create an object with properties 'name' and 'age'
+  const obj1 = obj;  // 'obj1' references the same object as 'obj'
+  obj1.age = 30;  // Change the 'age' property of 'obj1'
+  console.log(obj);  // Output: { name: "John", age: 30 }
+}
+
+test();
+
+// Explanation:
+// - When we assign 'obj1' to 'obj', both variables refer to the same object.
+// - Modifying 'obj1.age' also affects the original 'obj' because they point to the same object in memory.
+
+// --------------------------------------
+
+// Problem 5: Using prompt to Get User Input and Looping
+
+let n = prompt("Enter the value of n");  // Get user input as a string
+n = Number.parseInt(n);  // Convert the string 'n' into an integer using parseInt()
+
+let i = 1;  // Start the loop from 1
+while (i < n) {  // Continue looping until i is less than n
+    console.log(i);  // Print the current value of 'i'
+    i++;  // Increment 'i' by 1
+}
+
+// Example:
+// If the user enters 5, the output will be:
+// 1
+// 2
+// 3
+// 4
+
+// Explanation:
+// - The prompt() function gets the user's input, which is initially a string.
+// - Number.parseInt() converts the string input into an integer.
+// - The while loop runs from 1 to n-1, printing each value of 'i' until 'i' is equal to 'n' or greater.
+
+// -->
 
 
-Let's go through each block of code and explain them:
+<!-- 
+In JavaScript, there are several ways to create objects. Each method has its use cases, 
+and the right one depends on the specific needs of your application. Here are the 
+**total ways to create an object** in JavaScript:
 
-1. Using Object Literal Notation:
-javascript
-Copy code
-let a = {};
-a.name = "Kunal";
-a.age = 25;
-console.log(a);
+---
 
-This block of code creates an object a using object literal notation. 
-Properties (name and age) are added to the object, and then it's logged to the console. 
-The object a now has properties name with a value of "Kunal" and age with a value of 25.
+### 1. **Object Literal Notation**
 
-2. Using Object Constructor:
-javascript
-Copy code
-let b = new Object();
-b.name = "yadava";
-b.age = 26;
-console.log(b);
-Here, an object b is created using the Object constructor. 
-Properties (name and age) are added similarly to the first example. 
-The resulting object b is the same as the one created using object literal notation.
+The simplest and most commonly used way to create objects is using **object literal notation**.
 
-Similarities: Both approaches (object literal and object constructor)
- result in the creation of an object with specified properties.
+#### **Syntax:**
+```javascript
+let obj = {
+  key1: value1,
+  key2: value2
+};
+```
 
-3. Using Constructor Function:
-javascript
-Copy code
-function obj3(name, age) {
+#### **Example:**
+```javascript
+let person = {
+  name: "Alice",
+  age: 30,
+  greet: function() {
+    console.log("Hello, " + this.name);
+  }
+};
+```
+
+#### **When to use:**
+- When you want to quickly create an object with properties and methods.
+- Ideal for creating single, standalone objects.
+
+---
+
+### 2. **`new Object()` Constructor**
+
+You can also create an object using the **`new Object()`** syntax. This is a 
+more verbose way of creating objects compared to the object literal.
+
+#### **Syntax:**
+```javascript
+let obj = new Object();
+```
+
+#### **Example:**
+```javascript
+let person = new Object();
+person.name = "Bob";
+person.age = 25;
+person.greet = function() {
+  console.log("Hello, " + this.name);
+};
+```
+
+#### **When to use:**
+- Generally less common than object literals but still valid.
+- Might be used when creating an object dynamically or 
+in situations requiring older JavaScript code compatibility.
+
+---
+
+### 3. **Constructor Functions (with `new` keyword)**
+
+A **constructor function** is a function used to create multiple instances of 
+similar objects. You define the structure of the object inside the constructor, 
+and then use the `new` keyword to instantiate objects.
+
+#### **Syntax:**
+```javascript
+function ObjectType() {
+  this.property1 = value1;
+  this.property2 = value2;
+}
+
+let obj = new ObjectType();
+```
+
+#### **Example:**
+```javascript
+function Person(name, age) {
   this.name = name;
   this.age = age;
-  this.getFullName = function() {
-    return this.name + " " + this.age;
+  this.greet = function() {
+    console.log("Hello, " + this.name);
   };
 }
 
-let instance = new obj3("Yadava", 56);
-console.log(instance.getFullName());
+let person1 = new Person("Charlie", 35);
+person1.greet();  // Output: Hello, Charlie
+```
 
-This code defines a constructor function personC that is used to
- create objects representing people. The new keyword is used to 
- instantiate an object (person) based on this constructor. 
- The person object has properties name and age with values "Kunal" and 27, respectively.
+#### **When to use:**
+- When you want to create multiple instances of objects with the same structure and methods.
+- When you're working with **function-based inheritance** (before ES6 classes).
 
-Differences: This approach introduces the concept of constructor functions, 
-allowing you to create multiple instances of objects with the same structure (similar to classes).
+---
 
-4. Using ES6 Class:
-javascript
-Copy code
-class personD {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
+### 4. **ES6 Classes (Class Syntax)**
+
+ES6 introduced the **class syntax**, which provides a more formalized way of creating constructor
+ functions and defining methods on prototypes. It's a modern, more readable way to define object types.
+
+#### **Syntax:**
+```javascript
+class ObjectType {
+  constructor() {
+    this.property1 = value1;
+  }
+}
+```
+
+#### **Example:**
+```javascript
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log("Hello, " + this.name);
+  }
 }
 
-let personE = new personD("Vijay", 201);
-console.log(personE);
-This block of code defines a class (personD) using ES6 class syntax.
- The constructor method is used to initialize object properties when an instance is created.
-  An object personE is created based on this class.
+let person1 = new Person("David", 40);
+person1.greet();  // Output: Hello, David
+```
 
-Similarities with Constructor Function: The use of constructor in a class 
-serves a similar purpose to the constructor function in the previous example.
- However, the syntax is more concise and aligns with the class-based approach.
+#### **When to use:**
+- **Modern JavaScript** for clean, readable, and maintainable code.
+- When creating reusable object templates and needing inheritance features (with `extends`).
+  
+---
 
-Differences: The class syntax is a more modern and concise way to create constructor functions,
- providing syntactic sugar over the prototype-based inheritance.
+### 5. **`Object.create()` Method**
 
-In summary, all the approaches create objects with properties, 
-but the last two (constructor function and ES6 class) 
-offer more structured ways for creating objects, especially when you 
-need to create multiple instances with the same structure. 
-The class syntax is considered more readable and is the preferred way in modern JavaScript.
+The `Object.create()` method creates a new object with a specific prototype and 
+optionally allows you to define additional properties on the object. 
+It provides **fine-grained control** over an object's prototype.
 
+#### **Syntax:**
+```javascript
+let obj = Object.create(proto, propertiesObject);
+```
 
+- **`proto`**: The prototype of the newly created object.
+- **`propertiesObject`** (optional): Additional properties to define on the object.
 
+#### **Example:**
+```javascript
+const animal = {
+  speak: function() {
+    console.log("I am a " + this.type);
+  }
+};
 
+const dog = Object.create(animal);
+dog.type = "Dog";
+dog.speak();  // Output: I am a Dog
+```
 
+#### **When to use:**
+- When you need explicit control over the object's prototype chain.
+- When you want to create objects that inherit from other objects.
+- When you need to create an object with **no prototype** (by passing `null` as the prototype).
 
+---
 
+### 6. **`Object.assign()` Method**
 
+`Object.assign()` is primarily used for copying properties from one or more source 
+objects into a target object. However, it can also be used to create an object 
+by combining properties from multiple objects.
 
+#### **Syntax:**
+```javascript
+let newObj = Object.assign({}, obj1, obj2, ...);
+```
 
+#### **Example:**
+```javascript
+const person = { name: "Eve" };
+const details = { age: 29, city: "New York" };
 
--->
+const fullPerson = Object.assign({}, person, details);
+console.log(fullPerson);  // Output: { name: 'Eve', age: 29, city: 'New York' }
+```
+
+#### **When to use:**
+- When you want to **merge** or **clone** objects.
+- It's useful for combining the properties of multiple objects into one.
+
+---
+
+### 7. **Using `JSON.parse()` and `JSON.stringify()`**
+
+In some rare cases, you can create an object by first converting an existing object or JSON 
+structure into a string and then parsing that string back into an object. This method
+creates a **deep clone** of an object.
+
+#### **Syntax:**
+```javascript
+let obj = JSON.parse(JSON.stringify(sourceObject));
+```
+
+#### **Example:**
+```javascript
+const person = { name: "Grace", age: 32 };
+const clone = JSON.parse(JSON.stringify(person));
+
+console.log(clone);  // Output: { name: 'Grace', age: 32 }
+```
+
+#### **When to use:**
+- When you want to create a **deep clone** of an object (a new object with a separate copy of nested objects).
+- When working with **JSON data** and needing to deserialize it into a usable object.
+
+---
+
+### 8. **Factory Functions**
+
+A **factory function** is a function that returns a new object. It's an alternative to constructor 
+functions and works in much the same way but without the need for the `new` keyword.
+
+#### **Syntax:**
+```javascript
+function createObject() {
+  return {
+    key1: value1,
+    key2: value2
+  };
+}
+```
+
+#### **Example:**
+```javascript
+function createPerson(name, age) {
+  return {
+    name: name,
+    age: age,
+    greet() {
+      console.log("Hello, my name is " + this.name);
+    }
+  };
+}
+
+let person1 = createPerson("Sam", 45);
+person1.greet();  // Output: Hello, my name is Sam
+```
+
+#### **When to use:**
+- When you want a function to return an object.
+- This approach is commonly used in cases where you want to create objects
+ with similar structures but without relying on **constructor functions**.
+
+---
+
+### Summary of All Methods:
+
+| Method                     | Description |
+| -------------------------- | ----------- |
+| **Object Literal**          | Quick, easy object creation with properties. |
+| **`new Object()`**          | Less common, uses the `new` keyword to create an object. |
+| **Constructor Function**    | Creates objects from a function, used for multiple instances. |
+| **ES6 Classes**             | Modern syntax for creating constructor functions and objects. |
+| **`Object.create()`**       | Creates an object with a specific prototype. Useful for inheritance. |
+| **`Object.assign()`**       | Copies properties from source objects to a target object. |
+| **`JSON.parse()` and `JSON.stringify()`** | Create deep copies of objects, particularly useful for nested objects. |
+| **Factory Functions**       | Functions that return new objects, can be used to avoid constructor functions. |
+
+---
+
+### Conclusion
+
+These are the main ways to create objects in JavaScript. The **best method** depends on the context:
+
+- **Use object literals** for simple, one-off objects.
+- **Use constructors or classes** when you need reusable templates for creating multiple instances.
+- **Use `Object.create()`** when you need precise control over prototypes or inheritance.
+- **Use `Object.assign()`** for merging or cloning objects. -->

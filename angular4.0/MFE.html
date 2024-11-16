@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microfrontends with Webpack 5 and Module Federation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      header {
+        background-color: #333;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+      }
+      main {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1,
+      h2 {
+        color: #1a73e8;
+      }
+      h3 {
+        margin-top: 30px;
+        color: #5c6bc0;
+      }
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+      li {
+        margin: 10px 0;
+      }
+      .section {
+        margin-bottom: 40px;
+      }
+      .definition {
+        font-style: italic;
+      }
+      .highlight {
+        background-color: #f1f8e9;
+        padding: 5px;
+        border-radius: 5px;
+      }
+      pre {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+      }
+      .code-block {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #e8f5e9;
+        border-radius: 5px;
+      }
+      .note {
+        padding: 10px;
+        background-color: #f9fbe7;
+        border-left: 5px solid #cddc39;
+      }
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Microfrontends with Module Federation</h1>
+      <p>A feature of Webpack 5</p>
+    </header>
+
+    <main>
+      <section class="section">
+        <h2>Introduction</h2>
+        <p>
+          Microfrontends is an architectural approach where a web application is
+          divided into smaller, independently developed, and deployed frontend
+          applications or "micro-apps." This allows teams to work on different
+          parts of a frontend project in parallel and deploy them separately,
+          which increases flexibility and scalability.
+        </p>
+      </section>
+
+      <section class="section">
+        <h3>Key Concepts</h3>
+        <ul>
+          <li>
+            <strong>Microfrontend</strong>: A way to split a frontend
+            application into smaller, manageable pieces (micro-apps) that can be
+            developed, tested, and deployed independently.
+          </li>
+          <li>
+            <strong>Module Federation</strong>: A Webpack 5 feature that allows
+            different applications to share and dynamically load code at
+            runtime, simplifying microfrontend architectures.
+          </li>
+          <li>
+            <strong>Webpack 5</strong>: A popular module bundler that introduced
+            Module Federation to support the sharing of modules across separate
+            builds, enhancing the development and integration of microfrontends.
+          </li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Webpack Overview</h2>
+        <p>
+          Webpack is a popular open-source JavaScript module bundler that is
+          widely used in modern web development. Its primary role is to take
+          multiple modules (files) with dependencies and bundle them into one or
+          more optimized files that can be loaded by a browser. Here’s a
+          breakdown of what Webpack does and why it’s important:
+        </p>
+
+        <h3>1. Modules and Bundling</h3>
+        <!-- Web applications are typically built from multiple JavaScript, CSS,
+        HTML, and image files. Webpack treats each file as a module. When you
+        import one file into another (like importing a JavaScript module),
+        Webpack creates a dependency graph to understand the connections between
+        these files. Webpack then bundles these modules into a single (or a few)
+        optimized JavaScript files, which reduces the number of requests the
+        browser needs to make, speeding up page load times. -->
+        <p>
+          Webpack treats each file (JavaScript, CSS, HTML, images) as a
+          <strong>module</strong> and bundles them into optimized output files,
+          reducing the number of network requests for improved performance.
+        </p>
+
+        <h3>2. Entry and Output</h3>
+        <p>
+          <strong>Entry:</strong> The starting point for Webpack to build the
+          dependency graph.<br />
+          <strong>Output:</strong> The final file(s) that Webpack generates
+          after bundling all modules.
+        </p>
+
+        <h3>3. Loaders</h3>
+        <p>
+          Webpack uses <strong>loaders</strong> to transform files before
+          bundling them. Examples of loaders include:
+        </p>
+        <ul>
+          <li><code>css-loader</code> for processing CSS files</li>
+          <li>
+            <code>file-loader</code> for managing images and other file types
+          </li>
+          <li><code>babel-loader</code> for transpiling modern JavaScript</li>
+        </ul>
+
+        <h3>4. Plugins</h3>
+        <p>
+          <strong>Plugins</strong> enhance Webpack’s functionality by handling
+          tasks like code optimization and managing assets. Examples include:
+        </p>
+        <ul>
+          <li>
+            <code>HtmlWebpackPlugin</code>: Generates an HTML file that includes
+            the bundled JavaScript.
+          </li>
+          <li>
+            <code>MiniCssExtractPlugin</code>: Extracts CSS into separate files.
+          </li>
+          <li><code>TerserPlugin</code>: Minifies JavaScript files.</li>
+        </ul>
+
+        <h3>5. Development and Production Modes</h3>
+        <p>
+          Webpack has two modes: <strong>development</strong> for fast builds
+          and debugging, and <strong>production</strong> for optimized, smaller
+          bundles.
+        </p>
+
+        <h3>6. Code Splitting</h3>
+        <p>
+          Webpack allows <strong>code splitting</strong>, breaking the bundle
+          into smaller chunks that are loaded only when needed, improving
+          initial load times.
+        </p>
+
+        <h3>7. Tree Shaking</h3>
+        <p>
+          Tree shaking eliminates unused code from the final bundle, making the
+          output more efficient.
+        </p>
+
+        <h3>8. Module Federation</h3>
+        <p>
+          Module Federation allows different applications to share and load code
+          at runtime, which is a key feature for implementing microfrontends.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Micro Frontends: Mono Repo vs Multi Repo</h2>
+        <p>
+          When building Micro Frontends, the code organization and management
+          are key factors. Two main strategies are used: Mono Repo and Multi
+          Repo.
+        </p>
+
+        <h3>1. Mono Repo</h3>
+        <p>
+          A <strong>Mono Repo</strong> stores all microfrontends and shared code
+          in a single repository. This setup makes it easy to manage shared
+          components, dependencies, and builds.
+        </p>
+        <ul>
+          <li>
+            <strong>Benefits:</strong> Easy dependency management, centralized
+            CI/CD, and shared tooling.
+          </li>
+          <li>
+            <strong>Challenges:</strong> Scalability issues and versioning
+            complexities as the project grows.
+          </li>
+        </ul>
+
+        <h3>2. Multi Repo</h3>
+        <p>
+          A <strong>Multi Repo</strong> strategy uses separate repositories for
+          each microfrontend. This approach allows teams to work autonomously on
+          different MFEs.
+        </p>
+        <ul>
+          <li>
+            <strong>Benefits:</strong> Independent versioning, releases, and
+            autonomy for teams.
+          </li>
+          <li>
+            <strong>Challenges:</strong> Harder dependency management and
+            potential code duplication across MFEs.
+          </li>
+        </ul>
+
+        <div class="note">
+          <p>
+            <strong>Note:</strong> Choosing between Mono Repo and Multi Repo
+            depends on factors like team size, project scale, and the need for
+            shared or independent development workflows.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Microfrontend Architecture with Webpack 5 & Module Federation | Powered
+        by Web Development
+      </p>
+    </footer>
+  </body>
+</html>
+
+<!-- <script.js>
+    The image shows the text "MICROFRONTEND with Module Federation - a feature
+    of Webpack 5." ### Explanation - **Microfrontend**: Microfrontends is an
+    architectural approach where a web application is divided into smaller,
+    independently developed, and deployed frontend applications or "micro-apps."
+    This allows teams to work on different parts of a frontend project in
+    parallel and deploy them separately, which increases flexibility and
+    scalability. - **Module Federation**: Module Federation is a feature
+    introduced in Webpack 5 that enables the sharing of modules across separate
+    builds. This means different applications (or microfrontends) can
+    dynamically load and use modules from each other at runtime. Module
+    Federation makes it easier to implement microfrontends by allowing parts of
+    one app to be reused in another without rebuilding the entire application. -
+    **Webpack 5**: Webpack is a popular module bundler for JavaScript
+    applications. In Webpack 5, Module Federation was introduced as a new
+    feature, enabling better support for microfrontend architectures by
+    facilitating the sharing and integration of modules across separately
+    deployed applications. In summary, the image highlights that "Microfrontend
+    with Module Federation" is a feature of Webpack 5, enabling a modern
+    approach to frontend development with improved modularity and integration.
+
+
+    Webpack is a popular open-source JavaScript module bundler that is widely used in
+    modern web development. Its primary role is to take multiple modules (files) with
+    dependencies and bundle them into one or more optimized files that can be loaded by a browser.
+    Here’s a breakdown of what Webpack does and why it’s important:
+
+    ### 1. **Modules and Bundling**
+    - Web applications are typically built from multiple JavaScript, CSS, HTML, and image files.
+    - Webpack treats each file as a **module**. When you import one file into another (like importing
+    a JavaScript module), Webpack creates a dependency graph to understand the connections between these files.
+    - Webpack then **bundles** these modules into a single (or a few) optimized JavaScript files,
+    which reduces the number of requests the browser needs to make, speeding up page load times.
+
+    ### 2. **Entry and Output**
+    - **Entry**: The entry point is the main file Webpack starts with when it builds the dependency graph.
+    This is typically the main JavaScript file (e.g., `index.js`) where the application begins.
+    - **Output**: Webpack combines all the modules and dependencies into a final file (or files)
+    known as the output. This output is then loaded by the browser when a user accesses the application.
+
+    ### 3. **Loaders**
+    - Webpack itself can only handle JavaScript by default, but modern web projects include other types of files, like
+    CSS, images, and TypeScript.
+    - **Loaders** are plugins that let Webpack process these different file types, allowing you to import them just like
+    JavaScript modules. For example:
+    - `css-loader` allows you to import CSS files.
+    - `file-loader` handles files like images.
+    - `babel-loader` processes JavaScript with Babel to enable support for modern JavaScript syntax.
+    - Loaders are powerful because they enable Webpack to transform and optimize non-JavaScript files alongside
+    JavaScript.
+
+    ### 4. **Plugins**
+    - **Plugins** extend Webpack’s functionality beyond bundling. They can perform various tasks, such as optimizing
+    bundles, managing assets, and injecting environment variables.
+    - Some commonly used plugins include:
+    - **HtmlWebpackPlugin**: Automatically generates an HTML file with the bundled JavaScript included.
+    - **MiniCssExtractPlugin**: Extracts CSS into separate files rather than bundling them directly into the JavaScript.
+    - **TerserPlugin**: Minifies JavaScript to reduce the file size of the bundle.
+
+    ### 5. **Development and Production Modes**
+    - Webpack provides different **modes** (development and production) to make configuration easier:
+    - **Development mode**: Focuses on quick build times and readable output (source maps, etc.) to help with debugging.
+    - **Production mode**: Focuses on optimizations, like minification and tree-shaking, to make the final bundle as
+    small as possible for faster loading.
+
+    ### 6. **Code Splitting**
+    - Webpack supports **code splitting**, which allows you to break down your bundle into smaller pieces or "chunks."
+    This way, only the necessary parts of the application are loaded at first, improving initial load times.
+    - **Lazy loading** is a common use case for code splitting. For example, parts of the application can be loaded only
+    when needed (like when a user navigates to a certain page).
+
+    ### 7. **Tree Shaking**
+    - Tree shaking is a technique Webpack uses to remove unused code from the final bundle.
+    - By analyzing the dependency graph, Webpack identifies code that is not being used (dead code) and excludes it from
+    the final bundle, making the output smaller and more efficient.
+
+    ### 8. **Module Federation**
+    - Introduced in Webpack 5, **Module Federation** allows different applications (or microfrontends) to share modules
+    and code with each other in real-time.
+    - This feature is useful for **microfrontend architectures**, where different teams or parts of a project can
+    develop, deploy, and update parts of a web application independently while still sharing common modules or
+    components.
+
+    ### Why Webpack is Useful
+    - **Optimized Bundles**: Webpack creates optimized bundles, resulting in faster loading times and improved
+    performance.
+    - **Asset Management**: By allowing you to import and process various file types, Webpack simplifies managing assets
+    like CSS, images, and fonts.
+    - **Modularity**: Webpack’s module-based approach aligns well with modern JavaScript frameworks like React, Angular,
+    and Vue.
+    - **Development Tools**: Webpack has many plugins and loaders that enhance development efficiency, like hot module
+    replacement (HMR) for real-time updates during development.
+
+    ### Summary
+    Webpack is a powerful tool for modern web applications, helping to bundle, optimize, and manage dependencies and
+    assets. It supports a modular architecture, enhances loading efficiency, and provides tools to build maintainable
+    and performant web applications.
+
+    In the context of Micro Frontends (MFE) using Angular, the terms **Mono Repo** and **Multi Repo** refer to how the
+    code for different micro frontends (and possibly shared components) is organized and managed within a version
+    control system (e.g., Git). Let's break them down:
+
+    ### 1. **Mono Repo (Monorepo) in Micro Frontends**
+    A **Mono Repo** refers to a single repository where the code for all micro frontends (MFEs) and possibly other
+    shared resources (like libraries or utilities) are stored in one central place.
+
+    **Key Characteristics of a Mono Repo:**
+    - **Single Repository for All MFEs:** All the micro frontend applications, shared libraries, and components exist in
+    the same Git repository.
+    - **Shared Code and Dependencies:** Since all MFEs are in one repo, they can easily share code, utilities, and
+    components. This makes it easier to manage dependencies and ensure consistent versions across all MFEs.
+    - **Centralized Build System:** Typically, a build tool (like **Nx**, **Lerna**, or **Angular CLI** with workspace
+    support) is used to manage builds, tests, and deployments across different MFEs.
+    - **Code Collaboration:** Developers working on different MFEs can collaborate easily since they all work in the
+    same repository.
+
+    **Benefits:**
+    - **Easier Dependency Management:** Shared libraries can be updated in a single place, and version mismatches are
+    avoided.
+    - **Consistent Development Practices:** Common tooling and code style can be enforced across MFEs, as they are all
+    part of the same codebase.
+    - **Centralized CI/CD Pipeline:** A unified pipeline for building, testing, and deploying all the MFEs.
+
+    **Challenges:**
+    - **Scalability Issues:** As the project grows, the repo can become large and harder to manage. Build times might
+    also become longer if not properly optimized.
+    - **Complex Versioning:** While shared code is easy to manage, tracking versions of different micro frontends might
+    become tricky, especially if each micro frontend has different release schedules.
+
+    **Example Tools for Mono Repo:**
+    - **Nx** (commonly used for Angular projects)
+    - **Lerna**
+    - **Angular CLI Workspaces**
+
+    ### 2. **Multi Repo in Micro Frontends**
+    A **Multi Repo** strategy means that each micro frontend (MFE) is stored in a separate, independent repository. This
+    approach is based on the idea of decoupling each frontend into its own standalone codebase.
+
+    **Key Characteristics of a Multi Repo:**
+    - **Separate Repositories for Each MFE:** Each micro frontend is developed, versioned, and deployed in its own Git
+    repository.
+    - **Loose Coupling:** Each MFE is fully independent, which means different teams can work on different MFEs with
+    minimal interference.
+    - **Independent Deployments:** Each micro frontend can be deployed independently, which is one of the key benefits
+    of the micro frontend architecture.
+
+    **Benefits:**
+    - **Independent Versioning and Releases:** Each MFE can have its own release cycle and versioning scheme, which
+    makes it easy to deploy them independently.
+    - **Decoupled Teams and Development:** Different teams can focus on different MFEs without being impacted by others,
+    and each MFE can have its own set of dependencies.
+    - **Flexible Technology Stack:** Since each MFE is in its own repo, teams can choose to use different versions of
+    Angular or even completely different frontend frameworks (e.g., React or Vue.js) if needed.
+
+    **Challenges:**
+    - **Code Duplication:** Shared components and libraries might need to be duplicated across multiple MFEs, which can
+    lead to version mismatches and duplication of effort.
+    - **More Complex Dependency Management:** Managing dependencies between MFEs becomes harder, and you might need a
+    central package manager (like **npm** or **yarn workspaces**) or a tool to synchronize versioning across the repos.
+    - **Harder to Manage Integration:** Since each MFE is in a separate repo, integrating and testing them as part of a
+    larger application becomes more complex.
+
+    **Example Tools for Multi Repo:**
+    - **Git Submodules** (for including other repos)
+    - **GitHub Actions, GitLab CI, CircleCI, etc.** (to handle CI/CD across multiple repos)
+    - **Bit.dev** (for managing shared components across repos)
+
+    ### Choosing Between Mono Repo and Multi Repo for Micro Frontends in Angular
+
+    **When to use a Mono Repo for MFEs:**
+    - If you have a relatively small team and want to share a lot of common code across your micro frontends.
+    - If you want a single build system and deployment pipeline for all your MFEs.
+    - When you prioritize consistency in dependencies, tooling, and versioning.
+
+    **When to use a Multi Repo for MFEs:**
+    - If your micro frontends are developed by independent teams that need to have full autonomy over their codebase.
+    - If the micro frontends need to be deployed and updated independently, without any coordination between teams.
+    - If the size of your project or team grows to the point where managing everything in a single repository would
+    become cumbersome.
+
+    ### Conclusion
+    - **Mono Repo** is generally preferred when you have a centralized control structure, want consistency in code and
+    tooling, and need to share code and dependencies easily across MFEs.
+    - **Multi Repo** is useful when you need more autonomy for each MFE, want independent deployments, or have very
+    large teams working on separate frontends that should not interfere with each other.
+
+    In practice, many teams using Angular for micro frontends often start with a Mono Repo approach because it
+    simplifies sharing code, but as the number of MFEs grows and the teams become more distributed, the transition to a
+    Multi Repo setup can also make sense.
+</script.js> -->

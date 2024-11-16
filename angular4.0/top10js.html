@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    1. Closures
+A closure is a function that "remembers" its lexical scope, even when the function is executed
+ outside that scope. In other words, a closure allows a function to access variables from 
+ its outer function after the outer function has finished executing.
+
+Example of a Closure:
+<script>
+function outer() {
+  let count = 0;  // `count` is a local variable to `outer`
+
+  return function inner() {
+    count++;  // `inner` function has access to `count` from `outer`
+    console.log(count);
+  };
+}
+
+const counter = outer();  // `outer` is invoked, returning the `inner` function
+counter();  // Output: 1
+counter();  // Output: 2
+</script>
+Here, the function inner is a closure because it continues to have access to 
+the count variable defined in its outer function outer, even after outer has
+ finished execution. Each time counter is called, it increments count because it
+  "remembers" the environment in which it was created.
+
+2. Prototypal Inheritance
+In JavaScript, prototypal inheritance allows objects to inherit properties and methods
+ from other objects. Every JavaScript object has a prototype, which is another object 
+ from which it can inherit properties and methods.
+
+Example of Prototypal Inheritance:
+<script>
+// Define a prototype object
+const animal = {
+  speak: function() {
+    console.log("Animal speaks");
+  }
+};
+
+// Create a new object that inherits from `animal`
+const dog = Object.create(animal);
+dog.speak = function() {
+  console.log("Dog barks");
+};
+
+dog.speak();  // Output: Dog barks
+</script>
+
+In this example, dog inherits the speak method from animal, but we override it 
+with a new version in the dog object. This is an example of inheritance in JavaScript,
+ where an object inherits behavior from another object.
+
+3. Asynchronous Programming (Callbacks, Promises, Async/Await)
+Asynchronous programming allows the execution of code without blocking the main thread. 
+This is especially useful for operations like I/O (reading files, fetching data) that may take time.
+
+Callbacks
+A callback is a function passed as an argument to another function, which is then executed later,
+ usually once a task is completed.
+<script>
+function fetchData(callback) {
+  setTimeout(() => {
+    console.log("Data fetched!");
+    callback();
+  }, 1000);
+}
+
+fetchData(() => {
+  console.log("Callback executed");
+});
+</script>
+In this example, fetchData simulates fetching data, and the callback function is executed once 
+the data is "fetched" (after 1 second).
+
+Promises
+A promise represents the result of an asynchronous operation, which can either be fulfilled 
+(successful) or rejected (error).
+
+<script>
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Data fetched!");
+    }, 1000);
+  });
+}
+
+fetchData().then((data) => {
+  console.log(data);  // Output: Data fetched!
+});
+</script>
+In this case, fetchData returns a promise that resolves after 1 second, and .then 
+is used to handle the resolved value.
+
+Async/Await
+async and await simplify working with promises. async makes a function return a promise, and await 
+pauses the execution of the function until the promise resolves.
+
+<script>
+async function fetchData() {
+  const data = await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data fetched!");
+    }, 1000);
+  });
+  console.log(data);
+}
+
+fetchData();  // Output: Data fetched!
+</script>
+await pauses execution at the promise, and once it's resolved, the value is returned.
+
+4. Higher-Order Functions
+A higher-order function is a function that either accepts other functions as arguments or 
+returns a function as its result.
+
+Example of a Higher-Order Function:
+<script>
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+function processUserInput(callback) {
+  const name = "Alice";
+  console.log(callback(name));  // `callback` is a higher-order function
+}
+</script>
+
+processUserInput(greet);  // Output: Hello, Alice!
+In this case, processUserInput is a higher-order function because it accepts another function 
+(greet) as an argument and calls it within its body.
+
+5. Memoization
+Memoization is an optimization technique used to speed up functions by storing the results of 
+expensive function calls and returning the cached result when the same inputs occur again.
+
+Example of Memoization:
+<script>
+function memoize(fn) {
+  const cache = {};
+  return function (arg) {
+    if (cache[arg]) {
+      return cache[arg];
+    }
+    const result = fn(arg);
+    cache[arg] = result;
+    return result;
+  };
+}
+
+function slowFunction(n) {
+  console.log("Calculating...");
+  return n * 2;
+}
+
+const memoizedFunction = memoize(slowFunction);
+
+console.log(memoizedFunction(5));  // Output: Calculating... 10
+console.log(memoizedFunction(5));  // Output: 10 (cached result)
+</script>
+The first time slowFunction(5) is called, it computes the result and stores it in the cache. 
+On subsequent calls with the same argument, it simply returns the cached result.
+
+6. Modules (Import/Export)
+Modules in JavaScript allow you to break up your code into smaller, reusable pieces.
+ You can use import and export to share code between different files.
+
+Example of Import/Export:
+<script>
+// math.js
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+
+// app.js
+import { add, subtract } from './math.js';
+
+console.log(add(2, 3));  // Output: 5
+console.log(subtract(5, 3));  // Output: 2
+</script>
+In this example, math.js exports the add and subtract functions, 
+and app.js imports them and uses them.
+
+7. Dynamic Import()
+Dynamic imports allow you to import modules asynchronously at runtime, which can be useful 
+for code splitting and reducing the initial load time of a web application.
+
+Example of Dynamic Import:
+<script>
+button.addEventListener('click', async () => {
+  const { greet } = await import('./greet.js');
+  greet();
+});
+</script>
+Here, the greet.js module is imported only when the button is clicked, rather than at the start of the application.
+
+8. Shadow DOM and Web Components
+The Shadow DOM is a browser feature that allows you to encapsulate a section of the DOM,
+ so styles and scripts inside it don't affect the rest of the page.
+
+Web Components are a set of standards that allow you to create custom, reusable HTML elements.
+
+Example of Shadow DOM:
+<script>
+const div = document.createElement('div');
+const shadow = div.attachShadow({ mode: 'open' });
+shadow.innerHTML = `<p>Inside Shadow DOM</p>`;
+document.body.appendChild(div);
+</script>
+The content inside the shadow DOM is isolated from the main document's styles and scripts.
+
+9. Event Loop and Concurrency Model
+The Event Loop is a fundamental part of the JavaScript concurrency model. It allows JavaScript
+ to perform non-blocking operations by putting functions into a queue and executing them asynchronously.
+
+How the Event Loop Works:
+Call Stack: Where functions are executed.
+Event Queue: A queue of events (such as mouse clicks or HTTP responses) waiting to be processed.
+Web APIs: Provide non-blocking functionality like setTimeout, fetch, etc.
+The event loop continuously checks if the call stack is empty and then processes the events in the queue.
+
+10. Currying
+As discussed earlier, currying is the process of transforming a function that takes multiple 
+arguments into a series of functions that each take one argument.
+
+Example of Currying:
+<script>
+function multiply(a) {
+  return function(b) {
+    return a * b;
+  };
+}
+
+const multiplyBy2 = multiply(2);
+console.log(multiplyBy2(5));  // Output: 10
+</script>
+Here, the function multiply is curried, and we create specialized functions like multiplyBy2 
+that can be reused with different arguments.
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!--     
+    ### Comparison of **JavaScript**, **Java**, and **Python** in Terms of **Single-threading**, 
+    **Multithreading**, **Concurrency**, and **Parallelism**:
+
+When comparing **JavaScript**, **Java**, and **Python**, it's crucial to understand the 
+different ways they handle **single-threading** and **multithreading** and how they 
+implement **concurrency** and **parallelism**.
+
+### 1. **Single-threading**
+
+**Single-threading** refers to the ability of a programming language or runtime to execute 
+tasks one at a time in a single sequence of instructions. A single thread processes one task after another.
+
+#### **JavaScript**:
+- **Single-threaded by default**: JavaScript (in the browser or Node.js) runs on a single 
+thread for execution. This means that only one task can be executed at any given moment in the JavaScript runtime.
+- **Event Loop**: JavaScript uses an **event loop** to handle asynchronous tasks 
+(like I/O operations). While JavaScript itself is single-threaded, asynchronous 
+operations (e.g., setTimeout, Promises, async/await) allow non-blocking behavior, giving the illusion of concurrency.
+
+**Example**:
+```javascript
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Task 1 completed");
+}, 2000);
+
+console.log("End");
+```
+**Output**:
+```
+Start
+End
+Task 1 completed
+```
+- JavaScript executes the tasks sequentially, but the asynchronous `setTimeout` 
+doesn't block the thread. It schedules the callback function to run after 2 seconds, 
+allowing the "End" message to be logged before the timeout.
+
+#### **Java**:
+- **Multithreaded by default**: Java is a **multithreaded** programming language 
+and provides built-in support for creating multiple threads of execution. 
+This means that Java programs can run tasks in parallel by leveraging multiple threads.
+- **Thread API**: Java provides an API for working with threads, allowing 
+for manual control of concurrent execution, thread management, and synchronization.
+
+**Example**:
+```java
+public class SingleThreadExample {
+    public static void main(String[] args) {
+        System.out.println("Start");
+        try {
+            Thread.sleep(2000);  // Simulate delay
+            System.out.println("Task 1 completed");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("End");
+    }
+}
+```
+**Output**:
+```
+Start
+Task 1 completed
+End
+```
+- Java executes the code sequentially within the main thread. While Java can handle multithreading 
+(i.e., multiple tasks at once), this example executes everything on a single thread.
+
+#### **Python**:
+- **Single-threaded by default**: Python (with CPython, the default Python implementation) 
+also runs as **single-threaded** by default.
+- **Global Interpreter Lock (GIL)**: Python’s GIL prevents multiple native threads from executing 
+Python bytecode in parallel. However, I/O-bound tasks can still be run concurrently using 
+threading or asynchronous programming.
+
+**Example**:
+```python
+import time
+
+def task1():
+    time.sleep(2)
+    print("Task 1 completed")
+
+print("Start")
+task1()
+print("End")
+```
+**Output**:
+```
+Start
+Task 1 completed
+End
+```
+- Python runs tasks sequentially here, similar to the Java example. The `time.sleep` 
+call simulates a blocking task. However, due to the GIL, Python cannot execute multiple 
+threads concurrently for CPU-bound tasks.
+
+### 2. **Multithreading**
+
+**Multithreading** allows a program to execute multiple tasks concurrently using multiple threads of 
+execution. Threads can run in parallel (if there are multiple CPU cores), or they can be 
+interleaved on a single core (context switching).
+
+#### **JavaScript**:
+- JavaScript is **single-threaded by default**, but it can achieve **multithreading** through 
+**Web Workers** (in browsers) or **Worker Threads** (in Node.js).
+- These separate threads run independently of the main thread, enabling multithreading, 
+although they communicate with the main thread via message-passing (postMessage).
+
+**Example (Web Workers in JavaScript)**:
+```javascript
+// main.js
+const worker = new Worker('worker.js');
+worker.postMessage('Start task');
+worker.onmessage = function(event) {
+    console.log('Message from worker:', event.data);
+};
+
+// worker.js
+onmessage = function(event) {
+    let result = `Processed: ${event.data}`;
+    postMessage(result);
+};
+```
+- **Web Workers** run in a separate thread and can handle tasks in parallel. 
+The worker does not block the main thread.
+
+#### **Java**:
+- Java has built-in **multithreading** support through its `Thread` 
+class and the `ExecutorService` framework.
+- Threads can be executed in parallel on separate CPU cores, making 
+Java an ideal language for multithreaded and concurrent applications.
+
+**Example (Multithreading in Java)**:
+```java
+public class MultiThreadExample {
+    public static void main(String[] args) {
+        Runnable task = () -> System.out.println("Task completed");
+        
+        Thread thread1 = new Thread(task);
+        Thread thread2 = new Thread(task);
+        
+        thread1.start();
+        thread2.start();
+    }
+}
+```
+- The two threads `thread1` and `thread2` can run concurrently or 
+in parallel depending on the system’s CPU capabilities.
+
+#### **Python**:
+- Python supports **multithreading** via the `threading` module.
+- However, due to the **GIL**, threads in Python do not execute **in parallel** 
+for CPU-bound tasks. They can only run **concurrently** (interleaved) on a single core. 
+For **true parallelism**, Python uses the **multiprocessing** module.
+  
+**Example (Multithreading in Python)**:
+```python
+import threading
+
+def task1():
+    print("Task 1 completed")
+
+# Create two threads
+thread1 = threading.Thread(target=task1)
+thread2 = threading.Thread(target=task1)
+
+thread1.start()
+thread2.start()
+
+thread1.join()
+thread2.join()
+```
+- The threads run concurrently but are still limited by the GIL for CPU-bound tasks.
+
+### 3. **Concurrency**
+
+**Concurrency** is the ability to manage multiple tasks at once. It does not necessarily 
+mean that tasks are executed simultaneously, but that the system can switch between tasks 
+(e.g., in the case of I/O-bound tasks) to improve efficiency.
+
+#### **JavaScript**:
+- JavaScript handles **concurrency** using the **event loop**, callbacks, and **Promises**.
+- Although JavaScript is single-threaded, it allows **asynchronous programming** that 
+can handle multiple tasks concurrently without blocking the main thread.
+
+**Example (Concurrency with Async/Await in JavaScript)**:
+```javascript
+async function task1() {
+    console.log("Start task 1");
+    await new Promise(resolve => setTimeout(resolve, 2000));  // Simulating async task
+    console.log("Task 1 completed");
+}
+
+console.log("Start");
+task1();
+console.log("End");
+```
+- Even though `task1` is asynchronous, the program doesn't block other tasks from executing. 
+It logs "Start" and "End" without waiting for `task1` to complete.
+
+#### **Java**:
+- Java supports **concurrency** via threads and the **`ExecutorService`** framework.
+- You can run multiple tasks concurrently, with Java managing the scheduling and execution of these tasks.
+
+**Example (Concurrency in Java with ExecutorService)**:
+```java
+import java.util.concurrent.*;
+
+public class ConcurrencyExample {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        Callable<String> task = () -> {
+            Thread.sleep(2000);
+            return "Task completed";
+        };
+
+        Future<String> future = executor.submit(task);
+        System.out.println(future.get());  // Blocks until task is done
+        executor.shutdown();
+    }
+}
+```
+- Here, the task runs concurrently, and the main thread waits for its 
+result using the `future.get()` method.
+
+#### **Python**:
+- Python provides **asynchronous concurrency** using the `asyncio` module or 
+`threading` (for I/O-bound tasks).
+- Since Python uses the GIL for thread management, concurrency works well 
+for **I/O-bound tasks**, but not for CPU-bound tasks.
+
+**Example (Concurrency in Python with asyncio)**:
+```python
+import asyncio
+
+async def task1():
+    print("Start task 1")
+    await asyncio.sleep(2)  # Simulate async I/O task
+    print("Task 1 completed")
+
+async def main():
+    print("Start")
+    await task1()
+    print("End")
+
+asyncio.run(main())
+```
+- The `task1` function is asynchronous, allowing for other tasks to 
+run while waiting for the I/O operation (like sleeping).
+
+### 4. **Parallelism**
+
+**Parallelism** is the execution of multiple tasks simultaneously, usually on 
+separate processors or cores. In contrast to concurrency, parallelism 
+involves actual simultaneous execution of tasks.
+
+#### **JavaScript**:
+- JavaScript can achieve **parallelism** using **Web Workers** (in the browser)
+ or **Worker Threads** (in Node.js).
+- These separate threads run independently and can perform tasks in parallel.
+
+#### **Java**:
+- Java provides built-in support for **parallelism** through multithreading, 
+where tasks are executed on multiple threads, potentially on multiple CPU cores.
+
+**Example (Parallelism in Java with Streams)**:
+```java
+import java.util.stream.IntStream;
+
+public class ParallelismExample {
+    public static void main(String[] args
+
+) {
+        int sum = IntStream.range(1, 1000000)
+                           .parallel()   // Use multiple threads for parallelism
+                           .sum();
+        System.out.println(sum);
+    }
+}
+```
+- The `parallel()` method ensures the task is divided into multiple threads, 
+utilizing multiple CPU cores.
+
+#### **Python**:
+- Python can achieve **parallelism** using the `multiprocessing` module. 
+This bypasses the GIL and runs processes in parallel on separate CPU cores.
+- For CPU-bound tasks, Python uses multiple processes to achieve true parallel execution.
+
+**Example (Parallelism in Python with Multiprocessing)**:
+```python
+import multiprocessing
+
+def task1():
+    print("Task 1 completed")
+
+if __name__ == "__main__":
+    processes = []
+    for _ in range(2):
+        p = multiprocessing.Process(target=task1)
+        p.start()
+        processes.append(p)
+    for p in processes:
+        p.join()
+```
+- The tasks are executed in parallel on separate processes, 
+taking advantage of multiple CPU cores.
+
+---
+
+### **Summary: Which Languages Are Single-threaded or Multithreaded?**
+
+- **Single-threaded languages**: 
+  - **JavaScript**: Traditionally single-threaded in its main execution context 
+  (e.g., browser or Node.js). However, it can use Web Workers and Worker 
+  Threads to simulate multithreading and parallelism.
+  
+- **Multithreaded languages**: 
+  - **Java**: Fully multithreaded by design. It supports multithreading 
+  and parallelism natively.
+  - **Python**: Technically **multithreaded**, but the Global Interpreter 
+  Lock (GIL) prevents true parallelism for CPU-bound tasks. 
+  For parallelism, Python uses the `multiprocessing` module.
+ -->
+
+</body>
+</html>

@@ -1016,8 +1016,7 @@ simplify the process and make it easy to incorporate into development workflows.
   Performance: Modern JavaScript engines often employ Just-In-Time (JIT) compilation to convert JavaScript code to
   machine code (binary code) on the fly for performance optimization.
   Example:
-  javascript
-  Copy code
+ 
   console.log("Hello, World!");
   Use Case: Web development, including both client-side (browser) and server-side (with environments like Node.js). -->
 
@@ -1511,6 +1510,19 @@ console.log(outer()())//10
 // let part = text.slice(0, 5);
 // // part contains "Hello"
 // // text remains unchanged
+let arr3 = [1, 2, 3, 4, 5];
+let result3 = arr.slice(2);  // Starts at index 2 and goes to the end of the array
+console.log(result3);  // [3, 4, 5]
+console.log(arr3);  // Original array is let arr = [10, 20, 30, 40, 50];
+
+let result = arr.slice(1, 4);  // Starts at index 1, ends before index 4
+console.log(result);  // [20, 30, 40]
+console.log(arr);  // Original array is unchanged: [10, 20, 30, 40, 50]
+unchanged: [1, 2, 3, 4, 5]
+//start greater than end: If the start index is greater than the end index,
+// slice returns an empty array.
+//Negative start greater than end: If both indices are negative, it will still work 
+//and return a portion of the array or string, but starting from the end.
 // Splice
 // Definition: The splice method changes the contents of an array by removing 
 // or replacing existing elements and/or adding new elements in place. 
@@ -1554,4 +1566,157 @@ console.log(outer()())//10
 // Return Value:
 // slice returns a new array/string.
 // splice returns an array containing the deleted elements.
+let arr1 = [1, 2, 3, 4, 5];
+let sliced = arr1.slice(1, 4);  // [2, 3, 4]
+console.log(arr1);  // Original array is unchanged: [1, 2, 3, 4, 5]
+///
+let arr = [1, 2, 3, 4, 5];
+let spliced = arr.splice(1, 2, 10, 20);  // Removes 2 and 3, adds 10 and 20
+console.log(arr);  // Modified array: [1, 10, 20, 4, 5]
+console.log(spliced);  // Deleted elements: [2, 3]
+
 </script>
+
+
+<!-- 
+**1. Difference between `let`, `const`, and `var`:**
+   - `var`: Function-scoped and can be redeclared. Variables declared with `var` are hoisted.
+   - `let`: Block-scoped and cannot be redeclared within the same scope. Variables declared with 
+   `let` are also hoisted but not initialized.
+   - `const`: Block-scoped, cannot be redeclared or reassigned. `const` variables must be initialized at declaration.
+
+**2. Hoisting in JavaScript:**
+   - Hoisting allows variables and function declarations to be moved to the top of their scope before code execution.
+    `var` variables are hoisted and initialized as `undefined`, while `let` and `const` are hoisted but not initialized.
+
+**3. Closures:**
+   - A closure is a function that remembers its lexical scope, even when the function is executed outside of
+    its original scope. Closures allow functions to access variables from their outer scope.
+
+**4. Event Loop in JavaScript:**
+   - The event loop is a process that manages the execution of code, handling of events, and
+    asynchronous operations in JavaScript. It continually checks the call stack and the callback queue, 
+    moving tasks to the call stack when it’s empty.
+
+**5. Difference between `==` and `===`:**
+   - `==`: Performs type conversion before comparison (loose equality).
+   - `===`: Compares both type and value without type conversion (strict equality).
+
+**6. Checking the type of a variable:**
+   - Use `typeof` to check a variable's type. Example: `typeof myVar`.
+
+**7. Use of `this` in JavaScript:**
+   - `this` refers to the object that is executing the current function. In the global context, 
+   `this` refers to the global object, while in a method, it refers to the object calling the method.
+
+**8. Function Declaration vs. Function Expression:**
+   - Function Declaration: Defined with the `function` keyword and can be hoisted.
+   - Function Expression: Assigned to a variable and is not hoisted.
+
+**9. How `setTimeout` works:**
+   - `setTimeout` schedules a function to execute after a specified delay. It moves the callback
+    function to the callback queue after the delay, which will be executed when the call stack is empty.
+
+---
+
+**11. Callback Function:**
+   - A callback is a function passed as an argument to another function, allowing it to be executed
+    after the completion of that function.
+
+**12. Pure Function:**
+   - A function that, given the same inputs, always returns the same output and has no side effects.
+
+**13. `function.call`, `function.apply`, and `function.bind`:**
+   - `call`: Calls a function with a specified `this` value and arguments individually.
+   - `apply`: Similar to `call` but takes arguments as an array.
+   - `bind`: Returns a new function with a permanently bound `this` value.
+
+**14. `arguments` object:**
+   - An array-like object available inside functions that holds all arguments passed to the function.
+
+**15. Creating a Closure:**
+   - Create a closure by defining a function within another function and returning or using the inner function outside its lexical scope.
+
+**16. `bind` Method:**
+   - `bind` creates a new function with a specified `this` context, allowing the function to be called with that context regardless of its usual scope.
+
+**17. Shallow Copy vs. Deep Copy:**
+   - Shallow Copy: Copies references for nested objects. Modifications in the copy affect the original.
+   - Deep Copy: Creates a copy of all nested objects, so changes do not affect the original.
+
+**18. Call Stack:**
+   - A data structure that stores the current execution context of functions. When a function is called, it’s pushed onto the stack, and when it returns, it’s popped off.
+
+**19. Function Currying:**
+   - A technique of transforming a function that takes multiple arguments into a series of functions that each take a single argument.
+
+**20. Avoiding Callback Hell:**
+   - Use Promises or `async/await` to handle asynchronous code in a more readable, sequential way.
+
+---
+
+**21. Prototypal Inheritance:**
+   - A mechanism where objects inherit properties and methods from other objects through a prototype chain.
+
+**22. Creating an Object:**
+   - You can create an object using object literals, constructors, or `Object.create`.
+
+**23. `prototype` Property:**
+   - `prototype` is an object that every JavaScript function has. It allows inheritance of methods 
+   and properties by other objects created from that function.
+
+**24. `Object.create` vs. Constructor Pattern:**
+   - `Object.create`: Creates a new object with a specified prototype.
+   - Constructor Pattern: Uses a function to create and initialize an object, with the `new` keyword creating a new instance.
+
+**25. Adding a Property to an Object:**
+   - You can add a property using dot notation (`obj.prop = value`) or bracket notation (`obj['prop'] = value`).
+
+**26. `hasOwnProperty` Method:**
+   - Checks if a property is a direct property of an object, not inherited through the prototype chain.
+
+**27. Preventing Object Modification:**
+   - Use `Object.freeze` or `Object.seal` to prevent modification of an object’s properties.
+
+**28. `new` Keyword:**
+   - The `new` keyword creates an instance of an object based on a constructor function.
+
+**29. Object Destructuring:**
+   - Allows unpacking of values from objects or arrays into distinct variables. Example: `const {a, b} = obj;`
+
+**30. Difference between `null` and `undefined`:**
+   - `null`: Explicitly means "no value" and is assigned by the programmer.
+   - `undefined`: Means a variable has been declared but not initialized.
+
+---
+
+**31. The DOM:**
+   - The Document Object Model (DOM) is a representation of HTML elements as objects that can be manipulated by JavaScript.
+
+**32. Selecting Elements in Vanilla JavaScript:**
+   - Use methods like `document.getElementById`, `document.querySelector`, or `document.querySelectorAll` to select elements.
+
+**33. `addEventListener` Method:**
+   - Used to attach an event handler to an element. It allows multiple events on the same element.
+
+**34. Event Delegation:**
+   - A technique where a single event listener is added to a parent element to manage events on its child elements.
+
+**35. Creating and Removing Elements:**
+   - Use `document.createElement` to create elements, and `element.remove()` or `parent.removeChild(child)` to remove them.
+
+**36. Event Propagation:**
+   - Event propagation is the process by which events move through the DOM in phases: capturing, target, and bubbling.
+
+**37. Preventing Default Behavior:**
+   - Use `event.preventDefault()` to stop an event's default action, like form submission.
+
+**38. `data-` Attribute:**
+   - Custom attributes in HTML that store additional information on elements, accessible via JavaScript using `dataset`.
+
+**39. `innerHTML` vs. `textContent`:**
+   - `innerHTML`: Gets or sets the HTML markup of an element.
+   - `textContent`: Gets or sets the text content, without parsing HTML tags.
+
+**40. Handling Asynchronous Code:**
+   - JavaScript provides multiple methods for handling asynchronous code, such as Promises, `async/await`, and callbacks. -->
