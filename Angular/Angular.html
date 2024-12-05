@@ -95,7 +95,15 @@ A structural directive is a directive that changes the structure of the DOM by a
  or removing elements. Structural directives allow you to control the layout and display
   of elements in a flexible way, often based on conditions or collections.
 
-Structural directives are unique in that they use an asterisk (*) prefix and can 
+Structural directives
+
+
+
+
+
+
+
+ are unique in that they use an asterisk (*) prefix and can 
 dynamically insert, remove, or manipulate elements within the DOM. When Angular 
 sees the asterisk, it interprets the directive as needing to create or alter 
 a new embedded view based on the directive's logic.
@@ -261,12 +269,14 @@ https://www.youtube.com/watch?v=jJ5a1dBxfno
 <!-- Copy everything within the <div> to get all explanations -->
 
   <div>
-    <b>Property Binding:</b> Property binding in Angular is used to bind data from a component to an element property in the view template. The data flows in one direction, from the component to the DOM.<br>
+    <b>Property Binding:</b> Property binding in Angular is used to bind data from a component
+     to an element property in the view template. The data flows in one direction, from the component to the DOM.<br>
     Example:<br>
     <input [value]="name"><br>
     Here, the value of the input element is set to the component's `name` property.<br><br>
     
-    <b>Interpolation / innerHTML:</b> Interpolation allows you to embed expressions within the HTML template. It is represented by double curly braces `{{}}`.<br>
+    <b>Interpolation / innerHTML:</b> Interpolation allows you to embed expressions within the HTML template.
+     It is represented by double curly braces `{{}}`.<br>
     Example:<br>
     <p>{{message}}</p><br>
     The content of the `<p>` element is set to the value of the `message` property from the component.<br><br>
@@ -291,12 +301,14 @@ https://www.youtube.com/watch?v=jJ5a1dBxfno
     <button (click)="handleClick()">Click me</button><br>
     The `click` event of the `<button>` element is bound to the `handleClick` method in the component.<br><br>
     
-    <b>One Way Binding:</b> One-way binding updates the view with data from the component. This means changes in the component are reflected in the view, but not the other way around.<br>
+    <b>One Way Binding:</b> One-way binding updates the view with data from the component. 
+    This means changes in the component are reflected in the view, but not the other way around.<br>
     Example:<br>
     <p>{{name}}</p><br>
     The `<p>` element displays the value of the `name` property from the component.<br><br>
     
-    <b>Two Way Binding:</b> Two-way binding allows synchronization of data between the component and the view. This is achieved using the `ngModel` directive.<br>
+    <b>Two Way Binding:</b> Two-way binding allows synchronization of data between the 
+    component and the view. This is achieved using the `ngModel` directive.<br>
     Example:<br>
     <input [(ngModel)]="name"><br>
     The value of the `name` property in the component and the value of the input field are synchronized.<br><br>
@@ -305,7 +317,8 @@ https://www.youtube.com/watch?v=jJ5a1dBxfno
     Example:<br>
     <button (click)="callfun()">Click me</button><br><br>
     
-    <b>(keydown.space)=onSpacebarDownEvent():</b> Event binding for the keydown event when the spacebar is pressed, calling the `onSpacebarDownEvent` function.<br>
+    <b>(keydown.space)=onSpacebarDownEvent():</b> Event binding for the keydown event when the spacebar 
+    is pressed, calling the `onSpacebarDownEvent` function.<br>
     Example:<br>
     <input (keydown.space)="onSpacebarDownEvent()"><br><br>
     

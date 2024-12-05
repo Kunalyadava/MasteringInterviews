@@ -737,3 +737,108 @@ These are the main ways to create objects in JavaScript. The **best method** dep
 - **Use constructors or classes** when you need reusable templates for creating multiple instances.
 - **Use `Object.create()`** when you need precise control over prototypes or inheritance.
 - **Use `Object.assign()`** for merging or cloning objects. -->
+
+<!-- 
+### Problem Statement:
+
+Given an array of integers and a target sum, find **two distinct indices** in the array such that the sum of the
+ values at these indices equals the target. Return the indices of the two numbers. You may assume that each 
+ input would have **exactly one solution**, and you may not use the same element twice.
+
+### Function Signature:
+```javascript
+function findIndices(arr: number[], target: number): number[];
+```
+
+### Input:
+- An array of integers `arr` (1 <= arr.length <= 10^4).
+- A target integer `target` (-10^9 <= target <= 10^9).
+
+### Output:
+- Return an array containing **two distinct indices** `[i, j]` such that `arr[i] + arr[j] == target`.  
+  The order of the indices does not matter.
+
+### Example:
+
+**Input:**
+```javascript
+const arr = [11, 2, 7, 5];
+const target = 9;
+```
+
+**Output:**
+```javascript
+[1, 2]
+```
+
+**Explanation:**
+In this example, the sum of `arr[1]` (which is `2`) and `arr[2]` (which is `7`) equals the target `9`. Therefore, the function returns `[1, 2]`.
+
+---
+
+### Constraints:
+- Each test case has exactly one solution.
+- You may not use the same element twice.
+
+---
+
+This question tests the ability to efficiently solve problems involving arrays and requires knowledge of hashing techniques to optimize the solution. -->
+
+
+
+<!-- 
+const Person = {
+  lang: "js",
+  show: function () {
+         console.log(`Hi, ${this.lang}`);
+  }
+};
+
+let fn = Person.show;
+fn();
+ -->
+
+
+
+
+<!-- 
+ Ah, I see! You want to convert `"kunal"` to `"Kunal"` in JavaScript, changing the first letter to uppercase. You can do this with the following code:
+
+```javascript
+let name = "kunal"; // Original string
+name = name.charAt(0).toUpperCase() + name.slice(1); // Change the first letter to uppercase
+
+console.log(name); // Output: Kunal
+```
+
+### Explanation:
+- `charAt(0)` gets the first character of the string.
+- `toUpperCase()` converts it to uppercase.
+- `slice(1)` takes the rest of the string (starting from the second character onwards).
+- Then, we concatenate the uppercase first letter with the rest of the string. 
+
+This results in `"Kunal"` from `"kunal"`. -->
+
+<!-- To convert a 2D array like `[[1, 2], [3, 4], [4, 5]]` into a 1D array `[1, 2, 3, 4, 5]` in JavaScript, you can use the `flat()` method or `reduce()` to flatten the array. Here's how you can do it:
+
+### Using `flat()`:
+```javascript
+let arr = [[1, 2], [3, 4], [4, 5]];
+let flattened = arr.flat();
+
+console.log(flattened); // Output: [1, 2, 3, 4, 5]
+```
+
+### Using `reduce()`:
+```javascript
+let arr = [[1, 2], [3, 4], [4, 5]];
+let flattened = arr.reduce((acc, curr) => acc.concat(curr), []);
+
+console.log(flattened); // Output: [1, 2, 3, 4, 5]
+```
+
+### Explanation:
+- `flat()` automatically flattens the 2D array to a 1D array.
+- `reduce()` combines all the inner arrays into a single array by concatenating them together.
+
+Both methods will result in the desired 1D array `[1, 2, 3, 4, 5]`. -->
