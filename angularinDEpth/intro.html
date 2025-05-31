@@ -1,0 +1,120 @@
+
+---
+
+### **Section 1: Introduction to Angular**
+Hello and welcome to the very first lecture of this complete Angular course. In this course, you're going to learn
+everything about Angular step by step without skipping any topic, and let's kickstart this course by having a brief
+overview of what Angular actually is. Angular is one of the most popular JavaScript frameworks for building client-side
+applications, and it provides a lot of reusable code, like predefined methods, classes, interfaces, etc., which we can
+use to create dynamic client-side applications. Generally, we use Angular for creating single-page applications. So, in
+this lecture, we are going to learn what Angular is, what a single-page application is, why you should use Angular, and
+what are the different versions of Angular available. Angular is a development platform for building single-page
+applications for mobile and desktop. We use Angular for building client-side applications using HTML, CSS, and a
+programming language like TypeScript or JavaScript.
+
+---
+
+### **Section 2: Understanding Framework and Single-Page Applications**
+So, remember that Angular is not a programming language in itself, like JavaScript. Instead, it is a framework that uses
+programming languages like JavaScript or TypeScript. So, we can say that Angular is a JavaScript framework that allows
+us to create single-page applications. Now, in this definition, there are two points to note. First of all, Angular is a
+JavaScript framework; it is not a programming language, it is a framework. And second, we use Angular for creating
+single-page applications.
+
+A framework is like a platform for developing software applications. A framework can have predefined classes and
+functions that can be reused to perform and add several functionalities, which otherwise we would have to write from
+scratch by our own. For example, let's say we are creating a client-side application where we are using JavaScript as
+the client-side programming language. Now, from this application, we want to make an HTTP request to the server and then
+we want to get some response from the server. Since we are using plain JavaScript as the programming language, we are
+not using any framework here. In order to achieve this, we will have to write the logic of making an HTTP request to the
+server from scratch, and we will also have to test whether that logic is working properly or not in different scenarios.
+But if we use a framework like Angular, it already provides predefined classes and methods for making an HTTP request to
+the server. These classes and methods are already tested and verified, so we need not worry about that stuff. Also, in
+simple words, a framework is a collection of predefined classes and methods which provide APIs for performing different
+operations when used in an application, and Angular is one such framework. It provides classes and methods which we can
+reuse in our application instead of writing them from scratch.
+
+---
+
+### **Section 3: Single-Page Applications Explained**
+Now, let's try to understand what a single-page application is, but before that, let's understand how a typical web
+application works. So, here we have a client and a server. From the client, we make a request to the server for a
+particular resource. In this example, we are making requests to the server for getting the HTML of the about resource.
+The server will send us the HTML of the about page, in this case, about.html. If we request the contact page, the server
+will return contact.html in the response.
+
+Let's try to understand this with a simple example. So, let's say we have a very simple web application, and currently,
+we are on the home page. In the URL, you can see the resource is /home. The client has made a request to the server
+requesting the HTML of the home page, and the server sent this home.html to the client, which is rendered by the client.
+In this case, this home.html has been rendered by the browser. Now, if I navigate to the about page, you see the URL
+changes to /about. The client again makes a request to the server for the HTML of the about page, and in the response,
+we have received about.html that is rendered by the client. If I go to the courses page, again, a request will be sent
+to the server requesting the HTML of the courses page, and that HTML will be sent by the server to the client, which
+will be rendered.
+
+This is how a typical web application works, but this is not how a single-page application works. A single-page
+application is an application that has only one HTML page, and a perfect example of a single-page application would be
+Gmail and Netflix. In a single-page application, when we navigate around the application, the URL seems to change, but
+the actual HTML page never changes. The content of that page changes dynamically with JavaScript.
+
+---
+
+### **Section 4: Advantages of Single-Page Applications**
+In a single-page application, when we navigate around the application, it will seem like we are visiting different
+pages. It will look like different HTML documents are requested from the server and loaded in the browser, but in
+reality, the HTML page never changes. Only the content of that HTML page changes. The content is changed by JavaScript
+dynamically.
+
+Whenever we are navigating around, we are not requesting any data from the server. JavaScript is simply changing the
+content based on the resource we have requested. Since we are not making any requests to the server each time we request
+a new resource, you will never see the refresh icon spin.
+
+The advantage of a single-page application is that it is much faster because we are not repeatedly reaching out to the
+server to request a new piece of HTML data every time we navigate to a different URL. This allows for the creation of
+fast and reactive applications, just like mobile applications. If you need data from the server, you can load it in the
+background without making the web page unresponsive, and once the data is loaded, you can display it in your
+application.
+
+---
+
+### **Section 5: Why Use Angular for Web Development?**
+Now, you might wonder, why do we need a framework like Angular for this? Can't we just use JavaScript or jQuery to do
+the same thing? Yes, we can, but as the application grows, it becomes harder to maintain vanilla JavaScript or jQuery
+code. It becomes complex, and we need a proper way to structure the application. Many applications built using vanilla
+JavaScript or jQuery are hard to test, and some functionalities need to be written from scratch.
+
+This is why frameworks like Angular have been developed to make web application development easier. Angular provides
+several benefits for developing applications compared to vanilla JavaScript or jQuery. It gives the application a
+loosely coupled structure that is easy to understand and maintain. It also brings in a lot of utility code, which can be
+reused in many applications, especially when dealing with user navigation and the browser's history. Applications built
+with Angular are more testable, allowing us to easily write automated tests for various parts of the application.
+
+---
+
+### **Section 6: Evolution of Angular and Versions**
+Now, let's understand the different versions of Angular. One thing that can be confusing when learning Angular is the
+versioning of Angular. It all started in October 2010 when the first version of Angular was released, and it was called
+AngularJS. This version of Angular was completely different from the Angular we use today. AngularJS was created as a
+JavaScript framework for building client applications. It gained popularity but was not designed with the needs of
+today's applications in mind. Moreover, it was overly complex.
+
+In 2016, the Angular team decided to rewrite the original framework from scratch using TypeScript and named it simply
+"Angular" instead of AngularJS. This version was called Angular 2. Angular 2 was completely different from AngularJS and
+fixed many of the issues of AngularJS. AngularJS is hardly in use anymore.
+
+Since the release of Angular 2, there have been several other versions of Angular, such as Angular 4, 5, 6, 7, and so
+on. By the time this video was recorded, the latest version of Angular is Angular 16. After the release of Angular 2,
+the Angular team adopted a versioning scheme where a new version of Angular is released every 6 months. These new
+versions are typically not completely rewritten but include minor changes or new features.
+
+---
+
+### **Section 7: Conclusion**
+So now, we have two kinds of Angular: AngularJS, which is the first version of Angular, and Angular (starting from
+version 2 and later). In this course, you will learn about Angular 2 and later versions, and not AngularJS. Whatever you
+learn in this course will also apply to the latest versions of Angular.
+
+This was a high-level overview of what Angular is, why you should choose Angular, and the different versions of Angular.
+In the next lecture, let's go ahead and create our very first Angular project.
+
+---

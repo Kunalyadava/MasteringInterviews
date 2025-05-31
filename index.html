@@ -842,3 +842,37 @@ console.log(flattened); // Output: [1, 2, 3, 4, 5]
 - `reduce()` combines all the inner arrays into a single array by concatenating them together.
 
 Both methods will result in the desired 1D array `[1, 2, 3, 4, 5]`. -->
+
+
+
+<!-- 
+Let's break down the code and explain each comparison:
+
+```javascript
+let a = 3;
+let b = new Number(3);
+let c = 3;
+
+console.log(a == b);   // Output: true
+console.log(a === b);  // Output: false
+console.log(a === c);  // Output: true
+```
+
+### Explanation:
+
+1. **`a == b`**: 
+   - `a` is a primitive number (`3`).
+   - `b` is a `Number` object (`new Number(3)`).
+   - The `==` operator compares the **values** of `a` and `b`, and it performs type coercion (automatically converts objects to their primitive values). In this case, the `Number` object `b` is coerced to its primitive value (`3`), so `a == b` evaluates to `true`.
+
+2. **`a === b`**:
+   - `===` is the strict equality operator, which checks both **value** and **type**.
+   - `a` is a primitive number, while `b` is a `Number` object, which is a different type. Since their types are different (`number` vs `object`), `a === b` evaluates to `false`.
+
+3. **`a === c`**:
+   - Both `a` and `c` are primitive numbers (`3`), and since they have the same value and type, `a === c` evaluates to `true`.
+
+### Summary:
+- `a == b` → `true` (because of type coercion).
+- `a === b` → `false` (because the types are different).
+- `a === c` → `true` (same value and type). -->

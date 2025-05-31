@@ -42,9 +42,9 @@ console.log(calculateVolume(4)(5)(6));
 
 // Example 2: This example explains the currying technique with the help of closures. 
 // During the thread of execution, the calculateVolume() function will be invoked.
-//  Inside there is an anonymous function, that receives a parameter and returns some code.
-//   We are exposing our function to another function, so closure will be created. Closure
-//   always contains the function definition along with the lexical environment of the
+// Inside there is an anonymous function, that receives a parameter and returns some code.
+// We are exposing our function to another function, so closure will be created. Closure
+// always contains the function definition along with the lexical environment of the
 //    parent, both things remain connected as a bundle. Hence, it does not matter where 
 //    we invoke them, the all inner functions will always hold access to the variable 
 //    of their parent.

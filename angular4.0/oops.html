@@ -1,277 +1,414 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OOP in Angular & Inheritance</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP Concepts in TypeScript</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        background-color: #f4f7f6;
-        margin: 20px;
-        color: #333;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
 
-      h1 {
-        color: #2c3e50;
-        text-align: center;
-      }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-      .section {
-        margin: 20px 0;
-        padding: 20px;
-        background-color: #ffffff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-      }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
 
-      .question {
-        font-weight: bold;
-        font-size: 1.4em;
-        color: #34495e;
-      }
+        h1, h2 {
+            color: #007bff;
+        }
 
-      .answer {
-        font-size: 1.1em;
-        margin-top: 10px;
-        padding-left: 20px;
-      }
+        ul {
+            line-height: 1.8;
+            font-size: 16px;
+        }
 
-      .code-block {
-        background-color: #2c3e50;
-        padding: 15px;
-        color: #ecf0f1;
-        border-radius: 5px;
-        margin-top: 20px;
-        overflow-x: auto;
-        font-family: "Courier New", monospace;
-      }
+        li {
+            margin-bottom: 10px;
+        }
 
-      pre {
-        margin: 0;
-      }
+        .highlight {
+            font-weight: bold;
+            color: #007bff;
+        }
 
-      .inheritance-example {
-        background-color: #e74c3c;
-        color: white;
-        padding: 15px;
-        border-radius: 8px;
-        font-size: 1.1em;
-        margin-top: 20px;
-      }
-
-      .inheritance-example p {
-        margin: 5px 0;
-      }
-
-      .inheritance-example ul {
-        list-style-type: none;
-        padding-left: 20px;
-      }
-
-      .inheritance-example li {
-        margin: 5px 0;
-      }
-
-      .code-output {
-        font-size: 1.1em;
-        color: #2c3e50;
-      }
+        .code-block {
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
     </style>
-  </head>
-  <body>
-    <h1>OOP in Angular & Inheritance</h1>
+</head>
+<body>
 
-    <div class="section">
-      <div class="question">
-        What is Object-Oriented Programming (OOP) in Angular?
-      </div>
-      <div class="answer">
-        Angular is built on TypeScript, which supports Object-Oriented
-        Programming (OOP) principles. OOP in Angular is about organizing code
-        using classes, objects, inheritance, encapsulation, polymorphism, and
-        abstraction. Angular components, services, and directives are all based
-        on classes and methods, which makes OOP a core concept in building
-        Angular applications.
-      </div>
-    </div>
+    <header>
+        <h1>OOP Concepts in TypeScript</h1>
+    </header>
 
-    <div class="section">
-      <div class="question">Key OOP Concepts in Angular:</div>
-      <div class="answer">
+    <section>
+        <h2>1. Object-Oriented Programming (OOP) Concepts</h2>
         <ul>
-          <li>
-            <strong>Classes:</strong> Used to define Angular components,
-            services, and directives.
-          </li>
-          <li>
-            <strong>Encapsulation:</strong> Data and behavior are encapsulated
-            in Angular classes (components, services).
-          </li>
-          <li>
-            <strong>Inheritance:</strong> Allows one class to inherit from
-            another, enabling code reuse and specialization.
-          </li>
-          <li>
-            <strong>Polymorphism:</strong> Enables objects of different types to
-            be treated as instances of the same class, enhancing flexibility.
-          </li>
-          <li>
-            <strong>Abstraction:</strong> Hides complex implementation details
-            and exposes only necessary functionality.
-          </li>
+            <li><span class="highlight">Inheritance</span>: The ability of a class to inherit properties and methods from another class. The speaker uses a parent-child analogy.</li>
+            <li><span class="highlight">Encapsulation (Data Hiding)</span>: Restricting access to some of an object's data to prevent outside interference. This is achieved using access modifiers.</li>
+            <li><span class="highlight">Polymorphism</span>: The ability to use a single function or method in multiple ways. This can be achieved via method overloading or overriding.</li>
+            <li><span class="highlight">Abstraction</span>: Hiding the implementation details and only exposing necessary information to the user. Achieved in TypeScript through interfaces.</li>
         </ul>
-      </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <div class="question">What is Inheritance in Angular?</div>
-      <div class="answer">
-        Inheritance in Angular allows a class (child class) to inherit
-        properties and methods from another class (parent class). This is useful
-        for code reuse and extending functionality without duplicating code. In
-        Angular, inheritance is commonly used with components, services, and
-        directives to build specialized versions of a base class.
-      </div>
-    </div>
+    <section>
+        <h2>2. Encapsulation in TypeScript</h2>
+        <ul>
+            <li><span class="highlight">Access Modifiers</span>:
+                <ul>
+                    <li><span class="highlight">Public</span>: Accessible by any class.</li>
+                    <li><span class="highlight">Protected</span>: Accessible only within the class and its subclasses.</li>
+                    <li><span class="highlight">Private</span>: Accessible only within the class itself.</li>
+                </ul>
+            </li>
+            <li>The speaker demonstrates how omitting an access modifier defaults to <span class="highlight">public</span>, while explicitly using <span class="highlight">private</span> or <span class="highlight">protected</span> restricts access.</li>
+        </ul>
+    </section>
 
-    <div class="section inheritance-example">
-      <div class="question">
-        Example of Inheritance in Angular (Component Inheritance):
-      </div>
-      <div class="answer">
-        Here is an example of a parent class and a child class in Angular,
-        demonstrating inheritance.
-      </div>
-      <div class="code-block">
-        <pre><code>
-// Parent class Component
+    <section>
+        <h2>3. Inheritance</h2>
+        <p>TypeScript supports inheritance using the <span class="highlight">extends</span> keyword. The speaker demonstrates how a subclass can inherit properties and methods from a parent class and access protected members.</p>
+    </section>
+
+    <section>
+        <h2>4. Polymorphism</h2>
+        <ul>
+            <li><span class="highlight">Method Overloading</span>: Multiple methods with the same name but different parameters.</li>
+            <li><span class="highlight">Method Overriding</span>: A subclass provides a specific implementation of a method that is already defined in its superclass.</li>
+         
+        </ul>
+    </section>
+
+    <section>
+        <h2>5. Abstraction with Interfaces</h2>
+        <ul>
+            <li><span class="highlight">Interfaces</span> define a contract for the class to follow, specifying method signatures without providing the implementation. The class that implements the interface must provide the method's implementation.</li>
+       
+        </ul>
+    </section>
+
+    <section>
+        <h2>6. Classes vs. Interfaces</h2>
+        <ul>
+            <li><span class="highlight">Classes</span> define both properties and methods with implementation, and they can be instantiated.</li>
+            <li><span class="highlight">Interfaces</span> only define method signatures and property declarations. They cannot be instantiated and are used to enforce a structure on classes.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>7. Encapsulation vs. Abstraction</h2>
+        <ul>
+            <li><span class="highlight">Encapsulation</span> hides the data of an object and restricts access to it, while <span class="highlight">Abstraction</span> focuses on exposing only the essential features of an object, hiding the complexities of its implementation.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Conclusion</h2>
+        <p>In conclusion, TypeScript supports all these OOP concepts, allowing developers to implement them efficiently with clear syntax and structure. The speaker emphasizes that TypeScript's syntax is a "syntactic sugar" over JavaScript, making it easier to implement these principles.</p>
+    </section>
+
+</body>
+</html>
+<script..>
+
+  Sure! Let’s explain the **Object-Oriented Programming (OOP)** concepts in terms of **Angular** and how 
+  you might implement them in an Angular application. Angular is built using **TypeScript**, which supports 
+  OOP principles such as inheritance, encapsulation, polymorphism, and abstraction.
+   I'll walk you through how these concepts apply within Angular and provide examples.
+
+### 1. **Inheritance** in Angular:
+In Angular, inheritance can be used to create shared functionality across different components, services, or directives.
+
+#### Example (Inheritance in Components):
+Let’s say we have a base `EmployeeComponent` that contains basic employee information, 
+and then we have a specialized `ManagerComponent` that inherits from the base class and extends its functionality.
+
+```typescript
+// Base Component (Parent Class)
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-base',
-  template: `<h1>Base Component</h1>`
+  selector: 'app-employee',
+  template: `<h2>{{ getEmployeeDetails() }}</h2>`
 })
-export class BaseComponent {
-  message = "Hello from the base component!";
+export class EmployeeComponent {
+  name: string = 'John Doe';
+  role: string = 'Employee';
 
-  showMessage() {
-    console.log(this.message);
+  getEmployeeDetails(): string {
+    return `${this.name} is a(n) ${this.role}`;
   }
 }
 
-// Child class Component extending the parent
+// Inherited Component (Child Class)
+import { Component } from '@angular/core';
+import { EmployeeComponent } from './employee.component';
+
 @Component({
-  selector: 'app-child',
-  template: `<h1>Child Component</h1>`
+  selector: 'app-manager',
+  template: `<h2>{{ getEmployeeDetails() }} and manages a team</h2>`
 })
-export class ChildComponent extends BaseComponent {
-  constructor() {
-    super();
-    this.message = "Hello from the child component!";
-  }
-
-  // Overriding the method from BaseComponent
-  showMessage() {
-    console.log(`Child's Message: ${this.message}`);
-  }
+export class ManagerComponent extends EmployeeComponent {
+  role: string = 'Manager';  // Overriding the role
 }
-            </code></pre>
-      </div>
-      <div class="answer">
-        In this example:
-        <ul>
-          <li>
-            <strong>BaseComponent:</strong> This is the parent class with a
-            message and method to show it.
-          </li>
-          <li>
-            <strong>ChildComponent:</strong> This class extends the
-            `BaseComponent`, overriding the `showMessage()` method to customize
-            its behavior.
-          </li>
-        </ul>
-        The child class has access to the parent class's properties and methods,
-        and can override them as needed.
-      </div>
-    </div>
+```
 
-    <div class="section">
-      <div class="question">Benefits of Inheritance in Angular:</div>
-      <div class="answer">
-        <ul>
-          <li>
-            <strong>Code Reusability:</strong> Child classes can reuse code from
-            parent classes without duplication.
-          </li>
-          <li>
-            <strong>Maintainability:</strong> Inheritance allows you to extend
-            and customize behavior without modifying existing code.
-          </li>
-          <li>
-            <strong>Modularity:</strong> Helps in creating a modular code
-            structure where components and services can be extended as needed.
-          </li>
-          <li>
-            <strong>Clean Structure:</strong> Code becomes more organized,
-            making it easier to manage large applications.
-          </li>
-        </ul>
-      </div>
-    </div>
+**Explanation**:
+- `ManagerComponent` inherits from `EmployeeComponent`.
+- `ManagerComponent` extends the behavior of `EmployeeComponent`,
+ but it can also override or extend methods, such as overriding the `role` property.
+- This is **inheritance** in Angular, where one component can inherit shared logic from another.
 
-    <div class="section">
-      <div class="question">How is Inheritance Used in Angular Services?</div>
-      <div class="answer">
-        Angular services can also benefit from inheritance. You can create a
-        base service with shared functionality (e.g., logging, data handling),
-        and then extend this service in other services that need more specific
-        behavior.
-      </div>
-      <div class="code-block">
-        <pre><code>
+---
+
+### 2. **Encapsulation** in Angular:
+Encapsulation is about keeping the internal workings of a component 
+or service hidden from other parts of the application and exposing 
+only what is necessary through public methods.
+
+#### Example (Encapsulation with Services):
+Let’s create a service to manage user data, where the data is encapsulated and can only be accessed or modified via methods.
+
+```typescript
+// UserService (Encapsulation)
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
-export class BaseService {
-  log(message: string) {
-    console.log('Base Log: ' + message);
+export class UserService {
+  // Private property (internal data hidden)
+  private userData: { name: string, age: number } = { name: 'Alice', age: 30 };
+
+  // Public method to access private data
+  getUserData(): { name: string, age: number } {
+    return this.userData;
+  }
+
+  // Public method to modify private data
+  setUserData(name: string, age: number): void {
+    this.userData.name = name;
+    this.userData.age = age;
   }
 }
+```
+
+**Explanation**:
+- The `userData` property is **private** and cannot be directly accessed from outside the `UserService` class.
+- The `getUserData()` and `setUserData()` methods are **public**, allowing controlled access to the data.
+- This ensures **encapsulation**, hiding the implementation details and only exposing the necessary methods.
+
+---
+
+### 3. **Polymorphism** in Angular:
+Polymorphism allows components or services to have the same method name but different implementations depending on the context.
+
+#### Example (Polymorphism in Angular Components):
+Imagine you have two components that display different types of content but share a common method signature.
+
+```typescript
+// Base Component (Parent Class)
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-content',
+  template: `<h2>{{ showContent() }}</h2>`
+})
+export class ContentComponent {
+  showContent(): string {
+    return 'This is general content';
+  }
+}
+
+// Inherited Component 1
+import { Component } from '@angular/core';
+import { ContentComponent } from './content.component';
+
+@Component({
+  selector: 'app-text-content',
+  template: `<h2>{{ showContent() }}</h2>`
+})
+export class TextContentComponent extends ContentComponent {
+  showContent(): string {
+    return 'This is text-based content';
+  }
+}
+
+// Inherited Component 2
+import { Component } from '@angular/core';
+import { ContentComponent } from './content.component';
+
+@Component({
+  selector: 'app-image-content',
+  template: `<h2>{{ showContent() }}</h2>`
+})
+export class ImageContentComponent extends ContentComponent {
+  showContent(): string {
+    return 'This is image-based content';
+  }
+}
+```
+
+**Explanation**:
+- Both `TextContentComponent` and `ImageContentComponent` override the `showContent()` method from `ContentComponent`.
+- Even though they have the same method name (`showContent()`), 
+they provide **different implementations** depending on the type of content they display. This is **polymorphism** in action.
+
+---
+
+### 4. **Abstraction** in Angular:
+Abstraction allows you to expose only the essential features 
+of a class while hiding the complex implementation. This can be achieved in Angular by using **interfaces**.
+
+#### Example (Abstraction using Interfaces):
+Let’s define an interface to abstract out the details of 
+how user data is managed, and then implement this interface in a service.
+
+```typescript
+// UserService Interface (Abstraction)
+export interface IUserService {
+  getUserData(): { name: string, age: number };
+  setUserData(name: string, age: number): void;
+}
+
+// UserService Implementation
+import { Injectable } from '@angular/core';
+import { IUserService } from './user.service.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ChildService extends BaseService {
-  log(message: string) {
-    console.log('Child Log: ' + message);  // Overridden method
+export class UserService implements IUserService {
+  private userData: { name: string, age: number } = { name: 'Alice', age: 30 };
+
+  getUserData(): { name: string, age: number } {
+    return this.userData;
   }
 
-  fetchData() {
-    this.log('Fetching data...');
+  setUserData(name: string, age: number): void {
+    this.userData.name = name;
+    this.userData.age = age;
   }
 }
-            </code></pre>
-      </div>
-      <div class="answer">
-        In this example:
-        <ul>
-          <li>
-            <strong>BaseService:</strong> A base service providing a simple log
-            method.
-          </li>
-          <li>
-            <strong>ChildService:</strong> A service that extends `BaseService`,
-            overrides the log method, and adds new functionality like
-            `fetchData`.
-          </li>
-        </ul>
-        This is useful for creating specialized services while still leveraging
-        the common behavior in the base service.
-      </div>
-    </div>
-  </body>
-</html>
+```
+
+**Explanation**:
+- The `IUserService` interface provides an **abstract contract** 
+that any service managing user data should follow.
+- The `UserService` class **implements** the interface, providing the actual behavior.
+- This is **abstraction**, where we are only concerned with 
+the contract (i.e., the methods we can call) and not the details of how those methods are implemented.
+
+---
+
+### 5. **Access Modifiers** in Angular:
+In Angular, **access modifiers** (`public`, `private`, `protected`)
+ are used to control the visibility of properties and methods within components, services, and other classes.
+
+#### Example (Access Modifiers in Components):
+```typescript
+// UserComponent with Access Modifiers
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-user',
+  template: `<h2>{{ userName }}</h2>`
+})
+export class UserComponent {
+  public userName: string = 'John Doe';  // Public, can be accessed anywhere
+  private userAge: number = 30;          // Private, can't be accessed outside this class
+
+  getUserAge(): number {
+    return this.userAge;  // Public method to access private property
+  }
+}
+```
+
+**Explanation**:
+- `userName` is **public** and can be accessed from outside the class,
+ such as in the template or from another component.
+- `userAge` is **private**, meaning it can only be accessed within the `UserComponent` class.
+- **Access modifiers** allow us to control how properties and 
+methods are accessed, promoting encapsulation and proper design.
+
+---
+
+### Conclusion:
+In an Angular application, **OOP principles** such as **inheritance**,
+ **encapsulation**, **polymorphism**, and **abstraction** can be used to write clean, modular, and maintainable code:
+
+- **Inheritance** helps to reuse logic across multiple components.
+- **Encapsulation** ensures that internal details (like component or service data) are hidden and only accessible through controlled methods.
+- **Polymorphism** allows you to define common methods across different components or services, with each one implementing them differently.
+- **Abstraction** helps define clear interfaces and hides complex implementations, making the code more readable and maintainable.
+
+Angular leverages **TypeScript’s OOP features** to provide a powerful structure for building robust web applications.
+
+1. Method Overloading in JavaScript
+What is Method Overloading?
+Method overloading is the ability to define multiple methods with the same name but 
+with different parameter lists (e.g., different numbers of parameters or 
+different types of parameters). In statically typed languages like Java or C#,
+ method overloading works by differentiating methods based on the number or
+  types of parameters. However, JavaScript doesn’t natively support this feature.
+
+
+How is Method Overloading Simulated in JavaScript?
+In JavaScript, you cannot have multiple methods with the same name. Instead, you can 
+simulate method overloading by using techniques like rest parameters (...args) 
+and inspecting the arguments passed into the method. Based on the arguments, you can customize the function’s behavior.
+
+Example of Simulating Method Overloading:
+
+class Calculator {
+  // Simulating method overloading using the spread operator
+  add(...args) {
+    if (args.length === 1 && Array.isArray(args[0])) {
+      // Case when an array is passed as an argument
+      return args[0].reduce((sum, num) => sum + num, 0);
+    } else if (args.length > 1) {
+      // Case when multiple individual arguments are passed
+      return args.reduce((sum, num) => sum + num, 0);
+    } else {
+      throw new Error("Invalid arguments");
+    }
+  }
+}
+
+const calc = new Calculator();
+
+console.log(calc.add(1, 2, 3)); // Output: 6 (sum of multiple numbers)
+console.log(calc.add([1, 2, 3])); // Output: 6 (sum of numbers in array)
+
+
+In the example above:
+
+We define a single add method that takes variable arguments (...args).
+Based on the number of arguments and their types, we handle them differently.
+If an array is passed, we calculate the sum of elements inside the array.
+If multiple individual numbers are passed, we sum them directly.
+</script.>

@@ -1,0 +1,38 @@
+### Overview of Angular Files and Folders
+
+#### 1. **Introduction**
+
+In this lecture, we are going to have a quick overview of the Angular files and folders that get generated when we first
+create an Angular project. We will understand the use of each of them briefly. Whenever we create a new Angular project
+using the Angular CLI, it generates a bunch of files and folders inside the project directory. For example, if the
+project directory is named `angular-ecart`, it will contain various files and folders generated automatically by the `ng
+new` command. Each of these files and folders serves a specific purpose in the project.
+
+---
+
+#### 2. **Node Modules Folder**
+
+The `node_modules` folder is where all the third-party libraries and packages are stored. These libraries are downloaded
+from npm and are essential for the application's development. This folder is not meant to be deployed to the production
+server or included in the repository. For instance, if you use Git as your version control system, you will exclude the
+`node_modules` folder when pushing your project code to the repository. This folder is purely for development purposes.
+
+---
+
+#### 3. **Node Modules and Version Control**
+
+You might wonder how the application will work without the `node_modules` folder when it is not included in the
+repository or during deployment. Let’s say a team member checks out the project from the repository where the
+`node_modules` folder is not present. The application will not function as the required dependencies will be missing. In
+such cases, you simply open the terminal, navigate to the project directory, and run the `npm install` command. This
+command reads the `package.json` file, identifies the required dependencies, downloads them, and recreates the
+`node_modules` folder.
+
+---
+
+#### 4. **Package Management**
+
+The `package.json` file plays a critical role in dependency management. It contains a list of all the packages the
+Angular project depends on. When you run `npm install`, the command uses this file to fetch and install the necessary
+libraries and packages. Even if the `node_modules` folder is deleted, you can restore it by executing this command,
+ensuring that all dependencies are available for the project.
